@@ -1,0 +1,226 @@
+{
+    "nodes": [
+        {
+            "id": "wh_db.FactWatches",
+            "labels": [
+                "TableName"
+            ],
+            "properties": {
+                "name": "wh_db.FactWatches"
+            }
+        },
+        {
+            "id": "sk_customerid",
+            "labels": [
+                "ColumnName"
+            ],
+            "properties": {
+                "name": "sk_customerid"
+            }
+        },
+        {
+            "id": "sk_securityid",
+            "labels": [
+                "ColumnName"
+            ],
+            "properties": {
+                "name": "sk_securityid"
+            }
+        },
+        {
+            "id": "sk_dateid_dateplaced",
+            "labels": [
+                "ColumnName"
+            ],
+            "properties": {
+                "name": "sk_dateid_dateplaced"
+            }
+        },
+        {
+            "id": "sk_dateid_dateremoved",
+            "labels": [
+                "ColumnName"
+            ],
+            "properties": {
+                "name": "sk_dateid_dateremoved"
+            }
+        },
+        {
+            "id": "batchid",
+            "labels": [
+                "ColumnName"
+            ],
+            "properties": {
+                "name": "batchid"
+            }
+        },
+        {
+            "id": "BIGINT",
+            "labels": [
+                "Data Type"
+            ],
+            "properties": {
+                "name": "BIGINT"
+            }
+        },
+        {
+            "id": "INT",
+            "labels": [
+                "Data Type"
+            ],
+            "properties": {
+                "name": "INT"
+            }
+        },
+        {
+            "id": "wh_db",
+            "labels": [
+                "SchemaName"
+            ],
+            "properties": {
+                "name": "wh_db"
+            }
+        },
+        {
+            "id": "Customer associated with watch list",
+            "labels": [
+                "Comment"
+            ],
+            "properties": {
+                "text": "Customer associated with watch list"
+            }
+        },
+        {
+            "id": "Security listed on watch list",
+            "labels": [
+                "Comment"
+            ],
+            "properties": {
+                "text": "Security listed on watch list"
+            }
+        },
+        {
+            "id": "Date the watch list item was added",
+            "labels": [
+                "Comment"
+            ],
+            "properties": {
+                "text": "Date the watch list item was added"
+            }
+        },
+        {
+            "id": "Date the watch list item was removed",
+            "labels": [
+                "Comment"
+            ],
+            "properties": {
+                "text": "Date the watch list item was removed"
+            }
+        },
+        {
+            "id": "Batch ID when this record was inserted",
+            "labels": [
+                "Comment"
+            ],
+            "properties": {
+                "text": "Batch ID when this record was inserted"
+            }
+        },
+        {
+            "id": "FactWatches stores watch list information",
+            "labels": [
+                "Summary"
+            ],
+            "properties": {
+                "text": "FactWatches stores watch list information"
+            }
+        }
+    ],
+    "relationships": [
+        {
+            "source": "sk_customerid",
+            "target": "wh_db.FactWatches",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "sk_securityid",
+            "target": "wh_db.FactWatches",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "sk_dateid_dateplaced",
+            "target": "wh_db.FactWatches",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "sk_dateid_dateremoved",
+            "target": "wh_db.FactWatches",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "batchid",
+            "target": "wh_db.FactWatches",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "sk_customerid",
+            "target": "BIGINT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "sk_securityid",
+            "target": "BIGINT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "sk_dateid_dateplaced",
+            "target": "BIGINT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "sk_dateid_dateremoved",
+            "target": "BIGINT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "batchid",
+            "target": "INT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "wh_db.FactWatches",
+            "target": "wh_db",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "Customer associated with watch list",
+            "target": "sk_customerid",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "Security listed on watch list",
+            "target": "sk_securityid",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "Date the watch list item was added",
+            "target": "sk_dateid_dateplaced",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "Date the watch list item was removed",
+            "target": "sk_dateid_dateremoved",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "Batch ID when this record was inserted",
+            "target": "batchid",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "FactWatches stores watch list information",
+            "target": "wh_db.FactWatches",
+            "relation": "DESCRIBES"
+        }
+    ]
+}

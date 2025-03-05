@@ -1,0 +1,327 @@
+[
+    {
+        "node_1": "tradeid",
+        "node_2": "DimTrade",
+        "relationship": "PART_OF"
+    },
+    {
+        "node_1": "tradeid",
+        "node_2": "INT",
+        "relationship": "TYPE_OF"
+    },
+    {
+        "node_1": "sk_brokerid",
+        "node_2": "DimTrade",
+        "relationship": "PART_OF"
+    },
+    {
+        "node_1": "sk_brokerid",
+        "node_2": "BIGINT",
+        "relationship": "TYPE_OF"
+    },
+    {
+        "node_1": "sk_createdateid",
+        "node_2": "DimTrade",
+        "relationship": "PART_OF"
+    },
+    {
+        "node_1": "sk_createdateid",
+        "node_2": "BIGINT",
+        "relationship": "TYPE_OF"
+    },
+    {
+        "node_1": "sk_createtimeid",
+        "node_2": "DimTrade",
+        "relationship": "PART_OF"
+    },
+    {
+        "node_1": "sk_createtimeid",
+        "node_2": "BIGINT",
+        "relationship": "TYPE_OF"
+    },
+    {
+        "node_1": "sk_closedateid",
+        "node_2": "DimTrade",
+        "relationship": "PART_OF"
+    },
+    {
+        "node_1": "sk_closedateid",
+        "node_2": "BIGINT",
+        "relationship": "TYPE_OF"
+    },
+    {
+        "node_1": "sk_closetimeid",
+        "node_2": "DimTrade",
+        "relationship": "PART_OF"
+    },
+    {
+        "node_1": "sk_closetimeid",
+        "node_2": "BIGINT",
+        "relationship": "TYPE_OF"
+    },
+    {
+        "node_1": "status",
+        "node_2": "DimTrade",
+        "relationship": "PART_OF"
+    },
+    {
+        "node_1": "status",
+        "node_2": "STRING",
+        "relationship": "TYPE_OF"
+    },
+    {
+        "node_1": "type",
+        "node_2": "DimTrade",
+        "relationship": "PART_OF"
+    },
+    {
+        "node_1": "type",
+        "node_2": "STRING",
+        "relationship": "TYPE_OF"
+    },
+    {
+        "node_1": "cashflag",
+        "node_2": "DimTrade",
+        "relationship": "PART_OF"
+    },
+    {
+        "node_1": "cashflag",
+        "node_2": "BOOLEAN",
+        "relationship": "TYPE_OF"
+    },
+    {
+        "node_1": "sk_securityid",
+        "node_2": "DimTrade",
+        "relationship": "PART_OF"
+    },
+    {
+        "node_1": "sk_securityid",
+        "node_2": "BIGINT",
+        "relationship": "TYPE_OF"
+    },
+    {
+        "node_1": "sk_companyid",
+        "node_2": "DimTrade",
+        "relationship": "PART_OF"
+    },
+    {
+        "node_1": "sk_companyid",
+        "node_2": "BIGINT",
+        "relationship": "TYPE_OF"
+    },
+    {
+        "node_1": "quantity",
+        "node_2": "DimTrade",
+        "relationship": "PART_OF"
+    },
+    {
+        "node_1": "quantity",
+        "node_2": "INT",
+        "relationship": "TYPE_OF"
+    },
+    {
+        "node_1": "bidprice",
+        "node_2": "DimTrade",
+        "relationship": "PART_OF"
+    },
+    {
+        "node_1": "bidprice",
+        "node_2": "DOUBLE",
+        "relationship": "TYPE_OF"
+    },
+    {
+        "node_1": "sk_customerid",
+        "node_2": "DimTrade",
+        "relationship": "PART_OF"
+    },
+    {
+        "node_1": "sk_customerid",
+        "node_2": "BIGINT",
+        "relationship": "TYPE_OF"
+    },
+    {
+        "node_1": "sk_accountid",
+        "node_2": "DimTrade",
+        "relationship": "PART_OF"
+    },
+    {
+        "node_1": "sk_accountid",
+        "node_2": "BIGINT",
+        "relationship": "TYPE_OF"
+    },
+    {
+        "node_1": "executedby",
+        "node_2": "DimTrade",
+        "relationship": "PART_OF"
+    },
+    {
+        "node_1": "executedby",
+        "node_2": "STRING",
+        "relationship": "TYPE_OF"
+    },
+    {
+        "node_1": "tradeprice",
+        "node_2": "DimTrade",
+        "relationship": "PART_OF"
+    },
+    {
+        "node_1": "tradeprice",
+        "node_2": "DOUBLE",
+        "relationship": "TYPE_OF"
+    },
+    {
+        "node_1": "fee",
+        "node_2": "DimTrade",
+        "relationship": "PART_OF"
+    },
+    {
+        "node_1": "fee",
+        "node_2": "DOUBLE",
+        "relationship": "TYPE_OF"
+    },
+    {
+        "node_1": "commission",
+        "node_2": "DimTrade",
+        "relationship": "PART_OF"
+    },
+    {
+        "node_1": "commission",
+        "node_2": "DOUBLE",
+        "relationship": "TYPE_OF"
+    },
+    {
+        "node_1": "tax",
+        "node_2": "DimTrade",
+        "relationship": "PART_OF"
+    },
+    {
+        "node_1": "tax",
+        "node_2": "DOUBLE",
+        "relationship": "TYPE_OF"
+    },
+    {
+        "node_1": "batchid",
+        "node_2": "DimTrade",
+        "relationship": "PART_OF"
+    },
+    {
+        "node_1": "batchid",
+        "node_2": "INT",
+        "relationship": "TYPE_OF"
+    },
+    {
+        "node_1": "wh_db",
+        "node_2": "DimTrade",
+        "relationship": "PART_OF"
+    },
+    {
+        "node_1": "Trade identifier",
+        "node_2": "tradeid",
+        "relationship": "DESCRIBES"
+    },
+    {
+        "node_1": "Surrogate key for BrokerID",
+        "node_2": "sk_brokerid",
+        "relationship": "DESCRIBES"
+    },
+    {
+        "node_1": "Surrogate key for date created",
+        "node_2": "sk_createdateid",
+        "relationship": "DESCRIBES"
+    },
+    {
+        "node_1": "Surrogate key for time created",
+        "node_2": "sk_createtimeid",
+        "relationship": "DESCRIBES"
+    },
+    {
+        "node_1": "Surrogate key for date closed",
+        "node_2": "sk_closedateid",
+        "relationship": "DESCRIBES"
+    },
+    {
+        "node_1": "Surrogate key for time closed",
+        "node_2": "sk_closetimeid",
+        "relationship": "DESCRIBES"
+    },
+    {
+        "node_1": "Trade status",
+        "node_2": "status",
+        "relationship": "DESCRIBES"
+    },
+    {
+        "node_1": "Trade type",
+        "node_2": "type",
+        "relationship": "DESCRIBES"
+    },
+    {
+        "node_1": "Is this trade a cash or margin trade?",
+        "node_2": "cashflag",
+        "relationship": "DESCRIBES"
+    },
+    {
+        "node_1": "Surrogate key for SecurityID",
+        "node_2": "sk_securityid",
+        "relationship": "DESCRIBES"
+    },
+    {
+        "node_1": "Surrogate key for CompanyID",
+        "node_2": "sk_companyid",
+        "relationship": "DESCRIBES"
+    },
+    {
+        "node_1": "Quantity of securities traded.",
+        "node_2": "quantity",
+        "relationship": "DESCRIBES"
+    },
+    {
+        "node_1": "The requested unit price.",
+        "node_2": "bidprice",
+        "relationship": "DESCRIBES"
+    },
+    {
+        "node_1": "Surrogate key for CustomerID",
+        "node_2": "sk_customerid",
+        "relationship": "DESCRIBES"
+    },
+    {
+        "node_1": "Surrogate key for AccountID",
+        "node_2": "sk_accountid",
+        "relationship": "DESCRIBES"
+    },
+    {
+        "node_1": "Name of person executing the trade.",
+        "node_2": "executedby",
+        "relationship": "DESCRIBES"
+    },
+    {
+        "node_1": "Unit price at which the security was traded.",
+        "node_2": "tradeprice",
+        "relationship": "DESCRIBES"
+    },
+    {
+        "node_1": "Fee charged for placing this trade request",
+        "node_2": "fee",
+        "relationship": "DESCRIBES"
+    },
+    {
+        "node_1": "Commission earned on this trade",
+        "node_2": "commission",
+        "relationship": "DESCRIBES"
+    },
+    {
+        "node_1": "Amount of tax due on this trade",
+        "node_2": "tax",
+        "relationship": "DESCRIBES"
+    },
+    {
+        "node_1": "Batch ID when this record was inserted",
+        "node_2": "batchid",
+        "relationship": "DESCRIBES"
+    },
+    {
+        "node_1": "Trade information",
+        "node_2": "DimTrade",
+        "relationship": "DESCRIBES"
+    }
+]

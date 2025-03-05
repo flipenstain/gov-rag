@@ -1,0 +1,379 @@
+{
+    "nodes": [
+        {
+            "id": "sk_brokerid",
+            "type": "ColumnName"
+        },
+        {
+            "id": "DimBroker",
+            "type": "TableName"
+        },
+        {
+            "id": "BIGINT",
+            "type": "Data Type"
+        },
+        {
+            "id": "wh_db",
+            "type": "SchemaName"
+        },
+        {
+            "id": "brokerid",
+            "type": "ColumnName"
+        },
+        {
+            "id": "BIGINT",
+            "type": "Data Type"
+        },
+        {
+            "id": "managerid",
+            "type": "ColumnName"
+        },
+        {
+            "id": "BIGINT",
+            "type": "Data Type"
+        },
+        {
+            "id": "firstname",
+            "type": "ColumnName"
+        },
+        {
+            "id": "STRING",
+            "type": "Data Type"
+        },
+        {
+            "id": "lastname",
+            "type": "ColumnName"
+        },
+        {
+            "id": "STRING",
+            "type": "Data Type"
+        },
+        {
+            "id": "middleinitial",
+            "type": "ColumnName"
+        },
+        {
+            "id": "STRING",
+            "type": "Data Type"
+        },
+        {
+            "id": "branch",
+            "type": "ColumnName"
+        },
+        {
+            "id": "STRING",
+            "type": "Data Type"
+        },
+        {
+            "id": "office",
+            "type": "ColumnName"
+        },
+        {
+            "id": "STRING",
+            "type": "Data Type"
+        },
+        {
+            "id": "phone",
+            "type": "ColumnName"
+        },
+        {
+            "id": "STRING",
+            "type": "Data Type"
+        },
+        {
+            "id": "iscurrent",
+            "type": "ColumnName"
+        },
+        {
+            "id": "BOOLEAN",
+            "type": "Data Type"
+        },
+        {
+            "id": "batchid",
+            "type": "ColumnName"
+        },
+        {
+            "id": "INT",
+            "type": "Data Type"
+        },
+        {
+            "id": "effectivedate",
+            "type": "ColumnName"
+        },
+        {
+            "id": "DATE",
+            "type": "Data Type"
+        },
+        {
+            "id": "enddate",
+            "type": "ColumnName"
+        },
+        {
+            "id": "DATE",
+            "type": "Data Type"
+        },
+        {
+            "id": "Surrogate key for broker",
+            "type": "Comment"
+        },
+        {
+            "id": "Natural key for broker",
+            "type": "Comment"
+        },
+        {
+            "id": "Natural key for manager\u00e2\u20ac\u2122s HR record",
+            "type": "Comment"
+        },
+        {
+            "id": "First name",
+            "type": "Comment"
+        },
+        {
+            "id": "Last Name",
+            "type": "Comment"
+        },
+        {
+            "id": "Middle initial",
+            "type": "Comment"
+        },
+        {
+            "id": "Facility in which employee has office",
+            "type": "Comment"
+        },
+        {
+            "id": "Office number or description",
+            "type": "Comment"
+        },
+        {
+            "id": "Employee phone number",
+            "type": "Comment"
+        },
+        {
+            "id": "True if this is the current record",
+            "type": "Comment"
+        },
+        {
+            "id": "Batch ID when this record was inserted",
+            "type": "Comment"
+        },
+        {
+            "id": "Beginning of date range when this record was the current record",
+            "type": "Comment"
+        },
+        {
+            "id": "Ending of date range when this record was the current record. A record that is not expired will use the date 9999-12-31.",
+            "type": "Comment"
+        },
+        {
+            "id": "Stores information about brokers",
+            "type": "Summary"
+        }
+    ],
+    "relationships": [
+        {
+            "source": "sk_brokerid",
+            "target": "DimBroker",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "sk_brokerid",
+            "target": "BIGINT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "DimBroker",
+            "target": "wh_db",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "brokerid",
+            "target": "DimBroker",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "brokerid",
+            "target": "BIGINT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "managerid",
+            "target": "DimBroker",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "managerid",
+            "target": "BIGINT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "firstname",
+            "target": "DimBroker",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "firstname",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "lastname",
+            "target": "DimBroker",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "lastname",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "middleinitial",
+            "target": "DimBroker",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "middleinitial",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "branch",
+            "target": "DimBroker",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "branch",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "office",
+            "target": "DimBroker",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "office",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "phone",
+            "target": "DimBroker",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "phone",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "iscurrent",
+            "target": "DimBroker",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "iscurrent",
+            "target": "BOOLEAN",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "batchid",
+            "target": "DimBroker",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "batchid",
+            "target": "INT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "effectivedate",
+            "target": "DimBroker",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "effectivedate",
+            "target": "DATE",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "enddate",
+            "target": "DimBroker",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "enddate",
+            "target": "DATE",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Surrogate key for broker",
+            "target": "sk_brokerid",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "Natural key for broker",
+            "target": "brokerid",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "Natural key for manager\u00e2\u20ac\u2122s HR record",
+            "target": "managerid",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "First name",
+            "target": "firstname",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "Last Name",
+            "target": "lastname",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "Middle initial",
+            "target": "middleinitial",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "Facility in which employee has office",
+            "target": "branch",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "Office number or description",
+            "target": "office",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "Employee phone number",
+            "target": "phone",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "True if this is the current record",
+            "target": "iscurrent",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "Batch ID when this record was inserted",
+            "target": "batchid",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "Beginning of date range when this record was the current record",
+            "target": "effectivedate",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "Ending of date range when this record was the current record. A record that is not expired will use the date 9999-12-31.",
+            "target": "enddate",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "Stores information about brokers",
+            "target": "DimBroker",
+            "relation": "DESCRIBES"
+        }
+    ]
+}

@@ -1,0 +1,366 @@
+{
+    "nodes": [
+        {
+            "id": "sk_companyid",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Financial",
+            "type": "TableName"
+        },
+        {
+            "id": "BIGINT",
+            "type": "Data Type"
+        },
+        {
+            "id": "wh_db",
+            "type": "SchemaName"
+        },
+        {
+            "id": "Company SK.",
+            "type": "Comment"
+        },
+        {
+            "id": "fi_year",
+            "type": "ColumnName"
+        },
+        {
+            "id": "INT",
+            "type": "Data Type"
+        },
+        {
+            "id": "Year of the quarter end.",
+            "type": "Comment"
+        },
+        {
+            "id": "fi_qtr",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Quarter number that the financial information is for: valid values 1, 2, 3, 4.",
+            "type": "Comment"
+        },
+        {
+            "id": "fi_qtr_start_date",
+            "type": "ColumnName"
+        },
+        {
+            "id": "DATE",
+            "type": "Data Type"
+        },
+        {
+            "id": "Start date of quarter.",
+            "type": "Comment"
+        },
+        {
+            "id": "fi_revenue",
+            "type": "ColumnName"
+        },
+        {
+            "id": "DOUBLE",
+            "type": "Data Type"
+        },
+        {
+            "id": "Reported revenue for the quarter.",
+            "type": "Comment"
+        },
+        {
+            "id": "fi_net_earn",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Net earnings reported for the quarter.",
+            "type": "Comment"
+        },
+        {
+            "id": "fi_basic_eps",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Basic earnings per share for the quarter.",
+            "type": "Comment"
+        },
+        {
+            "id": "fi_dilut_eps",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Diluted earnings per share for the quarter.",
+            "type": "Comment"
+        },
+        {
+            "id": "fi_margin",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Profit divided by revenues for the quarter.",
+            "type": "Comment"
+        },
+        {
+            "id": "fi_inventory",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Value of inventory on hand at the end of quarter.",
+            "type": "Comment"
+        },
+        {
+            "id": "fi_assets",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Value of total assets at the end of the quarter.",
+            "type": "Comment"
+        },
+        {
+            "id": "fi_liability",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Value of total liabilities at the end of the quarter.",
+            "type": "Comment"
+        },
+        {
+            "id": "fi_out_basic",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Average number of shares outstanding (basic).",
+            "type": "Comment"
+        },
+        {
+            "id": "fi_out_dilut",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Average number of shares outstanding (diluted).",
+            "type": "Comment"
+        },
+        {
+            "id": "Financial data for companies",
+            "type": "Summary"
+        }
+    ],
+    "relationships": [
+        {
+            "source": "sk_companyid",
+            "target": "Financial",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "sk_companyid",
+            "target": "BIGINT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Financial",
+            "target": "wh_db",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "Company SK.",
+            "target": "sk_companyid",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "fi_year",
+            "target": "Financial",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "fi_year",
+            "target": "INT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Year of the quarter end.",
+            "target": "fi_year",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "fi_qtr",
+            "target": "Financial",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "fi_qtr",
+            "target": "INT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Quarter number that the financial information is for: valid values 1, 2, 3, 4.",
+            "target": "fi_qtr",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "fi_qtr_start_date",
+            "target": "Financial",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "fi_qtr_start_date",
+            "target": "DATE",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Start date of quarter.",
+            "target": "fi_qtr_start_date",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "fi_revenue",
+            "target": "Financial",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "fi_revenue",
+            "target": "DOUBLE",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Reported revenue for the quarter.",
+            "target": "fi_revenue",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "fi_net_earn",
+            "target": "Financial",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "fi_net_earn",
+            "target": "DOUBLE",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Net earnings reported for the quarter.",
+            "target": "fi_net_earn",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "fi_basic_eps",
+            "target": "Financial",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "fi_basic_eps",
+            "target": "DOUBLE",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Basic earnings per share for the quarter.",
+            "target": "fi_basic_eps",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "fi_dilut_eps",
+            "target": "Financial",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "fi_dilut_eps",
+            "target": "DOUBLE",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Diluted earnings per share for the quarter.",
+            "target": "fi_dilut_eps",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "fi_margin",
+            "target": "Financial",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "fi_margin",
+            "target": "DOUBLE",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Profit divided by revenues for the quarter.",
+            "target": "fi_margin",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "fi_inventory",
+            "target": "Financial",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "fi_inventory",
+            "target": "DOUBLE",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Value of inventory on hand at the end of quarter.",
+            "target": "fi_inventory",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "fi_assets",
+            "target": "Financial",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "fi_assets",
+            "target": "DOUBLE",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Value of total assets at the end of the quarter.",
+            "target": "fi_assets",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "fi_liability",
+            "target": "Financial",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "fi_liability",
+            "target": "DOUBLE",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Value of total liabilities at the end of the quarter.",
+            "target": "fi_liability",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "fi_out_basic",
+            "target": "Financial",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "fi_out_basic",
+            "target": "BIGINT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Average number of shares outstanding (basic).",
+            "target": "fi_out_basic",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "fi_out_dilut",
+            "target": "Financial",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "fi_out_dilut",
+            "target": "BIGINT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Average number of shares outstanding (diluted).",
+            "target": "fi_out_dilut",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "Financial data for companies",
+            "target": "Financial",
+            "relation": "DESCRIBES"
+        }
+    ]
+}

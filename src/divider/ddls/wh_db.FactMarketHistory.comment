@@ -1,0 +1,14 @@
+COMMENT ON COLUMN wh_db.FactMarketHistory.sk_securityid IS 'Surrogate key for SecurityID';
+COMMENT ON COLUMN wh_db.FactMarketHistory.sk_companyid IS 'Surrogate key for CompanyID';
+COMMENT ON COLUMN wh_db.FactMarketHistory.sk_dateid IS 'Surrogate key for the date';
+COMMENT ON COLUMN wh_db.FactMarketHistory.peratio IS 'Price to earnings per share ratio';
+COMMENT ON COLUMN wh_db.FactMarketHistory.yield IS 'Dividend to price ratio, as a percentage';
+COMMENT ON COLUMN wh_db.FactMarketHistory.fiftytwoweekhigh IS 'Security highest price in last 52 weeks from this day';
+COMMENT ON COLUMN wh_db.FactMarketHistory.sk_fiftytwoweekhighdate IS 'Earliest date on which the 52 week high price was set';
+COMMENT ON COLUMN wh_db.FactMarketHistory.fiftytwoweeklow IS 'Security lowest price in last 52 weeks from this day';
+COMMENT ON COLUMN wh_db.FactMarketHistory.sk_fiftytwoweeklowdate IS 'Earliest date on which the 52 week low price was set';
+COMMENT ON COLUMN wh_db.FactMarketHistory.closeprice IS 'Security closing price on this day';
+COMMENT ON COLUMN wh_db.FactMarketHistory.dayhigh IS 'Highest price for the security on this day';
+COMMENT ON COLUMN wh_db.FactMarketHistory.daylow IS 'Lowest price for the security on this day';
+COMMENT ON COLUMN wh_db.FactMarketHistory.volume IS 'Trading volume of the security on this day';
+COMMENT ON COLUMN wh_db.FactMarketHistory.batchid IS 'Batch ID when this record was inserted';

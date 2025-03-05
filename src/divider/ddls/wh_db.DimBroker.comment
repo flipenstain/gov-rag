@@ -1,0 +1,13 @@
+COMMENT ON COLUMN wh_db.DimBroker.sk_brokerid IS 'Surrogate key for broker';
+COMMENT ON COLUMN wh_db.DimBroker.brokerid IS 'Natural key for broker';
+COMMENT ON COLUMN wh_db.DimBroker.managerid IS 'Natural key for manager’s HR record';
+COMMENT ON COLUMN wh_db.DimBroker.firstname IS 'First name';
+COMMENT ON COLUMN wh_db.DimBroker.lastname IS 'Last Name';
+COMMENT ON COLUMN wh_db.DimBroker.middleinitial IS 'Middle initial';
+COMMENT ON COLUMN wh_db.DimBroker.branch IS 'Facility in which employee has office';
+COMMENT ON COLUMN wh_db.DimBroker.office IS 'Office number or description';
+COMMENT ON COLUMN wh_db.DimBroker.phone IS 'Employee phone number';
+COMMENT ON COLUMN wh_db.DimBroker.iscurrent IS 'True if this is the current record';
+COMMENT ON COLUMN wh_db.DimBroker.batchid IS 'Batch ID when this record was inserted';
+COMMENT ON COLUMN wh_db.DimBroker.effectivedate IS 'Beginning of date range when this record was the current record';
+COMMENT ON COLUMN wh_db.DimBroker.enddate IS 'Ending of date range when this record was the current record. A record that is not expired will use the date 9999-12-31.';

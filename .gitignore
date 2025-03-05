@@ -1,0 +1,29 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+.buckups
+initial_db.duckdb
+initial_db.duckdb.wal
+
+CashTransaction.txt 
+Trade.txt
+WatchHistory.txt is 
+DailyMarket.txt
+src/data/Batch1/WatchHistory.txt
+src/data/Batch1/Trade.txt
+src/data/Batch1/CashTransaction.txt
+src/data/Batch1/DailyMarket.txt
+
+.\src\data\Batch1\CashTransaction.txt
+.\src\data\Batch1\DailyMarket.txt    
+.\src\data\Batch1\Trade.txt      
+.\src\data\Batch1\WatchHistory.txt
+
+.\src\divider\Tools\*

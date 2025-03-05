@@ -1,0 +1,155 @@
+{
+    "nodes": [
+        {
+            "id": "sk_customerid",
+            "type": "ColumnName"
+        },
+        {
+            "id": "FactCashBalances",
+            "type": "TableName"
+        },
+        {
+            "id": "BIGINT",
+            "type": "Data Type"
+        },
+        {
+            "id": "wh_db",
+            "type": "SchemaName"
+        },
+        {
+            "id": "sk_accountid",
+            "type": "ColumnName"
+        },
+        {
+            "id": "sk_dateid",
+            "type": "ColumnName"
+        },
+        {
+            "id": "cash",
+            "type": "ColumnName"
+        },
+        {
+            "id": "DOUBLE",
+            "type": "Data Type"
+        },
+        {
+            "id": "batchid",
+            "type": "ColumnName"
+        },
+        {
+            "id": "INT",
+            "type": "Data Type"
+        },
+        {
+            "id": "Surrogate key for CustomerID",
+            "type": "Comment"
+        },
+        {
+            "id": "Surrogate key for AccountID",
+            "type": "Comment"
+        },
+        {
+            "id": "Surrogate key for the date",
+            "type": "Comment"
+        },
+        {
+            "id": "Cash balance for the account after applying",
+            "type": "Comment"
+        },
+        {
+            "id": "Batch ID when this record was inserted",
+            "type": "Comment"
+        },
+        {
+            "id": "Stores cash balance information",
+            "type": "Summary"
+        }
+    ],
+    "relationships": [
+        {
+            "source": "sk_customerid",
+            "target": "FactCashBalances",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "sk_customerid",
+            "target": "BIGINT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "FactCashBalances",
+            "target": "wh_db",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "sk_accountid",
+            "target": "FactCashBalances",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "sk_accountid",
+            "target": "BIGINT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "sk_dateid",
+            "target": "FactCashBalances",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "sk_dateid",
+            "target": "BIGINT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "cash",
+            "target": "FactCashBalances",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "cash",
+            "target": "DOUBLE",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "batchid",
+            "target": "FactCashBalances",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "batchid",
+            "target": "INT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Surrogate key for CustomerID",
+            "target": "sk_customerid",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "Surrogate key for AccountID",
+            "target": "sk_accountid",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "Surrogate key for the date",
+            "target": "sk_dateid",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "Cash balance for the account after applying",
+            "target": "cash",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "Batch ID when this record was inserted",
+            "target": "batchid",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "Stores cash balance information",
+            "target": "FactCashBalances",
+            "relation": "DESCRIBES"
+        }
+    ]
+}

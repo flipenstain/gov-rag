@@ -1,0 +1,11 @@
+COMMENT ON COLUMN wh_db.DimAccount.sk_accountid IS 'Surrogate key for AccountID';
+COMMENT ON COLUMN wh_db.DimAccount.accountid IS 'Customer account identifier';
+COMMENT ON COLUMN wh_db.DimAccount.sk_brokerid IS 'Surrogate key of managing broker';
+COMMENT ON COLUMN wh_db.DimAccount.sk_customerid IS 'Surrogate key of customer';
+COMMENT ON COLUMN wh_db.DimAccount.accountdesc IS 'Name of customer account';
+COMMENT ON COLUMN wh_db.DimAccount.taxstatus IS 'Tax status of this account';
+COMMENT ON COLUMN wh_db.DimAccount.status IS 'Account status, active or closed';
+COMMENT ON COLUMN wh_db.DimAccount.iscurrent IS 'True if this is the current record';
+COMMENT ON COLUMN wh_db.DimAccount.batchid IS 'Batch ID when this record was inserted';
+COMMENT ON COLUMN wh_db.DimAccount.effectivedate IS 'Beginning of date range when this record was the current record';
+COMMENT ON COLUMN wh_db.DimAccount.enddate IS 'Ending of date range when this record was the current record. A record that is not expired will use the date 9999-12-31.';

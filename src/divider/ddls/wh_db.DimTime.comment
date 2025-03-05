@@ -1,0 +1,10 @@
+COMMENT ON COLUMN wh_db.DimTime.sk_timeid IS 'Surrogate key for the time';
+COMMENT ON COLUMN wh_db.DimTime.timevalue IS 'The time stored appropriately for doing';
+COMMENT ON COLUMN wh_db.DimTime.hourid IS 'Hour number as a number e.g. 01';
+COMMENT ON COLUMN wh_db.DimTime.hourdesc IS 'Hour number as text e.g. 01';
+COMMENT ON COLUMN wh_db.DimTime.minuteid IS 'Minute as a number e.g. 23';
+COMMENT ON COLUMN wh_db.DimTime.minutedesc IS 'Minute as text e.g. 01:23';
+COMMENT ON COLUMN wh_db.DimTime.secondid IS 'Second as a number e.g. 45';
+COMMENT ON COLUMN wh_db.DimTime.seconddesc IS 'Second as text e.g. 01:23:45';
+COMMENT ON COLUMN wh_db.DimTime.markethoursflag IS 'Indicates a time during market hours';
+COMMENT ON COLUMN wh_db.DimTime.officehoursflag IS 'Indicates a time during office hours';

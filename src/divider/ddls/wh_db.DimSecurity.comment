@@ -1,0 +1,15 @@
+COMMENT ON COLUMN wh_db.DimSecurity.sk_securityid IS 'Surrogate key for Symbol';
+COMMENT ON COLUMN wh_db.DimSecurity.symbol IS 'Identifies security on ticker';
+COMMENT ON COLUMN wh_db.DimSecurity.issue IS 'Issue type';
+COMMENT ON COLUMN wh_db.DimSecurity.status IS 'Status type';
+COMMENT ON COLUMN wh_db.DimSecurity.name IS 'Security name';
+COMMENT ON COLUMN wh_db.DimSecurity.exchangeid IS 'Exchange the security is traded on';
+COMMENT ON COLUMN wh_db.DimSecurity.sk_companyid IS 'Company issuing security';
+COMMENT ON COLUMN wh_db.DimSecurity.sharesoutstanding IS 'Shares outstanding';
+COMMENT ON COLUMN wh_db.DimSecurity.firsttrade IS 'Date of first trade';
+COMMENT ON COLUMN wh_db.DimSecurity.firsttradeonexchange IS 'Date of first trade on this exchange';
+COMMENT ON COLUMN wh_db.DimSecurity.dividend IS 'Annual dividend per share';
+COMMENT ON COLUMN wh_db.DimSecurity.iscurrent IS 'True if this is the current record';
+COMMENT ON COLUMN wh_db.DimSecurity.batchid IS 'Batch ID when this record was inserted';
+COMMENT ON COLUMN wh_db.DimSecurity.effectivedate IS 'Beginning of date range when this record was the current record';
+COMMENT ON COLUMN wh_db.DimSecurity.enddate IS 'Ending of date range when this record was the current record. A record that is not expired will use the date 9999-12-31.';

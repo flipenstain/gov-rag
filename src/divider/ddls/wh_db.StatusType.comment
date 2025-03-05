@@ -1,0 +1,2 @@
+COMMENT ON COLUMN wh_db.StatusType.st_id IS 'Status code';
+COMMENT ON COLUMN wh_db.StatusType.st_name IS 'Status description';

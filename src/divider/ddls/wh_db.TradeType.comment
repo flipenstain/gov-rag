@@ -1,0 +1,4 @@
+COMMENT ON COLUMN wh_db.TradeType.tt_id IS 'Trade type code';
+COMMENT ON COLUMN wh_db.TradeType.tt_name IS 'Trade type description';
+COMMENT ON COLUMN wh_db.TradeType.tt_is_sell IS 'Flag indicating a sale';
+COMMENT ON COLUMN wh_db.TradeType.tt_is_mrkt IS 'Flag indicating a market order';

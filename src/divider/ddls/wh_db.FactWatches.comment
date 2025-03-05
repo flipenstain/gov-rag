@@ -1,0 +1,5 @@
+COMMENT ON COLUMN wh_db.FactWatches.sk_customerid IS 'Customer associated with watch list';
+COMMENT ON COLUMN wh_db.FactWatches.sk_securityid IS 'Security listed on watch list';
+COMMENT ON COLUMN wh_db.FactWatches.sk_dateid_dateplaced IS 'Date the watch list item was added';
+COMMENT ON COLUMN wh_db.FactWatches.sk_dateid_dateremoved IS 'Date the watch list item was removed';
+COMMENT ON COLUMN wh_db.FactWatches.batchid IS 'Batch ID when this record was inserted';

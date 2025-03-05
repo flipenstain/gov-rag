@@ -1,0 +1,656 @@
+{
+    "nodes": [
+        {
+            "id": "agencyid",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Prospect",
+            "type": "TableName"
+        },
+        {
+            "id": "STRING",
+            "type": "Data Type"
+        },
+        {
+            "id": "wh_db",
+            "type": "SchemaName"
+        },
+        {
+            "id": "Unique identifier from agency",
+            "type": "Comment"
+        },
+        {
+            "id": "sk_recorddateid",
+            "type": "ColumnName"
+        },
+        {
+            "id": "BIGINT",
+            "type": "Data Type"
+        },
+        {
+            "id": "Last date this prospect appeared in input",
+            "type": "Comment"
+        },
+        {
+            "id": "sk_updatedateid",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Latest change date for this prospect",
+            "type": "Comment"
+        },
+        {
+            "id": "batchid",
+            "type": "ColumnName"
+        },
+        {
+            "id": "INT",
+            "type": "Data Type"
+        },
+        {
+            "id": "Batch ID when this record was last modified",
+            "type": "Comment"
+        },
+        {
+            "id": "iscustomer",
+            "type": "ColumnName"
+        },
+        {
+            "id": "BOOLEAN",
+            "type": "Data Type"
+        },
+        {
+            "id": "True if this person is also in DimCustomer,else False",
+            "type": "Comment"
+        },
+        {
+            "id": "lastname",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Last name",
+            "type": "Comment"
+        },
+        {
+            "id": "firstname",
+            "type": "ColumnName"
+        },
+        {
+            "id": "First name",
+            "type": "Comment"
+        },
+        {
+            "id": "middleinitial",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Middle initial",
+            "type": "Comment"
+        },
+        {
+            "id": "gender",
+            "type": "ColumnName"
+        },
+        {
+            "id": "M / F / U",
+            "type": "Comment"
+        },
+        {
+            "id": "addressline1",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Postal address",
+            "type": "Comment"
+        },
+        {
+            "id": "addressline2",
+            "type": "ColumnName"
+        },
+        {
+            "id": "postalcode",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Postal code",
+            "type": "Comment"
+        },
+        {
+            "id": "city",
+            "type": "ColumnName"
+        },
+        {
+            "id": "City",
+            "type": "Comment"
+        },
+        {
+            "id": "state",
+            "type": "ColumnName"
+        },
+        {
+            "id": "State or province",
+            "type": "Comment"
+        },
+        {
+            "id": "country",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Postal country",
+            "type": "Comment"
+        },
+        {
+            "id": "phone",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Telephone number",
+            "type": "Comment"
+        },
+        {
+            "id": "income",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Annual income",
+            "type": "Comment"
+        },
+        {
+            "id": "numbercars",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Cars owned",
+            "type": "Comment"
+        },
+        {
+            "id": "numberchildren",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Dependent children",
+            "type": "Comment"
+        },
+        {
+            "id": "maritalstatus",
+            "type": "ColumnName"
+        },
+        {
+            "id": "S / M / D / W / U",
+            "type": "Comment"
+        },
+        {
+            "id": "age",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Current age",
+            "type": "Comment"
+        },
+        {
+            "id": "creditrating",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Numeric rating",
+            "type": "Comment"
+        },
+        {
+            "id": "ownorrentflag",
+            "type": "ColumnName"
+        },
+        {
+            "id": "O / R / U",
+            "type": "Comment"
+        },
+        {
+            "id": "employer",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Name of employer",
+            "type": "Comment"
+        },
+        {
+            "id": "numbercreditcards",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Credit cards",
+            "type": "Comment"
+        },
+        {
+            "id": "networth",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Estimated total net worth",
+            "type": "Comment"
+        },
+        {
+            "id": "marketingnameplate",
+            "type": "ColumnName"
+        },
+        {
+            "id": "For marketing purposes",
+            "type": "Comment"
+        },
+        {
+            "id": "Prospect information",
+            "type": "Summary"
+        }
+    ],
+    "relationships": [
+        {
+            "source": "agencyid",
+            "target": "Prospect",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "agencyid",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Prospect",
+            "target": "wh_db",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "Unique identifier from agency",
+            "target": "agencyid",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "sk_recorddateid",
+            "target": "Prospect",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "sk_recorddateid",
+            "target": "BIGINT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Last date this prospect appeared in input",
+            "target": "sk_recorddateid",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "sk_updatedateid",
+            "target": "Prospect",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "sk_updatedateid",
+            "target": "BIGINT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Latest change date for this prospect",
+            "target": "sk_updatedateid",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "batchid",
+            "target": "Prospect",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "batchid",
+            "target": "INT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Batch ID when this record was last modified",
+            "target": "batchid",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "iscustomer",
+            "target": "Prospect",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "iscustomer",
+            "target": "BOOLEAN",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "True if this person is also in DimCustomer,else False",
+            "target": "iscustomer",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "lastname",
+            "target": "Prospect",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "lastname",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Last name",
+            "target": "lastname",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "firstname",
+            "target": "Prospect",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "firstname",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "First name",
+            "target": "firstname",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "middleinitial",
+            "target": "Prospect",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "middleinitial",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Middle initial",
+            "target": "middleinitial",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "gender",
+            "target": "Prospect",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "gender",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "M / F / U",
+            "target": "gender",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "addressline1",
+            "target": "Prospect",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "addressline1",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Postal address",
+            "target": "addressline1",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "addressline2",
+            "target": "Prospect",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "addressline2",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "postalcode",
+            "target": "Prospect",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "postalcode",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Postal code",
+            "target": "postalcode",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "city",
+            "target": "Prospect",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "city",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "City",
+            "target": "city",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "state",
+            "target": "Prospect",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "state",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "State or province",
+            "target": "state",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "country",
+            "target": "Prospect",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "country",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Postal country",
+            "target": "country",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "phone",
+            "target": "Prospect",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "phone",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Telephone number",
+            "target": "phone",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "income",
+            "target": "Prospect",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "income",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Annual income",
+            "target": "income",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "numbercars",
+            "target": "Prospect",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "numbercars",
+            "target": "INT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Cars owned",
+            "target": "numbercars",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "numberchildren",
+            "target": "Prospect",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "numberchildren",
+            "target": "INT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Dependent children",
+            "target": "numberchildren",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "maritalstatus",
+            "target": "Prospect",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "maritalstatus",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "S / M / D / W / U",
+            "target": "maritalstatus",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "age",
+            "target": "Prospect",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "age",
+            "target": "INT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Current age",
+            "target": "age",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "creditrating",
+            "target": "Prospect",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "creditrating",
+            "target": "INT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Numeric rating",
+            "target": "creditrating",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "ownorrentflag",
+            "target": "Prospect",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "ownorrentflag",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "O / R / U",
+            "target": "ownorrentflag",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "employer",
+            "target": "Prospect",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "employer",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Name of employer",
+            "target": "employer",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "numbercreditcards",
+            "target": "Prospect",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "numbercreditcards",
+            "target": "INT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Credit cards",
+            "target": "numbercreditcards",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "networth",
+            "target": "Prospect",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "networth",
+            "target": "INT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Estimated total net worth",
+            "target": "networth",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "marketingnameplate",
+            "target": "Prospect",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "marketingnameplate",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "For marketing purposes",
+            "target": "marketingnameplate",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "Prospect information",
+            "target": "Prospect",
+            "relation": "DESCRIBES"
+        }
+    ]
+}

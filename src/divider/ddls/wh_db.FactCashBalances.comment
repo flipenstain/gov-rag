@@ -1,0 +1,5 @@
+COMMENT ON COLUMN wh_db.FactCashBalances.sk_customerid IS 'Surrogate key for CustomerID';
+COMMENT ON COLUMN wh_db.FactCashBalances.sk_accountid IS 'Surrogate key for AccountID';
+COMMENT ON COLUMN wh_db.FactCashBalances.sk_dateid IS 'Surrogate key for the date';
+COMMENT ON COLUMN wh_db.FactCashBalances.cash IS 'Cash balance for the account after applying';
+COMMENT ON COLUMN wh_db.FactCashBalances.batchid IS 'Batch ID when this record was inserted';

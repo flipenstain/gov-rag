@@ -1,0 +1,3 @@
+COMMENT ON COLUMN wh_db.TaxRate.tx_id IS 'Tax rate code';
+COMMENT ON COLUMN wh_db.TaxRate.tx_name IS 'Tax rate description';
+COMMENT ON COLUMN wh_db.TaxRate.tx_rate IS 'Tax rate';

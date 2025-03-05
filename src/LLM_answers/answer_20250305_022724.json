@@ -1,0 +1,305 @@
+{
+    "nodes": [
+        {
+            "id": "wh_db.DimAccount",
+            "type": "TableName"
+        },
+        {
+            "id": "wh_db",
+            "type": "SchemaName"
+        },
+        {
+            "id": "sk_accountid",
+            "type": "ColumnName"
+        },
+        {
+            "id": "accountid",
+            "type": "ColumnName"
+        },
+        {
+            "id": "sk_brokerid",
+            "type": "ColumnName"
+        },
+        {
+            "id": "sk_customerid",
+            "type": "ColumnName"
+        },
+        {
+            "id": "accountdesc",
+            "type": "ColumnName"
+        },
+        {
+            "id": "taxstatus",
+            "type": "ColumnName"
+        },
+        {
+            "id": "status",
+            "type": "ColumnName"
+        },
+        {
+            "id": "iscurrent",
+            "type": "ColumnName"
+        },
+        {
+            "id": "batchid",
+            "type": "ColumnName"
+        },
+        {
+            "id": "effectivedate",
+            "type": "ColumnName"
+        },
+        {
+            "id": "enddate",
+            "type": "ColumnName"
+        },
+        {
+            "id": "BIGINT",
+            "type": "Data Type"
+        },
+        {
+            "id": "STRING",
+            "type": "Data Type"
+        },
+        {
+            "id": "TINYINT",
+            "type": "Data Type"
+        },
+        {
+            "id": "BOOLEAN",
+            "type": "Data Type"
+        },
+        {
+            "id": "INT",
+            "type": "Data Type"
+        },
+        {
+            "id": "DATE",
+            "type": "Data Type"
+        },
+        {
+            "id": "Surrogate key for AccountID",
+            "type": "Comment"
+        },
+        {
+            "id": "Customer account identifier",
+            "type": "Comment"
+        },
+        {
+            "id": "Surrogate key of managing broker",
+            "type": "Comment"
+        },
+        {
+            "id": "Surrogate key of customer",
+            "type": "Comment"
+        },
+        {
+            "id": "Name of customer account",
+            "type": "Comment"
+        },
+        {
+            "id": "Tax status of this account",
+            "type": "Comment"
+        },
+        {
+            "id": "Account status, active or closed",
+            "type": "Comment"
+        },
+        {
+            "id": "True if this is the current record",
+            "type": "Comment"
+        },
+        {
+            "id": "Batch ID when this record was inserted",
+            "type": "Comment"
+        },
+        {
+            "id": "Beginning of date range when this record was the current record",
+            "type": "Comment"
+        },
+        {
+            "id": "Ending of date range when this record was the current record. A record that is not expired will use the date 9999-12-31.",
+            "type": "Comment"
+        },
+        {
+            "id": "Dimension table containing account information",
+            "type": "Summary"
+        }
+    ],
+    "relationships": [
+        {
+            "source": "DimAccount",
+            "target": "wh_db",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "sk_accountid",
+            "target": "wh_db.DimAccount",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "accountid",
+            "target": "wh_db.DimAccount",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "sk_brokerid",
+            "target": "wh_db.DimAccount",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "sk_customerid",
+            "target": "wh_db.DimAccount",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "accountdesc",
+            "target": "wh_db.DimAccount",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "taxstatus",
+            "target": "wh_db.DimAccount",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "status",
+            "target": "wh_db.DimAccount",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "iscurrent",
+            "target": "wh_db.DimAccount",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "batchid",
+            "target": "wh_db.DimAccount",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "effectivedate",
+            "target": "wh_db.DimAccount",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "enddate",
+            "target": "wh_db.DimAccount",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "sk_accountid",
+            "target": "BIGINT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "accountid",
+            "target": "BIGINT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "sk_brokerid",
+            "target": "BIGINT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "sk_customerid",
+            "target": "BIGINT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "accountdesc",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "taxstatus",
+            "target": "TINYINT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "status",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "iscurrent",
+            "target": "BOOLEAN",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "batchid",
+            "target": "INT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "effectivedate",
+            "target": "DATE",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "enddate",
+            "target": "DATE",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Surrogate key for AccountID",
+            "target": "sk_accountid",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "Customer account identifier",
+            "target": "accountid",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "Surrogate key of managing broker",
+            "target": "sk_brokerid",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "Surrogate key of customer",
+            "target": "sk_customerid",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "Name of customer account",
+            "target": "accountdesc",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "Tax status of this account",
+            "target": "taxstatus",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "Account status, active or closed",
+            "target": "status",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "True if this is the current record",
+            "target": "iscurrent",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "Batch ID when this record was inserted",
+            "target": "batchid",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "Beginning of date range when this record was the current record",
+            "target": "effectivedate",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "Ending of date range when this record was the current record. A record that is not expired will use the date 9999-12-31.",
+            "target": "enddate",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "Dimension table containing account information",
+            "target": "wh_db.DimAccount",
+            "relation": "DESCRIBES"
+        }
+    ]
+}

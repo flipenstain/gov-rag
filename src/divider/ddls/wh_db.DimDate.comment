@@ -1,0 +1,18 @@
+COMMENT ON COLUMN wh_db.DimDate.sk_dateid IS 'Surrogate key for the date';
+COMMENT ON COLUMN wh_db.DimDate.datevalue IS 'The date stored appropriately for doing comparisons in the Data Warehouse';
+COMMENT ON COLUMN wh_db.DimDate.datedesc IS 'The date in full written form e.g. July 7 2004';
+COMMENT ON COLUMN wh_db.DimDate.calendaryearid IS 'Year number as a number';
+COMMENT ON COLUMN wh_db.DimDate.calendaryeardesc IS 'Year number as text';
+COMMENT ON COLUMN wh_db.DimDate.calendarqtrid IS 'Quarter as a number e.g. 20042';
+COMMENT ON COLUMN wh_db.DimDate.calendarqtrdesc IS 'Quarter as text e.g. 2004 Q2';
+COMMENT ON COLUMN wh_db.DimDate.calendarmonthid IS 'Month as a number e.g. 20047';
+COMMENT ON COLUMN wh_db.DimDate.calendarmonthdesc IS 'Month as text e.g. 2004 July';
+COMMENT ON COLUMN wh_db.DimDate.calendarweekid IS 'Week as a number e.g. 200428';
+COMMENT ON COLUMN wh_db.DimDate.calendarweekdesc IS 'Week as text e.g. 2004-W28';
+COMMENT ON COLUMN wh_db.DimDate.dayofweeknum IS 'Day of week as a number e.g. 3';
+COMMENT ON COLUMN wh_db.DimDate.dayofweekdesc IS 'Day of week as text e.g. Wednesday';
+COMMENT ON COLUMN wh_db.DimDate.fiscalyearid IS 'Fiscal year as a number e.g. 2005';
+COMMENT ON COLUMN wh_db.DimDate.fiscalyeardesc IS 'Fiscal year as text e.g. 2005';
+COMMENT ON COLUMN wh_db.DimDate.fiscalqtrid IS 'Fiscal quarter as a number e.g. 20051';
+COMMENT ON COLUMN wh_db.DimDate.fiscalqtrdesc IS 'Fiscal quarter as text e.g. 2005 Q1';
+COMMENT ON COLUMN wh_db.DimDate.holidayflag IS 'Indicates holidays';

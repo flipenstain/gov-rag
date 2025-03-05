@@ -1,0 +1,658 @@
+[
+    {
+        "node": {
+            "name": "ProspectIncremental",
+            "type": "TableName"
+        }
+    },
+    {
+        "node": {
+            "name": "wh_db_stage",
+            "type": "SchemaName"
+        }
+    },
+    {
+        "node": {
+            "name": "agencyid",
+            "type": "ColumnName"
+        }
+    },
+    {
+        "node": {
+            "name": "lastname",
+            "type": "ColumnName"
+        }
+    },
+    {
+        "node": {
+            "name": "firstname",
+            "type": "ColumnName"
+        }
+    },
+    {
+        "node": {
+            "name": "middleinitial",
+            "type": "ColumnName"
+        }
+    },
+    {
+        "node": {
+            "name": "gender",
+            "type": "ColumnName"
+        }
+    },
+    {
+        "node": {
+            "name": "addressline1",
+            "type": "ColumnName"
+        }
+    },
+    {
+        "node": {
+            "name": "addressline2",
+            "type": "ColumnName"
+        }
+    },
+    {
+        "node": {
+            "name": "postalcode",
+            "type": "ColumnName"
+        }
+    },
+    {
+        "node": {
+            "name": "city",
+            "type": "ColumnName"
+        }
+    },
+    {
+        "node": {
+            "name": "state",
+            "type": "ColumnName"
+        }
+    },
+    {
+        "node": {
+            "name": "country",
+            "type": "ColumnName"
+        }
+    },
+    {
+        "node": {
+            "name": "phone",
+            "type": "ColumnName"
+        }
+    },
+    {
+        "node": {
+            "name": "income",
+            "type": "ColumnName"
+        }
+    },
+    {
+        "node": {
+            "name": "numbercars",
+            "type": "ColumnName"
+        }
+    },
+    {
+        "node": {
+            "name": "numberchildren",
+            "type": "ColumnName"
+        }
+    },
+    {
+        "node": {
+            "name": "maritalstatus",
+            "type": "ColumnName"
+        }
+    },
+    {
+        "node": {
+            "name": "age",
+            "type": "ColumnName"
+        }
+    },
+    {
+        "node": {
+            "name": "creditrating",
+            "type": "ColumnName"
+        }
+    },
+    {
+        "node": {
+            "name": "ownorrentflag",
+            "type": "ColumnName"
+        }
+    },
+    {
+        "node": {
+            "name": "employer",
+            "type": "ColumnName"
+        }
+    },
+    {
+        "node": {
+            "name": "numbercreditcards",
+            "type": "ColumnName"
+        }
+    },
+    {
+        "node": {
+            "name": "networth",
+            "type": "ColumnName"
+        }
+    },
+    {
+        "node": {
+            "name": "marketingnameplate",
+            "type": "ColumnName"
+        }
+    },
+    {
+        "node": {
+            "name": "recordbatchid",
+            "type": "ColumnName"
+        }
+    },
+    {
+        "node": {
+            "name": "Unique identifier from agency",
+            "type": "Comment"
+        }
+    },
+    {
+        "node": {
+            "name": "Last name",
+            "type": "Comment"
+        }
+    },
+    {
+        "node": {
+            "name": "First name",
+            "type": "Comment"
+        }
+    },
+    {
+        "node": {
+            "name": "Middle initial",
+            "type": "Comment"
+        }
+    },
+    {
+        "node": {
+            "name": "\u00e2\u20ac\u02dcM\u00e2\u20ac\u2122 or \u00e2\u20ac\u02dcF\u00e2\u20ac\u2122 or \u00e2\u20ac\u02dcU\u00e2\u20ac\u2122",
+            "type": "Comment"
+        }
+    },
+    {
+        "node": {
+            "name": "Postal address",
+            "type": "Comment"
+        }
+    },
+    {
+        "node": {
+            "name": "Postal address",
+            "type": "Comment"
+        }
+    },
+    {
+        "node": {
+            "name": "Postal code",
+            "type": "Comment"
+        }
+    },
+    {
+        "node": {
+            "name": "City",
+            "type": "Comment"
+        }
+    },
+    {
+        "node": {
+            "name": "State or province",
+            "type": "Comment"
+        }
+    },
+    {
+        "node": {
+            "name": "Postal country",
+            "type": "Comment"
+        }
+    },
+    {
+        "node": {
+            "name": "Telephone number",
+            "type": "Comment"
+        }
+    },
+    {
+        "node": {
+            "name": "Annual income",
+            "type": "Comment"
+        }
+    },
+    {
+        "node": {
+            "name": "Cars owned",
+            "type": "Comment"
+        }
+    },
+    {
+        "node": {
+            "name": "Dependent children",
+            "type": "Comment"
+        }
+    },
+    {
+        "node": {
+            "name": "\u00e2\u20ac\u02dcS\u00e2\u20ac\u2122 or \u00e2\u20ac\u02dcM\u00e2\u20ac\u2122 or \u00e2\u20ac\u02dcD\u00e2\u20ac\u2122 or \u00e2\u20ac\u02dcW\u00e2\u20ac\u2122 or \u00e2\u20ac\u02dcU\u00e2\u20ac\u2122",
+            "type": "Comment"
+        }
+    },
+    {
+        "node": {
+            "name": "Current age",
+            "type": "Comment"
+        }
+    },
+    {
+        "node": {
+            "name": "Numeric rating",
+            "type": "Comment"
+        }
+    },
+    {
+        "node": {
+            "name": "\u00e2\u20ac\u02dcO\u00e2\u20ac\u2122 or \u00e2\u20ac\u02dcR\u00e2\u20ac\u2122 or \u00e2\u20ac\u02dcU\u00e2\u20ac\u2122",
+            "type": "Comment"
+        }
+    },
+    {
+        "node": {
+            "name": "Name of employer",
+            "type": "Comment"
+        }
+    },
+    {
+        "node": {
+            "name": "Credit cards",
+            "type": "Comment"
+        }
+    },
+    {
+        "node": {
+            "name": "Estimated total net worth",
+            "type": "Comment"
+        }
+    },
+    {
+        "node": {
+            "name": "Marketing nameplate",
+            "type": "Comment"
+        }
+    },
+    {
+        "node": {
+            "name": "Batch ID when this record last inserted",
+            "type": "Comment"
+        }
+    },
+    {
+        "node": {
+            "name": "ProspectIncremental table contains prospect data.",
+            "type": "Summary"
+        }
+    },
+    {
+        "relationship": {
+            "source": "ProspectIncremental",
+            "target": "wh_db_stage",
+            "relation": "PART_OF"
+        }
+    },
+    {
+        "relationship": {
+            "source": "agencyid",
+            "target": "ProspectIncremental",
+            "relation": "PART_OF"
+        }
+    },
+    {
+        "relationship": {
+            "source": "lastname",
+            "target": "ProspectIncremental",
+            "relation": "PART_OF"
+        }
+    },
+    {
+        "relationship": {
+            "source": "firstname",
+            "target": "ProspectIncremental",
+            "relation": "PART_OF"
+        }
+    },
+    {
+        "relationship": {
+            "source": "middleinitial",
+            "target": "ProspectIncremental",
+            "relation": "PART_OF"
+        }
+    },
+    {
+        "relationship": {
+            "source": "gender",
+            "target": "ProspectIncremental",
+            "relation": "PART_OF"
+        }
+    },
+    {
+        "relationship": {
+            "source": "addressline1",
+            "target": "ProspectIncremental",
+            "relation": "PART_OF"
+        }
+    },
+    {
+        "relationship": {
+            "source": "addressline2",
+            "target": "ProspectIncremental",
+            "relation": "PART_OF"
+        }
+    },
+    {
+        "relationship": {
+            "source": "postalcode",
+            "target": "ProspectIncremental",
+            "relation": "PART_OF"
+        }
+    },
+    {
+        "relationship": {
+            "source": "city",
+            "target": "ProspectIncremental",
+            "relation": "PART_OF"
+        }
+    },
+    {
+        "relationship": {
+            "source": "state",
+            "target": "ProspectIncremental",
+            "relation": "PART_OF"
+        }
+    },
+    {
+        "relationship": {
+            "source": "country",
+            "target": "ProspectIncremental",
+            "relation": "PART_OF"
+        }
+    },
+    {
+        "relationship": {
+            "source": "phone",
+            "target": "ProspectIncremental",
+            "relation": "PART_OF"
+        }
+    },
+    {
+        "relationship": {
+            "source": "income",
+            "target": "ProspectIncremental",
+            "relation": "PART_OF"
+        }
+    },
+    {
+        "relationship": {
+            "source": "numbercars",
+            "target": "ProspectIncremental",
+            "relation": "PART_OF"
+        }
+    },
+    {
+        "relationship": {
+            "source": "numberchildren",
+            "target": "ProspectIncremental",
+            "relation": "PART_OF"
+        }
+    },
+    {
+        "relationship": {
+            "source": "maritalstatus",
+            "target": "ProspectIncremental",
+            "relation": "PART_OF"
+        }
+    },
+    {
+        "relationship": {
+            "source": "age",
+            "target": "ProspectIncremental",
+            "relation": "PART_OF"
+        }
+    },
+    {
+        "relationship": {
+            "source": "creditrating",
+            "target": "ProspectIncremental",
+            "relation": "PART_OF"
+        }
+    },
+    {
+        "relationship": {
+            "source": "ownorrentflag",
+            "target": "ProspectIncremental",
+            "relation": "PART_OF"
+        }
+    },
+    {
+        "relationship": {
+            "source": "employer",
+            "target": "ProspectIncremental",
+            "relation": "PART_OF"
+        }
+    },
+    {
+        "relationship": {
+            "source": "numbercreditcards",
+            "target": "ProspectIncremental",
+            "relation": "PART_OF"
+        }
+    },
+    {
+        "relationship": {
+            "source": "networth",
+            "target": "ProspectIncremental",
+            "relation": "PART_OF"
+        }
+    },
+    {
+        "relationship": {
+            "source": "marketingnameplate",
+            "target": "ProspectIncremental",
+            "relation": "PART_OF"
+        }
+    },
+    {
+        "relationship": {
+            "source": "recordbatchid",
+            "target": "ProspectIncremental",
+            "relation": "PART_OF"
+        }
+    },
+    {
+        "relationship": {
+            "source": "Unique identifier from agency",
+            "target": "agencyid",
+            "relation": "DESCRIBES"
+        }
+    },
+    {
+        "relationship": {
+            "source": "Last name",
+            "target": "lastname",
+            "relation": "DESCRIBES"
+        }
+    },
+    {
+        "relationship": {
+            "source": "First name",
+            "target": "firstname",
+            "relation": "DESCRIBES"
+        }
+    },
+    {
+        "relationship": {
+            "source": "Middle initial",
+            "target": "middleinitial",
+            "relation": "DESCRIBES"
+        }
+    },
+    {
+        "relationship": {
+            "source": "\u00e2\u20ac\u02dcM\u00e2\u20ac\u2122 or \u00e2\u20ac\u02dcF\u00e2\u20ac\u2122 or \u00e2\u20ac\u02dcU\u00e2\u20ac\u2122",
+            "target": "gender",
+            "relation": "DESCRIBES"
+        }
+    },
+    {
+        "relationship": {
+            "source": "Postal address",
+            "target": "addressline1",
+            "relation": "DESCRIBES"
+        }
+    },
+    {
+        "relationship": {
+            "source": "Postal address",
+            "target": "addressline2",
+            "relation": "DESCRIBES"
+        }
+    },
+    {
+        "relationship": {
+            "source": "Postal code",
+            "target": "postalcode",
+            "relation": "DESCRIBES"
+        }
+    },
+    {
+        "relationship": {
+            "source": "City",
+            "target": "city",
+            "relation": "DESCRIBES"
+        }
+    },
+    {
+        "relationship": {
+            "source": "State or province",
+            "target": "state",
+            "relation": "DESCRIBES"
+        }
+    },
+    {
+        "relationship": {
+            "source": "Postal country",
+            "target": "country",
+            "relation": "DESCRIBES"
+        }
+    },
+    {
+        "relationship": {
+            "source": "Telephone number",
+            "target": "phone",
+            "relation": "DESCRIBES"
+        }
+    },
+    {
+        "relationship": {
+            "source": "Annual income",
+            "target": "income",
+            "relation": "DESCRIBES"
+        }
+    },
+    {
+        "relationship": {
+            "source": "Cars owned",
+            "target": "numbercars",
+            "relation": "DESCRIBES"
+        }
+    },
+    {
+        "relationship": {
+            "source": "Dependent children",
+            "target": "numberchildren",
+            "relation": "DESCRIBES"
+        }
+    },
+    {
+        "relationship": {
+            "source": "\u00e2\u20ac\u02dcS\u00e2\u20ac\u2122 or \u00e2\u20ac\u02dcM\u00e2\u20ac\u2122 or \u00e2\u20ac\u02dcD\u00e2\u20ac\u2122 or \u00e2\u20ac\u02dcW\u00e2\u20ac\u2122 or \u00e2\u20ac\u02dcU\u00e2\u20ac\u2122",
+            "target": "maritalstatus",
+            "relation": "DESCRIBES"
+        }
+    },
+    {
+        "relationship": {
+            "source": "Current age",
+            "target": "age",
+            "relation": "DESCRIBES"
+        }
+    },
+    {
+        "relationship": {
+            "source": "Numeric rating",
+            "target": "creditrating",
+            "relation": "DESCRIBES"
+        }
+    },
+    {
+        "relationship": {
+            "source": "\u00e2\u20ac\u02dcO\u00e2\u20ac\u2122 or \u00e2\u20ac\u02dcR\u00e2\u20ac\u2122 or \u00e2\u20ac\u02dcU\u00e2\u20ac\u2122",
+            "target": "ownorrentflag",
+            "relation": "DESCRIBES"
+        }
+    },
+    {
+        "relationship": {
+            "source": "Name of employer",
+            "target": "employer",
+            "relation": "DESCRIBES"
+        }
+    },
+    {
+        "relationship": {
+            "source": "Credit cards",
+            "target": "numbercreditcards",
+            "relation": "DESCRIBES"
+        }
+    },
+    {
+        "relationship": {
+            "source": "Estimated total net worth",
+            "target": "networth",
+            "relation": "DESCRIBES"
+        }
+    },
+    {
+        "relationship": {
+            "source": "Marketing nameplate",
+            "target": "marketingnameplate",
+            "relation": "DESCRIBES"
+        }
+    },
+    {
+        "relationship": {
+            "source": "Batch ID when this record last inserted",
+            "target": "recordbatchid",
+            "relation": "DESCRIBES"
+        }
+    },
+    {
+        "relationship": {
+            "source": "ProspectIncremental table contains prospect data.",
+            "target": "ProspectIncremental",
+            "relation": "DESCRIBES"
+        }
+    }
+]

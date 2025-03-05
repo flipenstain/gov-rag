@@ -1,0 +1,3 @@
+COMMENT ON COLUMN wh_db_stage.FinWire.rectype IS 'Indicates the type of table into which this record will eventually be parsed: CMP FIN or SEC';
+COMMENT ON COLUMN wh_db_stage.FinWire.recdate IS 'Date of the record';
+COMMENT ON COLUMN wh_db_stage.FinWire.value IS 'Pre-parsed String Values of all FinWire files';

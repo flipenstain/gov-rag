@@ -1,0 +1,11 @@
+COMMENT ON COLUMN wh_db.FactHoldings.tradeid IS 'Key for Orignial Trade Indentifier';
+COMMENT ON COLUMN wh_db.FactHoldings.currenttradeid IS 'Key for the current trade';
+COMMENT ON COLUMN wh_db.FactHoldings.sk_customerid IS 'Surrogate key for Customer Identifier';
+COMMENT ON COLUMN wh_db.FactHoldings.sk_accountid IS 'Surrogate key for Account Identifier';
+COMMENT ON COLUMN wh_db.FactHoldings.sk_securityid IS 'Surrogate key for Security Identifier';
+COMMENT ON COLUMN wh_db.FactHoldings.sk_companyid IS 'Surrogate key for Company Identifier';
+COMMENT ON COLUMN wh_db.FactHoldings.sk_dateid IS 'Surrogate key for the date associated with the';
+COMMENT ON COLUMN wh_db.FactHoldings.sk_timeid IS 'Surrogate key for the time associated with the';
+COMMENT ON COLUMN wh_db.FactHoldings.currentprice IS 'Unit price of this security for the current trade';
+COMMENT ON COLUMN wh_db.FactHoldings.currentholding IS 'Quantity of a security held after the current trade.';
+COMMENT ON COLUMN wh_db.FactHoldings.batchid IS 'Batch ID when this record was inserted';

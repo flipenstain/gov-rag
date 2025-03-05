@@ -1,0 +1,3 @@
+COMMENT ON COLUMN wh_db.industry.in_id IS 'Industry code';
+COMMENT ON COLUMN wh_db.industry.in_name IS 'Industry description';
+COMMENT ON COLUMN wh_db.industry.in_sc_id IS 'Sector identifier';

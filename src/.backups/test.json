@@ -1,0 +1,57 @@
+[
+    {
+        "id": 6114,
+        "labels": [
+            "Table"
+        ],
+        "properties": {
+            "name": "Anna",
+            "Columns": ["Id"]
+        },
+        "type": "node"
+    },
+    {
+        "id": 6115,
+        "labels": [
+            "Person"
+        ],
+        "properties": {
+            "name": "John"
+        },
+        "type": "node"
+    },
+    {
+        "id": 6116,
+        "labels": [
+            "Person"
+        ],
+        "properties": {
+            "name": "Kim"
+        },
+        "type": "node"
+    },
+    {
+        "end": 6115,
+        "id": 21120,
+        "label": "IS_FRIENDS_WITH",
+        "properties": {},
+        "start": 6114,
+        "type": "relationship"
+    },
+    {
+        "end": 6116,
+        "id": 21121,
+        "label": "IS_FRIENDS_WITH",
+        "properties": {},
+        "start": 6114,
+        "type": "relationship"
+    },
+    {
+        "end": 6116,
+        "id": 21122,
+        "label": "IS_MARRIED_TO",
+        "properties": {},
+        "start": 6115,
+        "type": "relationship"
+    }
+  ]

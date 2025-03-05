@@ -1,0 +1,817 @@
+[
+    {
+        "nodes": [
+            {
+                "id": "sk_customerid",
+                "type": "ColumnName"
+            },
+            {
+                "id": "DimCustomer",
+                "type": "TableName"
+            },
+            {
+                "id": "BIGINT",
+                "type": "Data Type"
+            },
+            {
+                "id": "wh_db",
+                "type": "SchemaName"
+            },
+            {
+                "id": "Surrogate key for CustomerID",
+                "type": "Comment"
+            },
+            {
+                "id": "customerid",
+                "type": "ColumnName"
+            },
+            {
+                "id": "taxid",
+                "type": "ColumnName"
+            },
+            {
+                "id": "STRING",
+                "type": "Data Type"
+            },
+            {
+                "id": "status",
+                "type": "ColumnName"
+            },
+            {
+                "id": "lastname",
+                "type": "ColumnName"
+            },
+            {
+                "id": "firstname",
+                "type": "ColumnName"
+            },
+            {
+                "id": "middleinitial",
+                "type": "ColumnName"
+            },
+            {
+                "id": "gender",
+                "type": "ColumnName"
+            },
+            {
+                "id": "tier",
+                "type": "ColumnName"
+            },
+            {
+                "id": "TINYINT",
+                "type": "Data Type"
+            },
+            {
+                "id": "dob",
+                "type": "ColumnName"
+            },
+            {
+                "id": "DATE",
+                "type": "Data Type"
+            },
+            {
+                "id": "addressline1",
+                "type": "ColumnName"
+            },
+            {
+                "id": "addressline2",
+                "type": "ColumnName"
+            },
+            {
+                "id": "postalcode",
+                "type": "ColumnName"
+            },
+            {
+                "id": "city",
+                "type": "ColumnName"
+            },
+            {
+                "id": "stateprov",
+                "type": "ColumnName"
+            },
+            {
+                "id": "country",
+                "type": "ColumnName"
+            },
+            {
+                "id": "phone1",
+                "type": "ColumnName"
+            },
+            {
+                "id": "phone2",
+                "type": "ColumnName"
+            },
+            {
+                "id": "phone3",
+                "type": "ColumnName"
+            },
+            {
+                "id": "email1",
+                "type": "ColumnName"
+            },
+            {
+                "id": "email2",
+                "type": "ColumnName"
+            },
+            {
+                "id": "nationaltaxratedesc",
+                "type": "ColumnName"
+            },
+            {
+                "id": "nationaltaxrate",
+                "type": "ColumnName"
+            },
+            {
+                "id": "FLOAT",
+                "type": "Data Type"
+            },
+            {
+                "id": "localtaxratedesc",
+                "type": "ColumnName"
+            },
+            {
+                "id": "localtaxrate",
+                "type": "ColumnName"
+            },
+            {
+                "id": "agencyid",
+                "type": "ColumnName"
+            },
+            {
+                "id": "creditrating",
+                "type": "ColumnName"
+            },
+            {
+                "id": "INT",
+                "type": "Data Type"
+            },
+            {
+                "id": "networth",
+                "type": "ColumnName"
+            },
+            {
+                "id": "marketingnameplate",
+                "type": "ColumnName"
+            },
+            {
+                "id": "iscurrent",
+                "type": "ColumnName"
+            },
+            {
+                "id": "BOOLEAN",
+                "type": "Data Type"
+            },
+            {
+                "id": "batchid",
+                "type": "ColumnName"
+            },
+            {
+                "id": "effectivedate",
+                "type": "ColumnName"
+            },
+            {
+                "id": "enddate",
+                "type": "ColumnName"
+            },
+            {
+                "id": "Customer information",
+                "type": "Summary"
+            },
+            {
+                "id": "Customer identifier",
+                "type": "Comment"
+            },
+            {
+                "id": "Customer\u00e2\u20ac\u2122s tax identifier",
+                "type": "Comment"
+            },
+            {
+                "id": "Customer status type",
+                "type": "Comment"
+            },
+            {
+                "id": "Customers last name.",
+                "type": "Comment"
+            },
+            {
+                "id": "Customers first name.",
+                "type": "Comment"
+            },
+            {
+                "id": "Customers middle name initial",
+                "type": "Comment"
+            },
+            {
+                "id": "Gender of the customer",
+                "type": "Comment"
+            },
+            {
+                "id": "Customer tier",
+                "type": "Comment"
+            },
+            {
+                "id": "Customer\u00e2\u20ac\u2122s date of birth.",
+                "type": "Comment"
+            },
+            {
+                "id": "Address Line 1",
+                "type": "Comment"
+            },
+            {
+                "id": "Address Line 2",
+                "type": "Comment"
+            },
+            {
+                "id": "Zip or Postal Code",
+                "type": "Comment"
+            },
+            {
+                "id": "City",
+                "type": "Comment"
+            },
+            {
+                "id": "State or Province",
+                "type": "Comment"
+            },
+            {
+                "id": "Country",
+                "type": "Comment"
+            },
+            {
+                "id": "Phone number 1",
+                "type": "Comment"
+            },
+            {
+                "id": "Phone number 2",
+                "type": "Comment"
+            },
+            {
+                "id": "Phone number 3",
+                "type": "Comment"
+            },
+            {
+                "id": "Email address 1",
+                "type": "Comment"
+            },
+            {
+                "id": "Email address 2",
+                "type": "Comment"
+            },
+            {
+                "id": "National Tax rate description",
+                "type": "Comment"
+            },
+            {
+                "id": "National Tax rate",
+                "type": "Comment"
+            },
+            {
+                "id": "Local Tax rate description",
+                "type": "Comment"
+            },
+            {
+                "id": "Local Tax rate",
+                "type": "Comment"
+            },
+            {
+                "id": "Agency identifier",
+                "type": "Comment"
+            },
+            {
+                "id": "Credit rating",
+                "type": "Comment"
+            },
+            {
+                "id": "Net worth",
+                "type": "Comment"
+            },
+            {
+                "id": "Marketing nameplate",
+                "type": "Comment"
+            },
+            {
+                "id": "True if this is the current record",
+                "type": "Comment"
+            },
+            {
+                "id": "Batch ID when this record was inserted",
+                "type": "Comment"
+            },
+            {
+                "id": "Beginning of date range when this record was the current record",
+                "type": "Comment"
+            },
+            {
+                "id": "Ending of date range when this record was the current record. A record that is not expired will use the date 9999-12-31.",
+                "type": "Comment"
+            }
+        ],
+        "relationships": [
+            {
+                "source": "sk_customerid",
+                "target": "DimCustomer",
+                "relation": "PART_OF"
+            },
+            {
+                "source": "sk_customerid",
+                "target": "BIGINT",
+                "relation": "TYPE_OF"
+            },
+            {
+                "source": "DimCustomer",
+                "target": "wh_db",
+                "relation": "PART_OF"
+            },
+            {
+                "source": "Surrogate key for CustomerID",
+                "target": "sk_customerid",
+                "relation": "DESCRIBES"
+            },
+            {
+                "source": "customerid",
+                "target": "DimCustomer",
+                "relation": "PART_OF"
+            },
+            {
+                "source": "customerid",
+                "target": "BIGINT",
+                "relation": "TYPE_OF"
+            },
+            {
+                "source": "taxid",
+                "target": "DimCustomer",
+                "relation": "PART_OF"
+            },
+            {
+                "source": "taxid",
+                "target": "STRING",
+                "relation": "TYPE_OF"
+            },
+            {
+                "source": "status",
+                "target": "DimCustomer",
+                "relation": "PART_OF"
+            },
+            {
+                "source": "status",
+                "target": "STRING",
+                "relation": "TYPE_OF"
+            },
+            {
+                "source": "lastname",
+                "target": "DimCustomer",
+                "relation": "PART_OF"
+            },
+            {
+                "source": "lastname",
+                "target": "STRING",
+                "relation": "TYPE_OF"
+            },
+            {
+                "source": "firstname",
+                "target": "DimCustomer",
+                "relation": "PART_OF"
+            },
+            {
+                "source": "firstname",
+                "target": "STRING",
+                "relation": "TYPE_OF"
+            },
+            {
+                "source": "middleinitial",
+                "target": "DimCustomer",
+                "relation": "PART_OF"
+            },
+            {
+                "source": "middleinitial",
+                "target": "STRING",
+                "relation": "TYPE_OF"
+            },
+            {
+                "source": "gender",
+                "target": "DimCustomer",
+                "relation": "PART_OF"
+            },
+            {
+                "source": "gender",
+                "target": "STRING",
+                "relation": "TYPE_OF"
+            },
+            {
+                "source": "tier",
+                "target": "DimCustomer",
+                "relation": "PART_OF"
+            },
+            {
+                "source": "tier",
+                "target": "TINYINT",
+                "relation": "TYPE_OF"
+            },
+            {
+                "source": "dob",
+                "target": "DimCustomer",
+                "relation": "PART_OF"
+            },
+            {
+                "source": "dob",
+                "target": "DATE",
+                "relation": "TYPE_OF"
+            },
+            {
+                "source": "addressline1",
+                "target": "DimCustomer",
+                "relation": "PART_OF"
+            },
+            {
+                "source": "addressline1",
+                "target": "STRING",
+                "relation": "TYPE_OF"
+            },
+            {
+                "source": "addressline2",
+                "target": "DimCustomer",
+                "relation": "PART_OF"
+            },
+            {
+                "source": "addressline2",
+                "target": "STRING",
+                "relation": "TYPE_OF"
+            },
+            {
+                "source": "postalcode",
+                "target": "DimCustomer",
+                "relation": "PART_OF"
+            },
+            {
+                "source": "postalcode",
+                "target": "STRING",
+                "relation": "TYPE_OF"
+            },
+            {
+                "source": "city",
+                "target": "DimCustomer",
+                "relation": "PART_OF"
+            },
+            {
+                "source": "city",
+                "target": "STRING",
+                "relation": "TYPE_OF"
+            },
+            {
+                "source": "stateprov",
+                "target": "DimCustomer",
+                "relation": "PART_OF"
+            },
+            {
+                "source": "stateprov",
+                "target": "STRING",
+                "relation": "TYPE_OF"
+            },
+            {
+                "source": "country",
+                "target": "DimCustomer",
+                "relation": "PART_OF"
+            },
+            {
+                "source": "country",
+                "target": "STRING",
+                "relation": "TYPE_OF"
+            },
+            {
+                "source": "phone1",
+                "target": "DimCustomer",
+                "relation": "PART_OF"
+            },
+            {
+                "source": "phone1",
+                "target": "STRING",
+                "relation": "TYPE_OF"
+            },
+            {
+                "source": "phone2",
+                "target": "DimCustomer",
+                "relation": "PART_OF"
+            },
+            {
+                "source": "phone2",
+                "target": "STRING",
+                "relation": "TYPE_OF"
+            },
+            {
+                "source": "phone3",
+                "target": "DimCustomer",
+                "relation": "PART_OF"
+            },
+            {
+                "source": "phone3",
+                "target": "STRING",
+                "relation": "TYPE_OF"
+            },
+            {
+                "source": "email1",
+                "target": "DimCustomer",
+                "relation": "PART_OF"
+            },
+            {
+                "source": "email1",
+                "target": "STRING",
+                "relation": "TYPE_OF"
+            },
+            {
+                "source": "email2",
+                "target": "DimCustomer",
+                "relation": "PART_OF"
+            },
+            {
+                "source": "email2",
+                "target": "STRING",
+                "relation": "TYPE_OF"
+            },
+            {
+                "source": "nationaltaxratedesc",
+                "target": "DimCustomer",
+                "relation": "PART_OF"
+            },
+            {
+                "source": "nationaltaxratedesc",
+                "target": "STRING",
+                "relation": "TYPE_OF"
+            },
+            {
+                "source": "nationaltaxrate",
+                "target": "DimCustomer",
+                "relation": "PART_OF"
+            },
+            {
+                "source": "nationaltaxrate",
+                "target": "FLOAT",
+                "relation": "TYPE_OF"
+            },
+            {
+                "source": "localtaxratedesc",
+                "target": "DimCustomer",
+                "relation": "PART_OF"
+            },
+            {
+                "source": "localtaxratedesc",
+                "target": "STRING",
+                "relation": "TYPE_OF"
+            },
+            {
+                "source": "localtaxrate",
+                "target": "DimCustomer",
+                "relation": "PART_OF"
+            },
+            {
+                "source": "localtaxrate",
+                "target": "FLOAT",
+                "relation": "TYPE_OF"
+            },
+            {
+                "source": "agencyid",
+                "target": "DimCustomer",
+                "relation": "PART_OF"
+            },
+            {
+                "source": "agencyid",
+                "target": "STRING",
+                "relation": "TYPE_OF"
+            },
+            {
+                "source": "creditrating",
+                "target": "DimCustomer",
+                "relation": "PART_OF"
+            },
+            {
+                "source": "creditrating",
+                "target": "INT",
+                "relation": "TYPE_OF"
+            },
+            {
+                "source": "networth",
+                "target": "DimCustomer",
+                "relation": "PART_OF"
+            },
+            {
+                "source": "networth",
+                "target": "INT",
+                "relation": "TYPE_OF"
+            },
+            {
+                "source": "marketingnameplate",
+                "target": "DimCustomer",
+                "relation": "PART_OF"
+            },
+            {
+                "source": "marketingnameplate",
+                "target": "STRING",
+                "relation": "TYPE_OF"
+            },
+            {
+                "source": "iscurrent",
+                "target": "DimCustomer",
+                "relation": "PART_OF"
+            },
+            {
+                "source": "iscurrent",
+                "target": "BOOLEAN",
+                "relation": "TYPE_OF"
+            },
+            {
+                "source": "batchid",
+                "target": "DimCustomer",
+                "relation": "PART_OF"
+            },
+            {
+                "source": "batchid",
+                "target": "INT",
+                "relation": "TYPE_OF"
+            },
+            {
+                "source": "effectivedate",
+                "target": "DimCustomer",
+                "relation": "PART_OF"
+            },
+            {
+                "source": "effectivedate",
+                "target": "DATE",
+                "relation": "TYPE_OF"
+            },
+            {
+                "source": "enddate",
+                "target": "DimCustomer",
+                "relation": "PART_OF"
+            },
+            {
+                "source": "enddate",
+                "target": "DATE",
+                "relation": "TYPE_OF"
+            },
+            {
+                "source": "Summary",
+                "target": "DimCustomer",
+                "relation": "DESCRIBES"
+            },
+            {
+                "source": "Customer identifier",
+                "target": "customerid",
+                "relation": "DESCRIBES"
+            },
+            {
+                "source": "Customer\u00e2\u20ac\u2122s tax identifier",
+                "target": "taxid",
+                "relation": "DESCRIBES"
+            },
+            {
+                "source": "Customer status type",
+                "target": "status",
+                "relation": "DESCRIBES"
+            },
+            {
+                "source": "Customers last name.",
+                "target": "lastname",
+                "relation": "DESCRIBES"
+            },
+            {
+                "source": "Customers first name.",
+                "target": "firstname",
+                "relation": "DESCRIBES"
+            },
+            {
+                "source": "Customers middle name initial",
+                "target": "middleinitial",
+                "relation": "DESCRIBES"
+            },
+            {
+                "source": "Gender of the customer",
+                "target": "gender",
+                "relation": "DESCRIBES"
+            },
+            {
+                "source": "Customer tier",
+                "target": "tier",
+                "relation": "DESCRIBES"
+            },
+            {
+                "source": "Customer\u00e2\u20ac\u2122s date of birth.",
+                "target": "dob",
+                "relation": "DESCRIBES"
+            },
+            {
+                "source": "Address Line 1",
+                "target": "addressline1",
+                "relation": "DESCRIBES"
+            },
+            {
+                "source": "Address Line 2",
+                "target": "addressline2",
+                "relation": "DESCRIBES"
+            },
+            {
+                "source": "Zip or Postal Code",
+                "target": "postalcode",
+                "relation": "DESCRIBES"
+            },
+            {
+                "source": "City",
+                "target": "city",
+                "relation": "DESCRIBES"
+            },
+            {
+                "source": "State or Province",
+                "target": "stateprov",
+                "relation": "DESCRIBES"
+            },
+            {
+                "source": "Country",
+                "target": "country",
+                "relation": "DESCRIBES"
+            },
+            {
+                "source": "Phone number 1",
+                "target": "phone1",
+                "relation": "DESCRIBES"
+            },
+            {
+                "source": "Phone number 2",
+                "target": "phone2",
+                "relation": "DESCRIBES"
+            },
+            {
+                "source": "Phone number 3",
+                "target": "phone3",
+                "relation": "DESCRIBES"
+            },
+            {
+                "source": "Email address 1",
+                "target": "email1",
+                "relation": "DESCRIBES"
+            },
+            {
+                "source": "Email address 2",
+                "target": "email2",
+                "relation": "DESCRIBES"
+            },
+            {
+                "source": "National Tax rate description",
+                "target": "nationaltaxratedesc",
+                "relation": "DESCRIBES"
+            },
+            {
+                "source": "National Tax rate",
+                "target": "nationaltaxrate",
+                "relation": "DESCRIBES"
+            },
+            {
+                "source": "Local Tax rate description",
+                "target": "localtaxratedesc",
+                "relation": "DESCRIBES"
+            },
+            {
+                "source": "Local Tax rate",
+                "target": "localtaxrate",
+                "relation": "DESCRIBES"
+            },
+            {
+                "source": "Agency identifier",
+                "target": "agencyid",
+                "relation": "DESCRIBES"
+            },
+            {
+                "source": "Credit rating",
+                "target": "creditrating",
+                "relation": "DESCRIBES"
+            },
+            {
+                "source": "Net worth",
+                "target": "networth",
+                "relation": "DESCRIBES"
+            },
+            {
+                "source": "Marketing nameplate",
+                "target": "marketingnameplate",
+                "relation": "DESCRIBES"
+            },
+            {
+                "source": "True if this is the current record",
+                "target": "iscurrent",
+                "relation": "DESCRIBES"
+            },
+            {
+                "source": "Batch ID when this record was inserted",
+                "target": "batchid",
+                "relation": "DESCRIBES"
+            },
+            {
+                "source": "Beginning of date range when this record was the current record",
+                "target": "effectivedate",
+                "relation": "DESCRIBES"
+            },
+            {
+                "source": "Ending of date range when this record was the current record. A record that is not expired will use the date 9999-12-31.",
+                "target": "enddate",
+                "relation": "DESCRIBES"
+            }
+        ]
+    }
+]

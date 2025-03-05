@@ -1,0 +1,305 @@
+{
+    "nodes": [
+        {
+            "id": "tradeid",
+            "type": "ColumnName"
+        },
+        {
+            "id": "FactHoldings",
+            "type": "TableName"
+        },
+        {
+            "id": "INT",
+            "type": "Data Type"
+        },
+        {
+            "id": "wh_db",
+            "type": "SchemaName"
+        },
+        {
+            "id": "Key for Orignial Trade Indentifier",
+            "type": "Comment"
+        },
+        {
+            "id": "currenttradeid",
+            "type": "ColumnName"
+        },
+        {
+            "id": "INT NOT NULL",
+            "type": "Data Type"
+        },
+        {
+            "id": "Key for the current trade",
+            "type": "Comment"
+        },
+        {
+            "id": "sk_customerid",
+            "type": "ColumnName"
+        },
+        {
+            "id": "BIGINT",
+            "type": "Data Type"
+        },
+        {
+            "id": "Surrogate key for Customer Identifier",
+            "type": "Comment"
+        },
+        {
+            "id": "sk_accountid",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Surrogate key for Account Identifier",
+            "type": "Comment"
+        },
+        {
+            "id": "sk_securityid",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Surrogate key for Security Identifier",
+            "type": "Comment"
+        },
+        {
+            "id": "sk_companyid",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Surrogate key for Company Identifier",
+            "type": "Comment"
+        },
+        {
+            "id": "sk_dateid",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Surrogate key for the date associated with the",
+            "type": "Comment"
+        },
+        {
+            "id": "sk_timeid",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Surrogate key for the time associated with the",
+            "type": "Comment"
+        },
+        {
+            "id": "currentprice",
+            "type": "ColumnName"
+        },
+        {
+            "id": "DOUBLE",
+            "type": "Data Type"
+        },
+        {
+            "id": "Unit price of this security for the current trade",
+            "type": "Comment"
+        },
+        {
+            "id": "currentholding",
+            "type": "ColumnName"
+        },
+        {
+            "id": "INT",
+            "type": "Data Type"
+        },
+        {
+            "id": "Quantity of a security held after the current trade.",
+            "type": "Comment"
+        },
+        {
+            "id": "batchid",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Batch ID when this record was inserted",
+            "type": "Comment"
+        },
+        {
+            "id": "Table containing holding information",
+            "type": "Summary"
+        },
+        {
+            "id": "BIGINT",
+            "type": "Data Type"
+        }
+    ],
+    "relationships": [
+        {
+            "source": "tradeid",
+            "target": "FactHoldings",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "tradeid",
+            "target": "INT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "FactHoldings",
+            "target": "wh_db",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "Key for Orignial Trade Indentifier",
+            "target": "tradeid",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "currenttradeid",
+            "target": "FactHoldings",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "currenttradeid",
+            "target": "INT NOT NULL",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Key for the current trade",
+            "target": "currenttradeid",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "sk_customerid",
+            "target": "FactHoldings",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "sk_customerid",
+            "target": "BIGINT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Surrogate key for Customer Identifier",
+            "target": "sk_customerid",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "sk_accountid",
+            "target": "FactHoldings",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "sk_accountid",
+            "target": "BIGINT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Surrogate key for Account Identifier",
+            "target": "sk_accountid",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "sk_securityid",
+            "target": "FactHoldings",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "sk_securityid",
+            "target": "BIGINT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Surrogate key for Security Identifier",
+            "target": "sk_securityid",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "sk_companyid",
+            "target": "FactHoldings",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "sk_companyid",
+            "target": "BIGINT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Surrogate key for Company Identifier",
+            "target": "sk_companyid",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "sk_dateid",
+            "target": "FactHoldings",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "sk_dateid",
+            "target": "BIGINT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Surrogate key for the date associated with the",
+            "target": "sk_dateid",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "sk_timeid",
+            "target": "FactHoldings",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "sk_timeid",
+            "target": "BIGINT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Surrogate key for the time associated with the",
+            "target": "sk_timeid",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "currentprice",
+            "target": "FactHoldings",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "currentprice",
+            "target": "DOUBLE",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Unit price of this security for the current trade",
+            "target": "currentprice",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "currentholding",
+            "target": "FactHoldings",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "currentholding",
+            "target": "INT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Quantity of a security held after the current trade.",
+            "target": "currentholding",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "batchid",
+            "target": "FactHoldings",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "batchid",
+            "target": "INT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Batch ID when this record was inserted",
+            "target": "batchid",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "Table containing holding information",
+            "target": "FactHoldings",
+            "relation": "DESCRIBES"
+        }
+    ]
+}

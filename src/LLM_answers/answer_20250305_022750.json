@@ -1,0 +1,508 @@
+{
+    "nodes": [
+        {
+            "id": "sk_companyid",
+            "type": "ColumnName"
+        },
+        {
+            "id": "DimCompany",
+            "type": "TableName"
+        },
+        {
+            "id": "BIGINT",
+            "type": "Data Type"
+        },
+        {
+            "id": "wh_db",
+            "type": "SchemaName"
+        },
+        {
+            "id": "Surrogate key for CompanyID",
+            "type": "Comment"
+        },
+        {
+            "id": "companyid",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Company identifier (CIK number)",
+            "type": "Comment"
+        },
+        {
+            "id": "status",
+            "type": "ColumnName"
+        },
+        {
+            "id": "STRING",
+            "type": "Data Type"
+        },
+        {
+            "id": "Company status",
+            "type": "Comment"
+        },
+        {
+            "id": "name",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Company name",
+            "type": "Comment"
+        },
+        {
+            "id": "industry",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Company\u00e2\u20ac\u2122s industry",
+            "type": "Comment"
+        },
+        {
+            "id": "sprating",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Standard & Poor company\u00e2\u20ac\u2122s rating",
+            "type": "Comment"
+        },
+        {
+            "id": "islowgrade",
+            "type": "ColumnName"
+        },
+        {
+            "id": "BOOLEAN",
+            "type": "Data Type"
+        },
+        {
+            "id": "True if this company is low grade",
+            "type": "Comment"
+        },
+        {
+            "id": "ceo",
+            "type": "ColumnName"
+        },
+        {
+            "id": "CEO name",
+            "type": "Comment"
+        },
+        {
+            "id": "addressline1",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Address Line 1",
+            "type": "Comment"
+        },
+        {
+            "id": "addressline2",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Address Line 2",
+            "type": "Comment"
+        },
+        {
+            "id": "postalcode",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Zip or postal code",
+            "type": "Comment"
+        },
+        {
+            "id": "city",
+            "type": "ColumnName"
+        },
+        {
+            "id": "City",
+            "type": "Comment"
+        },
+        {
+            "id": "stateprov",
+            "type": "ColumnName"
+        },
+        {
+            "id": "State or Province",
+            "type": "Comment"
+        },
+        {
+            "id": "country",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Country",
+            "type": "Comment"
+        },
+        {
+            "id": "description",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Company description",
+            "type": "Comment"
+        },
+        {
+            "id": "foundingdate",
+            "type": "ColumnName"
+        },
+        {
+            "id": "DATE",
+            "type": "Data Type"
+        },
+        {
+            "id": "Date the company was founded",
+            "type": "Comment"
+        },
+        {
+            "id": "iscurrent",
+            "type": "ColumnName"
+        },
+        {
+            "id": "True if this is the current record",
+            "type": "Comment"
+        },
+        {
+            "id": "batchid",
+            "type": "ColumnName"
+        },
+        {
+            "id": "INT",
+            "type": "Data Type"
+        },
+        {
+            "id": "Batch ID when this record was inserted",
+            "type": "Comment"
+        },
+        {
+            "id": "effectivedate",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Beginning of date range when this record was the current record",
+            "type": "Comment"
+        },
+        {
+            "id": "enddate",
+            "type": "ColumnName"
+        },
+        {
+            "id": "Ending of date range when this record was the current record. A record that is not expired will use the date 9999-12-31.",
+            "type": "Comment"
+        },
+        {
+            "id": "Dimension table containing company information",
+            "type": "Summary"
+        }
+    ],
+    "relationships": [
+        {
+            "source": "sk_companyid",
+            "target": "DimCompany",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "sk_companyid",
+            "target": "BIGINT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "DimCompany",
+            "target": "wh_db",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "Surrogate key for CompanyID",
+            "target": "sk_companyid",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "companyid",
+            "target": "DimCompany",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "companyid",
+            "target": "BIGINT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Company identifier (CIK number)",
+            "target": "companyid",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "status",
+            "target": "DimCompany",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "status",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Company status",
+            "target": "status",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "name",
+            "target": "DimCompany",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "name",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Company name",
+            "target": "name",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "industry",
+            "target": "DimCompany",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "industry",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Company\u00e2\u20ac\u2122s industry",
+            "target": "industry",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "sprating",
+            "target": "DimCompany",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "sprating",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Standard & Poor company\u00e2\u20ac\u2122s rating",
+            "target": "sprating",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "islowgrade",
+            "target": "DimCompany",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "islowgrade",
+            "target": "BOOLEAN",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "True if this company is low grade",
+            "target": "islowgrade",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "ceo",
+            "target": "DimCompany",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "ceo",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "CEO name",
+            "target": "ceo",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "addressline1",
+            "target": "DimCompany",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "addressline1",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Address Line 1",
+            "target": "addressline1",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "addressline2",
+            "target": "DimCompany",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "addressline2",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Address Line 2",
+            "target": "addressline2",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "postalcode",
+            "target": "DimCompany",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "postalcode",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Zip or postal code",
+            "target": "postalcode",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "city",
+            "target": "DimCompany",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "city",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "City",
+            "target": "city",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "stateprov",
+            "target": "DimCompany",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "stateprov",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "State or Province",
+            "target": "stateprov",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "country",
+            "target": "DimCompany",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "country",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Country",
+            "target": "country",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "description",
+            "target": "DimCompany",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "description",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Company description",
+            "target": "description",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "foundingdate",
+            "target": "DimCompany",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "foundingdate",
+            "target": "DATE",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Date the company was founded",
+            "target": "foundingdate",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "iscurrent",
+            "target": "DimCompany",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "iscurrent",
+            "target": "BOOLEAN",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "True if this is the current record",
+            "target": "iscurrent",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "batchid",
+            "target": "DimCompany",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "batchid",
+            "target": "INT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Batch ID when this record was inserted",
+            "target": "batchid",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "effectivedate",
+            "target": "DimCompany",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "effectivedate",
+            "target": "DATE",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Beginning of date range when this record was the current record",
+            "target": "effectivedate",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "enddate",
+            "target": "DimCompany",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "enddate",
+            "target": "DATE",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Ending of date range when this record was the current record. A record that is not expired will use the date 9999-12-31.",
+            "target": "enddate",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "Dimension table containing company information",
+            "target": "DimCompany",
+            "relation": "DESCRIBES"
+        }
+    ]
+}

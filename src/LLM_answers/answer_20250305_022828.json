@@ -1,0 +1,514 @@
+{
+    "nodes": [
+        {
+            "id": "sk_dateid",
+            "type": "ColumnName"
+        },
+        {
+            "id": "DimDate",
+            "type": "TableName"
+        },
+        {
+            "id": "BIGINT",
+            "type": "Data Type"
+        },
+        {
+            "id": "wh_db",
+            "type": "SchemaName"
+        },
+        {
+            "id": "Surrogate key for the date",
+            "type": "Comment"
+        },
+        {
+            "id": "datevalue",
+            "type": "ColumnName"
+        },
+        {
+            "id": "DATE",
+            "type": "Data Type"
+        },
+        {
+            "id": "The date stored appropriately for doing comparisons in the Data Warehouse",
+            "type": "Comment"
+        },
+        {
+            "id": "datedesc",
+            "type": "ColumnName"
+        },
+        {
+            "id": "STRING",
+            "type": "Data Type"
+        },
+        {
+            "id": "The date in full written form e.g. July 7 2004",
+            "type": "Comment"
+        },
+        {
+            "id": "calendaryearid",
+            "type": "ColumnName"
+        },
+        {
+            "id": "INT",
+            "type": "Data Type"
+        },
+        {
+            "id": "Year number as a number",
+            "type": "Comment"
+        },
+        {
+            "id": "calendaryeardesc",
+            "type": "ColumnName"
+        },
+        {
+            "id": "STRING",
+            "type": "Data Type"
+        },
+        {
+            "id": "Year number as text",
+            "type": "Comment"
+        },
+        {
+            "id": "calendarqtrid",
+            "type": "ColumnName"
+        },
+        {
+            "id": "INT",
+            "type": "Data Type"
+        },
+        {
+            "id": "Quarter as a number e.g. 20042",
+            "type": "Comment"
+        },
+        {
+            "id": "calendarqtrdesc",
+            "type": "ColumnName"
+        },
+        {
+            "id": "STRING",
+            "type": "Data Type"
+        },
+        {
+            "id": "Quarter as text e.g. 2004 Q2",
+            "type": "Comment"
+        },
+        {
+            "id": "calendarmonthid",
+            "type": "ColumnName"
+        },
+        {
+            "id": "INT",
+            "type": "Data Type"
+        },
+        {
+            "id": "Month as a number e.g. 20047",
+            "type": "Comment"
+        },
+        {
+            "id": "calendarmonthdesc",
+            "type": "ColumnName"
+        },
+        {
+            "id": "STRING",
+            "type": "Data Type"
+        },
+        {
+            "id": "Month as text e.g. 2004 July",
+            "type": "Comment"
+        },
+        {
+            "id": "calendarweekid",
+            "type": "ColumnName"
+        },
+        {
+            "id": "INT",
+            "type": "Data Type"
+        },
+        {
+            "id": "Week as a number e.g. 200428",
+            "type": "Comment"
+        },
+        {
+            "id": "calendarweekdesc",
+            "type": "ColumnName"
+        },
+        {
+            "id": "STRING",
+            "type": "Data Type"
+        },
+        {
+            "id": "Week as text e.g. 2004-W28",
+            "type": "Comment"
+        },
+        {
+            "id": "dayofweeknum",
+            "type": "ColumnName"
+        },
+        {
+            "id": "INT",
+            "type": "Data Type"
+        },
+        {
+            "id": "Day of week as a number e.g. 3",
+            "type": "Comment"
+        },
+        {
+            "id": "dayofweekdesc",
+            "type": "ColumnName"
+        },
+        {
+            "id": "STRING",
+            "type": "Data Type"
+        },
+        {
+            "id": "Day of week as text e.g. Wednesday",
+            "type": "Comment"
+        },
+        {
+            "id": "fiscalyearid",
+            "type": "ColumnName"
+        },
+        {
+            "id": "INT",
+            "type": "Data Type"
+        },
+        {
+            "id": "Fiscal year as a number e.g. 2005",
+            "type": "Comment"
+        },
+        {
+            "id": "fiscalyeardesc",
+            "type": "ColumnName"
+        },
+        {
+            "id": "STRING",
+            "type": "Data Type"
+        },
+        {
+            "id": "Fiscal year as text e.g. 2005",
+            "type": "Comment"
+        },
+        {
+            "id": "fiscalqtrid",
+            "type": "ColumnName"
+        },
+        {
+            "id": "INT",
+            "type": "Data Type"
+        },
+        {
+            "id": "Fiscal quarter as a number e.g. 20051",
+            "type": "Comment"
+        },
+        {
+            "id": "fiscalqtrdesc",
+            "type": "ColumnName"
+        },
+        {
+            "id": "STRING",
+            "type": "Data Type"
+        },
+        {
+            "id": "Fiscal quarter as text e.g. 2005 Q1",
+            "type": "Comment"
+        },
+        {
+            "id": "holidayflag",
+            "type": "ColumnName"
+        },
+        {
+            "id": "BOOLEAN",
+            "type": "Data Type"
+        },
+        {
+            "id": "Indicates holidays",
+            "type": "Comment"
+        },
+        {
+            "id": "Stores date dimension information",
+            "type": "Summary"
+        }
+    ],
+    "relationships": [
+        {
+            "source": "sk_dateid",
+            "target": "DimDate",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "sk_dateid",
+            "target": "BIGINT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "DimDate",
+            "target": "wh_db",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "Surrogate key for the date",
+            "target": "sk_dateid",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "datevalue",
+            "target": "DimDate",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "datevalue",
+            "target": "DATE",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "The date stored appropriately for doing comparisons in the Data Warehouse",
+            "target": "datevalue",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "datedesc",
+            "target": "DimDate",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "datedesc",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "The date in full written form e.g. July 7 2004",
+            "target": "datedesc",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "calendaryearid",
+            "target": "DimDate",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "calendaryearid",
+            "target": "INT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Year number as a number",
+            "target": "calendaryearid",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "calendaryeardesc",
+            "target": "DimDate",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "calendaryeardesc",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Year number as text",
+            "target": "calendaryeardesc",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "calendarqtrid",
+            "target": "DimDate",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "calendarqtrid",
+            "target": "INT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Quarter as a number e.g. 20042",
+            "target": "calendarqtrid",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "calendarqtrdesc",
+            "target": "DimDate",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "calendarqtrdesc",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Quarter as text e.g. 2004 Q2",
+            "target": "calendarqtrdesc",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "calendarmonthid",
+            "target": "DimDate",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "calendarmonthid",
+            "target": "INT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Month as a number e.g. 20047",
+            "target": "calendarmonthid",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "calendarmonthdesc",
+            "target": "DimDate",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "calendarmonthdesc",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Month as text e.g. 2004 July",
+            "target": "calendarmonthdesc",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "calendarweekid",
+            "target": "DimDate",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "calendarweekid",
+            "target": "INT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Week as a number e.g. 200428",
+            "target": "calendarweekid",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "calendarweekdesc",
+            "target": "DimDate",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "calendarweekdesc",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Week as text e.g. 2004-W28",
+            "target": "calendarweekdesc",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "dayofweeknum",
+            "target": "DimDate",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "dayofweeknum",
+            "target": "INT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Day of week as a number e.g. 3",
+            "target": "dayofweeknum",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "dayofweekdesc",
+            "target": "DimDate",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "dayofweekdesc",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Day of week as text e.g. Wednesday",
+            "target": "dayofweekdesc",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "fiscalyearid",
+            "target": "DimDate",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "fiscalyearid",
+            "target": "INT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Fiscal year as a number e.g. 2005",
+            "target": "fiscalyearid",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "fiscalyeardesc",
+            "target": "DimDate",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "fiscalyeardesc",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Fiscal year as text e.g. 2005",
+            "target": "fiscalyeardesc",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "fiscalqtrid",
+            "target": "DimDate",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "fiscalqtrid",
+            "target": "INT",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Fiscal quarter as a number e.g. 20051",
+            "target": "fiscalqtrid",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "fiscalqtrdesc",
+            "target": "DimDate",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "fiscalqtrdesc",
+            "target": "STRING",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Fiscal quarter as text e.g. 2005 Q1",
+            "target": "fiscalqtrdesc",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "holidayflag",
+            "target": "DimDate",
+            "relation": "PART_OF"
+        },
+        {
+            "source": "holidayflag",
+            "target": "BOOLEAN",
+            "relation": "TYPE_OF"
+        },
+        {
+            "source": "Indicates holidays",
+            "target": "holidayflag",
+            "relation": "DESCRIBES"
+        },
+        {
+            "source": "Stores date dimension information",
+            "target": "DimDate",
+            "relation": "DESCRIBES"
+        }
+    ]
+}

@@ -1,0 +1,181 @@
+DEBUG main pdgf.Controller - init time: 239
+INFO main pdgf.Controller - ########################################################################################################################
+                                                  PDGF v2.5_#1343_b4177
+                                            Parallel Data Generation Framework
+                (c)bankmark UG (haftungsbeschraenkt), Frank M., Danisch M., Rabl T. http://www.bankmark.de
+########################################################################################################################
+                                                   License information
+                            The Software is provided to you as part of the TPC Benchmark DI. 
+ When using this software you must agree to the license provided in LICENSE.TXT of this package. Use is restricted to TPC
+DI benchmarking purposes as specified in LICENSE.TXT. If you would like to use the software for other purposes, you must
+contact bankmark UG (haftungsbeschraenkt) (http://www.bankmark.de) to purchase a fully licensed copy of the Software.
+########################################################################################################################
+for a command overview start with commandline parameter: -help
+or type "help" in the built in shell: PDGF:> 
+
+DEBUG main pdgf.Controller - TIMESTAMP: 2025/02/27 08:43:00
+DEBUG main pdgf.Controller - Configuration:
+
+Startup arguments:
+===========================================
+{java.runtime.name=Java(TM) SE Runtime Environment, sun.boot.library.path=C:\Program Files (x86)\Java\jre1.8.0_441\bin, java.vm.version=25.441-b07, user.country.format=EE, java.vm.vendor=Oracle Corporation, java.vendor.url=http://java.oracle.com/, path.separator=;, java.vm.name=Java HotSpot(TM) Client VM, file.encoding.pkg=sun.io, user.country=GB, user.script=, sun.java.launcher=SUN_STANDARD, sun.os.patch.level=, java.vm.specification.name=Java Virtual Machine Specification, user.dir=C:\lopu-kg-test\project\src\divider\data_generator\Tools\githubioma\pdgf, java.runtime.version=1.8.0_441-b07, java.awt.graphicsenv=sun.awt.Win32GraphicsEnvironment, java.endorsed.dirs=C:\Program Files (x86)\Java\jre1.8.0_441\lib\endorsed, os.arch=x86, java.io.tmpdir=C:\Users\kasutaja\AppData\Local\Temp\, line.separator=
+, java.vm.specification.vendor=Oracle Corporation, user.variant=, os.name=Windows 10, sun.jnu.encoding=Cp1252, java.library.path=C:\Program Files (x86)\Java\jre1.8.0_441\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\IDEMIA\AWP\Dlls;C:\Program Files\IDEMIA\AWP\Dlls;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\PuTTY\;C:\Users\kasutaja\Downloads;C:\Program Files\MySQL\MySQL Server 8.0\bin;C:\Program Files\Calibre2\;C:\Program Files\Java\jdk-20\bin;C:\Users\kasutaja\AppData\Local\Programs\Python\Python311;C:\HADOOP\bin;C:\Users\kasutaja\AppData\Local\Programs\Python\Python311\Scripts\;C:\Users\kasutaja\AppData\Local\Programs\Python\Python311\;C:\Users\kasutaja\AppData\Local\Programs\Python\Python310\Scripts\;C:\Users\kasutaja\AppData\Local\Programs\Python\Python310\;C:\Users\kasutaja\AppData\Local\Microsoft\WindowsApps;C:\Users\kasutaja\AppData\Local\Programs\Python\Python39\Scripts;C:\Users\kasutaja\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\kasutaja\AppData\Roaming\npm;C:\Users\kasutaja\.fly\bin;C:\Users\kasutaja\AppData\Roaming\TinyTeX\bin\win32;C:\SPARK\bin;., pdgf.log.folder=logs, java.specification.name=Java Platform API Specification, java.class.version=52.0, sun.management.compiler=HotSpot Client Compiler, os.version=10.0, user.home=C:\Users\kasutaja, user.timezone=, java.awt.printerjob=sun.awt.windows.WPrinterJob, file.encoding=Cp1252, java.specification.version=1.8, java.class.path=pdgf.jar, user.name=kasutaja, java.vm.specification.version=1.8, sun.java.command=pdgf.jar -closeWhenDone -start -sf 5000, java.home=C:\Program Files (x86)\Java\jre1.8.0_441, sun.arch.data.model=32, user.language=en, java.specification.vendor=Oracle Corporation, user.language.format=et, awt.toolkit=sun.awt.windows.WToolkit, java.vm.info=mixed mode, sharing, java.version=1.8.0_441, java.ext.dirs=C:\Program Files (x86)\Java\jre1.8.0_441\lib\ext;C:\WINDOWS\Sun\Java\lib\ext, sun.boot.class.path=C:\Program Files (x86)\Java\jre1.8.0_441\lib\resources.jar;C:\Program Files (x86)\Java\jre1.8.0_441\lib\rt.jar;C:\Program Files (x86)\Java\jre1.8.0_441\lib\jsse.jar;C:\Program Files (x86)\Java\jre1.8.0_441\lib\jce.jar;C:\Program Files (x86)\Java\jre1.8.0_441\lib\charsets.jar;C:\Program Files (x86)\Java\jre1.8.0_441\lib\jfr.jar;C:\Program Files (x86)\Java\jre1.8.0_441\classes, java.vendor=Oracle Corporation, java.specification.maintenance.version=6, pdgf.log.file=pdgf.log, file.separator=\, java.vendor.url.bug=http://bugreport.sun.com/bugreport/, sun.io.unicode.encoding=UnicodeLittle, sun.cpu.endian=little, sun.desktop=windows, sun.cpu.isalist=pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86}
+
+-closeWhenDone -start -sf 5000 
+
+Command history:
+===========================================
+
+Constants{
+	UI_CONSOLE_MAX_LINE_LENGTH=120
+	MIN_JAVA_VERSION=1.7
+	EV=false
+	DEVELOPER=false
+	DEBUG=false
+	DEBUG_PRINT_PERIODIC_THREAD_DUMPS=-1
+	DEBUG_TRACE_KEYS=false
+	DEBUG_OUTPUT_PRINT_LINEBUFFER_BEFORE_WRITE=false
+	DEBUG_PRINT_ELEMENT_HASHES=false
+	VALIDATE_MODE=false
+	VALIDATE_MODE_VERBOSE=false
+	USE_FAST_DOUBLE_TO_STRING=false
+	USE_FAST_DATE_TO_STRING=false
+	DEFAULT_ROUNDING_MODE=HALF_EVEN
+	FvDtoValueFormater_CacheString=true
+	FvDtoValueFormater_LAZY_doFormat=true
+	FvDtoValueFormater_REUSE_STRINGBUFFER=false
+	OUTPUT_USE_BUCKET_SORT=true
+	OUTPUT_FILE_CALCMD5=false
+	OUTPUT_FILE_KEEP_OUTPUTDIR=false
+	OUTPUT_CACHEWRITES=false
+	OUTPUT_CACHEWRITES_NATIVEBUFFER=false
+	OUTPUT_FILE_SYSOUT=false
+	CONCURRENT_USE_THREAD_PRIORITES=false
+	CONCURRENT_WORKER_DEAMON=false
+	CONCURRENT_SCHEDULER_DEAMON=false
+	CONCURRENT_SCHEDULER_SIGNALR_DEAMON=true
+	CONCURRENT_MEATASCHEDULER_SIGNALR_DEAMON=false
+	CONCURRENT_OUTPUT_DEAMON=false
+	CONCURRENT_PRODUCER_DEAMON=false
+	CONCURRENT_WORKER_PRIORITY=5
+	CONCURRENT_SCHEDULER_SIGNALR_PRIORITY=5
+	CONCURRENT_MEATASCHEDULER_SIGNALR_PRIORITY=5
+	CONCURRENT_OUTPUT_PRIORITY=5
+	CONCURRENT_PRODUCER_PRIORITY=5
+	CONCURRENT_SCHED_QUEUE_SIZE_PER_WORKER=100
+	CONCURRENT_BUCKETSORT_BUCKETS_PER_WORKER=4
+	CONCURRENT_ORDERING_CACHE_SIZE_PER_WORKER=16
+	CONCURRENT_BENCHMARK_PRODUCER=false
+	CONCURRENT_SCHED_DEFAULT_WORKUNIT_SIZE=100
+	DEFAULT_BLOCKINGQUEUE=ArrayBlockingQueue
+	BENCHMARK_OUTPUT_DUMMY=false
+	BENCHMARK_OUTPUT_IO_DISABLED=false
+	BENCHMARK_OUTPUT_SORTINGCACHE_IO_DISABLED=false
+	BENCHMARK_GENERATORS_DISABLED=false
+	BENCHMARK_GENERATORS_PROFILE=false
+	BENCHMARK_SCHEDULER_THROUGPUT=false
+	SELF_MONITORING_ENABLED=true
+	SELF_MONITORING_HUMANREADABLE=false
+	SELF_MONITORING_Comment=
+	GENERATION_STATISTICS_TO_FILE=true
+	GENERATION_STATISTICS_PROFILING_FILENAME=GenerationStatistics
+	GENERATION_STATISTICS_TABLE_FILENAME=TableGenerationStatistics
+	PARALLEL_PROJECT_CLONEING_ENABLED=false
+	ENABLE_LAST_VALUE_CACHE_FOR_ALL_REFERENCES=false
+	ENABLE_LAST_VALUE_CACHE=true
+	DEFAULT_FIELD_UPDATE_PERCENTAGE=0.0
+	ELEMENT_LAZY_RNG_INIT=true
+	DEFAULT_DISTRIBUTION_SAMPLING_RETRYS=300
+	MEMORY_CHECK_RESTART_PROMT_ENABLED=false
+	GENERATION_PROGRESS_UPDATE_INTERVALL=1000
+	MAX_CACHABLE_FILE_SIZE=20971520
+	EULA_FILE=LICENSE.txt
+	IS_EULA_ACCEPTED=true
+	LOG4J_CFG_FILE=Log4j.xml
+	PDGF_LOG_FOLDER_PROPERTY_KEY=pdgf.log.folder
+	PDGF_LOG_FILE_PROPERTY_KEY=pdgf.log.file
+	PDGF_LOG_FOLDER=logs
+	PDGF_LOG_FILE_NAME=pdgf.log
+	CONFIG_FILE_DIR=config
+	CLASSLOADING_DEFAULT_RESOURCE_LOCATIONS=[Ljava.lang.String;@1d4520b
+	CLASSLOADING_DEFAULT_EXCLUDES=.svn;src;lib_unused;logs;output;documents;svntask-1.0.8
+	CLASSLOADING_CLASSFINDER_DEFAULT_INCLUDES=pdgf.jar;plugins;bin
+	CLASSLOADING_EXCLUDE_FROM_PLUGINLOADER_REGEX=^.*(\\.svn|/.svn|\\src|/src|\\lib_unused|/lib_unused|\\logs|/logs|\\output|/output|\\documents|/documents|\\svntask-1.0.8|/svntask-1.0.8).*$
+	CLASSLOADING_CLASSFINDER_INCLUDE_REGEX=^.*(\\pdgf.jar|/pdgf.jar|\\plugins|/plugins|\\bin|/bin).*$
+	CLASSLOADING_DEBUG=false
+	CLASSLOADING_FEATURE_INCLUDE_FROM_CLASS_LOADER_URLS=true
+	CLASSLOADING_FEATURE_INCLUDE_FROM_JAVA_CLASS_PATH=true
+	CLASSLOADING_FILETYPES=[Ljava.lang.String;@e63ade
+	DEFAULT_LOCALE=us
+	DEFAULT_TIMEZONE=sun.util.calendar.ZoneInfo[id="UTC",offset=0,dstSavings=0,useDaylight=false,transitions=0,lastRule=null]
+	DEFAULT_LINESEPARATOR_PLAIN=CRLF
+	DEFAULT_LINESEPARATOR=
+
+	DEFAULT_CHARSET=UTF-8
+	DATETIME_FORMAT_DEFAULT=yyyy-MM-dd HH:mm:ss
+	DATE_FORMAT_DEFAULT=yyyy-MM-dd
+	TIME_FORMAT_DEFAULT=HH:mm:ss
+	DOUBLE_EVALUATION_PRECISION=100000
+	ONE_DAY_IN_ms=86400000
+	DAYS_PER_CENTURY=36525
+	ONE_CENTURY_IN_MS=3155760000000
+	PROPERTIES_IDENTIFIER=$
+	XML_PLUGIN_SPLIT_CHAR=_
+	DEFAULT_SPELL_SUGGESTION_COUNT=3
+	ERROR=ERROR! 
+	PROGRAMM_SHELL_NAME=PDGF
+	PROGRAMM_NAME_SHORT=PDGF
+	PROGRAMM_NAME=Parallel Data Generation Framework
+	NON_JAR_DEVELOPER_VERSION=PDGF 2.5 Dev - non Jar
+	C=3BKWWZVWkFCcQ4UI8BqXEtcb0AnREtgGyQHfEdQLxw/MCtNX1luwb6NgpivLSMlErWGiZrh2sz7eXdxRrmKtbOEYmxbTCtMOmRuZQ5lDwA/DAMYGyhXTUJlR
+	JARPACKAGED=true
+	VERSION=2.5_#1343_b4177
+	FAKE_FIELD=FAKEFIELD
+	PURGE_PARSERS_ON_INITIALIZE=false
+	L=oGWtIN4c1w7UGMcPgkaYFcgX1Q7KA8sCj1aUGc0P11qWSMUY1AvSX51W2wLHD4J7hmjlCsIBzwrKBtkfknufHJE=
+	LD=o2aubeA45iLhK6Z/un6gLfMx+iP5Neoir3u5Yews9CrzfrJ4p2+nKvMxvGWgaOUk4C7mJfszvmO8fqVhqGCpJOAjrk+rRa1OsFjbItcuo2GqJ/47/yGscb1ztXmze/h1jVObFtIMgV6WSJFOikSdVZwRyAqHfoNt4AntYK9npGqvb6N8un69d/on/yD9P+Ep93q2aOU75i7gJO8r4yqnY6AtzCjGLs0z21ihVK0uo0eMAdUXz0KYWoJDigfGAsQMgViaF88R2VSNSIAN0xHaA9kVygKPRIZZ1BbPCsIdkE2VSpdVi0OdHJFFh1/SEsoUzUCOTI9WmlSNAM8DwAbGCtUTnmaMAYRBjUafR4ROkF+XSYdCnVGZWpxFwUzJDNUM0UbERpxGnB/QHN8Z2RXKDI9GjgqHXpwRzBTLBcAM0hqXW9YdxQTFEZxdmVefXIJKgw7AAt8LhkSPAtse1lulZ6x1r2O8dPc=
+	T=0
+	HARD_CODED_SCHEMA=true
+	HARD_CODED_SCHEMA_BUILD=false
+	HARD_CODED_SCHEMA_SECURITY_FEATURE_SECURITYMANAGER=false
+	HARD_CODED_SCHEMA_SECURITY_FEATURE_TAMPERDETECTION=true
+	HARD_CODED_SCHEMA_SECURITY_FEATURE_CALLER_VERIFICATION=true
+	HARD_CODED_SCHEMA_TRACE_SEC_CALLER_VERIFICATION=false
+	HARD_CODED_SCHEMA_SECURITY_FEATURE_TIME_Server=true
+	HARD_CODED_SCHEMA_TRACE_SEC_SM=false
+	HARD_CODED_SCHEMA_FORCE_TERMINATION=false
+}
+==================================
+WARN main pdgf.actions.SetCloseWhenDoneAction - Set closeWhenDone from: false to: true
+WARN main pdgf.actions.SetScaleFactorAction - Set project main scale factor from -notSet- to 5000.0
+INFO main pdgf.core.dbSchema.Project - Loading configuration files ...
+INFO main pdgf.core.dbSchema.Project - 23: XML <property name="SF">5000.0 was already defined in config file or is manually overridden by a user set commandline argument. Currently assigned value: '5000.0' and will remain unchanged at this value
+DEBUG main pdgf.core.dbSchema.Project - Load time for config file (ms):635
+INFO main pdgf.core.dbSchema.Project - Loading successful.
+WARN main pdgf.Controller - ERROR! Command: "start" cannot be executed because: <generation> Xml file was not loaded! Please execute:
+load <Filename>
+DEBUG main pdgf.Controller - pdgf.core.exceptions.ActionRunPreconditionException: Command: "start" cannot be executed because: <generation> Xml file was not loaded! Please execute:
+load <Filename>
+DEBUG main pdgf.Controller - USER COMMAND: null
+ERROR main pdgf.Controller - Please enter a command. Enter 'help' for a list of available commands
+DEBUG main pdgf.Controller - USER COMMAND: null
+ERROR main pdgf.Controller - Please enter a command. Enter 'help' for a list of available commands
+DEBUG main pdgf.Controller - USER COMMAND: null
+ERROR main pdgf.Controller - Please enter a command. Enter 'help' for a list of available commands
+DEBUG main pdgf.Controller - USER COMMAND: null
+ERROR main pdgf.Controller - Please enter a command. Enter 'help' for a list of available commands
+DEBUG main pdgf.Controller - USER COMMAND: null
+ERROR main pdgf.Controller - Please enter a command. Enter 'help' for a list of available commands
+DEBUG main pdgf.Controller - USER COMMAND: null
+ERROR main pdgf.Controller - Please enter a command. Enter 'help' for a list of available commands
+DEBUG main pdgf.Controller - USER COMMAND: null
+ERROR main pdgf.Controller - Please enter a command. Enter 'help' for a list of available commands
+DEBUG main pdgf.Controller - USER COMMAND: null
+ERROR main pdgf.Controller - Please enter a command. Enter 'help' for a list of available commands
+DEBUG main pdgf.Controller - USER COMMAND: null
+ERROR main pdgf.Controller - Please enter a command. Enter 'help' for a list of available commands
+DEBUG main pdgf.Controller - USER COMMAND: null
+ERROR main pdgf.Controller - Please enter a command. Enter 'help' for a list of available commands
+DEBUG main pdgf.Controller - USER COMMAND: null
+ERROR main pdgf.Controller - Please enter a command. Enter 'help' for a list of available commands
+ERROR main pdgf.Controller - ERROR!  Flooding prevention! to much failed commands in a row...terminating application

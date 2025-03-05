@@ -1,0 +1,2 @@
+COMMENT ON COLUMN wh_db.BatchDate.batchdate IS 'Batch date';
+COMMENT ON COLUMN wh_db.BatchDate.batchid IS 'Batch ID when this record was inserted';

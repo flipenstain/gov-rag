@@ -1,0 +1,12 @@
+DataSet, BatchID ,Date , Attribute , Value, DValue
+DimAccount,1,,CA_ADDACCT,7310,
+DimAccount,1,,CA_CLOSEACCT,2150,
+DimAccount,1,,CA_UPDACCT,4300,
+DimAccount,1,,CA_ID_HIST,-1,
+DimCustomer,1,,C_NEW,7800,
+DimCustomer,1,,C_UPDCUST,2150,
+DimCustomer,1,,C_ID_HIST,0,
+DimCustomer,1,,C_INACT,860,
+DimCustomer,1,,C_DOB_TO,10,
+DimCustomer,1,,C_DOB_TY,16,
+DimCustomer,1,,C_TIER_INV,380,
