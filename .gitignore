@@ -21,9 +21,5 @@ src/data/Batch1/Trade.txt
 src/data/Batch1/CashTransaction.txt
 src/data/Batch1/DailyMarket.txt
 
-.\src\data\Batch1\CashTransaction.txt
-.\src\data\Batch1\DailyMarket.txt    
-.\src\data\Batch1\Trade.txt      
-.\src\data\Batch1\WatchHistory.txt
 
-.\src\divider\Tools\*
+src/divider/Tools/*
