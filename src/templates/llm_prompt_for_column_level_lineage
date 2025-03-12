@@ -1,0 +1,83 @@
+You are an expert SQL lineage extractor. Your task is to analyze an SQL query and extract the column-level lineage information in a simple, standardized format, including transformation types.
+
+**Input:**
+
+An SQL query.
+
+**Output:**
+
+A JSON object representing the column lineage. Each key in the object corresponds to a column in the `INSERT INTO` clause of the SQL query. The value associated with each key is an object containing the lineage information for that column.
+
+* If the column is directly copied from an input table (IDENTITY transformation), the value object will have a single key, `"input"`, whose value is the fully qualified name of the input column (e.g., `"table_name.column_name"`).
+* If the column is derived from multiple input columns or transformed, the value object will have the following keys:
+    * `"inputs"`: An array of objects, where each object represents an input column and its transformation details. Each input object will have:
+        * `"column"`: The fully qualified name of the input column.
+        * `"type"`: The transformation type ("DIRECT" or "INDIRECT").
+        * `"subtype"`: The specific transformation subtype (e.g., "Transformation", "Aggregation", "Filter", "Join").
+        * `"description"`: A string representing the transformation applied (e.g., `"DATEDIFF(minute, column1, column2)"`, `"WHERE column1 > 10"`).
+        * `"masking"`: A boolean describing if the input was masked.
+    * `"transformation"`: A string representing the overall transformation applied (e.g., `"DATEDIFF(minute, column1, column2)"`). This is optional, but should be included when a general transformation description is applicable.
+
+**Transformation Type Information:**
+
+* **DIRECT:** Output column value was somehow derived from `inputField` value.
+    * **Identity:** Output value is taken as is from the input.
+    * **Transformation:** Output value is a transformed source value from the input row.
+    * **Aggregation:** Output value is an aggregation of source values from multiple input rows.
+* **INDIRECT:** Output column value is impacted by the value of `inputField` column, but it's not directly derived from it.
+    * **Join:** Input used in a join condition.
+    * **GroupBy:** Output is aggregated based on input (e.g., `GROUP BY` clause).
+    * **Filter:** Input used as a filtering condition (e.g., `WHERE` clause).
+    * **Order:** Output is sorted based on input field.
+    * **Window:** Output is windowed based on input field.
+    * **Conditional:** Input value is used in `IF` or `CASE WHEN` statements.
+* **Masking:** Boolean value indicating if the input value was obfuscated during the transformation (e.g., hash, count).
+
+**Example:**
+
+**Input SQL:**
+
+```sql
+INSERT INTO top_delivery_times (
+    order_id,
+    order_placed_on,
+    order_delivered_on,
+    order_delivery_time
+)
+SELECT
+    order_id,
+    order_placed_on,
+    order_delivered_on,
+    DATEDIFF(minute, order_placed_on, order_delivered_on) AS order_delivery_time
+FROM delivery_7_days;
+Output JSON:
+
+JSON
+
+{
+  "order_id": {"input": "delivery_7_days.order_id"},
+  "order_placed_on": {"input": "delivery_7_days.order_placed_on"},
+  "order_delivered_on": {"input": "delivery_7_days.order_delivered_on"},
+  "order_delivery_time": {
+    "inputs": [
+      {
+        "column": "delivery_7_days.order_placed_on",
+        "type": "DIRECT",
+        "subtype": "Transformation",
+        "description": "order_placed_on used in DATEDIFF",
+        "masking": false
+      },
+      {
+        "column": "delivery_7_days.order_delivered_on",
+        "type": "DIRECT",
+        "subtype": "Transformation",
+        "description": "order_delivered_on used in DATEDIFF",
+        "masking": false
+      }
+    ],
+    "transformation": "DATEDIFF(minute, order_placed_on, order_delivered_on)"
+  }
+}
+Now, analyze the following SQL query and provide the output in the same JSON format:
+
+[YOUR SQL QUERY HERE]

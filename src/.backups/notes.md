@@ -40,6 +40,18 @@ MATCH (node) RETURN node;
 # find connections 
 MATCH (node1)-[connection]-(node2) RETURN node1, connection, node2;
 
+# FIX DATA TYPE
+
+MATCH (n:`Data Type`)
+SET n:`DataType`
+REMOVE n:`Data Type`;
+
+# FIX properties and node name
+
+
+MATCH (n:`DataType`)
+                OPTIONAL MATCH (n)-[r]-(connected)
+                RETURN n, r, connected;
 
 # find columns
 MATCH (n:`ColumnName`)
@@ -83,7 +95,61 @@ Struktuur paika:
 ANTS:
     Üldine meetod: Design science
     Meetod: funktsionaalsete ja mittefunktsionaalsete nõuete valideerimine
-    Uurimisküsimused: 2-3), aga võivad olla alamküsimused
+    Uurimisküsimused: 2-3, aga võivad olla alamküsimused
     Research gaps
 
 git remote set-url origin https://flipenstain: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@github.com/flipenstain/gov-rag.git
+
+
+
+
+// Querying all relationships in Memgraph
+
+// 1. Get all relationship types
+MATCH ()-[r]->()
+RETURN DISTINCT TYPE(r) AS RelationshipType;
+
+// 2. Get all relationships with details
+MATCH (n1)-[r]->(n2)
+RETURN 
+    ID(n1) AS StartNodeId, 
+    labels(n1) AS StartNodeLabels,
+    TYPE(r) AS RelationshipType,
+    ID(r) AS RelationshipId,
+    properties(r) AS RelationshipProperties,
+    ID(n2) AS EndNodeId,
+    labels(n2) AS EndNodeLabels;
+
+// 3. Get relationships with specific node labels
+MATCH (n1:Person)-[r:ACTED_IN]->(n2:Movie)
+RETURN 
+    ID(n1) AS StartNodeId, 
+    labels(n1) AS StartNodeLabels,
+    TYPE(r) AS RelationshipType,
+    ID(r) AS RelationshipId,
+    properties(r) AS RelationshipProperties,
+    ID(n2) AS EndNodeId,
+    labels(n2) AS EndNodeLabels;
+
+// 4. Get relationships with specific relationship type
+MATCH ()-[r:ACTED_IN]->()
+RETURN 
+    ID(startNode(r)) AS StartNodeId,
+    labels(startNode(r)) AS StartNodeLabels,
+    ID(endNode(r)) AS EndNodeId,
+    labels(endNode(r)) AS EndNodeLabels,
+    properties(r) as RelationshipProperties;
+
+// 5. Get relationships and node properties
+MATCH (n1)-[r]->(n2)
+RETURN 
+    n1, // Start node with all properties
+    r, // Relationship with all properties
+    n2; // End node with all properties
+
+// 6. Get relationships and specific node properties
+MATCH (n1)-[r]->(n2)
+RETURN 
+    ID(n1), n1.name, // Start node ID and name property
+    TYPE(r), properties(r), // Relationship type and properties
+    ID(n2), n2.title; // End node ID and title property
