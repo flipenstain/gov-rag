@@ -9,7 +9,7 @@ from openlineage.client.event_v2 import (
     OutputDataset,
     Run,
     RunEvent,
-    RunState,
+    RunState
 )
 from openlineage.client.uuid import generate_new_uuid
 from datetime import datetime
@@ -53,3 +53,5 @@ client.emit(
         outputs=[menus, orders],
     )
 )
+
+
