@@ -1,3 +1,9 @@
+TO DO - Note:
+**DI MESSAGES in historical load?**
+
+
+
+
 docker cp C:\lopu-kg-test\project\src\answer_from_LLM.json cb9422a4aefd:/usr/lib/memgraph/query_modules/answer_from_LLM.json
 
 docker ps -aqf "name=memgraph-mage"
@@ -27,6 +33,14 @@ CALL json_util.load_from_path("path/to/data.json")
 YIELD objects
 UNWIND objects AS o
 CREATE (:Person {first_name: o.first_name, last_name: o.last_name, pets: o.pets});
+
+
+WORKING WITH UV - 
+
+in terminal: .venv\Scripts\activate
+
+
+
 
 
 # clean up
