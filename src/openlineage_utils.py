@@ -54,7 +54,7 @@ def job(job_name, sql, location):
     return Job(namespace=namespace, name=job_name, facets=facets)
 
 
-# generates run racet
+# generates run facet
 def run(hour):
     return Run(
         runId=str(generate_new_uuid()),
@@ -228,8 +228,6 @@ for event in events:
 
 if __name__ == "__main__":
     print("This runs only when lineage_utils.py is executed directly")
-
-
 
 
 # Test Input

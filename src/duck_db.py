@@ -48,8 +48,9 @@ def execute_sql_and_comments(folder_path, con):
 # Example Usage:
 folder_path = r"src\divider\ddls"  # Replace with your folder path
 
-con = duckdb.connect()
-
+#con = duckdb.connect()
+con_path = r"initial_db.duckdb"
+con = duckdb.connect(con_path)
 execute_sql_and_comments(folder_path, con)
 
 con.close()
