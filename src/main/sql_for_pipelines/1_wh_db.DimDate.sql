@@ -1,0 +1,1 @@
+COPY wh_db.DimDate FROM 'src/data/Batch1\Date.txt' (DELIMITER '|');

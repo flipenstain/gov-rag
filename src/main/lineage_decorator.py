@@ -6,7 +6,7 @@ from datetime import datetime, timezone
 
 # Assume client and namespace are accessible (e.g., from common_setup)
 from openlineage_setup import client, OPENLINEAGE_NAMESPACE, producer_for_event
-from db_utils import get_table_schema, get_table_row_count, get_column_lineage_facet
+from db_utils2 import get_table_schema, get_table_row_count, get_column_lineage_facet
 
 # Import OpenLineage models
 from openlineage.client.run import RunEvent, RunState, Run, Job, Dataset

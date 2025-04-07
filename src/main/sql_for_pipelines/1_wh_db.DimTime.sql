@@ -1,0 +1,1 @@
+COPY wh_db.DimTime FROM 'src/data/Batch1\Time.txt' (DELIMITER '|');

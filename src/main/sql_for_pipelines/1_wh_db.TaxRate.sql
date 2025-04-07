@@ -1,0 +1,1 @@
+COPY wh_db.TaxRate FROM 'src/data/Batch1\TaxRate.txt' (DELIMITER '|');

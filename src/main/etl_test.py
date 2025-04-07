@@ -10,8 +10,8 @@ duckdb_path = os.path.abspath("C:\lopu-kg-test\project\initial_db.duckdb")
 conn = duckdb.connect(duckdb_path) # Or :memory:
 
 # Example SQL script content (can be loaded from a file)
-LOAD_DIM_CUSTOMER_SQL = """
-INSERT INTO wh_Db.BatchDate (batch_date, batchid)
+LOAD_BATCH_DATE_SQL = """
+INSERT INTO wh_Db.BatchDate (batchdate, batchid)
 SELECT
     '2011-01-01'::DATE,
     7 batchid
@@ -21,35 +21,48 @@ SELECT
 # Manually define column lineage (Option B example)
 # This needs careful construction based on your actual SQL and desired detail
 dim_customer_col_lineage = {
-    "customer_key": {
-        "inputFields": [{"namespace": OPENLINEAGE_NAMESPACE, "name": "staging_customer", "field": "customer_id"}],
-        "transformationType": "IDENTITY"
+    "batchdate": {"input": "file.date"
     },
-    "name": {
-        "inputFields": [
-            {"namespace": OPENLINEAGE_NAMESPACE, "name": "staging_customer", "field": "first_name"},
-            {"namespace": OPENLINEAGE_NAMESPACE, "name": "staging_customer", "field": "last_name"}
-        ],
-        "transformationType": "TRANSFORMATION", # Or be more specific
-        "transformationDescription": "Concatenation"
-    },
-    "address": {
-         "inputFields": [{"namespace": OPENLINEAGE_NAMESPACE, "name": "staging_address", "field": "address"}],
-         "transformationType": "IDENTITY"
-    },
-    "source_id": {
-         "inputFields": [{"namespace": OPENLINEAGE_NAMESPACE, "name": "staging_customer", "field": "customer_id"}],
-         "transformationType": "IDENTITY"
+    "batchid": {
+        "input": 
+            "HC.string"
     }
     # ... add other columns if needed ...
 }
 
+""" 
+{
+  "order_id": {"input": "delivery_7_days.order_id"},
+  "order_placed_on": {"input": "delivery_7_days.order_placed_on"},
+  "order_delivered_on": {"input": "delivery_7_days.order_delivered_on"},
+  "order_delivery_time": {
+    "inputs": [
+      {
+        "column": "delivery_7_days.order_placed_on",
+        "type": "DIRECT",
+        "subtype": "Transformation",
+        "description": "order_placed_on used in DATEDIFF",
+        "masking": false
+      },
+      {
+        "column": "delivery_7_days.order_delivered_on",
+        "type": "DIRECT",
+        "subtype": "Transformation",
+        "description": "order_delivered_on used in DATEDIFF",
+        "masking": false
+      }
+    ],
+    "transformation": "DATEDIFF(minute, order_placed_on, order_delivered_on)"
+  }
+}
+"""
+
 
 @log_lineage(
-    job_name="load_dim_customer",
-    input_tables=["wh_Db.BatchDate"],
+    job_name="load_BatchDate",
+    input_tables=[],
     output_tables=["wh_Db.BatchDate"],
-    sql=LOAD_DIM_CUSTOMER_SQL, # Pass the SQL query text
+    sql=LOAD_BATCH_DATE_SQL, # Pass the SQL query text
     column_lineage=dim_customer_col_lineage, # Uncomment if using manual lineage map
     script_path=__file__ # Optional: Explicitly pass script path if needed
 )
@@ -57,7 +70,7 @@ def run_load_dim_customer(db_conn: duckdb.DuckDBPyConnection, some_other_param: 
     """Executes the SQL to load the customer dimension."""
     print(f"Running Load Dim Customer with param: {some_other_param}")
     # Execute the actual SQL
-    db_conn.execute(LOAD_DIM_CUSTOMER_SQL)
+    db_conn.execute(LOAD_BATCH_DATE_SQL)
     print("Dim Customer load finished.")
     # You might return something if needed, e.g., row count affected
     # return db_conn.query("SELECT count(*) FROM dim_customer").fetchone()[0]

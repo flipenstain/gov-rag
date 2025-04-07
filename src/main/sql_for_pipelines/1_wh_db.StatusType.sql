@@ -1,0 +1,1 @@
+COPY wh_db.StatusType FROM 'src/data/Batch1\StatusType.txt' (DELIMITER '|');

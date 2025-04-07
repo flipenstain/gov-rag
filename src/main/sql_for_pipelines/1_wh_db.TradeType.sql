@@ -1,0 +1,1 @@
+COPY wh_db.TradeType FROM 'src/data/Batch1\TradeType.txt' (DELIMITER '|');
