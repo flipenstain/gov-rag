@@ -1,0 +1,12 @@
+**Task:** Generate detailed column-level lineage for the provided SQL query.
+**Output Format:** JSON, strictly adhering to the structure provided previously (keys: `target_table`, optional `sources_summary`, `lineage` map).
+
+**Instructions:**
+1.  Identify the target table and all source tables/CTEs.
+2.  For **each** target column in the final `INSERT`/`SELECT`:
+    * Trace lineage back to the **ultimate source table(s) and column(s)** (e.g., trace through CTEs like `cmp` back to `wh_db_stage.FinWire.value`).
+    * Provide the intermediate **transformation path** (aliases/CTE names) in the `path` array.
+    * Capture the specific **transformation logic** (SQL expression/function).
+    * Assign a relevant **transformation type** (e.g., `CAST`, `CASE_MAPPING`, `JOIN_LOOKUP`, `WINDOW_FUNCTION`, `RENAME`, `CONSTANT`, `EXPRESSION_CONCAT`, `SUBSTRING`, `SCD2_LOGIC`).
+    * Detail the **role** of source columns if complex (e.g., join key, partition key, condition input).
+3.  Accurately handle: CTEs, Joins, `CASE`, Window Functions (`LEAD`, `PARTITION BY`, `ORDER BY`, `COALESCE`), String Ops (`SUBSTR`, `TRIM`, `||`), Casting (`CAST`, `TRY_CAST`, `strftime`), Constants, Aliases, SCD2 patterns.

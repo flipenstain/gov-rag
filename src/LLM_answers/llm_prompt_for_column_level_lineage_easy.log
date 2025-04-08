@@ -1,0 +1,227 @@
+2025-04-09 00:39:21,052 - INFO - AFC is enabled with max remote calls: 10.
+2025-04-09 00:39:21,633 - INFO - AFC remote call 1 is done.
+2025-04-09 00:39:21,640 - ERROR - Failed to decode JSON from response: ```json
+{
+  "DimDate": {
+    "input": "src/data/Batch1/Date.txt"
+  }
+}
+```
+2025-04-09 00:42:45,231 - INFO - AFC is enabled with max remote calls: 10.
+2025-04-09 00:42:52,071 - INFO - AFC remote call 1 is done.
+2025-04-09 00:42:52,079 - ERROR - Failed to decode JSON from response: ```json
+{
+  "sk_companyid": {
+    "inputs": [
+      {
+        "column": "cmp.cik",
+        "type": "DIRECT",
+        "subtype": "Transformation",
+        "description": "CAST(cik AS BIGINT)",
+        "masking": false
+      },
+      {
+        "column": "cmp.recdate",
+        "type": "DIRECT",
+        "subtype": "Transformation",
+        "description": "strftime(effectivedate, '%Y%m%d')",
+        "masking": false
+      }
+    ],
+    "transformation": "CAST(strftime(effectivedate, '%Y%m%d') || companyid AS BIGINT)"
+  },
+  "companyid": {
+    "inputs": [
+      {
+        "column": "cmp.cik",
+        "type": "DIRECT",
+        "subtype": "Transformation",
+        "description": "CAST(cik AS BIGINT)",
+        "masking": false
+      }
+    ],
+    "transformation": "CAST(cik AS BIGINT)"
+  },
+  "status": {
+    "inputs": [
+      {
+        "column": "cmp.status",
+        "type": "DIRECT",
+        "subtype": "Conditional",
+        "description": "CASE cmp.status WHEN 'ACTV' THEN 'Active' WHEN 'CMPT' THEN 'Completed' WHEN 'CNCL' THEN 'Canceled' WHEN 'PNDG' THEN 'Pending' WHEN 'SBMT' THEN 'Submitted' WHEN 'INAC' THEN 'Inactive' ELSE NULL END",
+        "masking": false
+      }
+    ],
+    "transformation": "CASE cmp.status WHEN 'ACTV' THEN 'Active' WHEN 'CMPT' THEN 'Completed' WHEN 'CNCL' THEN 'Canceled' WHEN 'PNDG' THEN 'Pending' WHEN 'SBMT' THEN 'Submitted' WHEN 'INAC' THEN 'Inactive' ELSE NULL END"
+  },
+  "name": {
+    "input": "cmp.CompanyName"
+  },
+  "industry": {
+    "inputs": [
+      {
+        "column": "wh_db.industry.in_name",
+        "type": "DIRECT",
+        "subtype": "Join",
+        "description": "industry name from wh_db.industry table",
+        "masking": false
+      }
+    ]
+  },
+  "sprating": {
+    "inputs": [
+      {
+        "column": "cmp.SPrating",
+        "type": "DIRECT",
+        "subtype": "Conditional",
+        "description": "CASE WHEN SPrating IN ('AAA', 'AA', 'AA+', 'AA-', 'A', 'A+', 'A-', 'BBB', 'BBB+', 'BBB-', 'BB', 'BB+', 'BB-', 'B', 'B+', 'B-', 'CCC', 'CCC+', 'CCC-', 'CC', 'C', 'D') THEN SPrating ELSE NULL::VARCHAR END",
+        "masking": false
+      }
+    ],
+    "transformation": "CASE WHEN SPrating IN ('AAA', 'AA', 'AA+', 'AA-', 'A', 'A+', 'A-', 'BBB', 'BBB+', 'BBB-', 'BB', 'BB+', 'BB-', 'B', 'B+', 'B-', 'CCC', 'CCC+', 'CCC-', 'CC', 'C', 'D') THEN SPrating ELSE NULL::VARCHAR END"
+  },
+  "islowgrade": {
+    "inputs": [
+      {
+        "column": "cmp.SPrating",
+        "type": "DIRECT",
+        "subtype": "Conditional",
+        "description": "CASE WHEN SPrating IN ('AAA', 'AA', 'A', 'AA+', 'A+', 'AA-', 'A-', 'BBB', 'BBB+', 'BBB-') THEN FALSE WHEN SPrating IN ('BB', 'B', 'CCC', 'CC', 'C', 'D', 'BB+', 'B+', 'CCC+', 'BB-', 'B-', 'CCC-') THEN TRUE ELSE NULL::BOOLEAN END",
+        "masking": false
+      }
+    ],
+    "transformation": "CASE WHEN SPrating IN ('AAA', 'AA', 'A', 'AA+', 'A+', 'AA-', 'A-', 'BBB', 'BBB+', 'BBB-') THEN FALSE WHEN SPrating IN ('BB', 'B', 'CCC', 'CC', 'C', 'D', 'BB+', 'B+', 'CCC+', 'BB-', 'B-', 'CCC-') THEN TRUE ELSE NULL::BOOLEAN END"
+  },
+  "ceo": {
+    "input": "cmp.CEOname"
+  },
+  "addressline1": {
+    "input": "cmp.AddrLine1"
+  },
+  "addressline2": {
+    "input": "cmp.AddrLine2"
+  },
+  "postalcode": {
+    "input": "cmp.PostalCode"
+  },
+  "city": {
+    "input": "cmp.City"
+  },
+  "stateprov": {
+    "input": "cmp.StateProvince"
+  },
+  "country": {
+    "input": "cmp.Country"
+  },
+  "description": {
+    "input": "cmp.Description"
+  },
+  "foundingdate": {
+    "input": "cmp.FoundingDate"
+  },
+  "iscurrent": {
+    "inputs": [
+      {
+        "column": "enddate",
+        "type": "DIRECT",
+        "subtype": "Conditional",
+        "description": "CASE WHEN enddate = '9999-12-31'::DATE THEN TRUE ELSE FALSE END",
+        "masking": false
+      }
+    ],
+    "transformation": "CASE WHEN enddate = '9999-12-31'::DATE THEN TRUE ELSE FALSE END"
+  },
+  "batchid": {
+    "input": "1"
+  },
+  "effectivedate": {
+    "input": "cmp.recdate"
+  },
+  "enddate": {
+    "inputs": [
+      {
+        "column": "cmp.recdate",
+        "type": "DIRECT",
+        "subtype": "Window",
+        "description": "COALESCE(LEAD(try_cast(recdate AS DATE)) OVER (PARTITION BY cik ORDER BY recdate), try_cast('9999-12-31' AS DATE))",
+        "masking": false
+      },
+      {
+        "column": "cmp.cik",
+        "type": "INDIRECT",
+        "subtype": "Window",
+        "description": "PARTITION BY cik",
+        "masking": false
+      }
+    ],
+    "transformation": "COALESCE(LEAD(try_cast(recdate AS DATE)) OVER (PARTITION BY cik ORDER BY recdate), try_cast('9999-12-31' AS DATE))"
+  }
+}
+```
+2025-04-09 00:54:37,753 - INFO - AFC is enabled with max remote calls: 10.
+2025-04-09 00:54:40,979 - INFO - AFC remote call 1 is done.
+2025-04-09 00:54:40,987 - ERROR - Error during model call: process_llm_response() takes 2 positional arguments but 3 were given
+2025-04-09 00:57:06,328 - INFO - AFC is enabled with max remote calls: 10.
+2025-04-09 00:57:09,141 - INFO - AFC remote call 1 is done.
+2025-04-09 00:57:09,141 - ERROR - Failed to decode JSON from response: ```json
+{
+  "CAST(strftime(a.effectivedate, '%Y%m%d') || a.accountid AS BIGINT)": {
+    "inputs": [
+      {
+        "column": "account_cust_updates.effectivedate",
+        "type": "DIRECT",
+        "subtype": "Transformation",
+        "description": "strftime(a.effectivedate, '%Y%m%d')",
+        "masking": false
+      },
+      {
+        "column": "account_cust_updates.accountid",
+        "type": "DIRECT",
+        "subtype": "Transformation",
+        "description": "a.accountid",
+        "masking": false
+      }
+    ],
+    "transformation": "CAST(strftime(a.effectivedate, '%Y%m%d') || a.accountid AS BIGINT)"
+  },
+  "a.accountid": {
+    "input": "account_cust_updates.accountid"
+  },
+  "b.sk_brokerid": {
+    "input": "wh_db.DimBroker.sk_brokerid"
+  },
+  "a.sk_customerid": {
+    "input": "account_cust_updates.sk_customerid"
+  },
+  "a.accountdesc": {
+    "input": "account_cust_updates.accountdesc"
+  },
+  "a.TaxStatus": {
+    "input": "account_cust_updates.TaxStatus"
+  },
+  "a.status": {
+    "input": "account_cust_updates.status"
+  },
+  "iscurrent": {
+    "inputs": [
+      {
+        "column": "account_cust_updates.enddate",
+        "type": "DIRECT",
+        "subtype": "Conditional",
+        "description": "CASE WHEN a.enddate = '9999-12-31'::DATE THEN true ELSE false END",
+        "masking": false
+      }
+    ],
+    "transformation": "CASE WHEN a.enddate = '9999-12-31'::DATE THEN true ELSE false END"
+  },
+  "a.batchid": {
+    "input": "account_cust_updates.batchid"
+  },
+  "a.effectivedate": {
+    "input": "account_cust_updates.effectivedate"
+  },
+  "a.enddate": {
+    "input": "account_cust_updates.enddate"
+  }
+}
+```
