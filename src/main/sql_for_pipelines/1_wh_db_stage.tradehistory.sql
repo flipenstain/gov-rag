@@ -1,5 +1,3 @@
- 
-
 CREATE OR REPLACE TABLE wh_db_stage.tradetxt AS 
 SELECT * from  read_csv('src/data/Batch1\Trade.txt', HEADER=FALSE, filename=false, all_varchar=true, delim='|',strict_mode=false , columns = {
     "tradeid": "BIGINT", 

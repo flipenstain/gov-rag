@@ -1,0 +1,35 @@
+{
+    "tradeid": {
+        "input": "h.hh_h_t_id"
+    },
+    "currenttradeid": {
+        "input": "h.hh_t_id"
+    },
+    "sk_customerid": {
+        "input": "dt.sk_customerid"
+    },
+    "sk_accountid": {
+        "input": "dt.sk_accountid"
+    },
+    "sk_securityid": {
+        "input": "dt.sk_securityid"
+    },
+    "sk_companyid": {
+        "input": "dt.sk_companyid"
+    },
+    "sk_dateid": {
+        "input": "dt.sk_closedateid"
+    },
+    "sk_timeid": {
+        "input": "dt.sk_closetimeid"
+    },
+    "currentprice": {
+        "input": "dt.tradeprice"
+    },
+    "currentholding": {
+        "input": "h.hh_after_qty"
+    },
+    "batchid": {
+        "input": "h.batchid"
+    }
+}

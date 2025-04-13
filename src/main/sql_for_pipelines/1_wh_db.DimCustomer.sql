@@ -1,5 +1,4 @@
- 
-CREATE OR REPLACE TEMP TABLE customers AS
+ CREATE OR REPLACE TEMP TABLE customers AS
   SELECT
     customerid,
     taxid,

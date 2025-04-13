@@ -10,3 +10,5 @@
     * Assign a relevant **transformation type** (e.g., `CAST`, `CASE_MAPPING`, `JOIN_LOOKUP`, `WINDOW_FUNCTION`, `RENAME`, `CONSTANT`, `EXPRESSION_CONCAT`, `SUBSTRING`, `SCD2_LOGIC`).
     * Detail the **role** of source columns if complex (e.g., join key, partition key, condition input).
 3.  Accurately handle: CTEs, Joins, `CASE`, Window Functions (`LEAD`, `PARTITION BY`, `ORDER BY`, `COALESCE`), String Ops (`SUBSTR`, `TRIM`, `||`), Casting (`CAST`, `TRY_CAST`, `strftime`), Constants, Aliases, SCD2 patterns.
+
+[YOUR SQL QUERY HERE]

@@ -1,4 +1,3 @@
- 
 INSERT INTO wh_db.FactWatches
 WITH watchhistory AS (
     SELECT

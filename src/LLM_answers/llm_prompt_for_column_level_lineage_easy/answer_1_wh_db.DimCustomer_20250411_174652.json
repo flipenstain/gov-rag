@@ -1,0 +1,92 @@
+{
+    "customerid": {
+        "input": "wh_db_stage.CustomerMgmt.customerid"
+    },
+    "taxid": {
+        "input": "wh_db_stage.CustomerMgmt.taxid"
+    },
+    "status": {
+        "input": "wh_db_stage.CustomerMgmt.status"
+    },
+    "lastname": {
+        "input": "wh_db_stage.CustomerMgmt.lastname"
+    },
+    "firstname": {
+        "input": "wh_db_stage.CustomerMgmt.firstname"
+    },
+    "middleinitial": {
+        "input": "wh_db_stage.CustomerMgmt.middleinitial"
+    },
+    "gender": {
+        "input": "wh_db_stage.CustomerMgmt.gender"
+    },
+    "tier": {
+        "input": "wh_db_stage.CustomerMgmt.tier"
+    },
+    "dob": {
+        "input": "wh_db_stage.CustomerMgmt.dob"
+    },
+    "addressline1": {
+        "input": "wh_db_stage.CustomerMgmt.addressline1"
+    },
+    "addressline2": {
+        "input": "wh_db_stage.CustomerMgmt.addressline2"
+    },
+    "postalcode": {
+        "input": "wh_db_stage.CustomerMgmt.postalcode"
+    },
+    "city": {
+        "input": "wh_db_stage.CustomerMgmt.city"
+    },
+    "stateprov": {
+        "input": "wh_db_stage.CustomerMgmt.stateprov"
+    },
+    "country": {
+        "input": "wh_db_stage.CustomerMgmt.country"
+    },
+    "phone1": {
+        "input": "wh_db_stage.CustomerMgmt.phone1"
+    },
+    "phone2": {
+        "input": "wh_db_stage.CustomerMgmt.phone2"
+    },
+    "phone3": {
+        "input": "wh_db_stage.CustomerMgmt.phone3"
+    },
+    "email1": {
+        "input": "wh_db_stage.CustomerMgmt.email1"
+    },
+    "email2": {
+        "input": "wh_db_stage.CustomerMgmt.email2"
+    },
+    "lcl_tx_id": {
+        "input": "wh_db_stage.CustomerMgmt.lcl_tx_id"
+    },
+    "nat_tx_id": {
+        "input": "wh_db_stage.CustomerMgmt.nat_tx_id"
+    },
+    "batchid": {
+        "inputs": [
+            {
+                "column": "wh_db_stage.CustomerMgmt.ActionType",
+                "type": "INDIRECT",
+                "subtype": "Filter",
+                "description": "WHERE ActionType in ('NEW', 'INACT', 'UPDCUST')",
+                "masking": false
+            }
+        ],
+        "transformation": "1"
+    },
+    "update_ts": {
+        "inputs": [
+            {
+                "column": "wh_db_stage.CustomerMgmt.ActionType",
+                "type": "INDIRECT",
+                "subtype": "Filter",
+                "description": "WHERE ActionType in ('NEW', 'INACT', 'UPDCUST')",
+                "masking": false
+            }
+        ],
+        "input": "wh_db_stage.CustomerMgmt.update_ts"
+    }
+}

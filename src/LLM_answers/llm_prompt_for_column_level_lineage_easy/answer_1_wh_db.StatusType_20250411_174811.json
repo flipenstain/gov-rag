@@ -1,0 +1,13 @@
+{
+    "StatusType": {
+        "inputs": [
+            {
+                "column": "src/data/Batch1\\StatusType.txt.StatusType",
+                "type": "DIRECT",
+                "subtype": "Identity",
+                "description": "Data loaded from file",
+                "masking": false
+            }
+        ]
+    }
+}

@@ -1,0 +1,35 @@
+{
+    "target_table": "wh_db.StatusType",
+    "lineage": {
+        "StatusTypeID": [
+            {
+                "source_table": "src/data/Batch1\\StatusType.txt",
+                "source_column": "StatusTypeID",
+                "path": [],
+                "transformation_logic": "StatusTypeID",
+                "transformation_type": "RENAME",
+                "column_role": "target"
+            }
+        ],
+        "StatusTypeCode": [
+            {
+                "source_table": "src/data/Batch1\\StatusType.txt",
+                "source_column": "StatusTypeCode",
+                "path": [],
+                "transformation_logic": "StatusTypeCode",
+                "transformation_type": "RENAME",
+                "column_role": "target"
+            }
+        ],
+        "StatusTypeDescription": [
+            {
+                "source_table": "src/data/Batch1\\StatusType.txt",
+                "source_column": "StatusTypeDescription",
+                "path": [],
+                "transformation_logic": "StatusTypeDescription",
+                "transformation_type": "RENAME",
+                "column_role": "target"
+            }
+        ]
+    }
+}

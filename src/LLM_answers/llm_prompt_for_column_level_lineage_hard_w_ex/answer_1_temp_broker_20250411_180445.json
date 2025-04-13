@@ -1,0 +1,111 @@
+{
+    "target_table": "temp_broker",
+    "sources_summary": [
+        {
+            "type": "TABLE",
+            "name": "read_csv('src/data/Batch1\\HR.csv', delim=',', columns={'employeeid': 'BIGINT', 'managerid': 'BIGINT', 'employeefirstname': 'STRING', 'employeelastname': 'STRING', 'employeemi': 'STRING', 'employeejobcode': 'STRING', 'employeebranch': 'STRING', 'employeeoffice': 'STRING', 'employeephone': 'STRING'}, header=False)",
+            "alias_or_cte": null
+        }
+    ],
+    "lineage": {
+        "employeeid": {
+            "sources": [
+                {
+                    "source_identifier": "read_csv('src/data/Batch1\\HR.csv', delim=',', columns={'employeeid': 'BIGINT', 'managerid': 'BIGINT', 'employeefirstname': 'STRING', 'employeelastname': 'STRING', 'employeemi': 'STRING', 'employeejobcode': 'STRING', 'employeebranch': 'STRING', 'employeeoffice': 'STRING', 'employeephone': 'STRING'}, header=False).employeeid",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "employeeid"
+        },
+        "managerid": {
+            "sources": [
+                {
+                    "source_identifier": "read_csv('src/data/Batch1\\HR.csv', delim=',', columns={'employeeid': 'BIGINT', 'managerid': 'BIGINT', 'employeefirstname': 'STRING', 'employeelastname': 'STRING', 'employeemi': 'STRING', 'employeejobcode': 'STRING', 'employeebranch': 'STRING', 'employeeoffice': 'STRING', 'employeephone': 'STRING'}, header=False).managerid",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "managerid"
+        },
+        "employeefirstname": {
+            "sources": [
+                {
+                    "source_identifier": "read_csv('src/data/Batch1\\HR.csv', delim=',', columns={'employeeid': 'BIGINT', 'managerid': 'BIGINT', 'employeefirstname': 'STRING', 'employeelastname': 'STRING', 'employeemi': 'STRING', 'employeejobcode': 'STRING', 'employeebranch': 'STRING', 'employeeoffice': 'STRING', 'employeephone': 'STRING'}, header=False).employeefirstname",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "employeefirstname"
+        },
+        "employeelastname": {
+            "sources": [
+                {
+                    "source_identifier": "read_csv('src/data/Batch1\\HR.csv', delim=',', columns={'employeeid': 'BIGINT', 'managerid': 'BIGINT', 'employeefirstname': 'STRING', 'employeelastname': 'STRING', 'employeemi': 'STRING', 'employeejobcode': 'STRING', 'employeebranch': 'STRING', 'employeeoffice': 'STRING', 'employeephone': 'STRING'}, header=False).employeelastname",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "employeelastname"
+        },
+        "employeemi": {
+            "sources": [
+                {
+                    "source_identifier": "read_csv('src/data/Batch1\\HR.csv', delim=',', columns={'employeeid': 'BIGINT', 'managerid': 'BIGINT', 'employeefirstname': 'STRING', 'employeelastname': 'STRING', 'employeemi': 'STRING', 'employeejobcode': 'STRING', 'employeebranch': 'STRING', 'employeeoffice': 'STRING', 'employeephone': 'STRING'}, header=False).employeemi",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "employeemi"
+        },
+        "employeejobcode": {
+            "sources": [
+                {
+                    "source_identifier": "read_csv('src/data/Batch1\\HR.csv', delim=',', columns={'employeeid': 'BIGINT', 'managerid': 'BIGINT', 'employeefirstname': 'STRING', 'employeelastname': 'STRING', 'employeemi': 'STRING', 'employeejobcode': 'STRING', 'employeebranch': 'STRING', 'employeeoffice': 'STRING', 'employeephone': 'STRING'}, header=False).employeejobcode",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "employeejobcode"
+        },
+        "employeebranch": {
+            "sources": [
+                {
+                    "source_identifier": "read_csv('src/data/Batch1\\HR.csv', delim=',', columns={'employeeid': 'BIGINT', 'managerid': 'BIGINT', 'employeefirstname': 'STRING', 'employeelastname': 'STRING', 'employeemi': 'STRING', 'employeejobcode': 'STRING', 'employeebranch': 'STRING', 'employeeoffice': 'STRING', 'employeephone': 'STRING'}, header=False).employeebranch",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "employeebranch"
+        },
+        "employeeoffice": {
+            "sources": [
+                {
+                    "source_identifier": "read_csv('src/data/Batch1\\HR.csv', delim=',', columns={'employeeid': 'BIGINT', 'managerid': 'BIGINT', 'employeefirstname': 'STRING', 'employeelastname': 'STRING', 'employeemi': 'STRING', 'employeejobcode': 'STRING', 'employeebranch': 'STRING', 'employeeoffice': 'STRING', 'employeephone': 'STRING'}, header=False).employeeoffice",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "employeeoffice"
+        },
+        "employeephone": {
+            "sources": [
+                {
+                    "source_identifier": "read_csv('src/data/Batch1\\HR.csv', delim=',', columns={'employeeid': 'BIGINT', 'managerid': 'BIGINT', 'employeefirstname': 'STRING', 'employeelastname': 'STRING', 'employeemi': 'STRING', 'employeejobcode': 'STRING', 'employeebranch': 'STRING', 'employeeoffice': 'STRING', 'employeephone': 'STRING'}, header=False).employeephone",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "employeephone"
+        }
+    }
+}

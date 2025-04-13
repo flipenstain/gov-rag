@@ -1,4 +1,3 @@
- 
 INSERT INTO wh_db.Financial
 WITH finwire_parsed AS (
     -- Parse the fixed-width data and extract relevant fields including conditional id/cname

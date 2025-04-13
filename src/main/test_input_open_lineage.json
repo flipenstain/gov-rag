@@ -1,0 +1,627 @@
+{
+  "sk_customerid": {
+    "transformationType": "TRANSFORMATION",
+    "transformationDescription": "ROW_NUMBER() OVER () + (SELECT max_sk_customerid FROM MaxSK) + 1",
+    "inputFields": [
+      {
+        "namespace": "my_etl_namespace",
+        "name": "wh_db.DimCustomer",
+        "field": "sk_customerid",
+        "transformations": [
+          {
+            "type": "DIRECT",
+            "description": "MAX(sk_customerid) from wh_db.DimCustomer",
+            "masking": false
+          }
+        ]
+      }
+    ]
+  },
+  "customerid": {
+    "transformationType": "IDENTITY",
+    "transformationDescription": "Direct copy",
+    "inputFields": [
+      {
+        "namespace": "my_etl_namespace",
+        "name": "CustomerData",
+        "field": "customerid",
+        "transformations": [
+          {
+            "type": "DIRECT",
+            "subtype": "IDENTITY",
+            "description": "",
+            "masking": false
+          }
+        ]
+      }
+    ]
+  },
+  "taxid": {
+    "transformationType": "IDENTITY",
+    "transformationDescription": "Direct copy",
+    "inputFields": [
+      {
+        "namespace": "my_etl_namespace",
+        "name": "CustomerData",
+        "field": "taxid",
+        "transformations": [
+          {
+            "type": "DIRECT",
+            "subtype": "IDENTITY",
+            "description": "",
+            "masking": false
+          }
+        ]
+      }
+    ]
+  },
+  "status": {
+    "transformationType": "IDENTITY",
+    "transformationDescription": "Direct copy",
+    "inputFields": [
+      {
+        "namespace": "my_etl_namespace",
+        "name": "CustomerData",
+        "field": "status",
+        "transformations": [
+          {
+            "type": "DIRECT",
+            "subtype": "IDENTITY",
+            "description": "",
+            "masking": false
+          }
+        ]
+      }
+    ]
+  },
+  "lastname": {
+    "transformationType": "IDENTITY",
+    "transformationDescription": "Direct copy",
+    "inputFields": [
+      {
+        "namespace": "my_etl_namespace",
+        "name": "CustomerData",
+        "field": "lastname",
+        "transformations": [
+          {
+            "type": "DIRECT",
+            "subtype": "IDENTITY",
+            "description": "",
+            "masking": false
+          }
+        ]
+      }
+    ]
+  },
+  "firstname": {
+    "transformationType": "IDENTITY",
+    "transformationDescription": "Direct copy",
+    "inputFields": [
+      {
+        "namespace": "my_etl_namespace",
+        "name": "CustomerData",
+        "field": "firstname",
+        "transformations": [
+          {
+            "type": "DIRECT",
+            "subtype": "IDENTITY",
+            "description": "",
+            "masking": false
+          }
+        ]
+      }
+    ]
+  },
+  "middleinitial": {
+    "transformationType": "IDENTITY",
+    "transformationDescription": "Direct copy",
+    "inputFields": [
+      {
+        "namespace": "my_etl_namespace",
+        "name": "CustomerData",
+        "field": "middleinitial",
+        "transformations": [
+          {
+            "type": "DIRECT",
+            "subtype": "IDENTITY",
+            "description": "",
+            "masking": false
+          }
+        ]
+      }
+    ]
+  },
+  "gender": {
+    "transformationType": "TRANSFORMATION",
+    "transformationDescription": "IF(c.gender IN ('M', 'F'), c.gender, 'U')",
+    "inputFields": [
+      {
+        "namespace": "my_etl_namespace",
+        "name": "CustomerData",
+        "field": "gender",
+        "transformations": [
+          {
+            "type": "DIRECT",
+            "description": "IF(c.gender IN ('M', 'F'), c.gender, 'U')",
+            "masking": false
+          }
+        ]
+      }
+    ]
+  },
+  "tier": {
+    "transformationType": "IDENTITY",
+    "transformationDescription": "Direct copy",
+    "inputFields": [
+      {
+        "namespace": "my_etl_namespace",
+        "name": "CustomerData",
+        "field": "tier",
+        "transformations": [
+          {
+            "type": "DIRECT",
+            "subtype": "IDENTITY",
+            "description": "",
+            "masking": false
+          }
+        ]
+      }
+    ]
+  },
+  "dob": {
+    "transformationType": "IDENTITY",
+    "transformationDescription": "Direct copy",
+    "inputFields": [
+      {
+        "namespace": "my_etl_namespace",
+        "name": "CustomerData",
+        "field": "dob",
+        "transformations": [
+          {
+            "type": "DIRECT",
+            "subtype": "IDENTITY",
+            "description": "",
+            "masking": false
+          }
+        ]
+      }
+    ]
+  },
+  "addressline1": {
+    "transformationType": "IDENTITY",
+    "transformationDescription": "Direct copy",
+    "inputFields": [
+      {
+        "namespace": "my_etl_namespace",
+        "name": "CustomerData",
+        "field": "addressline1",
+        "transformations": [
+          {
+            "type": "DIRECT",
+            "subtype": "IDENTITY",
+            "description": "",
+            "masking": false
+          }
+        ]
+      }
+    ]
+  },
+  "addressline2": {
+    "transformationType": "IDENTITY",
+    "transformationDescription": "Direct copy",
+    "inputFields": [
+      {
+        "namespace": "my_etl_namespace",
+        "name": "CustomerData",
+        "field": "addressline2",
+        "transformations": [
+          {
+            "type": "DIRECT",
+            "subtype": "IDENTITY",
+            "description": "",
+            "masking": false
+          }
+        ]
+      }
+    ]
+  },
+  "postalcode": {
+    "transformationType": "IDENTITY",
+    "transformationDescription": "Direct copy",
+    "inputFields": [
+      {
+        "namespace": "my_etl_namespace",
+        "name": "CustomerData",
+        "field": "postalcode",
+        "transformations": [
+          {
+            "type": "DIRECT",
+            "subtype": "IDENTITY",
+            "description": "",
+            "masking": false
+          }
+        ]
+      }
+    ]
+  },
+  "city": {
+    "transformationType": "IDENTITY",
+    "transformationDescription": "Direct copy",
+    "inputFields": [
+      {
+        "namespace": "my_etl_namespace",
+        "name": "CustomerData",
+        "field": "city",
+        "transformations": [
+          {
+            "type": "DIRECT",
+            "subtype": "IDENTITY",
+            "description": "",
+            "masking": false
+          }
+        ]
+      }
+    ]
+  },
+  "stateprov": {
+    "transformationType": "IDENTITY",
+    "transformationDescription": "Direct copy",
+    "inputFields": [
+      {
+        "namespace": "my_etl_namespace",
+        "name": "CustomerData",
+        "field": "stateprov",
+        "transformations": [
+          {
+            "type": "DIRECT",
+            "subtype": "IDENTITY",
+            "description": "",
+            "masking": false
+          }
+        ]
+      }
+    ]
+  },
+  "country": {
+    "transformationType": "IDENTITY",
+    "transformationDescription": "Direct copy",
+    "inputFields": [
+      {
+        "namespace": "my_etl_namespace",
+        "name": "CustomerData",
+        "field": "country",
+        "transformations": [
+          {
+            "type": "DIRECT",
+            "subtype": "IDENTITY",
+            "description": "",
+            "masking": false
+          }
+        ]
+      }
+    ]
+  },
+  "phone1": {
+    "transformationType": "IDENTITY",
+    "transformationDescription": "Direct copy",
+    "inputFields": [
+      {
+        "namespace": "my_etl_namespace",
+        "name": "CustomerData",
+        "field": "phone1",
+        "transformations": [
+          {
+            "type": "DIRECT",
+            "subtype": "IDENTITY",
+            "description": "",
+            "masking": false
+          }
+        ]
+      }
+    ]
+  },
+  "phone2": {
+    "transformationType": "IDENTITY",
+    "transformationDescription": "Direct copy",
+    "inputFields": [
+      {
+        "namespace": "my_etl_namespace",
+        "name": "CustomerData",
+        "field": "phone2",
+        "transformations": [
+          {
+            "type": "DIRECT",
+            "subtype": "IDENTITY",
+            "description": "",
+            "masking": false
+          }
+        ]
+      }
+    ]
+  },
+  "phone3": {
+    "transformationType": "IDENTITY",
+    "transformationDescription": "Direct copy",
+    "inputFields": [
+      {
+        "namespace": "my_etl_namespace",
+        "name": "CustomerData",
+        "field": "phone3",
+        "transformations": [
+          {
+            "type": "DIRECT",
+            "subtype": "IDENTITY",
+            "description": "",
+            "masking": false
+          }
+        ]
+      }
+    ]
+  },
+  "email1": {
+    "transformationType": "IDENTITY",
+    "transformationDescription": "Direct copy",
+    "inputFields": [
+      {
+        "namespace": "my_etl_namespace",
+        "name": "CustomerData",
+        "field": "email1",
+        "transformations": [
+          {
+            "type": "DIRECT",
+            "subtype": "IDENTITY",
+            "description": "",
+            "masking": false
+          }
+        ]
+      }
+    ]
+  },
+  "email2": {
+    "transformationType": "IDENTITY",
+    "transformationDescription": "Direct copy",
+    "inputFields": [
+      {
+        "namespace": "my_etl_namespace",
+        "name": "CustomerData",
+        "field": "email2",
+        "transformations": [
+          {
+            "type": "DIRECT",
+            "subtype": "IDENTITY",
+            "description": "",
+            "masking": false
+          }
+        ]
+      }
+    ]
+  },
+  "nationaltaxratedesc": {
+    "transformationType": "IDENTITY",
+    "transformationDescription": "Direct copy",
+    "inputFields": [
+      {
+        "namespace": "my_etl_namespace",
+        "name": "CustomerData",
+        "field": "nationaltaxratedesc",
+        "transformations": [
+          {
+            "type": "DIRECT",
+            "subtype": "IDENTITY",
+            "description": "",
+            "masking": false
+          }
+        ]
+      }
+    ]
+  },
+  "nationaltaxrate": {
+    "transformationType": "IDENTITY",
+    "transformationDescription": "Direct copy",
+    "inputFields": [
+      {
+        "namespace": "my_etl_namespace",
+        "name": "CustomerData",
+        "field": "nationaltaxrate",
+        "transformations": [
+          {
+            "type": "DIRECT",
+            "subtype": "IDENTITY",
+            "description": "",
+            "masking": false
+          }
+        ]
+      }
+    ]
+  },
+  "localtaxratedesc": {
+    "transformationType": "IDENTITY",
+    "transformationDescription": "Direct copy",
+    "inputFields": [
+      {
+        "namespace": "my_etl_namespace",
+        "name": "CustomerData",
+        "field": "localtaxratedesc",
+        "transformations": [
+          {
+            "type": "DIRECT",
+            "subtype": "IDENTITY",
+            "description": "",
+            "masking": false
+          }
+        ]
+      }
+    ]
+  },
+  "localtaxrate": {
+    "transformationType": "IDENTITY",
+    "transformationDescription": "Direct copy",
+    "inputFields": [
+      {
+        "namespace": "my_etl_namespace",
+        "name": "CustomerData",
+        "field": "localtaxrate",
+        "transformations": [
+          {
+            "type": "DIRECT",
+            "subtype": "IDENTITY",
+            "description": "",
+            "masking": false
+          }
+        ]
+      }
+    ]
+  },
+  "agencyid": {
+    "transformationType": "IDENTITY",
+    "transformationDescription": "Direct copy",
+    "inputFields": [
+      {
+        "namespace": "my_etl_namespace",
+        "name": "CustomerData",
+        "field": "agencyid",
+        "transformations": [
+          {
+            "type": "DIRECT",
+            "subtype": "IDENTITY",
+            "description": "",
+            "masking": false
+          }
+        ]
+      }
+    ]
+  },
+  "creditrating": {
+    "transformationType": "IDENTITY",
+    "transformationDescription": "Direct copy",
+    "inputFields": [
+      {
+        "namespace": "my_etl_namespace",
+        "name": "CustomerData",
+        "field": "creditrating",
+        "transformations": [
+          {
+            "type": "DIRECT",
+            "subtype": "IDENTITY",
+            "description": "",
+            "masking": false
+          }
+        ]
+      }
+    ]
+  },
+  "networth": {
+    "transformationType": "IDENTITY",
+    "transformationDescription": "Direct copy",
+    "inputFields": [
+      {
+        "namespace": "my_etl_namespace",
+        "name": "CustomerData",
+        "field": "networth",
+        "transformations": [
+          {
+            "type": "DIRECT",
+            "subtype": "IDENTITY",
+            "description": "",
+            "masking": false
+          }
+        ]
+      }
+    ]
+  },
+  "marketingnameplate": {
+    "transformationType": "IDENTITY",
+    "transformationDescription": "Direct copy",
+    "inputFields": [
+      {
+        "namespace": "my_etl_namespace",
+        "name": "CustomerData",
+        "field": "marketingnameplate",
+        "transformations": [
+          {
+            "type": "DIRECT",
+            "subtype": "IDENTITY",
+            "description": "",
+            "masking": false
+          }
+        ]
+      }
+    ]
+  },
+  "iscurrent": {
+    "transformationType": "IDENTITY",
+    "transformationDescription": "Direct copy",
+    "inputFields": [
+      {
+        "namespace": "my_etl_namespace",
+        "name": "CustomerData",
+        "field": "iscurrent",
+        "transformations": [
+          {
+            "type": "DIRECT",
+            "subtype": "IDENTITY",
+            "description": "",
+            "masking": false
+          }
+        ]
+      }
+    ]
+  },
+  "batchid": {
+    "transformationType": "IDENTITY",
+    "transformationDescription": "Direct copy",
+    "inputFields": [
+      {
+        "namespace": "my_etl_namespace",
+        "name": "CustomerData",
+        "field": "batchid",
+        "transformations": [
+          {
+            "type": "DIRECT",
+            "subtype": "IDENTITY",
+            "description": "",
+            "masking": false
+          }
+        ]
+      }
+    ]
+  },
+  "effectivedate": {
+    "transformationType": "IDENTITY",
+    "transformationDescription": "Direct copy",
+    "inputFields": [
+      {
+        "namespace": "my_etl_namespace",
+        "name": "CustomerData",
+        "field": "effectivedate",
+        "transformations": [
+          {
+            "type": "DIRECT",
+            "subtype": "IDENTITY",
+            "description": "",
+            "masking": false
+          }
+        ]
+      }
+    ]
+  },
+  "enddate": {
+    "transformationType": "IDENTITY",
+    "transformationDescription": "Direct copy",
+    "inputFields": [
+      {
+        "namespace": "my_etl_namespace",
+        "name": "CustomerData",
+        "field": "enddate",
+        "transformations": [
+          {
+            "type": "DIRECT",
+            "subtype": "IDENTITY",
+            "description": "",
+            "masking": false
+          }
+        ]
+      }
+    ]
+  }
+}

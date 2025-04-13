@@ -1,4 +1,3 @@
-
 INSERT INTO wh_db.DimCustomer (
     sk_customerid,
     customerid,

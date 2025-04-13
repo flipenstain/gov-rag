@@ -1,4 +1,3 @@
-
 CREATE OR REPLACE TEMP TABLE temp_propect AS 
 SELECT     *, 
     1 AS batchid 

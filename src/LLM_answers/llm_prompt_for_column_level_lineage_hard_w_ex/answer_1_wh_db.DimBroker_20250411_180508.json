@@ -1,0 +1,142 @@
+{
+    "target_table": "wh_db.DimBroker",
+    "sources_summary": [
+        {
+            "type": "TABLE",
+            "name": "temp_broker",
+            "alias_or_cte": null
+        },
+        {
+            "type": "TABLE",
+            "name": "wh_db.DimDate",
+            "alias_or_cte": null
+        }
+    ],
+    "lineage": {
+        "sk_brokerid": {
+            "sources": [
+                {
+                    "source_identifier": "temp_broker.employeeid",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "employeeid AS sk_brokerid"
+        },
+        "brokerid": {
+            "sources": [
+                {
+                    "source_identifier": "temp_broker.employeeid",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "employeeid AS brokerid"
+        },
+        "managerid": {
+            "sources": [
+                {
+                    "source_identifier": "temp_broker.managerid",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "managerid"
+        },
+        "firstname": {
+            "sources": [
+                {
+                    "source_identifier": "temp_broker.employeefirstname",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "employeefirstname AS firstname"
+        },
+        "lastname": {
+            "sources": [
+                {
+                    "source_identifier": "temp_broker.employeelastname",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "employeelastname AS lastname"
+        },
+        "middleinitial": {
+            "sources": [
+                {
+                    "source_identifier": "temp_broker.employeemi",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "employeemi AS middleinitial"
+        },
+        "branch": {
+            "sources": [
+                {
+                    "source_identifier": "temp_broker.employeebranch",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "employeebranch AS branch"
+        },
+        "office": {
+            "sources": [
+                {
+                    "source_identifier": "temp_broker.employeeoffice",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "employeeoffice AS office"
+        },
+        "phone": {
+            "sources": [
+                {
+                    "source_identifier": "temp_broker.employeephone",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "employeephone AS phone"
+        },
+        "iscurrent": {
+            "sources": [],
+            "transformation_type": "CONSTANT",
+            "transformation_logic": "true"
+        },
+        "batchid": {
+            "sources": [],
+            "transformation_type": "CONSTANT",
+            "transformation_logic": "1"
+        },
+        "effectivedate": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db.DimDate.datevalue",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "AGGREGATION",
+            "transformation_logic": "(SELECT min(datevalue::DATE) as effectivedate FROM wh_db.DimDate)"
+        },
+        "enddate": {
+            "sources": [],
+            "transformation_type": "CONSTANT",
+            "transformation_logic": "'9999-12-31'::DATE"
+        }
+    }
+}

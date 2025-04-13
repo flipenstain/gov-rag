@@ -1,0 +1,361 @@
+{
+    "target_table": "wh_db.DimCompany",
+    "sources_summary": {
+        "tables": [
+            "wh_db_stage.FinWire",
+            "wh_db.industry"
+        ],
+        "ctes": [
+            "cmp"
+        ]
+    },
+    "lineage": {
+        "sk_companyid": {
+            "sources": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value",
+                    "path": [
+                        "cmp"
+                    ],
+                    "transformation": "TRIM(SUBSTR(value, 61, 10))",
+                    "transformation_type": "SUBSTRING",
+                    "role": "data"
+                },
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "recdate",
+                    "path": [
+                        "cmp"
+                    ],
+                    "transformation": "recdate",
+                    "transformation_type": "RENAME",
+                    "role": "data"
+                }
+            ],
+            "transformation": "CAST(strftime(effectivedate, '%Y%m%d') || companyid AS BIGINT)",
+            "transformation_type": "EXPRESSION_CONCAT"
+        },
+        "companyid": {
+            "sources": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value",
+                    "path": [
+                        "cmp"
+                    ],
+                    "transformation": "TRIM(SUBSTR(value, 61, 10))",
+                    "transformation_type": "SUBSTRING",
+                    "role": "data"
+                }
+            ],
+            "transformation": "CAST(cik AS BIGINT)",
+            "transformation_type": "CAST"
+        },
+        "status": {
+            "sources": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value",
+                    "path": [
+                        "cmp"
+                    ],
+                    "transformation": "TRIM(SUBSTR(value, 71, 4))",
+                    "transformation_type": "SUBSTRING",
+                    "role": "data"
+                }
+            ],
+            "transformation": "CASE cmp.status WHEN 'ACTV' THEN 'Active' WHEN 'CMPT' THEN 'Completed' WHEN 'CNCL' THEN 'Canceled' WHEN 'PNDG' THEN 'Pending' WHEN 'SBMT' THEN 'Submitted' WHEN 'INAC' THEN 'Inactive' ELSE NULL END",
+            "transformation_type": "CASE_MAPPING"
+        },
+        "name": {
+            "sources": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value",
+                    "path": [
+                        "cmp"
+                    ],
+                    "transformation": "TRIM(SUBSTR(value, 1, 60))",
+                    "transformation_type": "SUBSTRING",
+                    "role": "data"
+                }
+            ],
+            "transformation": "CompanyName",
+            "transformation_type": "RENAME"
+        },
+        "industry": {
+            "sources": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value",
+                    "path": [
+                        "cmp"
+                    ],
+                    "transformation": "TRIM(SUBSTR(value, 75, 2))",
+                    "transformation_type": "SUBSTRING",
+                    "role": "join_key"
+                },
+                {
+                    "table": "wh_db.industry",
+                    "column": "in_name",
+                    "path": [],
+                    "transformation": "in_name",
+                    "transformation_type": "RENAME",
+                    "role": "data"
+                }
+            ],
+            "transformation": "ind.in_name",
+            "transformation_type": "JOIN_LOOKUP"
+        },
+        "sprating": {
+            "sources": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value",
+                    "path": [
+                        "cmp"
+                    ],
+                    "transformation": "TRIM(SUBSTR(value, 77, 4))",
+                    "transformation_type": "SUBSTRING",
+                    "role": "data"
+                }
+            ],
+            "transformation": "CASE WHEN SPrating IN ('AAA', 'AA', 'AA+', 'AA-', 'A', 'A+', 'A-', 'BBB', 'BBB+', 'BBB-', 'BB', 'BB+', 'BB-', 'B', 'B+', 'B-', 'CCC', 'CCC+', 'CCC-', 'CC', 'C', 'D') THEN SPrating ELSE NULL::VARCHAR END",
+            "transformation_type": "CASE_MAPPING"
+        },
+        "islowgrade": {
+            "sources": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value",
+                    "path": [
+                        "cmp"
+                    ],
+                    "transformation": "TRIM(SUBSTR(value, 77, 4))",
+                    "transformation_type": "SUBSTRING",
+                    "role": "data"
+                }
+            ],
+            "transformation": "CASE WHEN SPrating IN ('AAA', 'AA', 'A', 'AA+', 'A+', 'AA-', 'A-', 'BBB', 'BBB+', 'BBB-') THEN FALSE WHEN SPrating IN ('BB', 'B', 'CCC', 'CC', 'C', 'D', 'BB+', 'B+', 'CCC+', 'BB-', 'B-', 'CCC-') THEN TRUE ELSE NULL::BOOLEAN END",
+            "transformation_type": "CASE_MAPPING"
+        },
+        "ceo": {
+            "sources": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value",
+                    "path": [
+                        "cmp"
+                    ],
+                    "transformation": "TRIM(SUBSTR(value, 330, 46))",
+                    "transformation_type": "SUBSTRING",
+                    "role": "data"
+                }
+            ],
+            "transformation": "CEOname",
+            "transformation_type": "RENAME"
+        },
+        "addressline1": {
+            "sources": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value",
+                    "path": [
+                        "cmp"
+                    ],
+                    "transformation": "TRIM(SUBSTR(value, 89, 80))",
+                    "transformation_type": "SUBSTRING",
+                    "role": "data"
+                }
+            ],
+            "transformation": "AddrLine1",
+            "transformation_type": "RENAME"
+        },
+        "addressline2": {
+            "sources": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value",
+                    "path": [
+                        "cmp"
+                    ],
+                    "transformation": "TRIM(SUBSTR(value, 169, 80))",
+                    "transformation_type": "SUBSTRING",
+                    "role": "data"
+                }
+            ],
+            "transformation": "AddrLine2",
+            "transformation_type": "RENAME"
+        },
+        "postalcode": {
+            "sources": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value",
+                    "path": [
+                        "cmp"
+                    ],
+                    "transformation": "TRIM(SUBSTR(value, 249, 12))",
+                    "transformation_type": "SUBSTRING",
+                    "role": "data"
+                }
+            ],
+            "transformation": "PostalCode",
+            "transformation_type": "RENAME"
+        },
+        "city": {
+            "sources": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value",
+                    "path": [
+                        "cmp"
+                    ],
+                    "transformation": "TRIM(SUBSTR(value, 261, 25))",
+                    "transformation_type": "SUBSTRING",
+                    "role": "data"
+                }
+            ],
+            "transformation": "City",
+            "transformation_type": "RENAME"
+        },
+        "stateprov": {
+            "sources": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value",
+                    "path": [
+                        "cmp"
+                    ],
+                    "transformation": "TRIM(SUBSTR(value, 286, 20))",
+                    "transformation_type": "SUBSTRING",
+                    "role": "data"
+                }
+            ],
+            "transformation": "StateProvince",
+            "transformation_type": "RENAME"
+        },
+        "country": {
+            "sources": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value",
+                    "path": [
+                        "cmp"
+                    ],
+                    "transformation": "TRIM(SUBSTR(value, 306, 24))",
+                    "transformation_type": "SUBSTRING",
+                    "role": "data"
+                }
+            ],
+            "transformation": "Country",
+            "transformation_type": "RENAME"
+        },
+        "description": {
+            "sources": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value",
+                    "path": [
+                        "cmp"
+                    ],
+                    "transformation": "TRIM(SUBSTR(value, 376, 150))",
+                    "transformation_type": "SUBSTRING",
+                    "role": "data"
+                }
+            ],
+            "transformation": "Description",
+            "transformation_type": "RENAME"
+        },
+        "foundingdate": {
+            "sources": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value",
+                    "path": [
+                        "cmp"
+                    ],
+                    "transformation": "TRY_CAST(TRY_CAST(SUBSTRING(value, 81, 8) AS TIMESTAMP) AS DATE)",
+                    "transformation_type": "CAST",
+                    "role": "data"
+                }
+            ],
+            "transformation": "FoundingDate",
+            "transformation_type": "RENAME"
+        },
+        "iscurrent": {
+            "sources": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "recdate",
+                    "path": [
+                        "cmp"
+                    ],
+                    "transformation": "recdate",
+                    "transformation_type": "RENAME",
+                    "role": "data"
+                }
+            ],
+            "transformation": "CASE WHEN enddate = '9999-12-31'::DATE THEN TRUE ELSE FALSE END",
+            "transformation_type": "SCD2_LOGIC"
+        },
+        "batchid": {
+            "sources": [],
+            "transformation": "1",
+            "transformation_type": "CONSTANT"
+        },
+        "effectivedate": {
+            "sources": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "recdate",
+                    "path": [
+                        "cmp"
+                    ],
+                    "transformation": "recdate",
+                    "transformation_type": "RENAME",
+                    "role": "data"
+                }
+            ],
+            "transformation": "recdate",
+            "transformation_type": "RENAME"
+        },
+        "enddate": {
+            "sources": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "recdate",
+                    "path": [
+                        "cmp"
+                    ],
+                    "transformation": "recdate",
+                    "transformation_type": "RENAME",
+                    "role": "partition_key"
+                },
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value",
+                    "path": [
+                        "cmp"
+                    ],
+                    "transformation": "TRIM(SUBSTR(value, 61, 10))",
+                    "transformation_type": "SUBSTRING",
+                    "role": "partition_key"
+                },
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "recdate",
+                    "path": [
+                        "cmp"
+                    ],
+                    "transformation": "recdate",
+                    "transformation_type": "RENAME",
+                    "role": "data"
+                }
+            ],
+            "transformation": "COALESCE(LEAD(try_cast(recdate AS DATE)) OVER (PARTITION BY cik ORDER BY recdate), try_cast('9999-12-31' AS DATE))",
+            "transformation_type": "WINDOW_FUNCTION"
+        }
+    }
+}

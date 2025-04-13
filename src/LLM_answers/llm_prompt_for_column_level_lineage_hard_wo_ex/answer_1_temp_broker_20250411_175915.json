@@ -1,0 +1,126 @@
+{
+    "target_table": "temp_broker",
+    "sources_summary": {
+        "read_csv('src/data/Batch1\\HR.csv', delim=',', columns={'employeeid': 'BIGINT', 'managerid': 'BIGINT', 'employeefirstname': 'STRING', 'employeelastname': 'STRING', 'employeemi': 'STRING', 'employeejobcode': 'STRING', 'employeebranch': 'STRING', 'employeeoffice': 'STRING', 'employeephone': 'STRING'}, header=False)": [
+            "employeeid",
+            "managerid",
+            "employeefirstname",
+            "employeelastname",
+            "employeemi",
+            "employeejobcode",
+            "employeebranch",
+            "employeeoffice",
+            "employeephone"
+        ]
+    },
+    "lineage": {
+        "employeeid": {
+            "path": [],
+            "source_columns": [
+                {
+                    "table": "read_csv('src/data/Batch1\\HR.csv', delim=',', columns={'employeeid': 'BIGINT', 'managerid': 'BIGINT', 'employeefirstname': 'STRING', 'employeelastname': 'STRING', 'employeemi': 'STRING', 'employeejobcode': 'STRING', 'employeebranch': 'STRING', 'employeeoffice': 'STRING', 'employeephone': 'STRING'}, header=False)",
+                    "column": "employeeid",
+                    "role": "select"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "employeeid"
+        },
+        "managerid": {
+            "path": [],
+            "source_columns": [
+                {
+                    "table": "read_csv('src/data/Batch1\\HR.csv', delim=',', columns={'employeeid': 'BIGINT', 'managerid': 'BIGINT', 'employeefirstname': 'STRING', 'employeelastname': 'STRING', 'employeemi': 'STRING', 'employeejobcode': 'STRING', 'employeebranch': 'STRING', 'employeeoffice': 'STRING', 'employeephone': 'STRING'}, header=False)",
+                    "column": "managerid",
+                    "role": "select"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "managerid"
+        },
+        "employeefirstname": {
+            "path": [],
+            "source_columns": [
+                {
+                    "table": "read_csv('src/data/Batch1\\HR.csv', delim=',', columns={'employeeid': 'BIGINT', 'managerid': 'BIGINT', 'employeefirstname': 'STRING', 'employeelastname': 'STRING', 'employeemi': 'STRING', 'employeejobcode': 'STRING', 'employeebranch': 'STRING', 'employeeoffice': 'STRING', 'employeephone': 'STRING'}, header=False)",
+                    "column": "employeefirstname",
+                    "role": "select"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "employeefirstname"
+        },
+        "employeelastname": {
+            "path": [],
+            "source_columns": [
+                {
+                    "table": "read_csv('src/data/Batch1\\HR.csv', delim=',', columns={'employeeid': 'BIGINT', 'managerid': 'BIGINT', 'employeefirstname': 'STRING', 'employeelastname': 'STRING', 'employeemi': 'STRING', 'employeejobcode': 'STRING', 'employeebranch': 'STRING', 'employeeoffice': 'STRING', 'employeephone': 'STRING'}, header=False)",
+                    "column": "employeelastname",
+                    "role": "select"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "employeelastname"
+        },
+        "employeemi": {
+            "path": [],
+            "source_columns": [
+                {
+                    "table": "read_csv('src/data/Batch1\\HR.csv', delim=',', columns={'employeeid': 'BIGINT', 'managerid': 'BIGINT', 'employeefirstname': 'STRING', 'employeelastname': 'STRING', 'employeemi': 'STRING', 'employeejobcode': 'STRING', 'employeebranch': 'STRING', 'employeeoffice': 'STRING', 'employeephone': 'STRING'}, header=False)",
+                    "column": "employeemi",
+                    "role": "select"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "employeemi"
+        },
+        "employeejobcode": {
+            "path": [],
+            "source_columns": [
+                {
+                    "table": "read_csv('src/data/Batch1\\HR.csv', delim=',', columns={'employeeid': 'BIGINT', 'managerid': 'BIGINT', 'employeefirstname': 'STRING', 'employeelastname': 'STRING', 'employeemi': 'STRING', 'employeejobcode': 'STRING', 'employeebranch': 'STRING', 'employeeoffice': 'STRING', 'employeephone': 'STRING'}, header=False)",
+                    "column": "employeejobcode",
+                    "role": "select, filter"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "employeejobcode"
+        },
+        "employeebranch": {
+            "path": [],
+            "source_columns": [
+                {
+                    "table": "read_csv('src/data/Batch1\\HR.csv', delim=',', columns={'employeeid': 'BIGINT', 'managerid': 'BIGINT', 'employeefirstname': 'STRING', 'employeelastname': 'STRING', 'employeemi': 'STRING', 'employeejobcode': 'STRING', 'employeebranch': 'STRING', 'employeeoffice': 'STRING', 'employeephone': 'STRING'}, header=False)",
+                    "column": "employeebranch",
+                    "role": "select"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "employeebranch"
+        },
+        "employeeoffice": {
+            "path": [],
+            "source_columns": [
+                {
+                    "table": "read_csv('src/data/Batch1\\HR.csv', delim=',', columns={'employeeid': 'BIGINT', 'managerid': 'BIGINT', 'employeefirstname': 'STRING', 'employeelastname': 'STRING', 'employeemi': 'STRING', 'employeejobcode': 'STRING', 'employeebranch': 'STRING', 'employeeoffice': 'STRING', 'employeephone': 'STRING'}, header=False)",
+                    "column": "employeeoffice",
+                    "role": "select"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "employeeoffice"
+        },
+        "employeephone": {
+            "path": [],
+            "source_columns": [
+                {
+                    "table": "read_csv('src/data/Batch1\\HR.csv', delim=',', columns={'employeeid': 'BIGINT', 'managerid': 'BIGINT', 'employeefirstname': 'STRING', 'employeelastname': 'STRING', 'employeemi': 'STRING', 'employeejobcode': 'STRING', 'employeebranch': 'STRING', 'employeeoffice': 'STRING', 'employeephone': 'STRING'}, header=False)",
+                    "column": "employeephone",
+                    "role": "select"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "employeephone"
+        }
+    }
+}

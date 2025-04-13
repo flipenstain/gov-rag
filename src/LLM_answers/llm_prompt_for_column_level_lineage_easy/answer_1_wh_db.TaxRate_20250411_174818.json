@@ -1,0 +1,13 @@
+{
+    "TaxRate": {
+        "inputs": [
+            {
+                "column": "src/data/Batch1\\TaxRate.txt.TaxRate",
+                "type": "DIRECT",
+                "subtype": "Identity",
+                "description": "Copied from file",
+                "masking": false
+            }
+        ]
+    }
+}

@@ -1,4 +1,3 @@
-
 INSERT INTO wh_db_stage.ProspectIncremental (
     agencyid, lastname, firstname, middleinitial, gender, addressline1, 
     addressline2, postalcode, city, state, country, phone, income, 

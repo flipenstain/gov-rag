@@ -1,4 +1,3 @@
-
 CREATE OR REPLACE TEMP TABLE temp_propect_marketingnameplate AS 
 SELECT
     *,

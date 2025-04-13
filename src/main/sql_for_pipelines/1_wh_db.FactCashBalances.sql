@@ -1,4 +1,3 @@
- 
 INSERT INTO wh_db.FactCashBalances
 WITH historical AS (
     SELECT

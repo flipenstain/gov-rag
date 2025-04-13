@@ -1,0 +1,13 @@
+{
+    "DimTime": {
+        "inputs": [
+            {
+                "column": "src/data/Batch1\\Time.txt",
+                "type": "DIRECT",
+                "subtype": "Identity",
+                "description": "Data loaded from file",
+                "masking": false
+            }
+        ]
+    }
+}

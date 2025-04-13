@@ -1,4 +1,3 @@
-
                 INSERT INTO wh_db.DimBroker
                 SELECT 
                     employeeid sk_brokerid,

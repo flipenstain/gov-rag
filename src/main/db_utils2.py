@@ -102,7 +102,8 @@ def create_column_lineage_facet_from_map(
 
 # --- UPDATED: get_column_lineage_facet implementation ---
 
-def get_column_lineage_facet(lineage_map: Optional[Dict[str, Any]] = None) -> Optional[ColumnLineageDatasetFacet]:
+def get_column_lineage_facet(lineage_map: Optional[Dict[str, Dict]] = None
+)-> Optional[ColumnLineageDatasetFacet]:
     """
     Constructs the OpenLineage ColumnLineageDatasetFacet based on a
     provided lineage map dictionary.
@@ -131,74 +132,46 @@ def get_column_lineage_facet(lineage_map: Optional[Dict[str, Any]] = None) -> Op
     Returns:
         An Optional ColumnLineageDatasetFacet object.
     """
-    if not lineage_map:
+    lineage = lineage_map["lineage"]
+    source_name_mapping = lineage_map["sources_summary"]
+    if not lineage:
         return None
 
     try:
-        # print(lineage_map) # debug
-        lineage_map = translate_llm_format_to_ol_map(lineage_map, "TAKE NAME FROM FIRST LINE OF SQL SCRIPT?")
-        facet_fields: Dict[str, column_lineage_dataset.Fields] = {}
+        output_fields_map: Dict[str, column_lineage_dataset.Fields] = {}
+        if source_name_mapping is None:
+            source_name_mapping = {} # Use original names if no mapping provided
 
-        for output_field_name, field_details in lineage_map.items():
-            if not isinstance(field_details, dict) or 'inputFields' not in field_details:
-                print(f"Warning: Invalid structure for output field '{output_field_name}' in lineage map. Skipping.")
-                continue
+        for output_column, details in lineage.items():
+            input_fields_list: List[column_lineage_dataset.InputField] = []
+            for source in details.get("sources", []):
+                source_table = source.get("table")
+                source_column = source.get("column")
+#TO DO transormatsiooni loogika ja vaadata üle miks INPUTE nii palju tuleb, vast see source mapping on jura ja saab eemaldada
+#
+                if source_table and source_column:
+                    # Apply mapping if necessary
+                    ol_source_table_name = source_name_mapping.get(source_table, source_table)
 
-            input_fields_data = field_details.get('inputFields', [])
-            if not isinstance(input_fields_data, list):
-                 print(f"Warning: 'inputFields' for '{output_field_name}' is not a list. Skipping.")
-                 continue
-
-            processed_input_fields: List[column_lineage_dataset.InputField] = []
-            for input_field_data in input_fields_data:
-                if not isinstance(input_field_data, dict):
-                    print(f"Warning: Invalid input field data structure for '{output_field_name}'. Skipping input field.")
-                    continue
-
-                # Create transformations if they exist
-                transformations_data = input_field_data.get('transformations')
-                processed_transformations: Optional[List[column_lineage_dataset.Transformation]] = None
-                if isinstance(transformations_data, list):
-                    processed_transformations = []
-                    for trans_data in transformations_data:
-                         if isinstance(trans_data, dict) and 'type' in trans_data:
-                              processed_transformations.append(create_transformation(**trans_data))
-                         else:
-                             print(f"Warning: Invalid transformation data for input field '{input_field_data.get('field')}'. Skipping transformation.")
-
-                # Create the input field object
-                try:
-                    input_field = create_input_field(
-                        namespace=input_field_data.get('namespace', 'default_ns'), # Add defaults if needed
-                        name=input_field_data.get('name', 'default_table'),
-                        field=input_field_data.get('field', 'default_field'),
-                        transformations=processed_transformations
+                    input_fields_list.append(
+                        column_lineage_dataset.InputField(
+                            namespace="default_ns",
+                            name=ol_source_table_name, # Use potentially mapped name
+                            field=source_column,
+                        )
                     )
-                    processed_input_fields.append(input_field)
-                except TypeError as te:
-                    print(f"Error creating InputField for {output_field_name} from data {input_field_data}: {te}")
-                except Exception as ie:
-                    print(f"Unexpected error creating InputField for {output_field_name}: {ie}")
 
+            # Only add the field to the map if it has input fields
+            if input_fields_list:
+                output_fields_map[output_column] = column_lineage_dataset.Fields(
+                    inputFields=input_fields_list,
+                    transformationDescription=details.get("transformation_logic"),
+                    transformationType=details.get("transformation_type"),
+                )
+        print(output_fields_map)
+        #return create_column_lineage_facet_from_map(fields=output_fields_map)
+        return column_lineage_dataset.ColumnLineageDatasetFacet(fields=output_fields_map)
 
-            if not processed_input_fields:
-                 print(f"Warning: No valid input fields processed for output field '{output_field_name}'. Skipping this output field.")
-                 continue
-
-            # Create the Fields object for this output field
-            fields_object = create_fields(
-                input_fields=processed_input_fields,
-                transformation_description=field_details.get('transformationDescription'),
-                transformation_type=field_details.get('transformationType')
-            )
-            facet_fields[output_field_name] = fields_object
-
-        if not facet_fields:
-             print("Warning: Column lineage map processed, but resulted in no valid fields for the facet.")
-             return None
-
-        # Create the final facet using the constructed fields map
-        return create_column_lineage_facet_from_map(fields_map=facet_fields)
 
     except Exception as e:
         print(f"Error constructing column lineage facet: {e}")

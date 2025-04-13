@@ -1,4 +1,3 @@
- 
 INSERT INTO wh_db.DimTrade
 WITH tradehistorical AS (
 select 
@@ -47,7 +46,7 @@ END AS type,
   from wh_db_stage.tradetxt a
   join wh_db_stage.tradehistory b
 on a.tradeid = b.tradeid
-  join wh_db.StatusType c -- ainult üks praegu
+  join wh_db.StatusType c -- ainult ï¿½ks praegu
     ON a.status = c.st_id
 )
 select 

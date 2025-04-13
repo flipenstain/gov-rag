@@ -1,4 +1,3 @@
-
                 CREATE OR REPLACE TEMP TABLE temp_broker AS 
                 SELECT * FROM read_csv('src/data/Batch1\HR.csv', delim=',', columns={
                     'employeeid': 'BIGINT',

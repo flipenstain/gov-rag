@@ -1,0 +1,122 @@
+{
+    "target_table": "wh_db.DimProduct",
+    "sources_summary": {
+        "tables": [
+            "wh_db_stage.FinWire"
+        ],
+        "ctes": [
+            "cmp",
+            "cmp2"
+        ]
+    },
+    "lineage": {
+        "ProductKey": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "value",
+                "path": [
+                    "cmp",
+                    "cmp2"
+                ],
+                "transformation_logic": "CAST(cmp.value AS INTEGER)",
+                "transformation_type": "CAST"
+            }
+        ],
+        "ProductAlternateKey": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "value",
+                "path": [
+                    "cmp",
+                    "cmp2"
+                ],
+                "transformation_logic": "cmp.value",
+                "transformation_type": "RENAME"
+            }
+        ],
+        "ProductName": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "value",
+                "path": [
+                    "cmp",
+                    "cmp2"
+                ],
+                "transformation_logic": "cmp.value",
+                "transformation_type": "RENAME"
+            }
+        ],
+        "ProductStyle": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "value",
+                "path": [
+                    "cmp",
+                    "cmp2"
+                ],
+                "transformation_logic": "cmp.value",
+                "transformation_type": "RENAME"
+            }
+        ],
+        "ProductColor": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "value",
+                "path": [
+                    "cmp",
+                    "cmp2"
+                ],
+                "transformation_logic": "cmp.value",
+                "transformation_type": "RENAME"
+            }
+        ],
+        "ProductSize": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "value",
+                "path": [
+                    "cmp",
+                    "cmp2"
+                ],
+                "transformation_logic": "cmp.value",
+                "transformation_type": "RENAME"
+            }
+        ],
+        "ProductLine": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "value",
+                "path": [
+                    "cmp",
+                    "cmp2"
+                ],
+                "transformation_logic": "cmp.value",
+                "transformation_type": "RENAME"
+            }
+        ],
+        "ProductClass": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "value",
+                "path": [
+                    "cmp",
+                    "cmp2"
+                ],
+                "transformation_logic": "cmp.value",
+                "transformation_type": "RENAME"
+            }
+        ],
+        "ProductSubClass": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "value",
+                "path": [
+                    "cmp",
+                    "cmp2"
+                ],
+                "transformation_logic": "cmp.value",
+                "transformation_type": "RENAME"
+            }
+        ]
+    }
+}

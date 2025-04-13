@@ -1,0 +1,378 @@
+{
+    "target_table": "wh_db.Prospect",
+    "sources_summary": [
+        {
+            "type": "TABLE",
+            "name": "wh_db_stage.ProspectIncremental",
+            "alias_or_cte": "p"
+        },
+        {
+            "type": "TABLE",
+            "name": "wh_db.BatchDate",
+            "alias_or_cte": "recdate"
+        },
+        {
+            "type": "TABLE",
+            "name": "wh_db.BatchDate",
+            "alias_or_cte": "origdate"
+        },
+        {
+            "type": "TABLE",
+            "name": "wh_db.DimCustomer",
+            "alias_or_cte": "cust"
+        }
+    ],
+    "lineage": {
+        "agencyid": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.ProspectIncremental.agencyid",
+                    "path": [
+                        "p.agencyid"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "p.agencyid"
+        },
+        "sk_recorddateid": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db.BatchDate.batchdate",
+                    "path": [
+                        "recdate.batchdate"
+                    ],
+                    "role": "date source"
+                }
+            ],
+            "transformation_type": "CAST",
+            "transformation_logic": "CAST(STRFTIME(recdate.batchdate, '%Y%m%d') AS BIGINT)"
+        },
+        "sk_updatedateid": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db.BatchDate.batchdate",
+                    "path": [
+                        "origdate.batchdate"
+                    ],
+                    "role": "date source"
+                }
+            ],
+            "transformation_type": "CAST",
+            "transformation_logic": "CAST(STRFTIME(origdate.batchdate, '%Y%m%d') AS BIGINT)"
+        },
+        "batchid": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.ProspectIncremental.batchid",
+                    "path": [
+                        "p.batchid"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "p.batchid"
+        },
+        "iscustomer": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db.DimCustomer.LastName",
+                    "path": [
+                        "c.LastName"
+                    ],
+                    "role": "existence check"
+                }
+            ],
+            "transformation_type": "CASE_MAPPING",
+            "transformation_logic": "CASE WHEN c.LastName IS NOT NULL THEN TRUE ELSE FALSE END"
+        },
+        "lastname": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.ProspectIncremental.lastname",
+                    "path": [
+                        "p.lastname"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "p.lastname"
+        },
+        "firstname": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.ProspectIncremental.firstname",
+                    "path": [
+                        "p.firstname"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "p.firstname"
+        },
+        "middleinitial": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.ProspectIncremental.middleinitial",
+                    "path": [
+                        "p.middleinitial"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "p.middleinitial"
+        },
+        "gender": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.ProspectIncremental.gender",
+                    "path": [
+                        "p.gender"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "p.gender"
+        },
+        "addressline1": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.ProspectIncremental.addressline1",
+                    "path": [
+                        "p.addressline1"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "p.addressline1"
+        },
+        "addressline2": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.ProspectIncremental.addressline2",
+                    "path": [
+                        "p.addressline2"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "p.addressline2"
+        },
+        "postalcode": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.ProspectIncremental.postalcode",
+                    "path": [
+                        "p.postalcode"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "p.postalcode"
+        },
+        "city": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.ProspectIncremental.city",
+                    "path": [
+                        "p.city"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "p.city"
+        },
+        "state": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.ProspectIncremental.state",
+                    "path": [
+                        "p.state"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "p.state"
+        },
+        "country": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.ProspectIncremental.country",
+                    "path": [
+                        "p.country"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "p.country"
+        },
+        "phone": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.ProspectIncremental.phone",
+                    "path": [
+                        "p.phone"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "p.phone"
+        },
+        "income": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.ProspectIncremental.income",
+                    "path": [
+                        "p.income"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "p.income"
+        },
+        "numbercars": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.ProspectIncremental.numbercars",
+                    "path": [
+                        "p.numbercars"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "p.numbercars"
+        },
+        "numberchildren": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.ProspectIncremental.numberchildren",
+                    "path": [
+                        "p.numberchildren"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "p.numberchildren"
+        },
+        "maritalstatus": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.ProspectIncremental.maritalstatus",
+                    "path": [
+                        "p.maritalstatus"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "p.maritalstatus"
+        },
+        "age": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.ProspectIncremental.age",
+                    "path": [
+                        "p.age"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "p.age"
+        },
+        "creditrating": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.ProspectIncremental.creditrating",
+                    "path": [
+                        "p.creditrating"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "p.creditrating"
+        },
+        "ownorrentflag": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.ProspectIncremental.ownorrentflag",
+                    "path": [
+                        "p.ownorrentflag"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "p.ownorrentflag"
+        },
+        "employer": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.ProspectIncremental.employer",
+                    "path": [
+                        "p.employer"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "p.employer"
+        },
+        "numbercreditcards": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.ProspectIncremental.numbercreditcards",
+                    "path": [
+                        "p.numbercreditcards"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "p.numbercreditcards"
+        },
+        "networth": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.ProspectIncremental.networth",
+                    "path": [
+                        "p.networth"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "p.networth"
+        },
+        "marketingnameplate": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.ProspectIncremental.marketingnameplate",
+                    "path": [
+                        "p.marketingnameplate"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "p.marketingnameplate"
+        }
+    }
+}

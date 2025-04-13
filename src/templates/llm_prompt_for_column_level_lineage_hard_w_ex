@@ -119,3 +119,5 @@ WHERE T.effectivedate < T.enddate; -- Filter on derived table
     }
   }
 }
+
+[YOUR SQL QUERY HERE]

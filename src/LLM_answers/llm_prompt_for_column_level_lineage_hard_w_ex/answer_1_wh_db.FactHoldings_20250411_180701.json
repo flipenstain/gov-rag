@@ -1,0 +1,220 @@
+{
+    "target_table": "wh_db.FactHoldings",
+    "sources_summary": [
+        {
+            "type": "TABLE",
+            "name": "read_csv('src/data/Batch1\\HoldingHistory.txt', HEADER=FALSE, columns={'hh_h_t_id': 'INTEGER', 'hh_t_id': 'INTEGER', 'hh_before_qty': 'INTEGER', 'hh_after_qty': 'INTEGER'})",
+            "alias_or_cte": "Holdings"
+        },
+        {
+            "type": "TABLE",
+            "name": "wh_db.DimTrade",
+            "alias_or_cte": "dt"
+        }
+    ],
+    "lineage": {
+        "tradeid": {
+            "sources": [
+                {
+                    "source_identifier": "read_csv('src/data/Batch1\\HoldingHistory.txt', HEADER=FALSE, columns={'hh_h_t_id': 'INTEGER', 'hh_t_id': 'INTEGER', 'hh_before_qty': 'INTEGER', 'hh_after_qty': 'INTEGER'}).hh_h_t_id",
+                    "path": [
+                        "h.hh_h_t_id"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "hh_h_t_id tradeid"
+        },
+        "currenttradeid": {
+            "sources": [
+                {
+                    "source_identifier": "read_csv('src/data/Batch1\\HoldingHistory.txt', HEADER=FALSE, columns={'hh_h_t_id': 'INTEGER', 'hh_t_id': 'INTEGER', 'hh_before_qty': 'INTEGER', 'hh_after_qty': 'INTEGER'}).hh_t_id",
+                    "path": [
+                        "h.hh_t_id"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "hh_t_id currenttradeid"
+        },
+        "sk_customerid": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db.DimTrade.sk_customerid",
+                    "path": [
+                        "dt.sk_customerid"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "JOIN_LOOKUP",
+            "transformation_logic": "dt.sk_customerid via JOIN ON tradeid = hh_t_id",
+            "join_info": {
+                "type": "INNER JOIN",
+                "left_source": {
+                    "identifier": "read_csv('src/data/Batch1\\HoldingHistory.txt', HEADER=FALSE, columns={'hh_h_t_id': 'INTEGER', 'hh_t_id': 'INTEGER', 'hh_before_qty': 'INTEGER', 'hh_after_qty': 'INTEGER'}).hh_t_id",
+                    "path": [
+                        "h.hh_t_id"
+                    ]
+                },
+                "right_source": {
+                    "identifier": "wh_db.DimTrade.tradeid"
+                }
+            }
+        },
+        "sk_accountid": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db.DimTrade.sk_accountid",
+                    "path": [
+                        "dt.sk_accountid"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "JOIN_LOOKUP",
+            "transformation_logic": "dt.sk_accountid via JOIN ON tradeid = hh_t_id",
+            "join_info": {
+                "type": "INNER JOIN",
+                "left_source": {
+                    "identifier": "read_csv('src/data/Batch1\\HoldingHistory.txt', HEADER=FALSE, columns={'hh_h_t_id': 'INTEGER', 'hh_t_id': 'INTEGER', 'hh_before_qty': 'INTEGER', 'hh_after_qty': 'INTEGER'}).hh_t_id",
+                    "path": [
+                        "h.hh_t_id"
+                    ]
+                },
+                "right_source": {
+                    "identifier": "wh_db.DimTrade.tradeid"
+                }
+            }
+        },
+        "sk_securityid": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db.DimTrade.sk_securityid",
+                    "path": [
+                        "dt.sk_securityid"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "JOIN_LOOKUP",
+            "transformation_logic": "dt.sk_securityid via JOIN ON tradeid = hh_t_id",
+            "join_info": {
+                "type": "INNER JOIN",
+                "left_source": {
+                    "identifier": "read_csv('src/data/Batch1\\HoldingHistory.txt', HEADER=FALSE, columns={'hh_h_t_id': 'INTEGER', 'hh_t_id': 'INTEGER', 'hh_before_qty': 'INTEGER', 'hh_after_qty': 'INTEGER'}).hh_t_id",
+                    "path": [
+                        "h.hh_t_id"
+                    ]
+                },
+                "right_source": {
+                    "identifier": "wh_db.DimTrade.tradeid"
+                }
+            }
+        },
+        "sk_companyid": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db.DimTrade.sk_companyid",
+                    "path": [
+                        "dt.sk_companyid"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "JOIN_LOOKUP",
+            "transformation_logic": "dt.sk_companyid via JOIN ON tradeid = hh_t_id",
+            "join_info": {
+                "type": "INNER JOIN",
+                "left_source": {
+                    "identifier": "read_csv('src/data/Batch1\\HoldingHistory.txt', HEADER=FALSE, columns={'hh_h_t_id': 'INTEGER', 'hh_t_id': 'INTEGER', 'hh_before_qty': 'INTEGER', 'hh_after_qty': 'INTEGER'}).hh_t_id",
+                    "path": [
+                        "h.hh_t_id"
+                    ]
+                },
+                "right_source": {
+                    "identifier": "wh_db.DimTrade.tradeid"
+                }
+            }
+        },
+        "sk_dateid": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db.DimTrade.sk_closedateid",
+                    "path": [
+                        "dt.sk_closedateid"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "sk_closedateid sk_dateid"
+        },
+        "sk_timeid": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db.DimTrade.sk_closetimeid",
+                    "path": [
+                        "dt.sk_closetimeid"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "sk_closetimeid sk_timeid"
+        },
+        "currentprice": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db.DimTrade.tradeprice",
+                    "path": [
+                        "dt.tradeprice"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "JOIN_LOOKUP",
+            "transformation_logic": "dt.tradeprice via JOIN ON tradeid = hh_t_id",
+            "join_info": {
+                "type": "INNER JOIN",
+                "left_source": {
+                    "identifier": "read_csv('src/data/Batch1\\HoldingHistory.txt', HEADER=FALSE, columns={'hh_h_t_id': 'INTEGER', 'hh_t_id': 'INTEGER', 'hh_before_qty': 'INTEGER', 'hh_after_qty': 'INTEGER'}).hh_t_id",
+                    "path": [
+                        "h.hh_t_id"
+                    ]
+                },
+                "right_source": {
+                    "identifier": "wh_db.DimTrade.tradeid"
+                }
+            }
+        },
+        "currentholding": {
+            "sources": [
+                {
+                    "source_identifier": "read_csv('src/data/Batch1\\HoldingHistory.txt', HEADER=FALSE, columns={'hh_h_t_id': 'INTEGER', 'hh_t_id': 'INTEGER', 'hh_before_qty': 'INTEGER', 'hh_after_qty': 'INTEGER'}).hh_after_qty",
+                    "path": [
+                        "h.hh_after_qty"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "hh_after_qty currentholding"
+        },
+        "batchid": {
+            "sources": [
+                {
+                    "source_identifier": "Holdings.batchid",
+                    "path": [
+                        "h.batchid"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "h.batchid"
+        }
+    }
+}

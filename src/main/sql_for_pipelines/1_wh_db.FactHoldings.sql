@@ -1,4 +1,3 @@
- 
 INSERT INTO wh_db.FactHoldings
 WITH Holdings AS (
     SELECT

@@ -4,6 +4,7 @@ from datetime import datetime
 from google import genai
 from google.genai import types
 import logging
+import time
 
 def process_llm_response(response_text, template_name, sql_file_name):
     """
@@ -162,9 +163,29 @@ def generate_and_log_json_response(prompt_for_api, template_path, sql_full_path)
         return {"error": str(e)}
 
 
-dummy_template_path = "C:\lopu-kg-test\project\src\\templates\llm_prompt_for_column_level_lineage_easy"
-dummy_sql_path = "C:\lopu-kg-test\project\src\main\sql_for_pipelines\\1_wh_db.DimAccount.sql"
+# dummy_template_path = "C:\lopu-kg-test\project\src\\templates\llm_prompt_for_column_level_lineage_easy"
+# dummy_sql_path = "C:\lopu-kg-test\project\src\main\sql_for_pipelines\\1_wh_db.DimAccount.sql"
 
-prompt_for_api = create_prompt_from_files(dummy_template_path, dummy_sql_path)
+# prompt_for_api = create_prompt_from_files(dummy_template_path, dummy_sql_path)
 
-generate_and_log_json_response(prompt_for_api, dummy_template_path, dummy_sql_path)
+# generate_and_log_json_response(prompt_for_api, dummy_template_path, dummy_sql_path)
+
+
+
+sql_path = "C:\lopu-kg-test\project\src\main\sql_for_pipelines\\"
+template_path = "C:\lopu-kg-test\project\src\\templates\\"
+for template in os.listdir(template_path):
+    template_file = os.path.join(template_path, template)
+    if template.endswith("_easy"): # temp
+            continue 
+    for filename in os.listdir(sql_path):
+            time.sleep(5)
+            if filename.endswith(".sql"):
+                sql_file_path = os.path.join(sql_path, filename)
+
+                if not sql_file_path.endswith(".sql"):
+                    print(f"Error: {sql_file_path} is not a .sql file.")
+
+                prompt_for_api = create_prompt_from_files(template_file, sql_file_path)
+                generate_and_log_json_response(prompt_for_api, template_file, sql_file_path)
+        

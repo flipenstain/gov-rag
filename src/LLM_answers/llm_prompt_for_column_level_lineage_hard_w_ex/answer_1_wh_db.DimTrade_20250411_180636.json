@@ -1,0 +1,390 @@
+{
+    "target_table": "wh_db.DimTrade",
+    "sources_summary": [
+        {
+            "type": "TABLE",
+            "name": "wh_db_stage.tradetxt",
+            "alias_or_cte": "a"
+        },
+        {
+            "type": "TABLE",
+            "name": "wh_db_stage.tradehistory",
+            "alias_or_cte": "b"
+        },
+        {
+            "type": "TABLE",
+            "name": "wh_db.StatusType",
+            "alias_or_cte": "c"
+        },
+        {
+            "type": "TABLE",
+            "name": "wh_db.DimSecurity",
+            "alias_or_cte": "ds"
+        },
+        {
+            "type": "TABLE",
+            "name": "wh_db.DimAccount",
+            "alias_or_cte": "da"
+        },
+        {
+            "type": "CTE",
+            "name": "tradehistorical",
+            "alias_or_cte": "trade"
+        }
+    ],
+    "lineage": {
+        "tradeid": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.tradetxt.tradeid",
+                    "path": [
+                        "tradehistorical.tradeid"
+                    ]
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "trade.tradeid"
+        },
+        "sk_brokerid": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db.DimAccount.sk_brokerid",
+                    "path": [
+                        "da.sk_brokerid"
+                    ]
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "da.sk_brokerid"
+        },
+        "sk_createdateid": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.tradehistory.TH_DTS",
+                    "path": [
+                        "tradehistorical.SK_CreateDateID"
+                    ],
+                    "role": "Date part source"
+                },
+                {
+                    "source_identifier": "wh_db.DimAccount.accountid",
+                    "path": [
+                        "da.accountid"
+                    ],
+                    "role": "ID part source"
+                },
+                {
+                    "source_identifier": "wh_db.DimAccount.sk_brokerid",
+                    "path": [
+                        "da.sk_brokerid"
+                    ],
+                    "role": "ID part source"
+                }
+            ],
+            "transformation_type": "EXPRESSION_CONCAT",
+            "transformation_logic": "CAST(strftime(trade.SK_CreateDateID, '%Y%m%d') || da.accountid || da.sk_brokerid AS BIGINT)"
+        },
+        "sk_createtimeid": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.tradehistory.TH_DTS",
+                    "path": [
+                        "tradehistorical.SK_CreateTimeID"
+                    ],
+                    "role": "Date part source"
+                },
+                {
+                    "source_identifier": "wh_db.DimAccount.accountid",
+                    "path": [
+                        "da.accountid"
+                    ],
+                    "role": "ID part source"
+                },
+                {
+                    "source_identifier": "wh_db.DimAccount.sk_brokerid",
+                    "path": [
+                        "da.sk_brokerid"
+                    ],
+                    "role": "ID part source"
+                }
+            ],
+            "transformation_type": "EXPRESSION_CONCAT",
+            "transformation_logic": "CAST(strftime(trade.SK_CreateTimeID, '%Y%m%d') || da.accountid || da.sk_brokerid AS BIGINT)"
+        },
+        "sk_closedateid": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.tradehistory.TH_DTS",
+                    "path": [
+                        "tradehistorical.SK_CloseDateID"
+                    ],
+                    "role": "Date part source"
+                },
+                {
+                    "source_identifier": "wh_db.DimAccount.accountid",
+                    "path": [
+                        "da.accountid"
+                    ],
+                    "role": "ID part source"
+                },
+                {
+                    "source_identifier": "wh_db.DimAccount.sk_brokerid",
+                    "path": [
+                        "da.sk_brokerid"
+                    ],
+                    "role": "ID part source"
+                }
+            ],
+            "transformation_type": "EXPRESSION_CONCAT",
+            "transformation_logic": "CAST(strftime(trade.SK_CloseDateID, '%Y%m%d') || da.accountid || da.sk_brokerid AS BIGINT)"
+        },
+        "sk_closetimeid": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.tradehistory.TH_DTS",
+                    "path": [
+                        "tradehistorical.SK_CloseTimeID"
+                    ],
+                    "role": "Date part source"
+                },
+                {
+                    "source_identifier": "wh_db.DimAccount.accountid",
+                    "path": [
+                        "da.accountid"
+                    ],
+                    "role": "ID part source"
+                },
+                {
+                    "source_identifier": "wh_db.DimAccount.sk_brokerid",
+                    "path": [
+                        "da.sk_brokerid"
+                    ],
+                    "role": "ID part source"
+                }
+            ],
+            "transformation_type": "EXPRESSION_CONCAT",
+            "transformation_logic": "CAST(strftime(trade.SK_CloseTimeID, '%Y%m%d') || da.accountid || da.sk_brokerid AS BIGINT)"
+        },
+        "st_name": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db.StatusType.st_name",
+                    "path": [
+                        "tradehistorical.st_name"
+                    ]
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "trade.st_name"
+        },
+        "type": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.tradetxt.t_tt_id",
+                    "path": [
+                        "tradehistorical.type"
+                    ]
+                }
+            ],
+            "transformation_type": "CASE_MAPPING",
+            "transformation_logic": "CASE t_tt_id WHEN 'TMB' THEN 'Market Buy' WHEN 'TMS' THEN 'Market Sell' WHEN 'TSL' THEN 'Stop Loss' WHEN 'TLS' THEN 'Limit Sell' WHEN 'TLB' THEN 'Limit Buy' ELSE NULL END"
+        },
+        "cashflag": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.tradetxt.cashflag",
+                    "path": [
+                        "tradehistorical.cashflag"
+                    ]
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "trade.cashflag"
+        },
+        "sk_securityid": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db.DimSecurity.sk_securityid",
+                    "path": [
+                        "ds.sk_securityid"
+                    ],
+                    "join_info": {
+                        "type": "INNER JOIN",
+                        "left_source": {
+                            "identifier": "wh_db_stage.tradetxt.t_s_symb",
+                            "path": [
+                                "tradehistorical.t_s_symb"
+                            ]
+                        },
+                        "right_source": {
+                            "identifier": "wh_db.DimSecurity.symbol"
+                        }
+                    }
+                }
+            ],
+            "transformation_type": "JOIN_LOOKUP",
+            "transformation_logic": "ds.sk_securityid via JOIN ON ds.symbol = trade.t_s_symb"
+        },
+        "sk_companyid": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db.DimSecurity.sk_companyid",
+                    "path": [
+                        "ds.sk_companyid"
+                    ],
+                    "join_info": {
+                        "type": "INNER JOIN",
+                        "left_source": {
+                            "identifier": "wh_db_stage.tradetxt.t_s_symb",
+                            "path": [
+                                "tradehistorical.t_s_symb"
+                            ]
+                        },
+                        "right_source": {
+                            "identifier": "wh_db.DimSecurity.symbol"
+                        }
+                    }
+                }
+            ],
+            "transformation_type": "JOIN_LOOKUP",
+            "transformation_logic": "ds.sk_companyid via JOIN ON ds.symbol = trade.t_s_symb"
+        },
+        "quantity": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.tradetxt.quantity",
+                    "path": [
+                        "tradehistorical.quantity"
+                    ]
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "trade.quantity"
+        },
+        "bidprice": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.tradetxt.bidprice",
+                    "path": [
+                        "tradehistorical.bidprice"
+                    ]
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "trade.bidprice"
+        },
+        "sk_customerid": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db.DimAccount.sk_customerid",
+                    "path": [
+                        "da.sk_customerid"
+                    ],
+                    "join_info": {
+                        "type": "INNER JOIN",
+                        "left_source": {
+                            "identifier": "wh_db_stage.tradetxt.t_ca_id",
+                            "path": [
+                                "tradehistorical.t_ca_id"
+                            ]
+                        },
+                        "right_source": {
+                            "identifier": "wh_db.DimAccount.accountid"
+                        }
+                    }
+                }
+            ],
+            "transformation_type": "JOIN_LOOKUP",
+            "transformation_logic": "da.sk_customerid via JOIN ON trade.t_ca_id = da.accountid"
+        },
+        "sk_accountid": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db.DimAccount.sk_accountid",
+                    "path": [
+                        "da.sk_accountid"
+                    ],
+                    "join_info": {
+                        "type": "INNER JOIN",
+                        "left_source": {
+                            "identifier": "wh_db_stage.tradetxt.t_ca_id",
+                            "path": [
+                                "tradehistorical.t_ca_id"
+                            ]
+                        },
+                        "right_source": {
+                            "identifier": "wh_db.DimAccount.accountid"
+                        }
+                    }
+                }
+            ],
+            "transformation_type": "JOIN_LOOKUP",
+            "transformation_logic": "da.sk_accountid via JOIN ON trade.t_ca_id = da.accountid"
+        },
+        "executedby": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.tradetxt.executedby",
+                    "path": [
+                        "tradehistorical.executedby"
+                    ]
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "trade.executedby"
+        },
+        "tradeprice": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.tradetxt.tradeprice",
+                    "path": [
+                        "tradehistorical.tradeprice"
+                    ]
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "trade.tradeprice"
+        },
+        "fee": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.tradetxt.fee",
+                    "path": [
+                        "tradehistorical.fee"
+                    ]
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "trade.fee"
+        },
+        "commission": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.tradetxt.commission",
+                    "path": [
+                        "tradehistorical.commission"
+                    ]
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "trade.commission"
+        },
+        "tax": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.tradetxt.tax",
+                    "path": [
+                        "tradehistorical.tax"
+                    ]
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "trade.tax"
+        },
+        "batchid": {
+            "sources": [],
+            "transformation_type": "CONSTANT",
+            "transformation_logic": "1"
+        }
+    }
+}

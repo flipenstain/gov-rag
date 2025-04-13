@@ -1,4 +1,3 @@
-
 INSERT INTO wh_db.Prospect
 WITH cust AS (
     SELECT

@@ -1,4 +1,3 @@
- 
 INSERT INTO wh_db.DimSecurity
 WITH SEC AS (
     SELECT

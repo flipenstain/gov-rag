@@ -1,5 +1,4 @@
- 
-    INSERT INTO wh_db_stage.FinWire
+     INSERT INTO wh_db_stage.FinWire
     SELECT
         CASE
             WHEN SUBSTR(column0, 16, 3) = 'FIN' THEN

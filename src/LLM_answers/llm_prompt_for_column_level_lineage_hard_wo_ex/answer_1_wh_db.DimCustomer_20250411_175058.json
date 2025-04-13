@@ -1,0 +1,474 @@
+{
+    "target_table": "wh_db.DimProduct",
+    "sources_summary": {
+        "wh_db_stage.FinWire": [
+            "value",
+            "ts"
+        ],
+        "wh_db.DimProduct": [
+            "ProductID",
+            "ProductName",
+            "ProductAlternateKey",
+            "ProductSubcategoryKey",
+            "WeightUnitMeasureCode",
+            "SizeUnitMeasureCode",
+            "EnglishProductName",
+            "SpanishProductName",
+            "FrenchProductName",
+            "StandardCost",
+            "FinishedGoodsFlag",
+            "Color",
+            "SafetyStockLevel",
+            "ReorderPoint",
+            "ListPrice",
+            "Size",
+            "Weight",
+            "DaysToManufacture",
+            "ProductLine",
+            "Class",
+            "Style",
+            "ModelName",
+            "LargePhoto",
+            "EnglishDescription",
+            "FrenchDescription",
+            "ChineseDescription",
+            "ArabicDescription",
+            "HebrewDescription",
+            "ThaiDescription",
+            "GermanDescription",
+            "JapaneseDescription",
+            "TurkishDescription",
+            "StartDate",
+            "EndDate",
+            "Status"
+        ]
+    },
+    "lineage": {
+        "ProductID": [
+            {
+                "source_table": "wh_db.DimProduct",
+                "source_column": "ProductID",
+                "path": [],
+                "transformation_logic": "COALESCE(d.ProductID, -1)",
+                "transformation_type": "COALESCE",
+                "role": "default"
+            }
+        ],
+        "ProductKey": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "value",
+                "path": [
+                    "cmp"
+                ],
+                "transformation_logic": "CAST(cmp.ProductKey AS INTEGER)",
+                "transformation_type": "CAST",
+                "role": "default"
+            }
+        ],
+        "ProductName": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "value",
+                "path": [
+                    "cmp"
+                ],
+                "transformation_logic": "cmp.ProductName",
+                "transformation_type": "RENAME",
+                "role": "default"
+            }
+        ],
+        "ProductAlternateKey": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "value",
+                "path": [
+                    "cmp"
+                ],
+                "transformation_logic": "cmp.ProductAlternateKey",
+                "transformation_type": "RENAME",
+                "role": "default"
+            }
+        ],
+        "ProductSubcategoryKey": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "value",
+                "path": [
+                    "cmp"
+                ],
+                "transformation_logic": "cmp.ProductSubcategoryKey",
+                "transformation_type": "RENAME",
+                "role": "default"
+            }
+        ],
+        "WeightUnitMeasureCode": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "value",
+                "path": [
+                    "cmp"
+                ],
+                "transformation_logic": "cmp.WeightUnitMeasureCode",
+                "transformation_type": "RENAME",
+                "role": "default"
+            }
+        ],
+        "SizeUnitMeasureCode": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "value",
+                "path": [
+                    "cmp"
+                ],
+                "transformation_logic": "cmp.SizeUnitMeasureCode",
+                "transformation_type": "RENAME",
+                "role": "default"
+            }
+        ],
+        "EnglishProductName": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "value",
+                "path": [
+                    "cmp"
+                ],
+                "transformation_logic": "cmp.EnglishProductName",
+                "transformation_type": "RENAME",
+                "role": "default"
+            }
+        ],
+        "SpanishProductName": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "value",
+                "path": [
+                    "cmp"
+                ],
+                "transformation_logic": "cmp.SpanishProductName",
+                "transformation_type": "RENAME",
+                "role": "default"
+            }
+        ],
+        "FrenchProductName": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "value",
+                "path": [
+                    "cmp"
+                ],
+                "transformation_logic": "cmp.FrenchProductName",
+                "transformation_type": "RENAME",
+                "role": "default"
+            }
+        ],
+        "StandardCost": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "value",
+                "path": [
+                    "cmp"
+                ],
+                "transformation_logic": "cmp.StandardCost",
+                "transformation_type": "RENAME",
+                "role": "default"
+            }
+        ],
+        "FinishedGoodsFlag": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "value",
+                "path": [
+                    "cmp"
+                ],
+                "transformation_logic": "cmp.FinishedGoodsFlag",
+                "transformation_type": "RENAME",
+                "role": "default"
+            }
+        ],
+        "Color": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "value",
+                "path": [
+                    "cmp"
+                ],
+                "transformation_logic": "cmp.Color",
+                "transformation_type": "RENAME",
+                "role": "default"
+            }
+        ],
+        "SafetyStockLevel": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "value",
+                "path": [
+                    "cmp"
+                ],
+                "transformation_logic": "cmp.SafetyStockLevel",
+                "transformation_type": "RENAME",
+                "role": "default"
+            }
+        ],
+        "ReorderPoint": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "value",
+                "path": [
+                    "cmp"
+                ],
+                "transformation_logic": "cmp.ReorderPoint",
+                "transformation_type": "RENAME",
+                "role": "default"
+            }
+        ],
+        "ListPrice": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "value",
+                "path": [
+                    "cmp"
+                ],
+                "transformation_logic": "cmp.ListPrice",
+                "transformation_type": "RENAME",
+                "role": "default"
+            }
+        ],
+        "Size": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "value",
+                "path": [
+                    "cmp"
+                ],
+                "transformation_logic": "cmp.Size",
+                "transformation_type": "RENAME",
+                "role": "default"
+            }
+        ],
+        "Weight": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "value",
+                "path": [
+                    "cmp"
+                ],
+                "transformation_logic": "cmp.Weight",
+                "transformation_type": "RENAME",
+                "role": "default"
+            }
+        ],
+        "DaysToManufacture": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "value",
+                "path": [
+                    "cmp"
+                ],
+                "transformation_logic": "cmp.DaysToManufacture",
+                "transformation_type": "RENAME",
+                "role": "default"
+            }
+        ],
+        "ProductLine": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "value",
+                "path": [
+                    "cmp"
+                ],
+                "transformation_logic": "cmp.ProductLine",
+                "transformation_type": "RENAME",
+                "role": "default"
+            }
+        ],
+        "Class": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "value",
+                "path": [
+                    "cmp"
+                ],
+                "transformation_logic": "cmp.Class",
+                "transformation_type": "RENAME",
+                "role": "default"
+            }
+        ],
+        "Style": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "value",
+                "path": [
+                    "cmp"
+                ],
+                "transformation_logic": "cmp.Style",
+                "transformation_type": "RENAME",
+                "role": "default"
+            }
+        ],
+        "ModelName": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "value",
+                "path": [
+                    "cmp"
+                ],
+                "transformation_logic": "cmp.ModelName",
+                "transformation_type": "RENAME",
+                "role": "default"
+            }
+        ],
+        "LargePhoto": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "value",
+                "path": [
+                    "cmp"
+                ],
+                "transformation_logic": "cmp.LargePhoto",
+                "transformation_type": "RENAME",
+                "role": "default"
+            }
+        ],
+        "EnglishDescription": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "value",
+                "path": [
+                    "cmp"
+                ],
+                "transformation_logic": "cmp.EnglishDescription",
+                "transformation_type": "RENAME",
+                "role": "default"
+            }
+        ],
+        "FrenchDescription": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "value",
+                "path": [
+                    "cmp"
+                ],
+                "transformation_logic": "cmp.FrenchDescription",
+                "transformation_type": "RENAME",
+                "role": "default"
+            }
+        ],
+        "ChineseDescription": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "value",
+                "path": [
+                    "cmp"
+                ],
+                "transformation_logic": "cmp.ChineseDescription",
+                "transformation_type": "RENAME",
+                "role": "default"
+            }
+        ],
+        "ArabicDescription": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "value",
+                "path": [
+                    "cmp"
+                ],
+                "transformation_logic": "cmp.ArabicDescription",
+                "transformation_type": "RENAME",
+                "role": "default"
+            }
+        ],
+        "HebrewDescription": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "value",
+                "path": [
+                    "cmp"
+                ],
+                "transformation_logic": "cmp.HebrewDescription",
+                "transformation_type": "RENAME",
+                "role": "default"
+            }
+        ],
+        "ThaiDescription": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "value",
+                "path": [
+                    "cmp"
+                ],
+                "transformation_logic": "cmp.ThaiDescription",
+                "transformation_type": "RENAME",
+                "role": "default"
+            }
+        ],
+        "GermanDescription": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "value",
+                "path": [
+                    "cmp"
+                ],
+                "transformation_logic": "cmp.GermanDescription",
+                "transformation_type": "RENAME",
+                "role": "default"
+            }
+        ],
+        "JapaneseDescription": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "value",
+                "path": [
+                    "cmp"
+                ],
+                "transformation_logic": "cmp.JapaneseDescription",
+                "transformation_type": "RENAME",
+                "role": "default"
+            }
+        ],
+        "TurkishDescription": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "value",
+                "path": [
+                    "cmp"
+                ],
+                "transformation_logic": "cmp.TurkishDescription",
+                "transformation_type": "RENAME",
+                "role": "default"
+            }
+        ],
+        "StartDate": [
+            {
+                "source_table": "wh_db_stage.FinWire",
+                "source_column": "ts",
+                "path": [
+                    "cmp"
+                ],
+                "transformation_logic": "CAST(strftime('%Y-%m-%d %H:%M:%S', cmp.ts) AS DATETIME)",
+                "transformation_type": "CAST",
+                "role": "default"
+            }
+        ],
+        "EndDate": [
+            {
+                "source_table": "wh_db.DimProduct",
+                "source_column": "EndDate",
+                "path": [],
+                "transformation_logic": "d.EndDate",
+                "transformation_type": "RENAME",
+                "role": "default"
+            }
+        ],
+        "Status": [
+            {
+                "source_table": "wh_db.DimProduct",
+                "source_column": "Status",
+                "path": [],
+                "transformation_logic": "'Active'",
+                "transformation_type": "CONSTANT",
+                "role": "default"
+            }
+        ]
+    }
+}

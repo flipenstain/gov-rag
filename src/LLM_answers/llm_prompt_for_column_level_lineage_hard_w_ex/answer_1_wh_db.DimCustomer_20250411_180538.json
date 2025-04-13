@@ -1,0 +1,270 @@
+{
+    "target_table": "customers",
+    "sources_summary": [
+        {
+            "type": "TABLE",
+            "name": "wh_db_stage.CustomerMgmt",
+            "alias_or_cte": "c"
+        }
+    ],
+    "lineage": {
+        "customerid": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.CustomerMgmt.customerid",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "customerid"
+        },
+        "taxid": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.CustomerMgmt.taxid",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "taxid"
+        },
+        "status": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.CustomerMgmt.status",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "status"
+        },
+        "lastname": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.CustomerMgmt.lastname",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "lastname"
+        },
+        "firstname": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.CustomerMgmt.firstname",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "firstname"
+        },
+        "middleinitial": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.CustomerMgmt.middleinitial",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "middleinitial"
+        },
+        "gender": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.CustomerMgmt.gender",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "gender"
+        },
+        "tier": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.CustomerMgmt.tier",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "tier"
+        },
+        "dob": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.CustomerMgmt.dob",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "dob"
+        },
+        "addressline1": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.CustomerMgmt.addressline1",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "addressline1"
+        },
+        "addressline2": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.CustomerMgmt.addressline2",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "addressline2"
+        },
+        "postalcode": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.CustomerMgmt.postalcode",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "postalcode"
+        },
+        "city": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.CustomerMgmt.city",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "city"
+        },
+        "stateprov": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.CustomerMgmt.stateprov",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "stateprov"
+        },
+        "country": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.CustomerMgmt.country",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "country"
+        },
+        "phone1": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.CustomerMgmt.phone1",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "phone1"
+        },
+        "phone2": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.CustomerMgmt.phone2",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "phone2"
+        },
+        "phone3": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.CustomerMgmt.phone3",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "phone3"
+        },
+        "email1": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.CustomerMgmt.email1",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "email1"
+        },
+        "email2": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.CustomerMgmt.email2",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "email2"
+        },
+        "lcl_tx_id": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.CustomerMgmt.lcl_tx_id",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "lcl_tx_id"
+        },
+        "nat_tx_id": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.CustomerMgmt.nat_tx_id",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "nat_tx_id"
+        },
+        "batchid": {
+            "sources": [],
+            "transformation_type": "CONSTANT",
+            "transformation_logic": "1"
+        },
+        "update_ts": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.CustomerMgmt.update_ts",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "update_ts"
+        }
+    }
+}

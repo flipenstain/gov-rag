@@ -1,0 +1,283 @@
+{
+    "target_table": "wh_db_stage.ProspectIncremental",
+    "sources_summary": {
+        "temp_propect_marketingnameplate": [
+            "agencyid",
+            "lastname",
+            "firstname",
+            "middleinitial",
+            "gender",
+            "addressline1",
+            "addressline2",
+            "postalcode",
+            "city",
+            "state",
+            "country",
+            "phone",
+            "income",
+            "numbercars",
+            "numberchildren",
+            "maritalstatus",
+            "age",
+            "creditrating",
+            "ownorrentflag",
+            "employer",
+            "numbercreditcards",
+            "networth",
+            "marketingnameplate",
+            "batchid"
+        ]
+    },
+    "lineage": {
+        "agencyid": {
+            "path": [
+                "tp"
+            ],
+            "source_columns": [
+                "temp_propect_marketingnameplate.agencyid"
+            ],
+            "transformation_logic": "tp.agencyid",
+            "transformation_type": "RENAME"
+        },
+        "lastname": {
+            "path": [
+                "tp"
+            ],
+            "source_columns": [
+                "temp_propect_marketingnameplate.lastname"
+            ],
+            "transformation_logic": "tp.lastname",
+            "transformation_type": "RENAME"
+        },
+        "firstname": {
+            "path": [
+                "tp"
+            ],
+            "source_columns": [
+                "temp_propect_marketingnameplate.firstname"
+            ],
+            "transformation_logic": "tp.firstname",
+            "transformation_type": "RENAME"
+        },
+        "middleinitial": {
+            "path": [
+                "tp"
+            ],
+            "source_columns": [
+                "temp_propect_marketingnameplate.middleinitial"
+            ],
+            "transformation_logic": "tp.middleinitial",
+            "transformation_type": "RENAME"
+        },
+        "gender": {
+            "path": [
+                "tp"
+            ],
+            "source_columns": [
+                "temp_propect_marketingnameplate.gender"
+            ],
+            "transformation_logic": "tp.gender",
+            "transformation_type": "RENAME"
+        },
+        "addressline1": {
+            "path": [
+                "tp"
+            ],
+            "source_columns": [
+                "temp_propect_marketingnameplate.addressline1"
+            ],
+            "transformation_logic": "tp.addressline1",
+            "transformation_type": "RENAME"
+        },
+        "addressline2": {
+            "path": [
+                "tp"
+            ],
+            "source_columns": [
+                "temp_propect_marketingnameplate.addressline2"
+            ],
+            "transformation_logic": "tp.addressline2",
+            "transformation_type": "RENAME"
+        },
+        "postalcode": {
+            "path": [
+                "tp"
+            ],
+            "source_columns": [
+                "temp_propect_marketingnameplate.postalcode"
+            ],
+            "transformation_logic": "tp.postalcode",
+            "transformation_type": "RENAME"
+        },
+        "city": {
+            "path": [
+                "tp"
+            ],
+            "source_columns": [
+                "temp_propect_marketingnameplate.city"
+            ],
+            "transformation_logic": "tp.city",
+            "transformation_type": "RENAME"
+        },
+        "state": {
+            "path": [
+                "tp"
+            ],
+            "source_columns": [
+                "temp_propect_marketingnameplate.state"
+            ],
+            "transformation_logic": "tp.state",
+            "transformation_type": "RENAME"
+        },
+        "country": {
+            "path": [
+                "tp"
+            ],
+            "source_columns": [
+                "temp_propect_marketingnameplate.country"
+            ],
+            "transformation_logic": "tp.country",
+            "transformation_type": "RENAME"
+        },
+        "phone": {
+            "path": [
+                "tp"
+            ],
+            "source_columns": [
+                "temp_propect_marketingnameplate.phone"
+            ],
+            "transformation_logic": "tp.phone",
+            "transformation_type": "RENAME"
+        },
+        "income": {
+            "path": [
+                "tp"
+            ],
+            "source_columns": [
+                "temp_propect_marketingnameplate.income"
+            ],
+            "transformation_logic": "tp.income",
+            "transformation_type": "RENAME"
+        },
+        "numbercars": {
+            "path": [
+                "tp"
+            ],
+            "source_columns": [
+                "temp_propect_marketingnameplate.numbercars"
+            ],
+            "transformation_logic": "tp.numbercars",
+            "transformation_type": "RENAME"
+        },
+        "numberchildren": {
+            "path": [
+                "tp"
+            ],
+            "source_columns": [
+                "temp_propect_marketingnameplate.numberchildren"
+            ],
+            "transformation_logic": "tp.numberchildren",
+            "transformation_type": "RENAME"
+        },
+        "maritalstatus": {
+            "path": [
+                "tp"
+            ],
+            "source_columns": [
+                "temp_propect_marketingnameplate.maritalstatus"
+            ],
+            "transformation_logic": "tp.maritalstatus",
+            "transformation_type": "RENAME"
+        },
+        "age": {
+            "path": [
+                "tp"
+            ],
+            "source_columns": [
+                "temp_propect_marketingnameplate.age"
+            ],
+            "transformation_logic": "tp.age",
+            "transformation_type": "RENAME"
+        },
+        "creditrating": {
+            "path": [
+                "tp"
+            ],
+            "source_columns": [
+                "temp_propect_marketingnameplate.creditrating"
+            ],
+            "transformation_logic": "tp.creditrating",
+            "transformation_type": "RENAME"
+        },
+        "ownorrentflag": {
+            "path": [
+                "tp"
+            ],
+            "source_columns": [
+                "temp_propect_marketingnameplate.ownorrentflag"
+            ],
+            "transformation_logic": "tp.ownorrentflag",
+            "transformation_type": "RENAME"
+        },
+        "employer": {
+            "path": [
+                "tp"
+            ],
+            "source_columns": [
+                "temp_propect_marketingnameplate.employer"
+            ],
+            "transformation_logic": "tp.employer",
+            "transformation_type": "RENAME"
+        },
+        "numbercreditcards": {
+            "path": [
+                "tp"
+            ],
+            "source_columns": [
+                "temp_propect_marketingnameplate.numbercreditcards"
+            ],
+            "transformation_logic": "tp.numbercreditcards",
+            "transformation_type": "RENAME"
+        },
+        "networth": {
+            "path": [
+                "tp"
+            ],
+            "source_columns": [
+                "temp_propect_marketingnameplate.networth"
+            ],
+            "transformation_logic": "tp.networth",
+            "transformation_type": "RENAME"
+        },
+        "marketingnameplate": {
+            "path": [
+                "tp"
+            ],
+            "source_columns": [
+                "temp_propect_marketingnameplate.marketingnameplate"
+            ],
+            "transformation_logic": "tp.marketingnameplate",
+            "transformation_type": "RENAME"
+        },
+        "recordbatchid": {
+            "path": [
+                "tp"
+            ],
+            "source_columns": [
+                "temp_propect_marketingnameplate.batchid"
+            ],
+            "transformation_logic": "tp.batchid",
+            "transformation_type": "RENAME"
+        },
+        "batchid": {
+            "path": [
+                "tp"
+            ],
+            "source_columns": [
+                "temp_propect_marketingnameplate.batchid"
+            ],
+            "transformation_logic": "tp.batchid",
+            "transformation_type": "RENAME"
+        }
+    }
+}

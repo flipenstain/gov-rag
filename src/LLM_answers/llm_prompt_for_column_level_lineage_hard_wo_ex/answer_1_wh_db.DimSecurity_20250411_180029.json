@@ -1,0 +1,213 @@
+{
+    "target_table": "wh_db.DimSecurity",
+    "lineage": {
+        "sk_securityid": {
+            "sources": [],
+            "path": [],
+            "transformation_logic": "ROW_NUMBER() OVER ()",
+            "transformation_type": "WINDOW_FUNCTION"
+        },
+        "Symbol": {
+            "sources": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value"
+                }
+            ],
+            "path": [
+                "SEC",
+                "SEC_prep",
+                "SEC_final"
+            ],
+            "transformation_logic": "TRIM(SUBSTR(value, 1, 15))",
+            "transformation_type": "SUBSTRING"
+        },
+        "issue": {
+            "sources": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value"
+                }
+            ],
+            "path": [
+                "SEC",
+                "SEC_prep",
+                "SEC_final"
+            ],
+            "transformation_logic": "TRIM(SUBSTR(value, 16, 6))",
+            "transformation_type": "SUBSTRING"
+        },
+        "status": {
+            "sources": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value"
+                }
+            ],
+            "path": [
+                "SEC",
+                "SEC_prep",
+                "SEC_final"
+            ],
+            "transformation_logic": "CASE WHEN status = 'ACTV' THEN 'Active' WHEN status = 'CMPT' THEN 'Completed' WHEN status = 'CNCL' THEN 'Canceled' WHEN status = 'PNDG' THEN 'Pending' WHEN status = 'SBMT' THEN 'Submitted' WHEN status = 'INAC' THEN 'Inactive' ELSE NULL END",
+            "transformation_type": "CASE_MAPPING"
+        },
+        "Name": {
+            "sources": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value"
+                }
+            ],
+            "path": [
+                "SEC",
+                "SEC_prep",
+                "SEC_final"
+            ],
+            "transformation_logic": "TRIM(SUBSTR(value, 26, 70))",
+            "transformation_type": "SUBSTRING"
+        },
+        "exchangeid": {
+            "sources": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value"
+                }
+            ],
+            "path": [
+                "SEC",
+                "SEC_prep",
+                "SEC_final"
+            ],
+            "transformation_logic": "TRIM(SUBSTR(value, 96, 6))",
+            "transformation_type": "SUBSTRING"
+        },
+        "sk_companyid": {
+            "sources": [
+                {
+                    "table": "wh_db.DimCompany",
+                    "column": "sk_companyid"
+                }
+            ],
+            "path": [
+                "dc",
+                "SEC_final"
+            ],
+            "transformation_logic": "dc.sk_companyid",
+            "transformation_type": "JOIN_LOOKUP",
+            "role": "output"
+        },
+        "sharesoutstanding": {
+            "sources": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value"
+                }
+            ],
+            "path": [
+                "SEC",
+                "SEC_prep",
+                "SEC_final"
+            ],
+            "transformation_logic": "TRY_CAST(SUBSTR(value, 102, 13) AS BIGINT)",
+            "transformation_type": "CAST"
+        },
+        "firsttrade": {
+            "sources": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value"
+                }
+            ],
+            "path": [
+                "SEC",
+                "SEC_prep",
+                "SEC_final"
+            ],
+            "transformation_logic": "TRY_CAST(STRPTIME(SUBSTR(value, 115, 8), '%Y%m%d') AS DATE)",
+            "transformation_type": "CAST"
+        },
+        "firsttradeonexchange": {
+            "sources": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value"
+                }
+            ],
+            "path": [
+                "SEC",
+                "SEC_prep",
+                "SEC_final"
+            ],
+            "transformation_logic": "TRY_CAST(STRPTIME(SUBSTR(value, 123, 8), '%Y%m%d') AS DATE)",
+            "transformation_type": "CAST"
+        },
+        "Dividend": {
+            "sources": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value"
+                }
+            ],
+            "path": [
+                "SEC",
+                "SEC_prep",
+                "SEC_final"
+            ],
+            "transformation_logic": "TRY_CAST(SUBSTR(value, 131, 12) AS DOUBLE)",
+            "transformation_type": "CAST"
+        },
+        "iscurrent": {
+            "sources": [],
+            "path": [
+                "SEC_final"
+            ],
+            "transformation_logic": "CASE WHEN enddate = '9999-12-31'::DATE THEN TRUE ELSE FALSE END",
+            "transformation_type": "CASE_MAPPING"
+        },
+        "batchid": {
+            "sources": [],
+            "path": [],
+            "transformation_logic": "1",
+            "transformation_type": "CONSTANT"
+        },
+        "effectivedate": {
+            "sources": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value"
+                },
+                {
+                    "table": "wh_db.DimCompany",
+                    "column": "EffectiveDate"
+                }
+            ],
+            "path": [
+                "SEC",
+                "SEC_prep",
+                "SEC_final"
+            ],
+            "transformation_logic": "CASE WHEN SEC.effectivedate < dc.EffectiveDate THEN dc.EffectiveDate ELSE SEC.effectivedate END",
+            "transformation_type": "SCD2_LOGIC"
+        },
+        "enddate": {
+            "sources": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value"
+                },
+                {
+                    "table": "wh_db.DimCompany",
+                    "column": "EndDate"
+                }
+            ],
+            "path": [
+                "SEC",
+                "SEC_prep",
+                "SEC_final"
+            ],
+            "transformation_logic": "CASE WHEN SEC.enddate > dc.EndDate THEN dc.EndDate ELSE SEC.enddate END",
+            "transformation_type": "SCD2_LOGIC"
+        }
+    }
+}

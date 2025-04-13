@@ -1,0 +1,505 @@
+{
+    "target_table": "customers_final",
+    "sources_summary": {
+        "customers": [
+            "customerid",
+            "taxid",
+            "status",
+            "lastname",
+            "firstname",
+            "middleinitial",
+            "gender",
+            "tier",
+            "dob",
+            "addressline1",
+            "addressline2",
+            "postalcode",
+            "CITY",
+            "stateprov",
+            "country",
+            "phone1",
+            "phone2",
+            "phone3",
+            "email1",
+            "email2",
+            "LCL_TX_ID",
+            "NAT_TX_ID",
+            "batchid",
+            "update_ts"
+        ]
+    },
+    "lineage": {
+        "customerid": {
+            "sources": [
+                {
+                    "table": "customers",
+                    "column": "customerid",
+                    "path": [],
+                    "transformation_logic": "customerid",
+                    "transformation_type": "RENAME",
+                    "column_role": "select"
+                }
+            ]
+        },
+        "taxid": {
+            "sources": [
+                {
+                    "table": "customers",
+                    "column": "taxid",
+                    "path": [],
+                    "transformation_logic": "COALESCE(taxid, last_value(taxid ORDER BY update_ts DESC) OVER w)",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "value"
+                },
+                {
+                    "table": "customers",
+                    "column": "update_ts",
+                    "path": [],
+                    "transformation_logic": "COALESCE(taxid, last_value(taxid ORDER BY update_ts DESC) OVER w)",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "order"
+                }
+            ]
+        },
+        "status": {
+            "sources": [
+                {
+                    "table": "customers",
+                    "column": "status",
+                    "path": [],
+                    "transformation_logic": "status",
+                    "transformation_type": "RENAME",
+                    "column_role": "select"
+                }
+            ]
+        },
+        "lastname": {
+            "sources": [
+                {
+                    "table": "customers",
+                    "column": "lastname",
+                    "path": [],
+                    "transformation_logic": "COALESCE(lastname, last_value(lastname ORDER BY update_ts DESC) OVER w)",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "value"
+                },
+                {
+                    "table": "customers",
+                    "column": "update_ts",
+                    "path": [],
+                    "transformation_logic": "COALESCE(lastname, last_value(lastname ORDER BY update_ts DESC) OVER w)",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "order"
+                }
+            ]
+        },
+        "firstname": {
+            "sources": [
+                {
+                    "table": "customers",
+                    "column": "firstname",
+                    "path": [],
+                    "transformation_logic": "COALESCE(firstname, last_value(firstname ORDER BY update_ts DESC) OVER w)",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "value"
+                },
+                {
+                    "table": "customers",
+                    "column": "update_ts",
+                    "path": [],
+                    "transformation_logic": "COALESCE(firstname, last_value(firstname ORDER BY update_ts DESC) OVER w)",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "order"
+                }
+            ]
+        },
+        "middleinitial": {
+            "sources": [
+                {
+                    "table": "customers",
+                    "column": "middleinitial",
+                    "path": [],
+                    "transformation_logic": "COALESCE(middleinitial, last_value(middleinitial ORDER BY update_ts DESC) OVER w)",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "value"
+                },
+                {
+                    "table": "customers",
+                    "column": "update_ts",
+                    "path": [],
+                    "transformation_logic": "COALESCE(middleinitial, last_value(middleinitial ORDER BY update_ts DESC) OVER w)",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "order"
+                }
+            ]
+        },
+        "gender": {
+            "sources": [
+                {
+                    "table": "customers",
+                    "column": "gender",
+                    "path": [],
+                    "transformation_logic": "COALESCE(gender, last_value(gender ORDER BY update_ts DESC) OVER w)",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "value"
+                },
+                {
+                    "table": "customers",
+                    "column": "update_ts",
+                    "path": [],
+                    "transformation_logic": "COALESCE(gender, last_value(gender ORDER BY update_ts DESC) OVER w)",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "order"
+                }
+            ]
+        },
+        "tier": {
+            "sources": [
+                {
+                    "table": "customers",
+                    "column": "tier",
+                    "path": [],
+                    "transformation_logic": "COALESCE(tier, last_value(tier ORDER BY update_ts DESC) OVER w)",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "value"
+                },
+                {
+                    "table": "customers",
+                    "column": "update_ts",
+                    "path": [],
+                    "transformation_logic": "COALESCE(tier, last_value(tier ORDER BY update_ts DESC) OVER w)",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "order"
+                }
+            ]
+        },
+        "dob": {
+            "sources": [
+                {
+                    "table": "customers",
+                    "column": "dob",
+                    "path": [],
+                    "transformation_logic": "COALESCE(dob, last_value(dob ORDER BY update_ts DESC) OVER w)",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "value"
+                },
+                {
+                    "table": "customers",
+                    "column": "update_ts",
+                    "path": [],
+                    "transformation_logic": "COALESCE(dob, last_value(dob ORDER BY update_ts DESC) OVER w)",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "order"
+                }
+            ]
+        },
+        "addressline1": {
+            "sources": [
+                {
+                    "table": "customers",
+                    "column": "addressline1",
+                    "path": [],
+                    "transformation_logic": "COALESCE(addressline1, last_value(addressline1 ORDER BY update_ts DESC) OVER w)",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "value"
+                },
+                {
+                    "table": "customers",
+                    "column": "update_ts",
+                    "path": [],
+                    "transformation_logic": "COALESCE(addressline1, last_value(addressline1 ORDER BY update_ts DESC) OVER w)",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "order"
+                }
+            ]
+        },
+        "addressline2": {
+            "sources": [
+                {
+                    "table": "customers",
+                    "column": "addressline2",
+                    "path": [],
+                    "transformation_logic": "COALESCE(addressline2, last_value(addressline2 ORDER BY update_ts DESC) OVER w)",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "value"
+                },
+                {
+                    "table": "customers",
+                    "column": "update_ts",
+                    "path": [],
+                    "transformation_logic": "COALESCE(addressline2, last_value(addressline2 ORDER BY update_ts DESC) OVER w)",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "order"
+                }
+            ]
+        },
+        "postalcode": {
+            "sources": [
+                {
+                    "table": "customers",
+                    "column": "postalcode",
+                    "path": [],
+                    "transformation_logic": "COALESCE(postalcode, last_value(postalcode ORDER BY update_ts DESC) OVER w)",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "value"
+                },
+                {
+                    "table": "customers",
+                    "column": "update_ts",
+                    "path": [],
+                    "transformation_logic": "COALESCE(postalcode, last_value(postalcode ORDER BY update_ts DESC) OVER w)",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "order"
+                }
+            ]
+        },
+        "CITY": {
+            "sources": [
+                {
+                    "table": "customers",
+                    "column": "CITY",
+                    "path": [],
+                    "transformation_logic": "COALESCE(CITY, last_value(CITY ORDER BY update_ts DESC) OVER w)",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "value"
+                },
+                {
+                    "table": "customers",
+                    "column": "update_ts",
+                    "path": [],
+                    "transformation_logic": "COALESCE(CITY, last_value(CITY ORDER BY update_ts DESC) OVER w)",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "order"
+                }
+            ]
+        },
+        "stateprov": {
+            "sources": [
+                {
+                    "table": "customers",
+                    "column": "stateprov",
+                    "path": [],
+                    "transformation_logic": "COALESCE(stateprov, last_value(stateprov ORDER BY update_ts DESC) OVER w)",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "value"
+                },
+                {
+                    "table": "customers",
+                    "column": "update_ts",
+                    "path": [],
+                    "transformation_logic": "COALESCE(stateprov, last_value(stateprov ORDER BY update_ts DESC) OVER w)",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "order"
+                }
+            ]
+        },
+        "country": {
+            "sources": [
+                {
+                    "table": "customers",
+                    "column": "country",
+                    "path": [],
+                    "transformation_logic": "COALESCE(country, last_value(country ORDER BY update_ts DESC) OVER w)",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "value"
+                },
+                {
+                    "table": "customers",
+                    "column": "update_ts",
+                    "path": [],
+                    "transformation_logic": "COALESCE(country, last_value(country ORDER BY update_ts DESC) OVER w)",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "order"
+                }
+            ]
+        },
+        "phone1": {
+            "sources": [
+                {
+                    "table": "customers",
+                    "column": "phone1",
+                    "path": [],
+                    "transformation_logic": "COALESCE(phone1, last_value(phone1 ORDER BY update_ts DESC) OVER w)",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "value"
+                },
+                {
+                    "table": "customers",
+                    "column": "update_ts",
+                    "path": [],
+                    "transformation_logic": "COALESCE(phone1, last_value(phone1 ORDER BY update_ts DESC) OVER w)",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "order"
+                }
+            ]
+        },
+        "phone2": {
+            "sources": [
+                {
+                    "table": "customers",
+                    "column": "phone2",
+                    "path": [],
+                    "transformation_logic": "COALESCE(phone2, last_value(phone2 ORDER BY update_ts DESC) OVER w)",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "value"
+                },
+                {
+                    "table": "customers",
+                    "column": "update_ts",
+                    "path": [],
+                    "transformation_logic": "COALESCE(phone2, last_value(phone2 ORDER BY update_ts DESC) OVER w)",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "order"
+                }
+            ]
+        },
+        "phone3": {
+            "sources": [
+                {
+                    "table": "customers",
+                    "column": "phone3",
+                    "path": [],
+                    "transformation_logic": "COALESCE(phone3, last_value(phone3 ORDER BY update_ts DESC) OVER w)",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "value"
+                },
+                {
+                    "table": "customers",
+                    "column": "update_ts",
+                    "path": [],
+                    "transformation_logic": "COALESCE(phone3, last_value(phone3 ORDER BY update_ts DESC) OVER w)",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "order"
+                }
+            ]
+        },
+        "email1": {
+            "sources": [
+                {
+                    "table": "customers",
+                    "column": "email1",
+                    "path": [],
+                    "transformation_logic": "COALESCE(email1, last_value(email1 ORDER BY update_ts DESC) OVER w)",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "value"
+                },
+                {
+                    "table": "customers",
+                    "column": "update_ts",
+                    "path": [],
+                    "transformation_logic": "COALESCE(email1, last_value(email1 ORDER BY update_ts DESC) OVER w)",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "order"
+                }
+            ]
+        },
+        "email2": {
+            "sources": [
+                {
+                    "table": "customers",
+                    "column": "email2",
+                    "path": [],
+                    "transformation_logic": "COALESCE(email2, last_value(email2 ORDER BY update_ts DESC) OVER w)",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "value"
+                },
+                {
+                    "table": "customers",
+                    "column": "update_ts",
+                    "path": [],
+                    "transformation_logic": "COALESCE(email2, last_value(email2 ORDER BY update_ts DESC) OVER w)",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "order"
+                }
+            ]
+        },
+        "LCL_TX_ID": {
+            "sources": [
+                {
+                    "table": "customers",
+                    "column": "LCL_TX_ID",
+                    "path": [],
+                    "transformation_logic": "COALESCE(LCL_TX_ID, last_value(LCL_TX_ID ORDER BY update_ts DESC) OVER w)",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "value"
+                },
+                {
+                    "table": "customers",
+                    "column": "update_ts",
+                    "path": [],
+                    "transformation_logic": "COALESCE(LCL_TX_ID, last_value(LCL_TX_ID ORDER BY update_ts DESC) OVER w)",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "order"
+                }
+            ]
+        },
+        "NAT_TX_ID": {
+            "sources": [
+                {
+                    "table": "customers",
+                    "column": "NAT_TX_ID",
+                    "path": [],
+                    "transformation_logic": "COALESCE(NAT_TX_ID, last_value(NAT_TX_ID ORDER BY update_ts DESC) OVER w)",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "value"
+                },
+                {
+                    "table": "customers",
+                    "column": "update_ts",
+                    "path": [],
+                    "transformation_logic": "COALESCE(NAT_TX_ID, last_value(NAT_TX_ID ORDER BY update_ts DESC) OVER w)",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "order"
+                }
+            ]
+        },
+        "batchid": {
+            "sources": [
+                {
+                    "table": "customers",
+                    "column": "batchid",
+                    "path": [],
+                    "transformation_logic": "batchid",
+                    "transformation_type": "RENAME",
+                    "column_role": "select"
+                }
+            ]
+        },
+        "iscurrent": {
+            "sources": [
+                {
+                    "table": "customers",
+                    "column": "update_ts",
+                    "path": [],
+                    "transformation_logic": "CASE WHEN NULLIF(lead(update_ts) OVER w, NULL) IS NULL THEN 'Y' ELSE 'N' END",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "value"
+                }
+            ]
+        },
+        "effectivedate": {
+            "sources": [
+                {
+                    "table": "customers",
+                    "column": "update_ts",
+                    "path": [],
+                    "transformation_logic": "update_ts::DATE",
+                    "transformation_type": "CAST",
+                    "column_role": "value"
+                }
+            ]
+        },
+        "enddate": {
+            "sources": [
+                {
+                    "table": "customers",
+                    "column": "update_ts",
+                    "path": [],
+                    "transformation_logic": "COALESCE(lead(update_ts::DATE) OVER w, '9999-12-31'::DATE)",
+                    "transformation_type": "SCD2_LOGIC",
+                    "column_role": "value"
+                }
+            ]
+        }
+    }
+}

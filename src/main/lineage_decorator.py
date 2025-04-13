@@ -120,11 +120,11 @@ def log_lineage(job_name: str,
                     for table in output_tables:
                         schema_facet = get_table_schema(db_conn, table)
                         stats_facet = get_table_row_count(db_conn, table)
-                        # TODO: Implement column lineage facet generation
-                        # Option A: Parse 'sql' variable here using sqlglot/sqllineage
-                        # col_lineage_facet = parse_sql_for_lineage(sql, input_tables, output_tables)
-                        # Option B: Use manually passed map
+
                         col_lineage_facet = get_column_lineage_facet(column_lineage)
+
+                        # For tracking: debug
+                        print(col_lineage_facet)
 
                         facets = {}
                         if schema_facet: facets["schema"] = schema_facet

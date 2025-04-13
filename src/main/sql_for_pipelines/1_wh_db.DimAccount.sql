@@ -1,4 +1,3 @@
- 
 INSERT INTO wh_db.DimAccount 
 WITH account AS (
     SELECT

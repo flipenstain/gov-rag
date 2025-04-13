@@ -30,33 +30,6 @@ dim_customer_col_lineage = {
     # ... add other columns if needed ...
 }
 
-""" 
-{
-  "order_id": {"input": "delivery_7_days.order_id"},
-  "order_placed_on": {"input": "delivery_7_days.order_placed_on"},
-  "order_delivered_on": {"input": "delivery_7_days.order_delivered_on"},
-  "order_delivery_time": {
-    "inputs": [
-      {
-        "column": "delivery_7_days.order_placed_on",
-        "type": "DIRECT",
-        "subtype": "Transformation",
-        "description": "order_placed_on used in DATEDIFF",
-        "masking": false
-      },
-      {
-        "column": "delivery_7_days.order_delivered_on",
-        "type": "DIRECT",
-        "subtype": "Transformation",
-        "description": "order_delivered_on used in DATEDIFF",
-        "masking": false
-      }
-    ],
-    "transformation": "DATEDIFF(minute, order_placed_on, order_delivered_on)"
-  }
-}
-"""
-
 
 @log_lineage(
     job_name="load_BatchDate",
