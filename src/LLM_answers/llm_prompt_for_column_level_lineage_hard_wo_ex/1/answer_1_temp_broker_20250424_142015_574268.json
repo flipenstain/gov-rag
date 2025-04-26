@@ -1,0 +1,77 @@
+{
+    "target_table": "temp_broker",
+    "lineage": {
+        "employeeid": {
+            "source_table": "read_csv('src/data/Batch1\\HR.csv')",
+            "source_column": "employeeid",
+            "path": [],
+            "transformation": "employeeid",
+            "transformation_type": "RENAME",
+            "role": "original column"
+        },
+        "managerid": {
+            "source_table": "read_csv('src/data/Batch1\\HR.csv')",
+            "source_column": "managerid",
+            "path": [],
+            "transformation": "managerid",
+            "transformation_type": "RENAME",
+            "role": "original column"
+        },
+        "employeefirstname": {
+            "source_table": "read_csv('src/data/Batch1\\HR.csv')",
+            "source_column": "employeefirstname",
+            "path": [],
+            "transformation": "employeefirstname",
+            "transformation_type": "RENAME",
+            "role": "original column"
+        },
+        "employeelastname": {
+            "source_table": "read_csv('src/data/Batch1\\HR.csv')",
+            "source_column": "employeelastname",
+            "path": [],
+            "transformation": "employeelastname",
+            "transformation_type": "RENAME",
+            "role": "original column"
+        },
+        "employeemi": {
+            "source_table": "read_csv('src/data/Batch1\\HR.csv')",
+            "source_column": "employeemi",
+            "path": [],
+            "transformation": "employeemi",
+            "transformation_type": "RENAME",
+            "role": "original column"
+        },
+        "employeejobcode": {
+            "source_table": "read_csv('src/data/Batch1\\HR.csv')",
+            "source_column": "employeejobcode",
+            "path": [],
+            "transformation": "employeejobcode",
+            "transformation_type": "RENAME",
+            "role": "original column, filter condition"
+        },
+        "employeebranch": {
+            "source_table": "read_csv('src/data/Batch1\\HR.csv')",
+            "source_column": "employeebranch",
+            "path": [],
+            "transformation": "employeebranch",
+            "transformation_type": "RENAME",
+            "role": "original column"
+        },
+        "employeeoffice": {
+            "source_table": "read_csv('src/data/Batch1\\HR.csv')",
+            "source_column": "employeeoffice",
+            "path": [],
+            "transformation": "employeeoffice",
+            "transformation_type": "RENAME",
+            "role": "original column"
+        },
+        "employeephone": {
+            "source_table": "read_csv('src/data/Batch1\\HR.csv')",
+            "source_column": "employeephone",
+            "path": [],
+            "transformation": "employeephone",
+            "transformation_type": "RENAME",
+            "role": "original column"
+        }
+    }
+}

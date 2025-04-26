@@ -1,0 +1,92 @@
+{
+    "target_table": "wh_db.FactCashBalances",
+    "sources_summary": [
+        {
+            "type": "TABLE",
+            "name": "read_csv('src/data/Batch1\\CashTransaction.txt', HEADER=FALSE, columns={'accountid': 'BIGINT', 'ct_dts': 'TIMESTAMP', 'ct_amt': 'DOUBLE', 'ct_name': 'VARCHAR'})",
+            "alias_or_cte": "historical"
+        },
+        {
+            "type": "TABLE",
+            "name": "wh_db.DimAccount",
+            "alias_or_cte": "a"
+        }
+    ],
+    "lineage": {
+        "sk_customerid": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db.DimAccount.sk_customerid",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "a.sk_customerid"
+        },
+        "sk_accountid": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db.DimAccount.sk_accountid",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "a.sk_accountid"
+        },
+        "sk_dateid": {
+            "sources": [
+                {
+                    "source_identifier": "read_csv('src/data/Batch1\\CashTransaction.txt', HEADER=FALSE, columns={'accountid': 'BIGINT', 'ct_dts': 'TIMESTAMP', 'ct_amt': 'DOUBLE', 'ct_name': 'VARCHAR'}).ct_dts",
+                    "path": [
+                        "historical.datevalue"
+                    ],
+                    "role": "date value"
+                }
+            ],
+            "transformation_type": "CAST",
+            "transformation_logic": "CAST(STRFTIME(datevalue, '%Y%m%d') AS BIGINT)"
+        },
+        "cash": {
+            "sources": [
+                {
+                    "source_identifier": "read_csv('src/data/Batch1\\CashTransaction.txt', HEADER=FALSE, columns={'accountid': 'BIGINT', 'ct_dts': 'TIMESTAMP', 'ct_amt': 'DOUBLE', 'ct_name': 'VARCHAR'}).ct_amt",
+                    "path": [
+                        "historical.account_daily_total"
+                    ],
+                    "role": "sum value"
+                },
+                {
+                    "source_identifier": "read_csv('src/data/Batch1\\CashTransaction.txt', HEADER=FALSE, columns={'accountid': 'BIGINT', 'ct_dts': 'TIMESTAMP', 'ct_amt': 'DOUBLE', 'ct_name': 'VARCHAR'}).accountid",
+                    "path": [
+                        "historical.accountid"
+                    ],
+                    "role": "partition key"
+                },
+                {
+                    "source_identifier": "read_csv('src/data/Batch1\\CashTransaction.txt', HEADER=FALSE, columns={'accountid': 'BIGINT', 'ct_dts': 'TIMESTAMP', 'ct_amt': 'DOUBLE', 'ct_name': 'VARCHAR'}).ct_dts",
+                    "path": [
+                        "historical.datevalue"
+                    ],
+                    "role": "order by"
+                }
+            ],
+            "transformation_type": "WINDOW_FUNCTION",
+            "transformation_logic": "SUM(account_daily_total) OVER (PARTITION BY c.accountid ORDER BY datevalue)"
+        },
+        "batchid": {
+            "sources": [
+                {
+                    "source_identifier": "historical.batchid",
+                    "path": [
+                        "historical.batchid"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "c.batchid"
+        }
+    }
+}

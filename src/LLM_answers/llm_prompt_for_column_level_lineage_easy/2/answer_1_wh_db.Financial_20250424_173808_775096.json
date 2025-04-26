@@ -1,0 +1,211 @@
+{
+    "sk_companyid": {
+        "inputs": [
+            {
+                "column": "wh_db.DimCompany.effectivedate",
+                "type": "INDIRECT",
+                "subtype": "Join",
+                "description": "fp.recdate >= dc.effectivedate",
+                "masking": false
+            },
+            {
+                "column": "wh_db.DimCompany.enddate",
+                "type": "INDIRECT",
+                "subtype": "Join",
+                "description": "fp.recdate < dc.enddate",
+                "masking": false
+            },
+            {
+                "column": "finwire_parsed.company_id_text",
+                "type": "INDIRECT",
+                "subtype": "Join",
+                "description": "fp.company_id_text IS NOT NULL AND fp.company_id_text = dc.companyid::TEXT",
+                "masking": false
+            },
+            {
+                "column": "wh_db.DimCompany.companyid",
+                "type": "INDIRECT",
+                "subtype": "Join",
+                "description": "fp.company_id_text IS NOT NULL AND fp.company_id_text = dc.companyid::TEXT",
+                "masking": false
+            },
+            {
+                "column": "finwire_parsed.company_name",
+                "type": "INDIRECT",
+                "subtype": "Join",
+                "description": "fp.company_name IS NOT NULL AND fp.company_name = dc.name",
+                "masking": false
+            },
+            {
+                "column": "wh_db.DimCompany.name",
+                "type": "INDIRECT",
+                "subtype": "Join",
+                "description": "fp.company_name IS NOT NULL AND fp.company_name = dc.name",
+                "masking": false
+            },
+            {
+                "column": "wh_db.DimCompany.sk_companyid",
+                "type": "DIRECT",
+                "subtype": "Identity",
+                "description": "Directly selected from DimCompany",
+                "masking": false
+            }
+        ]
+    },
+    "fi_year": {
+        "inputs": [
+            {
+                "column": "wh_db_stage.FinWire.value",
+                "type": "DIRECT",
+                "subtype": "Transformation",
+                "description": "SUBSTRING(value FROM 1 FOR 4)",
+                "masking": false
+            }
+        ],
+        "transformation": "CAST(SUBSTRING(value FROM 1 FOR 4) AS INTEGER)"
+    },
+    "fi_qtr": {
+        "inputs": [
+            {
+                "column": "wh_db_stage.FinWire.value",
+                "type": "DIRECT",
+                "subtype": "Transformation",
+                "description": "SUBSTRING(value FROM 5 FOR 1)",
+                "masking": false
+            }
+        ],
+        "transformation": "CAST(SUBSTRING(value FROM 5 FOR 1) AS INTEGER)"
+    },
+    "fi_qtr_start_date": {
+        "inputs": [
+            {
+                "column": "wh_db_stage.FinWire.value",
+                "type": "DIRECT",
+                "subtype": "Transformation",
+                "description": "SUBSTRING(value FROM 6 FOR 8)",
+                "masking": false
+            }
+        ],
+        "transformation": "strptime(SUBSTRING(value FROM 6 FOR 8), '%Y%m%d')::DATE"
+    },
+    "fi_revenue": {
+        "inputs": [
+            {
+                "column": "wh_db_stage.FinWire.value",
+                "type": "DIRECT",
+                "subtype": "Transformation",
+                "description": "SUBSTRING(value FROM 22 FOR 17)",
+                "masking": false
+            }
+        ],
+        "transformation": "CAST(SUBSTRING(value FROM 22 FOR 17) AS DOUBLE)"
+    },
+    "fi_net_earn": {
+        "inputs": [
+            {
+                "column": "wh_db_stage.FinWire.value",
+                "type": "DIRECT",
+                "subtype": "Transformation",
+                "description": "SUBSTRING(value FROM 39 FOR 17)",
+                "masking": false
+            }
+        ],
+        "transformation": "CAST(SUBSTRING(value FROM 39 FOR 17) AS DOUBLE)"
+    },
+    "fi_basic_eps": {
+        "inputs": [
+            {
+                "column": "wh_db_stage.FinWire.value",
+                "type": "DIRECT",
+                "subtype": "Transformation",
+                "description": "SUBSTRING(value FROM 56 FOR 12)",
+                "masking": false
+            }
+        ],
+        "transformation": "CAST(SUBSTRING(value FROM 56 FOR 12) AS DOUBLE)"
+    },
+    "fi_dilut_eps": {
+        "inputs": [
+            {
+                "column": "wh_db_stage.FinWire.value",
+                "type": "DIRECT",
+                "subtype": "Transformation",
+                "description": "SUBSTRING(value FROM 68 FOR 12)",
+                "masking": false
+            }
+        ],
+        "transformation": "CAST(SUBSTRING(value FROM 68 FOR 12) AS DOUBLE)"
+    },
+    "fi_margin": {
+        "inputs": [
+            {
+                "column": "wh_db_stage.FinWire.value",
+                "type": "DIRECT",
+                "subtype": "Transformation",
+                "description": "SUBSTRING(value FROM 80 FOR 12)",
+                "masking": false
+            }
+        ],
+        "transformation": "CAST(SUBSTRING(value FROM 80 FOR 12) AS DOUBLE)"
+    },
+    "fi_inventory": {
+        "inputs": [
+            {
+                "column": "wh_db_stage.FinWire.value",
+                "type": "DIRECT",
+                "subtype": "Transformation",
+                "description": "SUBSTRING(value FROM 92 FOR 17)",
+                "masking": false
+            }
+        ],
+        "transformation": "CAST(SUBSTRING(value FROM 92 FOR 17) AS DOUBLE)"
+    },
+    "fi_assets": {
+        "inputs": [
+            {
+                "column": "wh_db_stage.FinWire.value",
+                "type": "DIRECT",
+                "subtype": "Transformation",
+                "description": "SUBSTRING(value FROM 109 FOR 17)",
+                "masking": false
+            }
+        ],
+        "transformation": "CAST(SUBSTRING(value FROM 109 FOR 17) AS DOUBLE)"
+    },
+    "fi_liability": {
+        "inputs": [
+            {
+                "column": "wh_db_stage.FinWire.value",
+                "type": "DIRECT",
+                "subtype": "Transformation",
+                "description": "SUBSTRING(value FROM 126 FOR 17)",
+                "masking": false
+            }
+        ],
+        "transformation": "CAST(SUBSTRING(value FROM 126 FOR 17) AS DOUBLE)"
+    },
+    "fi_out_basic": {
+        "inputs": [
+            {
+                "column": "wh_db_stage.FinWire.value",
+                "type": "DIRECT",
+                "subtype": "Transformation",
+                "description": "SUBSTRING(value FROM 143 FOR 13)",
+                "masking": false
+            }
+        ],
+        "transformation": "CAST(SUBSTRING(value FROM 143 FOR 13) AS BIGINT)"
+    },
+    "fi_out_dilut": {
+        "inputs": [
+            {
+                "column": "wh_db_stage.FinWire.value",
+                "type": "DIRECT",
+                "subtype": "Transformation",
+                "description": "SUBSTRING(value FROM 156 FOR 13)",
+                "masking": false
+            }
+        ],
+        "transformation": "CAST(SUBSTRING(value FROM 156 FOR 13) AS BIGINT)"
+    }
+}

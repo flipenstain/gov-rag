@@ -1,0 +1,38 @@
+{
+    "rectype": {
+        "inputs": [
+            {
+                "column": "read_csv_auto('src/data/Batch1\\FINWIRE1967Q2', HEADER=FALSE, filename=false, all_varchar=true).column0",
+                "type": "DIRECT",
+                "subtype": "Transformation",
+                "description": "CASE statement based on SUBSTR(column0, 16, 3)",
+                "masking": false
+            }
+        ],
+        "transformation": "CASE WHEN SUBSTR(column0, 16, 3) = 'FIN' THEN CASE WHEN TRY_CAST(TRIM(SUBSTR(column0, 187, 60)) AS BIGINT) IS NOT NULL THEN 'FIN_COMPANYID' ELSE 'FIN_NAME' END ELSE SUBSTR(column0, 16, 3) END"
+    },
+    "recdate": {
+        "inputs": [
+            {
+                "column": "read_csv_auto('src/data/Batch1\\FINWIRE1967Q2', HEADER=FALSE, filename=false, all_varchar=true).column0",
+                "type": "DIRECT",
+                "subtype": "Transformation",
+                "description": "SUBSTR(column0, 1, 8) used in STRPTIME",
+                "masking": false
+            }
+        ],
+        "transformation": "STRPTIME(SUBSTR(column0, 1, 8), '%Y%m%d')"
+    },
+    "value": {
+        "inputs": [
+            {
+                "column": "read_csv_auto('src/data/Batch1\\FINWIRE1967Q2', HEADER=FALSE, filename=false, all_varchar=true).column0",
+                "type": "DIRECT",
+                "subtype": "Transformation",
+                "description": "SUBSTR(column0, 19)",
+                "masking": false
+            }
+        ],
+        "transformation": "SUBSTR(column0, 19)"
+    }
+}

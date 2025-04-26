@@ -1,0 +1,1 @@
+COPY wh_db.industry FROM 'C:/lopu-kg-test/project/src/data/Batch1/Industry.txt' (DELIMITER '|');

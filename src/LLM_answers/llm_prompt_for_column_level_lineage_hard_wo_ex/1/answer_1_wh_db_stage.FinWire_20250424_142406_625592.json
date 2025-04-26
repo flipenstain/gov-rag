@@ -1,0 +1,41 @@
+{
+    "target_table": "wh_db_stage.FinWire",
+    "lineage": {
+        "rectype": {
+            "path": [
+                "CASE WHEN SUBSTR(column0, 16, 3) = 'FIN' THEN CASE WHEN TRY_CAST(TRIM(SUBSTR(column0, 187, 60)) AS BIGINT) IS NOT NULL THEN 'FIN_COMPANYID' ELSE 'FIN_NAME' END ELSE SUBSTR(column0, 16, 3) END"
+            ],
+            "source": {
+                "table": "read_csv_auto('src/data/Batch1\\FINWIRE1967Q2', HEADER=FALSE, filename=false, all_varchar=true)",
+                "column": "column0"
+            },
+            "transformation": "CASE WHEN SUBSTR(column0, 16, 3) = 'FIN' THEN CASE WHEN TRY_CAST(TRIM(SUBSTR(column0, 187, 60)) AS BIGINT) IS NOT NULL THEN 'FIN_COMPANYID' ELSE 'FIN_NAME' END ELSE SUBSTR(column0, 16, 3) END",
+            "transformation_type": "CASE_MAPPING",
+            "role": "conditional mapping based on substring"
+        },
+        "recdate": {
+            "path": [
+                "STRPTIME(SUBSTR(column0, 1, 8), '%Y%m%d')"
+            ],
+            "source": {
+                "table": "read_csv_auto('src/data/Batch1\\FINWIRE1967Q2', HEADER=FALSE, filename=false, all_varchar=true)",
+                "column": "column0"
+            },
+            "transformation": "STRPTIME(SUBSTR(column0, 1, 8), '%Y%m%d')",
+            "transformation_type": "CAST",
+            "role": "date conversion from substring"
+        },
+        "value": {
+            "path": [
+                "SUBSTR(column0, 19)"
+            ],
+            "source": {
+                "table": "read_csv_auto('src/data/Batch1\\FINWIRE1967Q2', HEADER=FALSE, filename=false, all_varchar=true)",
+                "column": "column0"
+            },
+            "transformation": "SUBSTR(column0, 19)",
+            "transformation_type": "SUBSTRING",
+            "role": "substring extraction"
+        }
+    }
+}

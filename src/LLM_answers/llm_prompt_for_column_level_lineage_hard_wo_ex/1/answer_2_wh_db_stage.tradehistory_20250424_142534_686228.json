@@ -1,0 +1,41 @@
+{
+    "target_table": "wh_db_stage.tradehistory",
+    "lineage": {
+        "tradeid": {
+            "source_columns": [
+                {
+                    "table": "src/data/Batch1\\TradeHistory.txt",
+                    "column": "column1"
+                }
+            ],
+            "path": [],
+            "transformation": "CAST(column1 AS BIGINT)",
+            "transformation_type": "CAST",
+            "role": "source_column"
+        },
+        "th_dts": {
+            "source_columns": [
+                {
+                    "table": "src/data/Batch1\\TradeHistory.txt",
+                    "column": "column2"
+                }
+            ],
+            "path": [],
+            "transformation": "CAST(column2 AS TIMESTAMP)",
+            "transformation_type": "CAST",
+            "role": "source_column"
+        },
+        "status": {
+            "source_columns": [
+                {
+                    "table": "src/data/Batch1\\TradeHistory.txt",
+                    "column": "column3"
+                }
+            ],
+            "path": [],
+            "transformation": "CAST(column3 AS STRING)",
+            "transformation_type": "CAST",
+            "role": "source_column"
+        }
+    }
+}

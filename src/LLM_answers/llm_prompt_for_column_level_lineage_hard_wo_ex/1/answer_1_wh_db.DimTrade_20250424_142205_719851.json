@@ -1,0 +1,255 @@
+{
+    "target_table": "wh_db.DimTrade",
+    "lineage": {
+        "tradeid": {
+            "path": [
+                "tradehistorical",
+                "wh_db_stage.tradetxt"
+            ],
+            "source_table": "wh_db_stage.tradetxt",
+            "source_column": "tradeid",
+            "transformation": "tradeid",
+            "transformation_type": "RENAME"
+        },
+        "sk_brokerid": {
+            "path": [
+                "wh_db.DimAccount"
+            ],
+            "source_table": "wh_db.DimAccount",
+            "source_column": "sk_brokerid",
+            "transformation": "da.sk_brokerid",
+            "transformation_type": "RENAME"
+        },
+        "SK_CreateDateID": {
+            "path": [
+                "tradehistorical",
+                "wh_db_stage.tradetxt",
+                "wh_db_stage.tradehistory"
+            ],
+            "source_table": "wh_db_stage.tradehistory",
+            "source_column": "TH_DTS",
+            "transformation": "CAST(strftime(trade.SK_CreateDateID, '%Y%m%d') || da.accountid || da.sk_brokerid AS BIGINT)",
+            "transformation_type": "EXPRESSION_CONCAT",
+            "role": "join key",
+            "intermediate_transformations": [
+                {
+                    "transformation": "CASE WHEN b.status = 'SBMT' AND a.t_tt_id IN ('TMB', 'TMS') OR b.status = 'PNDG' THEN b.TH_DTS WHEN b.status IN ('CMPT', 'CNCL') THEN NULL END",
+                    "transformation_type": "CASE_MAPPING"
+                },
+                {
+                    "transformation": "strftime(trade.SK_CreateDateID, '%Y%m%d')",
+                    "transformation_type": "CAST"
+                }
+            ]
+        },
+        "SK_CreateTimeID": {
+            "path": [
+                "tradehistorical",
+                "wh_db_stage.tradetxt",
+                "wh_db_stage.tradehistory"
+            ],
+            "source_table": "wh_db_stage.tradehistory",
+            "source_column": "TH_DTS",
+            "transformation": "CAST(strftime(trade.SK_CreateTimeID, '%Y%m%d') || da.accountid || da.sk_brokerid AS BIGINT)",
+            "transformation_type": "EXPRESSION_CONCAT",
+            "role": "join key",
+            "intermediate_transformations": [
+                {
+                    "transformation": "CASE WHEN b.status = 'SBMT' AND a.t_tt_id IN ('TMB', 'TMS') OR b.status = 'PNDG' THEN b.TH_DTS WHEN b.status IN ('CMPT', 'CNCL') THEN NULL END",
+                    "transformation_type": "CASE_MAPPING"
+                },
+                {
+                    "transformation": "strftime(trade.SK_CreateTimeID, '%Y%m%d')",
+                    "transformation_type": "CAST"
+                }
+            ]
+        },
+        "SK_CloseDateID": {
+            "path": [
+                "tradehistorical",
+                "wh_db_stage.tradehistory"
+            ],
+            "source_table": "wh_db_stage.tradehistory",
+            "source_column": "TH_DTS",
+            "transformation": "CAST(strftime(trade.SK_CloseDateID, '%Y%m%d') || da.accountid || da.sk_brokerid AS BIGINT)",
+            "transformation_type": "EXPRESSION_CONCAT",
+            "role": "join key",
+            "intermediate_transformations": [
+                {
+                    "transformation": "CASE WHEN b.status = 'SBMT' AND a.t_tt_id IN ('TMB', 'TMS') OR b.status = 'PNDG' THEN NULL WHEN b.status IN ('CMPT', 'CNCL') THEN b.TH_DTS END",
+                    "transformation_type": "CASE_MAPPING"
+                },
+                {
+                    "transformation": "strftime(trade.SK_CloseDateID, '%Y%m%d')",
+                    "transformation_type": "CAST"
+                }
+            ]
+        },
+        "SK_CloseTimeID": {
+            "path": [
+                "tradehistorical",
+                "wh_db_stage.tradehistory"
+            ],
+            "source_table": "wh_db_stage.tradehistory",
+            "source_column": "TH_DTS",
+            "transformation": "CAST(strftime(trade.SK_CloseTimeID, '%Y%m%d') || da.accountid || da.sk_brokerid AS BIGINT)",
+            "transformation_type": "EXPRESSION_CONCAT",
+            "role": "join key",
+            "intermediate_transformations": [
+                {
+                    "transformation": "CASE WHEN b.status = 'SBMT' AND a.t_tt_id IN ('TMB', 'TMS') OR b.status = 'PNDG' THEN NULL WHEN b.status IN ('CMPT', 'CNCL') THEN b.TH_DTS END",
+                    "transformation_type": "CASE_MAPPING"
+                },
+                {
+                    "transformation": "strftime(trade.SK_CloseTimeID, '%Y%m%d')",
+                    "transformation_type": "CAST"
+                }
+            ]
+        },
+        "st_name": {
+            "path": [
+                "tradehistorical",
+                "wh_db.StatusType"
+            ],
+            "source_table": "wh_db.StatusType",
+            "source_column": "st_name",
+            "transformation": "trade.st_name",
+            "transformation_type": "RENAME"
+        },
+        "type": {
+            "path": [
+                "tradehistorical",
+                "wh_db_stage.tradetxt"
+            ],
+            "source_table": "wh_db_stage.tradetxt",
+            "source_column": "t_tt_id",
+            "transformation": "CASE t_tt_id WHEN 'TMB' THEN 'Market Buy' WHEN 'TMS' THEN 'Market Sell' WHEN 'TSL' THEN 'Stop Loss' WHEN 'TLS' THEN 'Limit Sell' WHEN 'TLB' THEN 'Limit Buy' ELSE NULL END",
+            "transformation_type": "CASE_MAPPING"
+        },
+        "cashflag": {
+            "path": [
+                "tradehistorical",
+                "wh_db_stage.tradetxt"
+            ],
+            "source_table": "wh_db_stage.tradetxt",
+            "source_column": "cashflag",
+            "transformation": "trade.cashflag",
+            "transformation_type": "RENAME"
+        },
+        "sk_securityid": {
+            "path": [
+                "wh_db.DimSecurity"
+            ],
+            "source_table": "wh_db.DimSecurity",
+            "source_column": "sk_securityid",
+            "transformation": "ds.sk_securityid",
+            "transformation_type": "RENAME"
+        },
+        "sk_companyid": {
+            "path": [
+                "wh_db.DimSecurity"
+            ],
+            "source_table": "wh_db.DimSecurity",
+            "source_column": "sk_companyid",
+            "transformation": "ds.sk_companyid",
+            "transformation_type": "RENAME"
+        },
+        "quantity": {
+            "path": [
+                "tradehistorical",
+                "wh_db_stage.tradetxt"
+            ],
+            "source_table": "wh_db_stage.tradetxt",
+            "source_column": "quantity",
+            "transformation": "trade.quantity",
+            "transformation_type": "RENAME"
+        },
+        "bidprice": {
+            "path": [
+                "tradehistorical",
+                "wh_db_stage.tradetxt"
+            ],
+            "source_table": "wh_db_stage.tradetxt",
+            "source_column": "bidprice",
+            "transformation": "trade.bidprice",
+            "transformation_type": "RENAME"
+        },
+        "sk_customerid": {
+            "path": [
+                "wh_db.DimAccount"
+            ],
+            "source_table": "wh_db.DimAccount",
+            "source_column": "sk_customerid",
+            "transformation": "da.sk_customerid",
+            "transformation_type": "RENAME"
+        },
+        "sk_accountid": {
+            "path": [
+                "wh_db.DimAccount"
+            ],
+            "source_table": "wh_db.DimAccount",
+            "source_column": "sk_accountid",
+            "transformation": "da.sk_accountid",
+            "transformation_type": "RENAME"
+        },
+        "executedby": {
+            "path": [
+                "tradehistorical",
+                "wh_db_stage.tradetxt"
+            ],
+            "source_table": "wh_db_stage.tradetxt",
+            "source_column": "executedby",
+            "transformation": "trade.executedby",
+            "transformation_type": "RENAME"
+        },
+        "tradeprice": {
+            "path": [
+                "tradehistorical",
+                "wh_db_stage.tradetxt"
+            ],
+            "source_table": "wh_db_stage.tradetxt",
+            "source_column": "tradeprice",
+            "transformation": "trade.tradeprice",
+            "transformation_type": "RENAME"
+        },
+        "fee": {
+            "path": [
+                "tradehistorical",
+                "wh_db_stage.tradetxt"
+            ],
+            "source_table": "wh_db_stage.tradetxt",
+            "source_column": "fee",
+            "transformation": "trade.fee",
+            "transformation_type": "RENAME"
+        },
+        "commission": {
+            "path": [
+                "tradehistorical",
+                "wh_db_stage.tradetxt"
+            ],
+            "source_table": "wh_db_stage.tradetxt",
+            "source_column": "commission",
+            "transformation": "trade.commission",
+            "transformation_type": "RENAME"
+        },
+        "tax": {
+            "path": [
+                "tradehistorical",
+                "wh_db_stage.tradetxt"
+            ],
+            "source_table": "wh_db_stage.tradetxt",
+            "source_column": "tax",
+            "transformation": "trade.tax",
+            "transformation_type": "RENAME"
+        },
+        "batchid": {
+            "path": [
+                "tradehistorical"
+            ],
+            "source_table": null,
+            "source_column": null,
+            "transformation": "1",
+            "transformation_type": "CONSTANT"
+        }
+    }
+}

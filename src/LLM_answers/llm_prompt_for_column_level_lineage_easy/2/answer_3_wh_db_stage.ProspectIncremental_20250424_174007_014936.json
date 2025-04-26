@@ -1,0 +1,77 @@
+{
+    "agencyid": {
+        "input": "temp_propect_marketingnameplate.agencyid"
+    },
+    "lastname": {
+        "input": "temp_propect_marketingnameplate.lastname"
+    },
+    "firstname": {
+        "input": "temp_propect_marketingnameplate.firstname"
+    },
+    "middleinitial": {
+        "input": "temp_propect_marketingnameplate.middleinitial"
+    },
+    "gender": {
+        "input": "temp_propect_marketingnameplate.gender"
+    },
+    "addressline1": {
+        "input": "temp_propect_marketingnameplate.addressline1"
+    },
+    "addressline2": {
+        "input": "temp_propect_marketingnameplate.addressline2"
+    },
+    "postalcode": {
+        "input": "temp_propect_marketingnameplate.postalcode"
+    },
+    "city": {
+        "input": "temp_propect_marketingnameplate.city"
+    },
+    "state": {
+        "input": "temp_propect_marketingnameplate.state"
+    },
+    "country": {
+        "input": "temp_propect_marketingnameplate.country"
+    },
+    "phone": {
+        "input": "temp_propect_marketingnameplate.phone"
+    },
+    "income": {
+        "input": "temp_propect_marketingnameplate.income"
+    },
+    "numbercars": {
+        "input": "temp_propect_marketingnameplate.numbercars"
+    },
+    "numberchildren": {
+        "input": "temp_propect_marketingnameplate.numberchildren"
+    },
+    "maritalstatus": {
+        "input": "temp_propect_marketingnameplate.maritalstatus"
+    },
+    "age": {
+        "input": "temp_propect_marketingnameplate.age"
+    },
+    "creditrating": {
+        "input": "temp_propect_marketingnameplate.creditrating"
+    },
+    "ownorrentflag": {
+        "input": "temp_propect_marketingnameplate.ownorrentflag"
+    },
+    "employer": {
+        "input": "temp_propect_marketingnameplate.employer"
+    },
+    "numbercreditcards": {
+        "input": "temp_propect_marketingnameplate.numbercreditcards"
+    },
+    "networth": {
+        "input": "temp_propect_marketingnameplate.networth"
+    },
+    "marketingnameplate": {
+        "input": "temp_propect_marketingnameplate.marketingnameplate"
+    },
+    "recordbatchid": {
+        "input": "temp_propect_marketingnameplate.batchid"
+    },
+    "batchid": {
+        "input": "temp_propect_marketingnameplate.batchid"
+    }
+}

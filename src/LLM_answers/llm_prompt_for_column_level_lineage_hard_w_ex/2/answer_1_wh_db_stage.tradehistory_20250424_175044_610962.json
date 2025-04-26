@@ -1,0 +1,166 @@
+{
+    "target_table": "wh_db_stage.tradetxt",
+    "sources_summary": [
+        {
+            "type": "FUNCTION",
+            "name": "read_csv",
+            "alias_or_cte": null
+        }
+    ],
+    "lineage": {
+        "tradeid": {
+            "sources": [
+                {
+                    "source_identifier": "read_csv.V1",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "V1 AS tradeid"
+        },
+        "t_dts": {
+            "sources": [
+                {
+                    "source_identifier": "read_csv.V2",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "V2 AS t_dts"
+        },
+        "status": {
+            "sources": [
+                {
+                    "source_identifier": "read_csv.V3",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "V3 AS status"
+        },
+        "t_tt_id": {
+            "sources": [
+                {
+                    "source_identifier": "read_csv.V4",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "V4 AS t_tt_id"
+        },
+        "cashflag": {
+            "sources": [
+                {
+                    "source_identifier": "read_csv.V5",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "V5 AS cashflag"
+        },
+        "t_s_symb": {
+            "sources": [
+                {
+                    "source_identifier": "read_csv.V6",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "V6 AS t_s_symb"
+        },
+        "quantity": {
+            "sources": [
+                {
+                    "source_identifier": "read_csv.V7",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "V7 AS quantity"
+        },
+        "bidprice": {
+            "sources": [
+                {
+                    "source_identifier": "read_csv.V8",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "V8 AS bidprice"
+        },
+        "t_ca_id": {
+            "sources": [
+                {
+                    "source_identifier": "read_csv.V9",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "V9 AS t_ca_id"
+        },
+        "executedby": {
+            "sources": [
+                {
+                    "source_identifier": "read_csv.V10",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "V10 AS executedby"
+        },
+        "tradeprice": {
+            "sources": [
+                {
+                    "source_identifier": "read_csv.V11",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "V11 AS tradeprice"
+        },
+        "fee": {
+            "sources": [
+                {
+                    "source_identifier": "read_csv.V12",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "V12 AS fee"
+        },
+        "commission": {
+            "sources": [
+                {
+                    "source_identifier": "read_csv.V13",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "V13 AS commission"
+        },
+        "tax": {
+            "sources": [
+                {
+                    "source_identifier": "read_csv.V14",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "V14 AS tax"
+        }
+    }
+}

@@ -1,0 +1,116 @@
+{
+    "target_table": "temp_propect_marketingnameplate",
+    "lineage": {
+        "marketingnameplate": {
+            "path": [
+                "temp_propect_marketingnameplate"
+            ],
+            "source": {
+                "table": "temp_propect",
+                "columns": [
+                    "networth",
+                    "income",
+                    "numberchildren",
+                    "numbercreditcards",
+                    "age",
+                    "creditrating",
+                    "numbercars"
+                ]
+            },
+            "transformation": "CASE WHEN LENGTH(CONCAT(CASE WHEN networth > 1000000 OR income > 200000 THEN 'HighValue+' ELSE '' END,CASE WHEN numberchildren > 3 OR numbercreditcards > 5 THEN 'Expenses+' ELSE '' END,CASE WHEN age > 45 THEN 'Boomer+' ELSE '' END,CASE WHEN income < 50000 OR creditrating < 600 OR networth < 100000 THEN 'MoneyAlert+' ELSE '' END,CASE WHEN numbercars > 3 OR numbercreditcards > 7 THEN 'Spender+' ELSE '' END,CASE WHEN age < 25 AND networth > 1000000 THEN 'Inherited+' ELSE '' END)) > 0 THEN LEFT(CONCAT(CASE WHEN networth > 1000000 OR income > 200000 THEN 'HighValue+' ELSE '' END,CASE WHEN numberchildren > 3 OR numbercreditcards > 5 THEN 'Expenses+' ELSE '' END,CASE WHEN age > 45 THEN 'Boomer+' ELSE '' END,CASE WHEN income < 50000 OR creditrating < 600 OR networth < 100000 THEN 'MoneyAlert+' ELSE '' END,CASE WHEN numbercars > 3 OR numbercreditcards > 7 THEN 'Spender+' ELSE '' END,CASE WHEN age < 25 AND networth > 1000000 THEN 'Inherited+' ELSE '' END),LENGTH(CONCAT(CASE WHEN networth > 1000000 OR income > 200000 THEN 'HighValue+' ELSE '' END,CASE WHEN numberchildren > 3 OR numbercreditcards > 5 THEN 'Expenses+' ELSE '' END,CASE WHEN age > 45 THEN 'Boomer+' ELSE '' END,CASE WHEN income < 50000 OR creditrating < 600 OR networth < 100000 THEN 'MoneyAlert+' ELSE '' END,CASE WHEN numbercars > 3 OR numbercreditcards > 7 THEN 'Spender+' ELSE '' END,CASE WHEN age < 25 AND networth > 1000000 THEN 'Inherited+' ELSE '' END))-1) ELSE NULL END",
+            "transformation_type": "EXPRESSION_CONCAT",
+            "role": "derived"
+        },
+        "networth": {
+            "path": [
+                "temp_propect_marketingnameplate",
+                "temp_propect"
+            ],
+            "source": {
+                "table": "temp_propect",
+                "column": "networth"
+            },
+            "transformation": null,
+            "transformation_type": "COPY",
+            "role": "input"
+        },
+        "income": {
+            "path": [
+                "temp_propect_marketingnameplate",
+                "temp_propect"
+            ],
+            "source": {
+                "table": "temp_propect",
+                "column": "income"
+            },
+            "transformation": null,
+            "transformation_type": "COPY",
+            "role": "input"
+        },
+        "numberchildren": {
+            "path": [
+                "temp_propect_marketingnameplate",
+                "temp_propect"
+            ],
+            "source": {
+                "table": "temp_propect",
+                "column": "numberchildren"
+            },
+            "transformation": null,
+            "transformation_type": "COPY",
+            "role": "input"
+        },
+        "numbercreditcards": {
+            "path": [
+                "temp_propect_marketingnameplate",
+                "temp_propect"
+            ],
+            "source": {
+                "table": "temp_propect",
+                "column": "numbercreditcards"
+            },
+            "transformation": null,
+            "transformation_type": "COPY",
+            "role": "input"
+        },
+        "age": {
+            "path": [
+                "temp_propect_marketingnameplate",
+                "temp_propect"
+            ],
+            "source": {
+                "table": "temp_propect",
+                "column": "age"
+            },
+            "transformation": null,
+            "transformation_type": "COPY",
+            "role": "input"
+        },
+        "creditrating": {
+            "path": [
+                "temp_propect_marketingnameplate",
+                "temp_propect"
+            ],
+            "source": {
+                "table": "temp_propect",
+                "column": "creditrating"
+            },
+            "transformation": null,
+            "transformation_type": "COPY",
+            "role": "input"
+        },
+        "numbercars": {
+            "path": [
+                "temp_propect_marketingnameplate",
+                "temp_propect"
+            ],
+            "source": {
+                "table": "temp_propect",
+                "column": "numbercars"
+            },
+            "transformation": null,
+            "transformation_type": "COPY",
+            "role": "input"
+        }
+    }
+}

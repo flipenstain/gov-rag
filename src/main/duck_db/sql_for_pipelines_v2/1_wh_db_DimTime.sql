@@ -1,0 +1,1 @@
+COPY wh_db.DimTime FROM 'C:/lopu-kg-test/project/src/data/Batch1/Time.txt' (DELIMITER '|');

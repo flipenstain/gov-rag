@@ -1,0 +1,220 @@
+{
+    "target_table": "temp_propect_marketingnameplate",
+    "sources_summary": {
+        "temp_propect": [
+            "networth",
+            "income",
+            "numberchildren",
+            "numbercreditcards",
+            "age",
+            "creditrating",
+            "numbercars"
+        ]
+    },
+    "lineage": {
+        "marketingnameplate": [
+            {
+                "source_table": "temp_propect",
+                "source_column": "networth",
+                "path": [],
+                "transformation_logic": "CASE WHEN networth > 1000000 OR income > 200000 THEN 'HighValue+' ELSE '' END",
+                "transformation_type": "CASE_MAPPING",
+                "role": "condition_input"
+            },
+            {
+                "source_table": "temp_propect",
+                "source_column": "income",
+                "path": [],
+                "transformation_logic": "CASE WHEN networth > 1000000 OR income > 200000 THEN 'HighValue+' ELSE '' END",
+                "transformation_type": "CASE_MAPPING",
+                "role": "condition_input"
+            },
+            {
+                "source_table": "temp_propect",
+                "source_column": "numberchildren",
+                "path": [],
+                "transformation_logic": "CASE WHEN numberchildren > 3 OR numbercreditcards > 5 THEN 'Expenses+' ELSE '' END",
+                "transformation_type": "CASE_MAPPING",
+                "role": "condition_input"
+            },
+            {
+                "source_table": "temp_propect",
+                "source_column": "numbercreditcards",
+                "path": [],
+                "transformation_logic": "CASE WHEN numberchildren > 3 OR numbercreditcards > 5 THEN 'Expenses+' ELSE '' END",
+                "transformation_type": "CASE_MAPPING",
+                "role": "condition_input"
+            },
+            {
+                "source_table": "temp_propect",
+                "source_column": "age",
+                "path": [],
+                "transformation_logic": "CASE WHEN age > 45 THEN 'Boomer+' ELSE '' END",
+                "transformation_type": "CASE_MAPPING",
+                "role": "condition_input"
+            },
+            {
+                "source_table": "temp_propect",
+                "source_column": "income",
+                "path": [],
+                "transformation_logic": "CASE WHEN income < 50000 OR creditrating < 600 OR networth < 100000 THEN 'MoneyAlert+' ELSE '' END",
+                "transformation_type": "CASE_MAPPING",
+                "role": "condition_input"
+            },
+            {
+                "source_table": "temp_propect",
+                "source_column": "creditrating",
+                "path": [],
+                "transformation_logic": "CASE WHEN income < 50000 OR creditrating < 600 OR networth < 100000 THEN 'MoneyAlert+' ELSE '' END",
+                "transformation_type": "CASE_MAPPING",
+                "role": "condition_input"
+            },
+            {
+                "source_table": "temp_propect",
+                "source_column": "networth",
+                "path": [],
+                "transformation_logic": "CASE WHEN income < 50000 OR creditrating < 600 OR networth < 100000 THEN 'MoneyAlert+' ELSE '' END",
+                "transformation_type": "CASE_MAPPING",
+                "role": "condition_input"
+            },
+            {
+                "source_table": "temp_propect",
+                "source_column": "numbercars",
+                "path": [],
+                "transformation_logic": "CASE WHEN numbercars > 3 OR numbercreditcards > 7 THEN 'Spender+' ELSE '' END",
+                "transformation_type": "CASE_MAPPING",
+                "role": "condition_input"
+            },
+            {
+                "source_table": "temp_propect",
+                "source_column": "numbercreditcards",
+                "path": [],
+                "transformation_logic": "CASE WHEN numbercars > 3 OR numbercreditcards > 7 THEN 'Spender+' ELSE '' END",
+                "transformation_type": "CASE_MAPPING",
+                "role": "condition_input"
+            },
+            {
+                "source_table": "temp_propect",
+                "source_column": "age",
+                "path": [],
+                "transformation_logic": "CASE WHEN age < 25 AND networth > 1000000 THEN 'Inherited+' ELSE '' END",
+                "transformation_type": "CASE_MAPPING",
+                "role": "condition_input"
+            },
+            {
+                "source_table": "temp_propect",
+                "source_column": "networth",
+                "path": [],
+                "transformation_logic": "CASE WHEN age < 25 AND networth > 1000000 THEN 'Inherited+' ELSE '' END",
+                "transformation_type": "CASE_MAPPING",
+                "role": "condition_input"
+            },
+            {
+                "source_table": "temp_propect",
+                "source_column": "networth",
+                "path": [],
+                "transformation_logic": "LEFT(CONCAT(CASE WHEN networth > 1000000 OR income > 200000 THEN 'HighValue+' ELSE '' END,CASE WHEN numberchildren > 3 OR numbercreditcards > 5 THEN 'Expenses+' ELSE '' END,CASE WHEN age > 45 THEN 'Boomer+' ELSE '' END,CASE WHEN income < 50000 OR creditrating < 600 OR networth < 100000 THEN 'MoneyAlert+' ELSE '' END,CASE WHEN numbercars > 3 OR numbercreditcards > 7 THEN 'Spender+' ELSE '' END,CASE WHEN age < 25 AND networth > 1000000 THEN 'Inherited+' ELSE '' END),LENGTH(CONCAT(CASE WHEN networth > 1000000 OR income > 200000 THEN 'HighValue+' ELSE '' END,CASE WHEN numberchildren > 3 OR numbercreditcards > 5 THEN 'Expenses+' ELSE '' END,CASE WHEN age > 45 THEN 'Boomer+' ELSE '' END,CASE WHEN income < 50000 OR creditrating < 600 OR networth < 100000 THEN 'MoneyAlert+' ELSE '' END,CASE WHEN numbercars > 3 OR numbercreditcards > 7 THEN 'Spender+' ELSE '' END,CASE WHEN age < 25 AND networth > 1000000 THEN 'Inherited+' ELSE '' END)) - 1)",
+                "transformation_type": "CASE_MAPPING",
+                "role": "condition_input"
+            },
+            {
+                "source_table": "temp_propect",
+                "source_column": "income",
+                "path": [],
+                "transformation_logic": "LEFT(CONCAT(CASE WHEN networth > 1000000 OR income > 200000 THEN 'HighValue+' ELSE '' END,CASE WHEN numberchildren > 3 OR numbercreditcards > 5 THEN 'Expenses+' ELSE '' END,CASE WHEN age > 45 THEN 'Boomer+' ELSE '' END,CASE WHEN income < 50000 OR creditrating < 600 OR networth < 100000 THEN 'MoneyAlert+' ELSE '' END,CASE WHEN numbercars > 3 OR numbercreditcards > 7 THEN 'Spender+' ELSE '' END,CASE WHEN age < 25 AND networth > 1000000 THEN 'Inherited+' ELSE '' END),LENGTH(CONCAT(CASE WHEN networth > 1000000 OR income > 200000 THEN 'HighValue+' ELSE '' END,CASE WHEN numberchildren > 3 OR numbercreditcards > 5 THEN 'Expenses+' ELSE '' END,CASE WHEN age > 45 THEN 'Boomer+' ELSE '' END,CASE WHEN income < 50000 OR creditrating < 600 OR networth < 100000 THEN 'MoneyAlert+' ELSE '' END,CASE WHEN numbercars > 3 OR numbercreditcards > 7 THEN 'Spender+' ELSE '' END,CASE WHEN age < 25 AND networth > 1000000 THEN 'Inherited+' ELSE '' END)) - 1)",
+                "transformation_type": "CASE_MAPPING",
+                "role": "condition_input"
+            },
+            {
+                "source_table": "temp_propect",
+                "source_column": "numberchildren",
+                "path": [],
+                "transformation_logic": "LEFT(CONCAT(CASE WHEN networth > 1000000 OR income > 200000 THEN 'HighValue+' ELSE '' END,CASE WHEN numberchildren > 3 OR numbercreditcards > 5 THEN 'Expenses+' ELSE '' END,CASE WHEN age > 45 THEN 'Boomer+' ELSE '' END,CASE WHEN income < 50000 OR creditrating < 600 OR networth < 100000 THEN 'MoneyAlert+' ELSE '' END,CASE WHEN numbercars > 3 OR numbercreditcards > 7 THEN 'Spender+' ELSE '' END,CASE WHEN age < 25 AND networth > 1000000 THEN 'Inherited+' ELSE '' END),LENGTH(CONCAT(CASE WHEN networth > 1000000 OR income > 200000 THEN 'HighValue+' ELSE '' END,CASE WHEN numberchildren > 3 OR numbercreditcards > 5 THEN 'Expenses+' ELSE '' END,CASE WHEN age > 45 THEN 'Boomer+' ELSE '' END,CASE WHEN income < 50000 OR creditrating < 600 OR networth < 100000 THEN 'MoneyAlert+' ELSE '' END,CASE WHEN numbercars > 3 OR numbercreditcards > 7 THEN 'Spender+' ELSE '' END,CASE WHEN age < 25 AND networth > 1000000 THEN 'Inherited+' ELSE '' END)) - 1)",
+                "transformation_type": "CASE_MAPPING",
+                "role": "condition_input"
+            },
+            {
+                "source_table": "temp_propect",
+                "source_column": "numbercreditcards",
+                "path": [],
+                "transformation_logic": "LEFT(CONCAT(CASE WHEN networth > 1000000 OR income > 200000 THEN 'HighValue+' ELSE '' END,CASE WHEN numberchildren > 3 OR numbercreditcards > 5 THEN 'Expenses+' ELSE '' END,CASE WHEN age > 45 THEN 'Boomer+' ELSE '' END,CASE WHEN income < 50000 OR creditrating < 600 OR networth < 100000 THEN 'MoneyAlert+' ELSE '' END,CASE WHEN numbercars > 3 OR numbercreditcards > 7 THEN 'Spender+' ELSE '' END,CASE WHEN age < 25 AND networth > 1000000 THEN 'Inherited+' ELSE '' END),LENGTH(CONCAT(CASE WHEN networth > 1000000 OR income > 200000 THEN 'HighValue+' ELSE '' END,CASE WHEN numberchildren > 3 OR numbercreditcards > 5 THEN 'Expenses+' ELSE '' END,CASE WHEN age > 45 THEN 'Boomer+' ELSE '' END,CASE WHEN income < 50000 OR creditrating < 600 OR networth < 100000 THEN 'MoneyAlert+' ELSE '' END,CASE WHEN numbercars > 3 OR numbercreditcards > 7 THEN 'Spender+' ELSE '' END,CASE WHEN age < 25 AND networth > 1000000 THEN 'Inherited+' ELSE '' END)) - 1)",
+                "transformation_type": "CASE_MAPPING",
+                "role": "condition_input"
+            },
+            {
+                "source_table": "temp_propect",
+                "source_column": "age",
+                "path": [],
+                "transformation_logic": "LEFT(CONCAT(CASE WHEN networth > 1000000 OR income > 200000 THEN 'HighValue+' ELSE '' END,CASE WHEN numberchildren > 3 OR numbercreditcards > 5 THEN 'Expenses+' ELSE '' END,CASE WHEN age > 45 THEN 'Boomer+' ELSE '' END,CASE WHEN income < 50000 OR creditrating < 600 OR networth < 100000 THEN 'MoneyAlert+' ELSE '' END,CASE WHEN numbercars > 3 OR numbercreditcards > 7 THEN 'Spender+' ELSE '' END,CASE WHEN age < 25 AND networth > 1000000 THEN 'Inherited+' ELSE '' END),LENGTH(CONCAT(CASE WHEN networth > 1000000 OR income > 200000 THEN 'HighValue+' ELSE '' END,CASE WHEN numberchildren > 3 OR numbercreditcards > 5 THEN 'Expenses+' ELSE '' END,CASE WHEN age > 45 THEN 'Boomer+' ELSE '' END,CASE WHEN income < 50000 OR creditrating < 600 OR networth < 100000 THEN 'MoneyAlert+' ELSE '' END,CASE WHEN numbercars > 3 OR numbercreditcards > 7 THEN 'Spender+' ELSE '' END,CASE WHEN age < 25 AND networth > 1000000 THEN 'Inherited+' ELSE '' END)) - 1)",
+                "transformation_type": "CASE_MAPPING",
+                "role": "condition_input"
+            },
+            {
+                "source_table": "temp_propect",
+                "source_column": "income",
+                "path": [],
+                "transformation_logic": "LEFT(CONCAT(CASE WHEN networth > 1000000 OR income > 200000 THEN 'HighValue+' ELSE '' END,CASE WHEN numberchildren > 3 OR numbercreditcards > 5 THEN 'Expenses+' ELSE '' END,CASE WHEN age > 45 THEN 'Boomer+' ELSE '' END,CASE WHEN income < 50000 OR creditrating < 600 OR networth < 100000 THEN 'MoneyAlert+' ELSE '' END,CASE WHEN numbercars > 3 OR numbercreditcards > 7 THEN 'Spender+' ELSE '' END,CASE WHEN age < 25 AND networth > 1000000 THEN 'Inherited+' ELSE '' END),LENGTH(CONCAT(CASE WHEN networth > 1000000 OR income > 200000 THEN 'HighValue+' ELSE '' END,CASE WHEN numberchildren > 3 OR numbercreditcards > 5 THEN 'Expenses+' ELSE '' END,CASE WHEN age > 45 THEN 'Boomer+' ELSE '' END,CASE WHEN income < 50000 OR creditrating < 600 OR networth < 100000 THEN 'MoneyAlert+' ELSE '' END,CASE WHEN numbercars > 3 OR numbercreditcards > 7 THEN 'Spender+' ELSE '' END,CASE WHEN age < 25 AND networth > 1000000 THEN 'Inherited+' ELSE '' END)) - 1)",
+                "transformation_type": "CASE_MAPPING",
+                "role": "condition_input"
+            },
+            {
+                "source_table": "temp_propect",
+                "source_column": "creditrating",
+                "path": [],
+                "transformation_logic": "LEFT(CONCAT(CASE WHEN networth > 1000000 OR income > 200000 THEN 'HighValue+' ELSE '' END,CASE WHEN numberchildren > 3 OR numbercreditcards > 5 THEN 'Expenses+' ELSE '' END,CASE WHEN age > 45 THEN 'Boomer+' ELSE '' END,CASE WHEN income < 50000 OR creditrating < 600 OR networth < 100000 THEN 'MoneyAlert+' ELSE '' END,CASE WHEN numbercars > 3 OR numbercreditcards > 7 THEN 'Spender+' ELSE '' END,CASE WHEN age < 25 AND networth > 1000000 THEN 'Inherited+' ELSE '' END),LENGTH(CONCAT(CASE WHEN networth > 1000000 OR income > 200000 THEN 'HighValue+' ELSE '' END,CASE WHEN numberchildren > 3 OR numbercreditcards > 5 THEN 'Expenses+' ELSE '' END,CASE WHEN age > 45 THEN 'Boomer+' ELSE '' END,CASE WHEN income < 50000 OR creditrating < 600 OR networth < 100000 THEN 'MoneyAlert+' ELSE '' END,CASE WHEN numbercars > 3 OR numbercreditcards > 7 THEN 'Spender+' ELSE '' END,CASE WHEN age < 25 AND networth > 1000000 THEN 'Inherited+' ELSE '' END)) - 1)",
+                "transformation_type": "CASE_MAPPING",
+                "role": "condition_input"
+            },
+            {
+                "source_table": "temp_propect",
+                "source_column": "networth",
+                "path": [],
+                "transformation_logic": "LEFT(CONCAT(CASE WHEN networth > 1000000 OR income > 200000 THEN 'HighValue+' ELSE '' END,CASE WHEN numberchildren > 3 OR numbercreditcards > 5 THEN 'Expenses+' ELSE '' END,CASE WHEN age > 45 THEN 'Boomer+' ELSE '' END,CASE WHEN income < 50000 OR creditrating < 600 OR networth < 100000 THEN 'MoneyAlert+' ELSE '' END,CASE WHEN numbercars > 3 OR numbercreditcards > 7 THEN 'Spender+' ELSE '' END,CASE WHEN age < 25 AND networth > 1000000 THEN 'Inherited+' ELSE '' END),LENGTH(CONCAT(CASE WHEN networth > 1000000 OR income > 200000 THEN 'HighValue+' ELSE '' END,CASE WHEN numberchildren > 3 OR numbercreditcards > 5 THEN 'Expenses+' ELSE '' END,CASE WHEN age > 45 THEN 'Boomer+' ELSE '' END,CASE WHEN income < 50000 OR creditrating < 600 OR networth < 100000 THEN 'MoneyAlert+' ELSE '' END,CASE WHEN numbercars > 3 OR numbercreditcards > 7 THEN 'Spender+' ELSE '' END,CASE WHEN age < 25 AND networth > 1000000 THEN 'Inherited+' ELSE '' END)) - 1)",
+                "transformation_type": "CASE_MAPPING",
+                "role": "condition_input"
+            },
+            {
+                "source_table": "temp_propect",
+                "source_column": "numbercars",
+                "path": [],
+                "transformation_logic": "LEFT(CONCAT(CASE WHEN networth > 1000000 OR income > 200000 THEN 'HighValue+' ELSE '' END,CASE WHEN numberchildren > 3 OR numbercreditcards > 5 THEN 'Expenses+' ELSE '' END,CASE WHEN age > 45 THEN 'Boomer+' ELSE '' END,CASE WHEN income < 50000 OR creditrating < 600 OR networth < 100000 THEN 'MoneyAlert+' ELSE '' END,CASE WHEN numbercars > 3 OR numbercreditcards > 7 THEN 'Spender+' ELSE '' END,CASE WHEN age < 25 AND networth > 1000000 THEN 'Inherited+' ELSE '' END),LENGTH(CONCAT(CASE WHEN networth > 1000000 OR income > 200000 THEN 'HighValue+' ELSE '' END,CASE WHEN numberchildren > 3 OR numbercreditcards > 5 THEN 'Expenses+' ELSE '' END,CASE WHEN age > 45 THEN 'Boomer+' ELSE '' END,CASE WHEN income < 50000 OR creditrating < 600 OR networth < 100000 THEN 'MoneyAlert+' ELSE '' END,CASE WHEN numbercars > 3 OR numbercreditcards > 7 THEN 'Spender+' ELSE '' END,CASE WHEN age < 25 AND networth > 1000000 THEN 'Inherited+' ELSE '' END)) - 1)",
+                "transformation_type": "CASE_MAPPING",
+                "role": "condition_input"
+            },
+            {
+                "source_table": "temp_propect",
+                "source_column": "numbercreditcards",
+                "path": [],
+                "transformation_logic": "LEFT(CONCAT(CASE WHEN networth > 1000000 OR income > 200000 THEN 'HighValue+' ELSE '' END,CASE WHEN numberchildren > 3 OR numbercreditcards > 5 THEN 'Expenses+' ELSE '' END,CASE WHEN age > 45 THEN 'Boomer+' ELSE '' END,CASE WHEN income < 50000 OR creditrating < 600 OR networth < 100000 THEN 'MoneyAlert+' ELSE '' END,CASE WHEN numbercars > 3 OR numbercreditcards > 7 THEN 'Spender+' ELSE '' END,CASE WHEN age < 25 AND networth > 1000000 THEN 'Inherited+' ELSE '' END),LENGTH(CONCAT(CASE WHEN networth > 1000000 OR income > 200000 THEN 'HighValue+' ELSE '' END,CASE WHEN numberchildren > 3 OR numbercreditcards > 5 THEN 'Expenses+' ELSE '' END,CASE WHEN age > 45 THEN 'Boomer+' ELSE '' END,CASE WHEN income < 50000 OR creditrating < 600 OR networth < 100000 THEN 'MoneyAlert+' ELSE '' END,CASE WHEN numbercars > 3 OR numbercreditcards > 7 THEN 'Spender+' ELSE '' END,CASE WHEN age < 25 AND networth > 1000000 THEN 'Inherited+' ELSE '' END)) - 1)",
+                "transformation_type": "CASE_MAPPING",
+                "role": "condition_input"
+            },
+            {
+                "source_table": "temp_propect",
+                "source_column": "age",
+                "path": [],
+                "transformation_logic": "LEFT(CONCAT(CASE WHEN networth > 1000000 OR income > 200000 THEN 'HighValue+' ELSE '' END,CASE WHEN numberchildren > 3 OR numbercreditcards > 5 THEN 'Expenses+' ELSE '' END,CASE WHEN age > 45 THEN 'Boomer+' ELSE '' END,CASE WHEN income < 50000 OR creditrating < 600 OR networth < 100000 THEN 'MoneyAlert+' ELSE '' END,CASE WHEN numbercars > 3 OR numbercreditcards > 7 THEN 'Spender+' ELSE '' END,CASE WHEN age < 25 AND networth > 1000000 THEN 'Inherited+' ELSE '' END),LENGTH(CONCAT(CASE WHEN networth > 1000000 OR income > 200000 THEN 'HighValue+' ELSE '' END,CASE WHEN numberchildren > 3 OR numbercreditcards > 5 THEN 'Expenses+' ELSE '' END,CASE WHEN age > 45 THEN 'Boomer+' ELSE '' END,CASE WHEN income < 50000 OR creditrating < 600 OR networth < 100000 THEN 'MoneyAlert+' ELSE '' END,CASE WHEN numbercars > 3 OR numbercreditcards > 7 THEN 'Spender+' ELSE '' END,CASE WHEN age < 25 AND networth > 1000000 THEN 'Inherited+' ELSE '' END)) - 1)",
+                "transformation_type": "CASE_MAPPING",
+                "role": "condition_input"
+            },
+            {
+                "source_table": "temp_propect",
+                "source_column": "networth",
+                "path": [],
+                "transformation_logic": "LEFT(CONCAT(CASE WHEN networth > 1000000 OR income > 200000 THEN 'HighValue+' ELSE '' END,CASE WHEN numberchildren > 3 OR numbercreditcards > 5 THEN 'Expenses+' ELSE '' END,CASE WHEN age > 45 THEN 'Boomer+' ELSE '' END,CASE WHEN income < 50000 OR creditrating < 600 OR networth < 100000 THEN 'MoneyAlert+' ELSE '' END,CASE WHEN numbercars > 3 OR numbercreditcards > 7 THEN 'Spender+' ELSE '' END,CASE WHEN age < 25 AND networth > 1000000 THEN 'Inherited+' ELSE '' END),LENGTH(CONCAT(CASE WHEN networth > 1000000 OR income > 200000 THEN 'HighValue+' ELSE '' END,CASE WHEN numberchildren > 3 OR numbercreditcards > 5 THEN 'Expenses+' ELSE '' END,CASE WHEN age > 45 THEN 'Boomer+' ELSE '' END,CASE WHEN income < 50000 OR creditrating < 600 OR networth < 100000 THEN 'MoneyAlert+' ELSE '' END,CASE WHEN numbercars > 3 OR numbercreditcards > 7 THEN 'Spender+' ELSE '' END,CASE WHEN age < 25 AND networth > 1000000 THEN 'Inherited+' ELSE '' END)) - 1)",
+                "transformation_type": "CASE_MAPPING",
+                "role": "condition_input"
+            }
+        ],
+        "*": [
+            {
+                "source_table": "temp_propect",
+                "source_column": "*",
+                "path": [],
+                "transformation_logic": "direct copy",
+                "transformation_type": "RENAME",
+                "role": "select"
+            }
+        ]
+    }
+}

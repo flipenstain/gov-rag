@@ -1,0 +1,79 @@
+{
+    "sk_companyid": {
+        "inputs": [
+            {
+                "column": "wh_db_stage.FinWire.value",
+                "type": "DIRECT",
+                "subtype": "Transformation",
+                "description": "cik extracted from value using SUBSTR, then cast to BIGINT, concatenated with strftime('%Y%m%d', recdate) and cast to BIGINT",
+                "masking": false
+            },
+            {
+                "column": "wh_db_stage.FinWire.recdate",
+                "type": "DIRECT",
+                "subtype": "Transformation",
+                "description": "recdate used in strftime('%Y%m%d')",
+                "masking": false
+            }
+        ],
+        "transformation": "CAST(strftime(effectivedate, '%Y%m%d') || companyid AS BIGINT)"
+    },
+    "companyid": {
+        "input": "wh_db_stage.FinWire.value"
+    },
+    "status": {
+        "input": "wh_db_stage.FinWire.value"
+    },
+    "name": {
+        "input": "wh_db_stage.FinWire.value"
+    },
+    "industry": {
+        "input": "wh_db.industry.in_name"
+    },
+    "sprating": {
+        "input": "wh_db_stage.FinWire.value"
+    },
+    "islowgrade": {
+        "input": "wh_db_stage.FinWire.value"
+    },
+    "ceo": {
+        "input": "wh_db_stage.FinWire.value"
+    },
+    "addressline1": {
+        "input": "wh_db_stage.FinWire.value"
+    },
+    "addressline2": {
+        "input": "wh_db_stage.FinWire.value"
+    },
+    "postalcode": {
+        "input": "wh_db_stage.FinWire.value"
+    },
+    "city": {
+        "input": "wh_db_stage.FinWire.value"
+    },
+    "stateprov": {
+        "input": "wh_db_stage.FinWire.value"
+    },
+    "country": {
+        "input": "wh_db_stage.FinWire.value"
+    },
+    "description": {
+        "input": "wh_db_stage.FinWire.value"
+    },
+    "foundingdate": {
+        "input": "wh_db_stage.FinWire.value"
+    },
+    "iscurrent": {
+        "input": "wh_db_stage.FinWire.recdate"
+    },
+    "batchid": {
+        "inputs": [],
+        "transformation": "1"
+    },
+    "effectivedate": {
+        "input": "wh_db_stage.FinWire.recdate"
+    },
+    "enddate": {
+        "input": "wh_db_stage.FinWire.recdate"
+    }
+}

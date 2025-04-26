@@ -1,0 +1,144 @@
+{
+    "target_table": "wh_db.Financial",
+    "lineage": {
+        "sk_companyid": {
+            "path": [
+                "wh_db.DimCompany"
+            ],
+            "source_table": "wh_db.DimCompany",
+            "source_column": "sk_companyid",
+            "transformation": null,
+            "transformation_type": "RENAME"
+        },
+        "fi_year": {
+            "path": [
+                "finwire_parsed"
+            ],
+            "source_table": "wh_db_stage.FinWire",
+            "source_column": "value",
+            "transformation": "CAST(SUBSTRING(value FROM 1 FOR 4) AS INTEGER)",
+            "transformation_type": "SUBSTRING",
+            "role": "value"
+        },
+        "fi_qtr": {
+            "path": [
+                "finwire_parsed"
+            ],
+            "source_table": "wh_db_stage.FinWire",
+            "source_column": "value",
+            "transformation": "CAST(SUBSTRING(value FROM 5 FOR 1) AS INTEGER)",
+            "transformation_type": "SUBSTRING",
+            "role": "value"
+        },
+        "fi_qtr_start_date": {
+            "path": [
+                "finwire_parsed"
+            ],
+            "source_table": "wh_db_stage.FinWire",
+            "source_column": "value",
+            "transformation": "strptime(SUBSTRING(value FROM 6 FOR 8), '%Y%m%d')::DATE",
+            "transformation_type": "SUBSTRING",
+            "role": "value"
+        },
+        "fi_revenue": {
+            "path": [
+                "finwire_parsed"
+            ],
+            "source_table": "wh_db_stage.FinWire",
+            "source_column": "value",
+            "transformation": "CAST(SUBSTRING(value FROM 22 FOR 17) AS DOUBLE)",
+            "transformation_type": "SUBSTRING",
+            "role": "value"
+        },
+        "fi_net_earn": {
+            "path": [
+                "finwire_parsed"
+            ],
+            "source_table": "wh_db_stage.FinWire",
+            "source_column": "value",
+            "transformation": "CAST(SUBSTRING(value FROM 39 FOR 17) AS DOUBLE)",
+            "transformation_type": "SUBSTRING",
+            "role": "value"
+        },
+        "fi_basic_eps": {
+            "path": [
+                "finwire_parsed"
+            ],
+            "source_table": "wh_db_stage.FinWire",
+            "source_column": "value",
+            "transformation": "CAST(SUBSTRING(value FROM 56 FOR 12) AS DOUBLE)",
+            "transformation_type": "SUBSTRING",
+            "role": "value"
+        },
+        "fi_dilut_eps": {
+            "path": [
+                "finwire_parsed"
+            ],
+            "source_table": "wh_db_stage.FinWire",
+            "source_column": "value",
+            "transformation": "CAST(SUBSTRING(value FROM 68 FOR 12) AS DOUBLE)",
+            "transformation_type": "SUBSTRING",
+            "role": "value"
+        },
+        "fi_margin": {
+            "path": [
+                "finwire_parsed"
+            ],
+            "source_table": "wh_db_stage.FinWire",
+            "source_column": "value",
+            "transformation": "CAST(SUBSTRING(value FROM 80 FOR 12) AS DOUBLE)",
+            "transformation_type": "SUBSTRING",
+            "role": "value"
+        },
+        "fi_inventory": {
+            "path": [
+                "finwire_parsed"
+            ],
+            "source_table": "wh_db_stage.FinWire",
+            "source_column": "value",
+            "transformation": "CAST(SUBSTRING(value FROM 92 FOR 17) AS DOUBLE)",
+            "transformation_type": "SUBSTRING",
+            "role": "value"
+        },
+        "fi_assets": {
+            "path": [
+                "finwire_parsed"
+            ],
+            "source_table": "wh_db_stage.FinWire",
+            "source_column": "value",
+            "transformation": "CAST(SUBSTRING(value FROM 109 FOR 17) AS DOUBLE)",
+            "transformation_type": "SUBSTRING",
+            "role": "value"
+        },
+        "fi_liability": {
+            "path": [
+                "finwire_parsed"
+            ],
+            "source_table": "wh_db_stage.FinWire",
+            "source_column": "value",
+            "transformation": "CAST(SUBSTRING(value FROM 126 FOR 17) AS DOUBLE)",
+            "transformation_type": "SUBSTRING",
+            "role": "value"
+        },
+        "fi_out_basic": {
+            "path": [
+                "finwire_parsed"
+            ],
+            "source_table": "wh_db_stage.FinWire",
+            "source_column": "value",
+            "transformation": "CAST(SUBSTRING(value FROM 143 FOR 13) AS BIGINT)",
+            "transformation_type": "SUBSTRING",
+            "role": "value"
+        },
+        "fi_out_dilut": {
+            "path": [
+                "finwire_parsed"
+            ],
+            "source_table": "wh_db_stage.FinWire",
+            "source_column": "value",
+            "transformation": "CAST(SUBSTRING(value FROM 156 FOR 13) AS BIGINT)",
+            "transformation_type": "SUBSTRING",
+            "role": "value"
+        }
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "target_table": "wh_db.StatusType",
+    "lineage": {
+        "StatusTypeID": [
+            {
+                "sources": [],
+                "transformation_type": "CONSTANT",
+                "transformation_logic": "Auto-incrementing primary key (inferred)",
+                "path": []
+            }
+        ],
+        "StatusTypeCode": [
+            {
+                "sources": [],
+                "transformation_type": "CONSTANT",
+                "transformation_logic": "Data loaded directly from file, no transformation",
+                "path": []
+            }
+        ]
+    }
+}

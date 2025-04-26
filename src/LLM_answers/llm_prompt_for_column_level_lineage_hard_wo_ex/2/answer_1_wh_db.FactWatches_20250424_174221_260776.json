@@ -1,0 +1,55 @@
+{
+    "target_table": "wh_db.FactWatches",
+    "lineage": {
+        "sk_customerid": [
+            {
+                "source_table": "wh_db.DimCustomer",
+                "source_column": "sk_customerid",
+                "path": [],
+                "transformation_logic": "c.sk_customerid",
+                "transformation_type": "RENAME",
+                "column_role": "select"
+            }
+        ],
+        "sk_securityid": [
+            {
+                "source_table": "wh_db.DimSecurity",
+                "source_column": "sk_securityid",
+                "path": [],
+                "transformation_logic": "s.sk_securityid",
+                "transformation_type": "RENAME",
+                "column_role": "select"
+            }
+        ],
+        "sk_dateid_dateplaced": [
+            {
+                "source_table": "watches",
+                "source_column": "dateplaced",
+                "path": [],
+                "transformation_logic": "CAST(strftime(dateplaced, '%Y%m%d') AS BIGINT)",
+                "transformation_type": "CAST",
+                "column_role": "select"
+            }
+        ],
+        "sk_dateid_dateremoved": [
+            {
+                "source_table": "watches",
+                "source_column": "dateremoved",
+                "path": [],
+                "transformation_logic": "CAST(strftime(dateremoved, '%Y%m%d') AS BIGINT)",
+                "transformation_type": "CAST",
+                "column_role": "select"
+            }
+        ],
+        "batchid": [
+            {
+                "source_table": "watches",
+                "source_column": "batchid",
+                "path": [],
+                "transformation_logic": "wh.batchid",
+                "transformation_type": "RENAME",
+                "column_role": "select"
+            }
+        ]
+    }
+}

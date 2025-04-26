@@ -1,0 +1,477 @@
+{
+    "target_table": "wh_db.DimCustomer",
+    "lineage": {
+        "sk_customerid": {
+            "path": [
+                "MaxSK",
+                "CustomerData"
+            ],
+            "source": [
+                {
+                    "table": "wh_db.DimCustomer",
+                    "column": "sk_customerid",
+                    "role": "Max SK lookup"
+                }
+            ],
+            "transformation": "ROW_NUMBER() OVER () + (SELECT max_sk_customerid FROM MaxSK) + 1",
+            "transformation_type": "ROW_NUMBER",
+            "description": "Generates a unique surrogate key by adding 1 to the maximum existing sk_customerid and the current row number."
+        },
+        "customerid": {
+            "path": [
+                "CustomerData",
+                "customers_final"
+            ],
+            "source": [
+                {
+                    "table": "customers_final",
+                    "column": "customerid"
+                }
+            ],
+            "transformation": "c.customerid",
+            "transformation_type": "RENAME"
+        },
+        "taxid": {
+            "path": [
+                "CustomerData",
+                "customers_final"
+            ],
+            "source": [
+                {
+                    "table": "customers_final",
+                    "column": "taxid"
+                }
+            ],
+            "transformation": "c.taxid",
+            "transformation_type": "RENAME"
+        },
+        "status": {
+            "path": [
+                "CustomerData",
+                "customers_final"
+            ],
+            "source": [
+                {
+                    "table": "customers_final",
+                    "column": "status"
+                }
+            ],
+            "transformation": "c.status",
+            "transformation_type": "RENAME"
+        },
+        "lastname": {
+            "path": [
+                "CustomerData",
+                "customers_final"
+            ],
+            "source": [
+                {
+                    "table": "customers_final",
+                    "column": "lastname"
+                }
+            ],
+            "transformation": "c.lastname",
+            "transformation_type": "RENAME"
+        },
+        "firstname": {
+            "path": [
+                "CustomerData",
+                "customers_final"
+            ],
+            "source": [
+                {
+                    "table": "customers_final",
+                    "column": "firstname"
+                }
+            ],
+            "transformation": "c.firstname",
+            "transformation_type": "RENAME"
+        },
+        "middleinitial": {
+            "path": [
+                "CustomerData",
+                "customers_final"
+            ],
+            "source": [
+                {
+                    "table": "customers_final",
+                    "column": "middleinitial"
+                }
+            ],
+            "transformation": "c.middleinitial",
+            "transformation_type": "RENAME"
+        },
+        "gender": {
+            "path": [
+                "CustomerData",
+                "customers_final"
+            ],
+            "source": [
+                {
+                    "table": "customers_final",
+                    "column": "gender"
+                }
+            ],
+            "transformation": "IF(c.gender IN ('M', 'F'), c.gender, 'U')",
+            "transformation_type": "CASE_MAPPING"
+        },
+        "tier": {
+            "path": [
+                "CustomerData",
+                "customers_final"
+            ],
+            "source": [
+                {
+                    "table": "customers_final",
+                    "column": "tier"
+                }
+            ],
+            "transformation": "c.tier",
+            "transformation_type": "RENAME"
+        },
+        "dob": {
+            "path": [
+                "CustomerData",
+                "customers_final"
+            ],
+            "source": [
+                {
+                    "table": "customers_final",
+                    "column": "dob"
+                }
+            ],
+            "transformation": "c.dob",
+            "transformation_type": "RENAME"
+        },
+        "addressline1": {
+            "path": [
+                "CustomerData",
+                "customers_final"
+            ],
+            "source": [
+                {
+                    "table": "customers_final",
+                    "column": "addressline1"
+                }
+            ],
+            "transformation": "c.addressline1",
+            "transformation_type": "RENAME"
+        },
+        "addressline2": {
+            "path": [
+                "CustomerData",
+                "customers_final"
+            ],
+            "source": [
+                {
+                    "table": "customers_final",
+                    "column": "addressline2"
+                }
+            ],
+            "transformation": "c.addressline2",
+            "transformation_type": "RENAME"
+        },
+        "postalcode": {
+            "path": [
+                "CustomerData",
+                "customers_final"
+            ],
+            "source": [
+                {
+                    "table": "customers_final",
+                    "column": "postalcode"
+                }
+            ],
+            "transformation": "c.postalcode",
+            "transformation_type": "RENAME"
+        },
+        "city": {
+            "path": [
+                "CustomerData",
+                "customers_final"
+            ],
+            "source": [
+                {
+                    "table": "customers_final",
+                    "column": "city"
+                }
+            ],
+            "transformation": "c.city",
+            "transformation_type": "RENAME"
+        },
+        "stateprov": {
+            "path": [
+                "CustomerData",
+                "customers_final"
+            ],
+            "source": [
+                {
+                    "table": "customers_final",
+                    "column": "stateprov"
+                }
+            ],
+            "transformation": "c.stateprov",
+            "transformation_type": "RENAME"
+        },
+        "country": {
+            "path": [
+                "CustomerData",
+                "customers_final"
+            ],
+            "source": [
+                {
+                    "table": "customers_final",
+                    "column": "country"
+                }
+            ],
+            "transformation": "c.country",
+            "transformation_type": "RENAME"
+        },
+        "phone1": {
+            "path": [
+                "CustomerData",
+                "customers_final"
+            ],
+            "source": [
+                {
+                    "table": "customers_final",
+                    "column": "phone1"
+                }
+            ],
+            "transformation": "c.phone1",
+            "transformation_type": "RENAME"
+        },
+        "phone2": {
+            "path": [
+                "CustomerData",
+                "customers_final"
+            ],
+            "source": [
+                {
+                    "table": "customers_final",
+                    "column": "phone2"
+                }
+            ],
+            "transformation": "c.phone2",
+            "transformation_type": "RENAME"
+        },
+        "phone3": {
+            "path": [
+                "CustomerData",
+                "customers_final"
+            ],
+            "source": [
+                {
+                    "table": "customers_final",
+                    "column": "phone3"
+                }
+            ],
+            "transformation": "c.phone3",
+            "transformation_type": "RENAME"
+        },
+        "email1": {
+            "path": [
+                "CustomerData",
+                "customers_final"
+            ],
+            "source": [
+                {
+                    "table": "customers_final",
+                    "column": "email1"
+                }
+            ],
+            "transformation": "c.email1",
+            "transformation_type": "RENAME"
+        },
+        "email2": {
+            "path": [
+                "CustomerData",
+                "customers_final"
+            ],
+            "source": [
+                {
+                    "table": "customers_final",
+                    "column": "email2"
+                }
+            ],
+            "transformation": "c.email2",
+            "transformation_type": "RENAME"
+        },
+        "nationaltaxratedesc": {
+            "path": [
+                "CustomerData",
+                "customers_final",
+                "wh_db.TaxRate"
+            ],
+            "source": [
+                {
+                    "table": "wh_db.TaxRate",
+                    "column": "TX_NAME",
+                    "role": "Join on c.nat_tx_id = r_nat.TX_ID"
+                }
+            ],
+            "transformation": "r_nat.TX_NAME",
+            "transformation_type": "JOIN_LOOKUP"
+        },
+        "nationaltaxrate": {
+            "path": [
+                "CustomerData",
+                "customers_final",
+                "wh_db.TaxRate"
+            ],
+            "source": [
+                {
+                    "table": "wh_db.TaxRate",
+                    "column": "TX_RATE",
+                    "role": "Join on c.nat_tx_id = r_nat.TX_ID"
+                }
+            ],
+            "transformation": "r_nat.TX_RATE",
+            "transformation_type": "JOIN_LOOKUP"
+        },
+        "localtaxratedesc": {
+            "path": [
+                "CustomerData",
+                "customers_final",
+                "wh_db.TaxRate"
+            ],
+            "source": [
+                {
+                    "table": "wh_db.TaxRate",
+                    "column": "TX_NAME",
+                    "role": "Join on c.lcl_tx_id = r_lcl.TX_ID"
+                }
+            ],
+            "transformation": "r_lcl.TX_NAME",
+            "transformation_type": "JOIN_LOOKUP"
+        },
+        "localtaxrate": {
+            "path": [
+                "CustomerData",
+                "customers_final",
+                "wh_db.TaxRate"
+            ],
+            "source": [
+                {
+                    "table": "wh_db.TaxRate",
+                    "column": "TX_RATE",
+                    "role": "Join on c.lcl_tx_id = r_lcl.TX_ID"
+                }
+            ],
+            "transformation": "r_lcl.TX_RATE",
+            "transformation_type": "JOIN_LOOKUP"
+        },
+        "agencyid": {
+            "path": [
+                "CustomerData",
+                "wh_db_stage.ProspectIncremental"
+            ],
+            "source": [
+                {
+                    "table": "wh_db_stage.ProspectIncremental",
+                    "column": "agencyid"
+                }
+            ],
+            "transformation": "p.agencyid",
+            "transformation_type": "JOIN_LOOKUP"
+        },
+        "creditrating": {
+            "path": [
+                "CustomerData",
+                "wh_db_stage.ProspectIncremental"
+            ],
+            "source": [
+                {
+                    "table": "wh_db_stage.ProspectIncremental",
+                    "column": "creditrating"
+                }
+            ],
+            "transformation": "p.creditrating",
+            "transformation_type": "JOIN_LOOKUP"
+        },
+        "networth": {
+            "path": [
+                "CustomerData",
+                "wh_db_stage.ProspectIncremental"
+            ],
+            "source": [
+                {
+                    "table": "wh_db_stage.ProspectIncremental",
+                    "column": "networth"
+                }
+            ],
+            "transformation": "p.networth",
+            "transformation_type": "JOIN_LOOKUP"
+        },
+        "marketingnameplate": {
+            "path": [
+                "CustomerData",
+                "wh_db_stage.ProspectIncremental"
+            ],
+            "source": [
+                {
+                    "table": "wh_db_stage.ProspectIncremental",
+                    "column": "marketingnameplate"
+                }
+            ],
+            "transformation": "p.marketingnameplate",
+            "transformation_type": "JOIN_LOOKUP"
+        },
+        "iscurrent": {
+            "path": [
+                "CustomerData",
+                "customers_final"
+            ],
+            "source": [
+                {
+                    "table": "customers_final",
+                    "column": "iscurrent"
+                }
+            ],
+            "transformation": "c.iscurrent",
+            "transformation_type": "RENAME"
+        },
+        "batchid": {
+            "path": [
+                "CustomerData",
+                "customers_final"
+            ],
+            "source": [
+                {
+                    "table": "customers_final",
+                    "column": "batchid"
+                }
+            ],
+            "transformation": "c.batchid",
+            "transformation_type": "RENAME"
+        },
+        "effectivedate": {
+            "path": [
+                "CustomerData",
+                "customers_final"
+            ],
+            "source": [
+                {
+                    "table": "customers_final",
+                    "column": "effectivedate"
+                }
+            ],
+            "transformation": "c.effectivedate",
+            "transformation_type": "RENAME"
+        },
+        "enddate": {
+            "path": [
+                "CustomerData",
+                "customers_final"
+            ],
+            "source": [
+                {
+                    "table": "customers_final",
+                    "column": "enddate"
+                }
+            ],
+            "transformation": "c.enddate",
+            "transformation_type": "RENAME"
+        }
+    }
+}

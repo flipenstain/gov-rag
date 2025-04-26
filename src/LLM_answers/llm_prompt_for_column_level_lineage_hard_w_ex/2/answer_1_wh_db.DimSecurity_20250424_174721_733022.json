@@ -1,0 +1,366 @@
+{
+    "target_table": "wh_db.DimSecurity",
+    "sources_summary": [
+        {
+            "type": "TABLE",
+            "name": "wh_db_stage.FinWire",
+            "alias_or_cte": "SEC"
+        },
+        {
+            "type": "TABLE",
+            "name": "wh_db.DimCompany",
+            "alias_or_cte": "dc"
+        }
+    ],
+    "lineage": {
+        "sk_securityid": {
+            "sources": [],
+            "transformation_type": "WINDOW_FUNCTION",
+            "transformation_logic": "ROW_NUMBER() OVER ()",
+            "notes": "Surrogate Key Generation"
+        },
+        "Symbol": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.FinWire.value",
+                    "path": [
+                        "SEC.Symbol",
+                        "SEC_prep.Symbol",
+                        "SEC_final.Symbol"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "SEC_final.Symbol"
+        },
+        "issue": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.FinWire.value",
+                    "path": [
+                        "SEC.issue",
+                        "SEC_prep.issue",
+                        "SEC_final.issue"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "SEC_final.issue"
+        },
+        "status": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.FinWire.value",
+                    "path": [
+                        "SEC.Status",
+                        "SEC_prep.status",
+                        "SEC_final.status"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "SEC_final.status"
+        },
+        "Name": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.FinWire.value",
+                    "path": [
+                        "SEC.Name",
+                        "SEC_prep.Name",
+                        "SEC_final.Name"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "SEC_final.Name"
+        },
+        "exchangeid": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.FinWire.value",
+                    "path": [
+                        "SEC.exchangeid",
+                        "SEC_prep.exchangeid",
+                        "SEC_final.exchangeid"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "SEC_final.exchangeid"
+        },
+        "sk_companyid": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db.DimCompany.sk_companyid",
+                    "path": [
+                        "dc.sk_companyid",
+                        "SEC_final.sk_companyid"
+                    ],
+                    "role": "direct input",
+                    "join_info": {
+                        "type": "INNER JOIN",
+                        "left_source": {
+                            "identifier": "wh_db_stage.FinWire.value",
+                            "path": [
+                                "SEC.conameorcik",
+                                "SEC_prep.conameorcik"
+                            ]
+                        },
+                        "right_source": {
+                            "identifier": "wh_db.DimCompany.name",
+                            "path": [
+                                "dc.conameorcik"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "source_identifier": "wh_db.DimCompany.sk_companyid",
+                    "path": [
+                        "dc.sk_companyid",
+                        "SEC_final.sk_companyid"
+                    ],
+                    "role": "direct input",
+                    "join_info": {
+                        "type": "INNER JOIN",
+                        "left_source": {
+                            "identifier": "wh_db_stage.FinWire.value",
+                            "path": [
+                                "SEC.conameorcik",
+                                "SEC_prep.conameorcik"
+                            ]
+                        },
+                        "right_source": {
+                            "identifier": "wh_db.DimCompany.companyid",
+                            "path": [
+                                "dc.conameorcik"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "transformation_type": "JOIN_LOOKUP",
+            "transformation_logic": "dc.sk_companyid via JOIN ON SEC.conameorcik = dc.conameorcik"
+        },
+        "sharesoutstanding": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.FinWire.value",
+                    "path": [
+                        "SEC.sharesoutstanding",
+                        "SEC_prep.sharesoutstanding",
+                        "SEC_final.sharesoutstanding"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "SEC_final.sharesoutstanding"
+        },
+        "firsttrade": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.FinWire.value",
+                    "path": [
+                        "SEC.firsttrade",
+                        "SEC_prep.firsttrade",
+                        "SEC_final.firsttrade"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "SEC_final.firsttrade"
+        },
+        "firsttradeonexchange": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.FinWire.value",
+                    "path": [
+                        "SEC.firsttradeonexchange",
+                        "SEC_prep.firsttradeonexchange",
+                        "SEC_final.firsttradeonexchange"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "SEC_final.firsttradeonexchange"
+        },
+        "Dividend": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.FinWire.value",
+                    "path": [
+                        "SEC.Dividend",
+                        "SEC_prep.Dividend",
+                        "SEC_final.Dividend"
+                    ],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "SEC_final.Dividend"
+        },
+        "iscurrent": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.FinWire.value",
+                    "path": [
+                        "SEC.effectivedate",
+                        "SEC_prep.effectivedate",
+                        "SEC_final.enddate"
+                    ],
+                    "role": "Input for CASE WHEN"
+                }
+            ],
+            "transformation_type": "CASE_MAPPING",
+            "transformation_logic": "CASE WHEN enddate = '9999-12-31'::DATE THEN TRUE ELSE FALSE END"
+        },
+        "batchid": {
+            "sources": [],
+            "transformation_type": "CONSTANT",
+            "transformation_logic": "1"
+        },
+        "effectivedate": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.FinWire.value",
+                    "path": [
+                        "SEC.effectivedate",
+                        "SEC_prep.effectivedate",
+                        "SEC_final.effectivedate"
+                    ],
+                    "role": "direct input"
+                },
+                {
+                    "source_identifier": "wh_db.DimCompany.EffectiveDate",
+                    "path": [
+                        "dc.EffectiveDate",
+                        "SEC_final.effectivedate"
+                    ],
+                    "role": "direct input",
+                    "join_info": {
+                        "type": "INNER JOIN",
+                        "left_source": {
+                            "identifier": "wh_db_stage.FinWire.value",
+                            "path": [
+                                "SEC.conameorcik",
+                                "SEC_prep.conameorcik"
+                            ]
+                        },
+                        "right_source": {
+                            "identifier": "wh_db.DimCompany.name",
+                            "path": [
+                                "dc.conameorcik"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "source_identifier": "wh_db.DimCompany.EffectiveDate",
+                    "path": [
+                        "dc.EffectiveDate",
+                        "SEC_final.effectivedate"
+                    ],
+                    "role": "direct input",
+                    "join_info": {
+                        "type": "INNER JOIN",
+                        "left_source": {
+                            "identifier": "wh_db_stage.FinWire.value",
+                            "path": [
+                                "SEC.conameorcik",
+                                "SEC_prep.conameorcik"
+                            ]
+                        },
+                        "right_source": {
+                            "identifier": "wh_db.DimCompany.companyid",
+                            "path": [
+                                "dc.conameorcik"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "transformation_type": "CASE_MAPPING",
+            "transformation_logic": "CASE WHEN SEC.effectivedate < dc.EffectiveDate THEN dc.EffectiveDate ELSE SEC.effectivedate END"
+        },
+        "enddate": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.FinWire.value",
+                    "path": [
+                        "SEC.effectivedate",
+                        "SEC_prep.enddate",
+                        "SEC_final.enddate"
+                    ],
+                    "role": "Input for LEAD"
+                },
+                {
+                    "source_identifier": "wh_db_stage.FinWire.value",
+                    "path": [
+                        "SEC.Symbol",
+                        "SEC_prep.Symbol"
+                    ],
+                    "role": "Partition key for LEAD"
+                },
+                {
+                    "source_identifier": "wh_db.DimCompany.EndDate",
+                    "path": [
+                        "dc.EndDate",
+                        "SEC_final.enddate"
+                    ],
+                    "role": "direct input",
+                    "join_info": {
+                        "type": "INNER JOIN",
+                        "left_source": {
+                            "identifier": "wh_db_stage.FinWire.value",
+                            "path": [
+                                "SEC.conameorcik",
+                                "SEC_prep.conameorcik"
+                            ]
+                        },
+                        "right_source": {
+                            "identifier": "wh_db.DimCompany.name",
+                            "path": [
+                                "dc.conameorcik"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "source_identifier": "wh_db.DimCompany.EndDate",
+                    "path": [
+                        "dc.EndDate",
+                        "SEC_final.enddate"
+                    ],
+                    "role": "direct input",
+                    "join_info": {
+                        "type": "INNER JOIN",
+                        "left_source": {
+                            "identifier": "wh_db_stage.FinWire.value",
+                            "path": [
+                                "SEC.conameorcik",
+                                "SEC_prep.conameorcik"
+                            ]
+                        },
+                        "right_source": {
+                            "identifier": "wh_db.DimCompany.companyid",
+                            "path": [
+                                "dc.conameorcik"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "transformation_type": "CASE_MAPPING",
+            "transformation_logic": "CASE WHEN SEC.enddate > dc.EndDate THEN dc.EndDate ELSE SEC.enddate END"
+        }
+    }
+}

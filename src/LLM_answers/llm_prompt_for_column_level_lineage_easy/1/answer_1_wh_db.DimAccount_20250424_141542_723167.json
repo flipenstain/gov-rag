@@ -1,0 +1,130 @@
+{
+    "CAST(strftime(a.effectivedate, '%Y%m%d') || a.accountid AS BIGINT)": {
+        "inputs": [
+            {
+                "column": "wh_db_stage.CustomerMgmt.update_ts",
+                "type": "INDIRECT",
+                "subtype": "Transformation",
+                "description": "update_ts used in effectivedate calculation and then in strftime",
+                "masking": false
+            },
+            {
+                "column": "wh_db_stage.CustomerMgmt.accountid",
+                "type": "INDIRECT",
+                "subtype": "Transformation",
+                "description": "accountid used in final SELECT statement",
+                "masking": false
+            }
+        ],
+        "transformation": "CAST(strftime(a.effectivedate, '%Y%m%d') || a.accountid AS BIGINT)"
+    },
+    "accountid": {
+        "inputs": [
+            {
+                "column": "wh_db_stage.CustomerMgmt.accountid",
+                "type": "INDIRECT",
+                "subtype": "Transformation",
+                "description": "accountid from wh_db_stage.CustomerMgmt after filtering",
+                "masking": false
+            }
+        ]
+    },
+    "sk_brokerid": {
+        "input": "wh_db.DimBroker.sk_brokerid"
+    },
+    "sk_customerid": {
+        "input": "wh_db.DimCustomer.sk_customerid"
+    },
+    "accountdesc": {
+        "inputs": [
+            {
+                "column": "wh_db_stage.CustomerMgmt.accountdesc",
+                "type": "INDIRECT",
+                "subtype": "Transformation",
+                "description": "accountdesc transformed using COALESCE and last_value window function",
+                "masking": false
+            }
+        ]
+    },
+    "TaxStatus": {
+        "inputs": [
+            {
+                "column": "wh_db_stage.CustomerMgmt.taxstatus",
+                "type": "INDIRECT",
+                "subtype": "Transformation",
+                "description": "taxstatus transformed using COALESCE and last_value window function",
+                "masking": false
+            }
+        ]
+    },
+    "status": {
+        "inputs": [
+            {
+                "column": "wh_db_stage.CustomerMgmt.status",
+                "type": "INDIRECT",
+                "subtype": "Transformation",
+                "description": "status transformed using COALESCE and last_value window function",
+                "masking": false
+            }
+        ]
+    },
+    "iscurrent": {
+        "inputs": [
+            {
+                "column": "wh_db_stage.CustomerMgmt.update_ts",
+                "type": "INDIRECT",
+                "subtype": "Transformation",
+                "description": "update_ts used in lead window function to determine iscurrent",
+                "masking": false
+            }
+        ],
+        "transformation": "CASE WHEN a.enddate = '9999-12-31'::DATE THEN true ELSE false END"
+    },
+    "batchid": {
+        "inputs": [
+            {
+                "column": "wh_db_stage.CustomerMgmt.ActionType",
+                "type": "INDIRECT",
+                "subtype": "Filter",
+                "description": "ActionType used in WHERE clause to filter rows",
+                "masking": false
+            }
+        ]
+    },
+    "effectivedate": {
+        "inputs": [
+            {
+                "column": "wh_db_stage.CustomerMgmt.update_ts",
+                "type": "INDIRECT",
+                "subtype": "Transformation",
+                "description": "update_ts used in effectivedate calculation",
+                "masking": false
+            },
+            {
+                "column": "wh_db.DimCustomer.effectivedate",
+                "type": "INDIRECT",
+                "subtype": "Join",
+                "description": "Used in join condition and conditional logic",
+                "masking": false
+            }
+        ]
+    },
+    "enddate": {
+        "inputs": [
+            {
+                "column": "wh_db_stage.CustomerMgmt.update_ts",
+                "type": "INDIRECT",
+                "subtype": "Transformation",
+                "description": "update_ts used in enddate calculation",
+                "masking": false
+            },
+            {
+                "column": "wh_db.DimCustomer.enddate",
+                "type": "INDIRECT",
+                "subtype": "Join",
+                "description": "Used in join condition and conditional logic",
+                "masking": false
+            }
+        ]
+    }
+}

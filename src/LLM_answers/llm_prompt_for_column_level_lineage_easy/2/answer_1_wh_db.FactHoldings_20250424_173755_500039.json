@@ -1,0 +1,35 @@
+{
+    "tradeid": {
+        "input": "Holdings.hh_h_t_id"
+    },
+    "currenttradeid": {
+        "input": "Holdings.hh_t_id"
+    },
+    "sk_customerid": {
+        "input": "wh_db.DimTrade.sk_customerid"
+    },
+    "sk_accountid": {
+        "input": "wh_db.DimTrade.sk_accountid"
+    },
+    "sk_securityid": {
+        "input": "wh_db.DimTrade.sk_securityid"
+    },
+    "sk_companyid": {
+        "input": "wh_db.DimTrade.sk_companyid"
+    },
+    "sk_dateid": {
+        "input": "wh_db.DimTrade.sk_closedateid"
+    },
+    "sk_timeid": {
+        "input": "wh_db.DimTrade.sk_closetimeid"
+    },
+    "currentprice": {
+        "input": "wh_db.DimTrade.tradeprice"
+    },
+    "currentholding": {
+        "input": "Holdings.hh_after_qty"
+    },
+    "batchid": {
+        "input": "Holdings.batchid"
+    }
+}

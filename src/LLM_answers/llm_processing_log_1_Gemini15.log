@@ -1,0 +1,495 @@
+2025-04-24 14:06:14,331 - INFO - Script started.
+2025-04-24 14:06:14,332 - INFO - --- Processing Template: llm_prompt_for_column_level_lineage_easy ---
+2025-04-24 14:06:14,333 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_temp_broker', execution #1
+2025-04-24 14:06:17,015 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_temp_broker', execution #1
+2025-04-24 14:06:17,017 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1\answer_1_temp_broker_20250424_140614_333318.json
+2025-04-24 14:06:17,019 - INFO - Saved metadata to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1\metadata_1_temp_broker_20250424_140614_333318.json
+2025-04-24 14:06:22,024 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.DimAccount', execution #2
+2025-04-24 14:06:29,297 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.DimAccount', execution #2
+2025-04-24 14:06:29,302 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\2\answer_1_wh_db.DimAccount_20250424_140622_023146.json
+2025-04-24 14:06:29,304 - INFO - Saved metadata to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\2\metadata_1_wh_db.DimAccount_20250424_140622_023146.json
+2025-04-24 14:06:34,311 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.DimBroker', execution #3
+2025-04-24 14:06:37,319 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.DimBroker', execution #3
+2025-04-24 14:06:37,321 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\3\answer_1_wh_db.DimBroker_20250424_140634_310028.json
+2025-04-24 14:06:37,323 - INFO - Saved metadata to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\3\metadata_1_wh_db.DimBroker_20250424_140634_310028.json
+2025-04-24 14:06:42,329 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.DimCompany', execution #4
+2025-04-24 14:06:47,149 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.DimCompany', execution #4
+2025-04-24 14:06:47,151 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\4\answer_1_wh_db.DimCompany_20250424_140642_328544.json
+2025-04-24 14:06:47,153 - INFO - Saved metadata to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\4\metadata_1_wh_db.DimCompany_20250424_140642_328544.json
+2025-04-24 14:06:52,159 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.DimCustomer', execution #5
+2025-04-24 14:06:55,982 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.DimCustomer', execution #5
+2025-04-24 14:06:55,984 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\5\answer_1_wh_db.DimCustomer_20250424_140652_157000.json
+2025-04-24 14:06:55,986 - INFO - Saved metadata to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\5\metadata_1_wh_db.DimCustomer_20250424_140652_157000.json
+2025-04-24 14:07:00,989 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.DimDate', execution #6
+2025-04-24 14:07:01,547 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.DimDate', execution #6
+2025-04-24 14:07:01,549 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\6\answer_1_wh_db.DimDate_20250424_140700_988367.json
+2025-04-24 14:07:01,551 - INFO - Saved metadata to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\6\metadata_1_wh_db.DimDate_20250424_140700_988367.json
+2025-04-24 14:07:06,553 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.DimSecurity', execution #7
+2025-04-24 14:07:18,330 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.DimSecurity', execution #7
+2025-04-24 14:07:18,333 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\7\answer_1_wh_db.DimSecurity_20250424_140706_553191.json
+2025-04-24 14:07:18,335 - INFO - Saved metadata to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\7\metadata_1_wh_db.DimSecurity_20250424_140706_553191.json
+2025-04-24 14:07:23,338 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.DimTime', execution #8
+2025-04-24 14:07:24,219 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.DimTime', execution #8
+2025-04-24 14:07:24,224 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\8\answer_1_wh_db.DimTime_20250424_140723_337712.json
+2025-04-24 14:07:24,228 - INFO - Saved metadata to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\8\metadata_1_wh_db.DimTime_20250424_140723_337712.json
+2025-04-24 14:07:29,234 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.DimTrade', execution #9
+2025-04-24 14:15:35,119 - INFO - Script started at 2025-04-24T14:15:35.119830
+2025-04-24 14:15:35,120 - INFO - --- Processing Template: llm_prompt_for_column_level_lineage_easy ---
+2025-04-24 14:15:35,123 - INFO - Output directory for this run: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1
+2025-04-24 14:15:35,125 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_temp_broker' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1
+2025-04-24 14:15:37,718 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_temp_broker'
+2025-04-24 14:15:37,720 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1\answer_1_temp_broker_20250424_141535_125060.json
+2025-04-24 14:15:42,724 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.DimAccount' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1
+2025-04-24 14:15:50,006 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.DimAccount'
+2025-04-24 14:15:50,011 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1\answer_1_wh_db.DimAccount_20250424_141542_723167.json
+2025-04-24 14:15:55,014 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.DimBroker' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1
+2025-04-24 14:15:57,496 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.DimBroker'
+2025-04-24 14:15:57,498 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1\answer_1_wh_db.DimBroker_20250424_141555_013760.json
+2025-04-24 14:16:02,500 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.DimCompany' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1
+2025-04-24 14:16:07,331 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.DimCompany'
+2025-04-24 14:16:07,334 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1\answer_1_wh_db.DimCompany_20250424_141602_500967.json
+2025-04-24 14:16:12,338 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.DimCustomer' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1
+2025-04-24 14:16:16,397 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.DimCustomer'
+2025-04-24 14:16:16,402 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1\answer_1_wh_db.DimCustomer_20250424_141612_337817.json
+2025-04-24 14:16:21,403 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.DimDate' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1
+2025-04-24 14:16:21,968 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.DimDate'
+2025-04-24 14:16:21,970 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1\answer_1_wh_db.DimDate_20250424_141621_403150.json
+2025-04-24 14:16:26,974 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.DimSecurity' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1
+2025-04-24 14:16:38,595 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.DimSecurity'
+2025-04-24 14:16:38,598 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1\answer_1_wh_db.DimSecurity_20250424_141626_974295.json
+2025-04-24 14:16:43,600 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.DimTime' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1
+2025-04-24 14:16:44,140 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.DimTime'
+2025-04-24 14:16:44,145 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1\answer_1_wh_db.DimTime_20250424_141643_600979.json
+2025-04-24 14:16:49,148 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.DimTrade' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1
+2025-04-24 14:16:58,744 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.DimTrade'
+2025-04-24 14:16:58,747 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1\answer_1_wh_db.DimTrade_20250424_141649_147260.json
+2025-04-24 14:17:03,748 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.FactCashBalances' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1
+2025-04-24 14:17:06,776 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.FactCashBalances'
+2025-04-24 14:17:06,779 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1\answer_1_wh_db.FactCashBalances_20250424_141703_748773.json
+2025-04-24 14:17:11,781 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.FactHoldings' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1
+2025-04-24 14:17:14,090 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.FactHoldings'
+2025-04-24 14:17:14,093 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1\answer_1_wh_db.FactHoldings_20250424_141711_781381.json
+2025-04-24 14:17:19,095 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.FactWatches' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1
+2025-04-24 14:17:22,186 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.FactWatches'
+2025-04-24 14:17:22,188 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1\answer_1_wh_db.FactWatches_20250424_141719_094325.json
+2025-04-24 14:17:27,197 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.Financial' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1
+2025-04-24 14:17:36,910 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.Financial'
+2025-04-24 14:17:36,914 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1\answer_1_wh_db.Financial_20250424_141727_195978.json
+2025-04-24 14:17:41,918 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.Prospect' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1
+2025-04-24 14:17:47,599 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.Prospect'
+2025-04-24 14:17:47,602 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1\answer_1_wh_db.Prospect_20250424_141741_918343.json
+2025-04-24 14:17:52,608 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.StatusType' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1
+2025-04-24 14:17:53,297 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.StatusType'
+2025-04-24 14:17:53,299 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1\answer_1_wh_db.StatusType_20250424_141752_607675.json
+2025-04-24 14:17:58,303 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.TaxRate' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1
+2025-04-24 14:17:58,902 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.TaxRate'
+2025-04-24 14:17:58,904 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1\answer_1_wh_db.TaxRate_20250424_141758_302555.json
+2025-04-24 14:18:03,910 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.TradeType' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1
+2025-04-24 14:18:04,450 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db.TradeType'
+2025-04-24 14:18:04,452 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1\answer_1_wh_db.TradeType_20250424_141803_910177.json
+2025-04-24 14:18:09,458 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db_stage.CustomerMgmt' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1
+2025-04-24 14:18:11,817 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db_stage.CustomerMgmt'
+2025-04-24 14:18:11,819 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1\answer_1_wh_db_stage.CustomerMgmt_20250424_141809_458805.json
+2025-04-24 14:18:16,825 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db_stage.FinWire' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1
+2025-04-24 14:18:20,295 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db_stage.FinWire'
+2025-04-24 14:18:20,300 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1\answer_1_wh_db_stage.FinWire_20250424_141816_825716.json
+2025-04-24 14:18:25,306 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db_stage.ProspectIncremental' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1
+2025-04-24 14:18:30,047 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db_stage.ProspectIncremental'
+2025-04-24 14:18:30,049 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1\answer_1_wh_db_stage.ProspectIncremental_20250424_141825_306277.json
+2025-04-24 14:18:35,061 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db_stage.tradehistory' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1
+2025-04-24 14:18:49,909 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_easy', SQL '1_wh_db_stage.tradehistory'
+2025-04-24 14:18:49,911 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1\answer_1_wh_db_stage.tradehistory_20250424_141835_060613.json
+2025-04-24 14:18:54,917 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_easy', SQL '2_wh_db.DimCustomer' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1
+2025-04-24 14:19:24,524 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_easy', SQL '2_wh_db.DimCustomer'
+2025-04-24 14:19:24,530 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1\answer_2_wh_db.DimCustomer_20250424_141854_917007.json
+2025-04-24 14:19:29,535 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_easy', SQL '2_wh_db_stage.ProspectIncremental' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1
+2025-04-24 14:19:34,142 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_easy', SQL '2_wh_db_stage.ProspectIncremental'
+2025-04-24 14:19:34,146 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1\answer_2_wh_db_stage.ProspectIncremental_20250424_141929_535303.json
+2025-04-24 14:19:39,148 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_easy', SQL '2_wh_db_stage.tradehistory' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1
+2025-04-24 14:19:40,659 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_easy', SQL '2_wh_db_stage.tradehistory'
+2025-04-24 14:19:40,660 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1\answer_2_wh_db_stage.tradehistory_20250424_141939_147959.json
+2025-04-24 14:19:45,680 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_easy', SQL '3_wh_db.DimCustomer' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1
+2025-04-24 14:20:01,703 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_easy', SQL '3_wh_db.DimCustomer'
+2025-04-24 14:20:01,714 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1\answer_3_wh_db.DimCustomer_20250424_141945_679226.json
+2025-04-24 14:20:06,720 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_easy', SQL '3_wh_db_stage.ProspectIncremental' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1
+2025-04-24 14:20:10,540 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_easy', SQL '3_wh_db_stage.ProspectIncremental'
+2025-04-24 14:20:10,544 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1\answer_3_wh_db_stage.ProspectIncremental_20250424_142006_719933.json
+2025-04-24 14:20:15,553 - INFO - Saved consolidated metadata for run 1 to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_easy\1\_metadata_run.json
+2025-04-24 14:20:15,554 - INFO - --- Processing Template: llm_prompt_for_column_level_lineage_hard_wo_ex ---
+2025-04-24 14:20:15,566 - INFO - Output directory for this run: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1
+2025-04-24 14:20:15,574 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_temp_broker' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1
+2025-04-24 14:20:20,873 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_temp_broker'
+2025-04-24 14:20:20,876 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1\answer_1_temp_broker_20250424_142015_574268.json
+2025-04-24 14:20:25,880 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_wh_db.DimAccount' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1
+2025-04-24 14:20:34,961 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_wh_db.DimAccount'
+2025-04-24 14:20:34,967 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1\answer_1_wh_db.DimAccount_20250424_142025_880500.json
+2025-04-24 14:20:39,974 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_wh_db.DimBroker' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1
+2025-04-24 14:20:47,370 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_wh_db.DimBroker'
+2025-04-24 14:20:47,376 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1\answer_1_wh_db.DimBroker_20250424_142039_973730.json
+2025-04-24 14:20:52,380 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_wh_db.DimCompany' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1
+2025-04-24 14:21:09,061 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_wh_db.DimCompany'
+2025-04-24 14:21:09,066 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1\answer_1_wh_db.DimCompany_20250424_142052_380787.json
+2025-04-24 14:21:14,068 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_wh_db.DimCustomer' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1
+2025-04-24 14:21:26,959 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_wh_db.DimCustomer'
+2025-04-24 14:21:26,962 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1\answer_1_wh_db.DimCustomer_20250424_142114_067886.json
+2025-04-24 14:21:31,964 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_wh_db.DimDate' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1
+2025-04-24 14:21:35,766 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_wh_db.DimDate'
+2025-04-24 14:21:35,770 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1\answer_1_wh_db.DimDate_20250424_142131_963649.json
+2025-04-24 14:21:40,776 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_wh_db.DimSecurity' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1
+2025-04-24 14:21:50,678 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_wh_db.DimSecurity'
+2025-04-24 14:21:50,680 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1\answer_1_wh_db.DimSecurity_20250424_142140_775821.json
+2025-04-24 14:21:55,681 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_wh_db.DimTime' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1
+2025-04-24 14:22:00,709 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_wh_db.DimTime'
+2025-04-24 14:22:00,714 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1\answer_1_wh_db.DimTime_20250424_142155_681721.json
+2025-04-24 14:22:05,720 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_wh_db.DimTrade' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1
+2025-04-24 14:22:22,499 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_wh_db.DimTrade'
+2025-04-24 14:22:22,507 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1\answer_1_wh_db.DimTrade_20250424_142205_719851.json
+2025-04-24 14:22:27,513 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_wh_db.FactCashBalances' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1
+2025-04-24 14:22:32,986 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_wh_db.FactCashBalances'
+2025-04-24 14:22:32,989 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1\answer_1_wh_db.FactCashBalances_20250424_142227_513888.json
+2025-04-24 14:22:37,995 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_wh_db.FactHoldings' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1
+2025-04-24 14:22:45,658 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_wh_db.FactHoldings'
+2025-04-24 14:22:45,662 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1\answer_1_wh_db.FactHoldings_20250424_142237_994130.json
+2025-04-24 14:22:50,669 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_wh_db.FactWatches' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1
+2025-04-24 14:22:54,752 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_wh_db.FactWatches'
+2025-04-24 14:22:54,756 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1\answer_1_wh_db.FactWatches_20250424_142250_669081.json
+2025-04-24 14:22:59,763 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_wh_db.Financial' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1
+2025-04-24 14:23:08,725 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_wh_db.Financial'
+2025-04-24 14:23:08,728 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1\answer_1_wh_db.Financial_20250424_142259_762756.json
+2025-04-24 14:23:13,730 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_wh_db.Prospect' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1
+2025-04-24 14:23:25,399 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_wh_db.Prospect'
+2025-04-24 14:23:25,409 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1\answer_1_wh_db.Prospect_20250424_142313_730585.json
+2025-04-24 14:23:30,412 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_wh_db.StatusType' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1
+2025-04-24 14:23:34,947 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_wh_db.StatusType'
+2025-04-24 14:23:34,949 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1\answer_1_wh_db.StatusType_20250424_142330_411868.json
+2025-04-24 14:23:39,952 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_wh_db.TaxRate' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1
+2025-04-24 14:23:41,259 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_wh_db.TaxRate'
+2025-04-24 14:23:41,261 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1\answer_1_wh_db.TaxRate_20250424_142339_951819.json
+2025-04-24 14:23:46,263 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_wh_db.TradeType' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1
+2025-04-24 14:23:49,211 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_wh_db.TradeType'
+2025-04-24 14:23:49,211 - ERROR - Error: Invalid JSON format for 1_wh_db.TradeType in C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1. Error: Extra data: line 40 column 1 (char 733). Raw Response: ```json
+{
+  "target_table": "wh_db.TradeType",
+  "lineage": {
+    "col1": {
+      "path": [
+        "TradeType.txt"
+      ],
+      "source": {
+        "table": "TradeType.txt",
+        "column": "col1" 
+      },
+      "transformation": "col1",
+      "transformation_type": "COPY"
+    },
+    "col2": {
+      "path": [
+        "TradeType.txt"
+      ],
+      "source": {
+        "table": "TradeType.txt",
+        "column": "col2"
+      },
+      "transformation": "col2",
+      "transformation_type": "COPY"
+    },
+    "col3": {
+      "path": [
+        "TradeType.txt"
+      ],
+      "source": {
+        "table": "TradeType.txt",
+        "column": "col3"
+      },
+      "transformation": "col3",
+      "transformation_type": "COPY"
+    }
+
+  }
+}
+```
+
+**Note:**  The provided SQL is a `COPY` statement, not a `SELECT` or `INSERT` statement with explicit column transformations.  The JSON reflects this.  The assumption is that `col1`, `col2`, and `col3` represent the columns in `TradeType.txt`.  To provide a more detailed lineage, the schema of `TradeType.txt` would be needed.  If the `COPY` statement included any transformations (e.g., using `FORMAT` options), those would be reflected in the `transformation` and `transformation_type` fields.
+
+2025-04-24 14:23:49,211 - WARNING - Processing failed or returned no answer JSON for SQL: 1_wh_db.TradeType.sql
+2025-04-24 14:23:54,215 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_wh_db_stage.CustomerMgmt' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1
+2025-04-24 14:24:01,617 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_wh_db_stage.CustomerMgmt'
+2025-04-24 14:24:01,617 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1\answer_1_wh_db_stage.CustomerMgmt_20250424_142354_215955.json
+2025-04-24 14:24:06,625 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_wh_db_stage.FinWire' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1
+2025-04-24 14:24:10,712 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_wh_db_stage.FinWire'
+2025-04-24 14:24:10,715 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1\answer_1_wh_db_stage.FinWire_20250424_142406_625592.json
+2025-04-24 14:24:15,719 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_wh_db_stage.ProspectIncremental' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1
+2025-04-24 14:24:29,910 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_wh_db_stage.ProspectIncremental'
+2025-04-24 14:24:29,918 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1\answer_1_wh_db_stage.ProspectIncremental_20250424_142415_719618.json
+2025-04-24 14:24:34,923 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_wh_db_stage.tradehistory' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1
+2025-04-24 14:24:56,171 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '1_wh_db_stage.tradehistory'
+2025-04-24 14:24:56,180 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1\answer_1_wh_db_stage.tradehistory_20250424_142434_922900.json
+2025-04-24 14:25:01,188 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '2_wh_db.DimCustomer' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1
+2025-04-24 14:25:16,128 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '2_wh_db.DimCustomer'
+2025-04-24 14:25:16,131 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1\answer_2_wh_db.DimCustomer_20250424_142501_187150.json
+2025-04-24 14:25:21,136 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '2_wh_db_stage.ProspectIncremental' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1
+2025-04-24 14:25:29,679 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '2_wh_db_stage.ProspectIncremental'
+2025-04-24 14:25:29,683 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1\answer_2_wh_db_stage.ProspectIncremental_20250424_142521_136316.json
+2025-04-24 14:25:34,686 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '2_wh_db_stage.tradehistory' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1
+2025-04-24 14:25:37,183 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '2_wh_db_stage.tradehistory'
+2025-04-24 14:25:37,190 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1\answer_2_wh_db_stage.tradehistory_20250424_142534_686228.json
+2025-04-24 14:25:42,193 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '3_wh_db.DimCustomer' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1
+2025-04-24 14:26:02,332 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '3_wh_db.DimCustomer'
+2025-04-24 14:26:02,336 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1\answer_3_wh_db.DimCustomer_20250424_142542_192009.json
+2025-04-24 14:26:07,338 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '3_wh_db_stage.ProspectIncremental' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1
+2025-04-24 14:26:19,265 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_wo_ex', SQL '3_wh_db_stage.ProspectIncremental'
+2025-04-24 14:26:19,271 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1\answer_3_wh_db_stage.ProspectIncremental_20250424_142607_337942.json
+2025-04-24 14:26:24,275 - INFO - Saved consolidated metadata for run 1 to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_wo_ex\1\_metadata_run.json
+2025-04-24 14:26:24,275 - INFO - --- Processing Template: llm_prompt_for_column_level_lineage_hard_w_ex ---
+2025-04-24 14:26:24,278 - INFO - Output directory for this run: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1
+2025-04-24 14:26:24,282 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_temp_broker' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1
+2025-04-24 14:26:30,333 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_temp_broker'
+2025-04-24 14:26:30,335 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1\answer_1_temp_broker_20250424_142624_282265.json
+2025-04-24 14:26:35,338 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_wh_db.DimAccount' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1
+2025-04-24 14:26:46,110 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_wh_db.DimAccount'
+2025-04-24 14:26:46,112 - ERROR - Error: Invalid JSON format for 1_wh_db.DimAccount in C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1. Error: Expecting ',' delimiter: line 23 column 338 (char 1683). Raw Response: ```json
+{
+  "target_table": "wh_db.DimAccount",
+  "sources_summary": [
+    {"type": "TABLE", "name": "wh_db_stage.CustomerMgmt", "alias_or_cte": "account"},
+    {"type": "TABLE", "name": "wh_db.DimCustomer", "alias_or_cte": "c"},
+    {"type": "TABLE", "name": "wh_db.DimBroker", "alias_or_cte": "b"}
+  ],
+  "lineage": {
+    "CAST(strftime(a.effectivedate, '%Y%m%d') || a.accountid AS BIGINT)": {
+      "sources": [
+        {"source_identifier": "wh_db_stage.CustomerMgmt.update_ts", "path": ["account.update_ts", "account_final.update_ts", "account_cust_updates.effectivedate", "a.effectivedate"], "role": "Date part of surrogate key"},
+        {"source_identifier": "wh_db_stage.CustomerMgmt.accountid", "path": ["account.accountid", "account_final.accountid", "account_cust_updates.accountid", "a.accountid"], "role": "ID part of surrogate key"}
+      ],
+      "transformation_type": "EXPRESSION_CONCAT",
+      "transformation_logic": "CAST(strftime(a.effectivedate, '%Y%m%d') || a.accountid AS BIGINT)"
+    },
+    "a.accountid": {
+      "sources": [{"source_identifier": "wh_db_stage.CustomerMgmt.accountid", "path": ["account.accountid", "account_final.accountid", "account_cust_updates.accountid", "a.accountid"], "role": "Account ID"}],
+      "transformation_type": "RENAME",
+      "transformation_logic": "accountid"
+    },
+    "b.sk_brokerid": {
+      "sources": [{"source_identifier": "wh_db.DimBroker.sk_brokerid", "join_info": {"type": "INNER JOIN", "left_source": {"identifier": "wh_db_stage.CustomerMgmt.brokerid", "path": ["account.brokerid", "account_final.brokerid", "account_cust_updates.brokerid", "a.brokerid"]}, "right_source": {"identifier": "wh_db.DimBroker.brokerid"}}]],
+      "transformation_type": "JOIN_LOOKUP",
+      "transformation_logic": "JOIN wh_db.DimBroker b ON a.brokerid = b.brokerid"
+    },
+    "a.sk_customerid": {
+      "sources": [{"source_identifier": "wh_db.DimCustomer.sk_customerid", "join_info": {"type": "FULL OUTER JOIN", "left_source": {"identifier": "wh_db_stage.CustomerMgmt.customerid", "path": ["account.customerid", "account_final.customerid", "account_cust_updates.customerid"]}, "right_source": {"identifier": "wh_db.DimCustomer.customerid"}}]],
+      "transformation_type": "JOIN_LOOKUP",
+      "transformation_logic": "FULL OUTER JOIN wh_db.DimCustomer c ON a.customerid = c.customerid AND c.enddate > a.effectivedate AND c.effectivedate < a.enddate"
+    },
+    "a.accountdesc": {
+      "sources": [{"source_identifier": "wh_db_stage.CustomerMgmt.accountdesc", "path": ["account.accountdesc", "account_final.accountdesc", "account_cust_updates.accountdesc", "a.accountdesc"], "role": "Account description"}],
+      "transformation_type": "WINDOW_FUNCTION",
+      "transformation_logic": "COALESCE(accountdesc, last_value(accountdesc) OVER w)"
+    },
+    "a.TaxStatus": {
+      "sources": [{"source_identifier": "wh_db_stage.CustomerMgmt.taxstatus", "path": ["account.taxstatus", "account_final.taxstatus", "account_cust_updates.taxstatus", "a.TaxStatus"], "role": "Tax status"}],
+      "transformation_type": "WINDOW_FUNCTION",
+      "transformation_logic": "COALESCE(taxstatus, last_value(taxstatus) OVER w)"
+    },
+    "a.status": {
+      "sources": [{"source_identifier": "wh_db_stage.CustomerMgmt.status", "path": ["account.status", "account_final.status", "account_cust_updates.status", "a.status"], "role": "Account status"}],
+      "transformation_type": "WINDOW_FUNCTION",
+      "transformation_logic": "COALESCE(status, last_value(status) OVER w)"
+    },
+    "CASE WHEN a.enddate = '9999-12-31'::DATE THEN true ELSE false END": {
+      "sources": [{"source_identifier": "wh_db_stage.CustomerMgmt.update_ts", "path": ["account.update_ts", "account_final.update_ts", "account_cust_updates.enddate", "a.enddate"], "role": "End date for current flag"}],
+      "transformation_type": "CASE_MAPPING",
+      "transformation_logic": "CASE WHEN a.enddate = '9999-12-31'::DATE THEN true ELSE false END"
+    },
+    "a.batchid": {
+      "sources": [{"source_identifier": "wh_db_stage.CustomerMgmt.batchid", "path": ["account.batchid", "account_final.batchid", "account_cust_updates.batchid", "a.batchid"], "role": "Batch ID"}],
+      "transformation_type": "RENAME",
+      "transformation_logic": "1 AS batchid"
+    },
+    "a.effectivedate": {
+      "sources": [{"source_identifier": "wh_db_stage.CustomerMgmt.update_ts", "path": ["account.update_ts", "account_final.update_ts", "account_cust_updates.effectivedate", "a.effectivedate"], "role": "Effective date"}],
+      "transformation_type": "CAST",
+      "transformation_logic": "update_ts::DATE AS effectivedate"
+    },
+    "a.enddate": {
+      "sources": [{"source_identifier": "wh_db_stage.CustomerMgmt.update_ts", "path": ["account.update_ts", "account_final.update_ts", "account_cust_updates.enddate", "a.enddate"], "role": "End date"}],
+      "transformation_type": "WINDOW_FUNCTION",
+      "transformation_logic": "COALESCE(lead(update_ts::DATE) OVER w, '9999-12-31'::DATE)"
+    }
+  }
+}
+```
+
+2025-04-24 14:26:46,112 - WARNING - Processing failed or returned no answer JSON for SQL: 1_wh_db.DimAccount.sql
+2025-04-24 14:26:51,115 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_wh_db.DimBroker' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1
+2025-04-24 14:26:56,921 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_wh_db.DimBroker'
+2025-04-24 14:26:56,924 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1\answer_1_wh_db.DimBroker_20250424_142651_114625.json
+2025-04-24 14:27:01,926 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_wh_db.DimCompany' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1
+2025-04-24 14:27:14,180 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_wh_db.DimCompany'
+2025-04-24 14:27:14,185 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1\answer_1_wh_db.DimCompany_20250424_142701_926108.json
+2025-04-24 14:27:19,186 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_wh_db.DimCustomer' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1
+2025-04-24 14:27:25,159 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_wh_db.DimCustomer'
+2025-04-24 14:27:25,161 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1\answer_1_wh_db.DimCustomer_20250424_142719_186966.json
+2025-04-24 14:27:30,163 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_wh_db.DimDate' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1
+2025-04-24 14:27:36,002 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_wh_db.DimDate'
+2025-04-24 14:27:36,006 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1\answer_1_wh_db.DimDate_20250424_142730_163450.json
+2025-04-24 14:27:41,008 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_wh_db.DimSecurity' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1
+2025-04-24 14:27:51,198 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_wh_db.DimSecurity'
+2025-04-24 14:27:51,201 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1\answer_1_wh_db.DimSecurity_20250424_142741_008304.json
+2025-04-24 14:27:56,203 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_wh_db.DimTime' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1
+2025-04-24 14:28:02,081 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_wh_db.DimTime'
+2025-04-24 14:28:02,083 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1\answer_1_wh_db.DimTime_20250424_142756_202623.json
+2025-04-24 14:28:07,085 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_wh_db.DimTrade' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1
+2025-04-24 14:28:25,387 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_wh_db.DimTrade'
+2025-04-24 14:28:25,394 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1\answer_1_wh_db.DimTrade_20250424_142807_085461.json
+2025-04-24 14:28:30,396 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_wh_db.FactCashBalances' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1
+2025-04-24 14:28:36,359 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_wh_db.FactCashBalances'
+2025-04-24 14:28:36,363 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1\answer_1_wh_db.FactCashBalances_20250424_142830_395613.json
+2025-04-24 14:28:41,366 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_wh_db.FactHoldings' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1
+2025-04-24 14:28:47,227 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_wh_db.FactHoldings'
+2025-04-24 14:28:47,233 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1\answer_1_wh_db.FactHoldings_20250424_142841_365362.json
+2025-04-24 14:28:52,235 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_wh_db.FactWatches' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1
+2025-04-24 14:28:58,130 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_wh_db.FactWatches'
+2025-04-24 14:28:58,134 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1\answer_1_wh_db.FactWatches_20250424_142852_234846.json
+2025-04-24 14:29:03,136 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_wh_db.Financial' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1
+2025-04-24 14:29:08,491 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_wh_db.Financial'
+2025-04-24 14:29:08,494 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1\answer_1_wh_db.Financial_20250424_142903_135434.json
+2025-04-24 14:29:13,496 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_wh_db.Prospect' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1
+2025-04-24 14:29:29,484 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_wh_db.Prospect'
+2025-04-24 14:29:29,490 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1\answer_1_wh_db.Prospect_20250424_142913_496366.json
+2025-04-24 14:29:34,492 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_wh_db.StatusType' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1
+2025-04-24 14:29:40,138 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_wh_db.StatusType'
+2025-04-24 14:29:40,144 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1\answer_1_wh_db.StatusType_20250424_142934_492263.json
+2025-04-24 14:29:45,146 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_wh_db.TaxRate' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1
+2025-04-24 14:29:50,920 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_wh_db.TaxRate'
+2025-04-24 14:29:50,923 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1\answer_1_wh_db.TaxRate_20250424_142945_145499.json
+2025-04-24 14:29:55,925 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_wh_db.TradeType' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1
+2025-04-24 14:30:01,612 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_wh_db.TradeType'
+2025-04-24 14:30:01,614 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1\answer_1_wh_db.TradeType_20250424_142955_925722.json
+2025-04-24 14:30:06,621 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_wh_db_stage.CustomerMgmt' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1
+2025-04-24 14:30:12,272 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_wh_db_stage.CustomerMgmt'
+2025-04-24 14:30:12,275 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1\answer_1_wh_db_stage.CustomerMgmt_20250424_143006_620495.json
+2025-04-24 14:30:17,279 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_wh_db_stage.FinWire' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1
+2025-04-24 14:30:22,838 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_wh_db_stage.FinWire'
+2025-04-24 14:30:22,841 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1\answer_1_wh_db_stage.FinWire_20250424_143017_278315.json
+2025-04-24 14:30:27,844 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_wh_db_stage.ProspectIncremental' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1
+2025-04-24 14:30:33,671 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_wh_db_stage.ProspectIncremental'
+2025-04-24 14:30:33,675 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1\answer_1_wh_db_stage.ProspectIncremental_20250424_143027_843800.json
+2025-04-24 14:30:38,677 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_wh_db_stage.tradehistory' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1
+2025-04-24 14:30:44,405 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '1_wh_db_stage.tradehistory'
+2025-04-24 14:30:44,408 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1\answer_1_wh_db_stage.tradehistory_20250424_143038_677951.json
+2025-04-24 14:30:49,410 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '2_wh_db.DimCustomer' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1
+2025-04-24 14:30:55,281 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '2_wh_db.DimCustomer'
+2025-04-24 14:30:55,286 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1\answer_2_wh_db.DimCustomer_20250424_143049_410879.json
+2025-04-24 14:31:00,289 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '2_wh_db_stage.ProspectIncremental' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1
+2025-04-24 14:31:11,235 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '2_wh_db_stage.ProspectIncremental'
+2025-04-24 14:31:11,236 - ERROR - Error: Invalid JSON format for 2_wh_db_stage.ProspectIncremental in C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1. Error: Extra data: line 74 column 1 (char 2574). Raw Response: ```json
+{
+  "target_table": "wh.DimComp",
+  "sources_summary": [
+    {"type": "TABLE", "name": "wh_stg.FW", "alias_or_cte": "cmp"},
+    {"type": "TABLE", "name": "wh.Ind", "alias_or_cte": "ind"}
+  ],
+  "lineage": {
+    "sk_compid": {
+      "sources": [
+        {"source_identifier": "wh_stg.FW.value", "path": ["cmp.RecDate", "T.effectivedate"], "role": "Date part source"},
+        {"source_identifier": "wh_stg.FW.value", "path": ["cmp.CIK", "T.compid"], "role": "ID part source"}
+      ],
+      "transformation_type": "EXPRESSION_CONCAT",
+      "transformation_logic": "CAST(strftime(T.effectivedate, '%Y%m%d') || T.compid AS BIGINT)"
+    },
+    "compid": {
+      "sources": [
+        {"source_identifier": "wh_stg.FW.value", "path": ["cmp.CIK"]}
+      ],
+      "transformation_type": "CAST",
+      "transformation_logic": "CAST(cmp.CIK AS BIGINT)"
+    },
+    "status": {
+      "sources": [
+        {"source_identifier": "wh_stg.FW.value", "path": ["cmp.Status"]}
+      ],
+      "transformation_type": "CASE_MAPPING",
+      "transformation_logic": "CASE cmp.Status WHEN 'ACTV' THEN 'Active' ELSE 'Inactive' END"
+    },
+    "name": {
+      "sources": [
+        {"source_identifier": "wh_stg.FW.value", "path": ["cmp.CompName"]}
+      ],
+      "transformation_type": "RENAME",
+      "transformation_logic": "cmp.CompName AS name"
+    },
+    "industry": {
+      "sources": [
+        {
+          "source_identifier": "wh.Ind.in_name",
+          "join_info": {
+            "type": "INNER JOIN",
+            "left_source": {
+              "identifier": "wh_stg.FW.value",
+              "path": ["cmp.IndID"]
+            },
+            "right_source": {
+              "identifier": "wh.Ind.in_id"
+            }
+          }
+        }
+      ],
+      "transformation_type": "JOIN_LOOKUP",
+      "transformation_logic": "ind.in_name via JOIN ON cmp.IndID = ind.in_id"
+    },
+    "effectivedate": {
+      "sources": [
+        {"source_identifier": "wh_stg.FW.value", "path": ["cmp.RecDate"]}
+      ],
+      "transformation_type": "RENAME",
+      "transformation_logic": "cmp.RecDate AS effectivedate"
+    },
+    "enddate": {
+      "sources": [
+        {"source_identifier": "wh_stg.FW.value", "path": ["cmp.RecDate"], "role": "Input for LEAD"},
+        {"source_identifier": "wh_stg.FW.value", "path": ["cmp.CIK"], "role": "Partition key for LEAD"}
+      ],
+      "transformation_type": "WINDOW_FUNCTION",
+      "transformation_logic": "COALESCE(LEAD(cmp.RecDate) OVER (PARTITION BY cmp.CIK ORDER BY cmp.RecDate), '9999-12-31'::DATE)",
+      "notes": "SCD2 end date calculation"
+    }
+  }
+}
+```
+```json
+{
+  "target_table": "temp_propect_marketingnameplate",
+  "sources_summary": [
+    {"type": "TABLE", "name": "temp_propect", "alias_or_cte": null}
+  ],
+  "lineage": {
+    "marketingnameplate": {
+      "sources": [
+        {"source_identifier": "temp_propect.networth", "role": "Input to multiple CASE statements"},
+        {"source_identifier": "temp_propect.income", "role": "Input to multiple CASE statements"},
+        {"source_identifier": "temp_propect.numberchildren", "role": "Input to CASE statement"},
+        {"source_identifier": "temp_propect.numbercreditcards", "role": "Input to multiple CASE statements"},
+        {"source_identifier": "temp_propect.age", "role": "Input to multiple CASE statements"},
+        {"source_identifier": "temp_propect.creditrating", "role": "Input to CASE statement"},
+        {"source_identifier": "temp_propect.numbercars", "role": "Input to CASE statement"}
+      ],
+      "transformation_type": "EXPRESSION_CONCAT",
+      "transformation_logic": "CASE WHEN LENGTH(CONCAT(CASE WHEN networth > 1000000 OR income > 200000 THEN 'HighValue+' ELSE '' END, CASE WHEN numberchildren > 3 OR numbercreditcards > 5 THEN 'Expenses+' ELSE '' END, CASE WHEN age > 45 THEN 'Boomer+' ELSE '' END, CASE WHEN income < 50000 OR creditrating < 600 OR networth < 100000 THEN 'MoneyAlert+' ELSE '' END, CASE WHEN numbercars > 3 OR numbercreditcards > 7 THEN 'Spender+' ELSE '' END, CASE WHEN age < 25 AND networth > 1000000 THEN 'Inherited+' ELSE '' END)) > 0 THEN LEFT(CONCAT(CASE WHEN networth > 1000000 OR income > 200000 THEN 'HighValue+' ELSE '' END, CASE WHEN numberchildren > 3 OR numbercreditcards > 5 THEN 'Expenses+' ELSE '' END, CASE WHEN age > 45 THEN 'Boomer+' ELSE '' END, CASE WHEN income < 50000 OR creditrating < 600 OR networth < 100000 THEN 'MoneyAlert+' ELSE '' END, CASE WHEN numbercars > 3 OR numbercreditcards > 7 THEN 'Spender+' ELSE '' END, CASE WHEN age < 25 AND networth > 1000000 THEN 'Inherited+' ELSE '' END), LENGTH(CONCAT(CASE WHEN networth > 1000000 OR income > 200000 THEN 'HighValue+' ELSE '' END, CASE WHEN numberchildren > 3 OR numbercreditcards > 5 THEN 'Expenses+' ELSE '' END, CASE WHEN age > 45 THEN 'Boomer+' ELSE '' END, CASE WHEN income < 50000 OR creditrating < 600 OR networth < 100000 THEN 'MoneyAlert+' ELSE '' END, CASE WHEN numbercars > 3 OR numbercreditcards > 7 THEN 'Spender+' ELSE '' END, CASE WHEN age < 25 AND networth > 1000000 THEN 'Inherited+' ELSE '' END)) - 1) ELSE NULL END",
+      "notes": "Complex CASE statement concatenating multiple conditions"
+    }
+  }
+}
+```
+
+2025-04-24 14:31:11,236 - WARNING - Processing failed or returned no answer JSON for SQL: 2_wh_db_stage.ProspectIncremental.sql
+2025-04-24 14:31:16,241 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '2_wh_db_stage.tradehistory' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1
+2025-04-24 14:31:22,025 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '2_wh_db_stage.tradehistory'
+2025-04-24 14:31:22,028 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1\answer_2_wh_db_stage.tradehistory_20250424_143116_240359.json
+2025-04-24 14:31:27,031 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '3_wh_db.DimCustomer' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1
+2025-04-24 14:31:49,630 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '3_wh_db.DimCustomer'
+2025-04-24 14:31:49,634 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1\answer_3_wh_db.DimCustomer_20250424_143127_030225.json
+2025-04-24 14:31:54,635 - INFO - Sending prompt for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '3_wh_db_stage.ProspectIncremental' to C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1
+2025-04-24 14:32:00,424 - INFO - Received response for template 'llm_prompt_for_column_level_lineage_hard_w_ex', SQL '3_wh_db_stage.ProspectIncremental'
+2025-04-24 14:32:00,429 - INFO - Saved LLM answer to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1\answer_3_wh_db_stage.ProspectIncremental_20250424_143154_635464.json
+2025-04-24 14:32:05,441 - INFO - Saved consolidated metadata for run 1 to: C:\lopu-kg-test\project\src\LLM_answers\llm_prompt_for_column_level_lineage_hard_w_ex\1\_metadata_run.json
+2025-04-24 14:32:05,442 - INFO - Script finished at 2025-04-24T14:32:05.441394. Total duration: 0:16:30.321564

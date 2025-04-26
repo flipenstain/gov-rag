@@ -1,0 +1,124 @@
+**Task:** Generate detailed column-level lineage for the Python script.
+**Output Format:** JSON, strictly adhering to the structure shown in the Example Output JSON below.
+
+**Instructions:**
+1.  Identify the target table and all source tables/CTEs involved.
+2.  For **each** column in the final `INSERT`/`SELECT` statement:
+    * Trace its lineage back to the **ultimate source table(s) and column(s)**.
+    * Document the **transformation path** (aliases, CTE names involved). Use the `path` field.
+    * Identify the specific **transformation logic** (SQL expression). Use `transformation_logic`.
+    * Categorize the primary **transformation type** (e.g., `CAST`, `CASE_MAPPING`, `JOIN_LOOKUP`, `WINDOW_FUNCTION`, `RENAME`, `CONSTANT`, `EXPRESSION_CONCAT`). Use `transformation_type`.
+    * Detail the **role** of each source column in the transformation (e.g., direct input, join key, partition key, used in condition). Use the `role` field within `sources`.
+3.  Accurately represent lineage involving:
+    * CTEs (`WITH` clauses)
+    * Multiple Joins
+    * `CASE WHEN` statements (mapping, validation, classification)
+    * Window Functions (`LEAD`, `LAG`, etc. including `PARTITION BY`, `ORDER BY`, `COALESCE`)
+    * String manipulations (`SUBSTR`, `TRIM`, concatenation `||`)
+    * Type Casting (`CAST`, `TRY_CAST`, date/time functions like `strftime`)
+    * Constants and Direct Renames/Aliases
+    * SCD2 logic (effective/end dates, current flags)
+    * Filtering (`WHERE` clauses affecting source data within CTEs or subqueries).
+4.  Write a brief summary of the logic:
+
+**Example Input SQL:**
+```sql
+-- Example Input SQL:
+INSERT INTO wh.DimComp -- Shortened target
+WITH cmp AS (
+  SELECT
+    TRIM(SUBSTR(value, 1, 10)) AS CompName, -- String op
+    TRIM(SUBSTR(value, 11, 5)) AS CIK,     -- String op -> CAST source
+    TRIM(SUBSTR(value, 16, 4)) AS Status,   -- CASE source
+    TRIM(SUBSTR(value, 20, 2)) AS IndID,    -- JOIN key
+    TRY_CAST(SUBSTR(value, 22, 8) AS DATE) AS RecDate -- CAST & Window func source
+  FROM wh_stg.FW -- Shortened source
+  WHERE rectype = 'CMP'
+)
+SELECT
+  -- sk_compid derived from RecDate (-> effectivedate) & CIK (-> compid)
+  CAST(strftime(T.effectivedate, '%Y%m%d') || T.compid AS BIGINT) AS sk_compid,
+  T.compid,
+  T.status,
+  T.name,
+  T.industry,
+  T.effectivedate,
+  T.enddate
+FROM (
+    SELECT
+        CAST(cmp.CIK AS BIGINT) AS compid, -- Define compid
+        CASE cmp.Status WHEN 'ACTV' THEN 'Active' ELSE 'Inactive' END AS status, -- Define status
+        cmp.CompName AS name, -- Define name
+        ind.in_name AS industry, -- Define industry
+        cmp.RecDate AS effectivedate, -- Define effectivedate
+        COALESCE(
+            LEAD(cmp.RecDate) OVER (PARTITION BY cmp.CIK ORDER BY cmp.RecDate),
+            '9999-12-31'::DATE
+        ) AS enddate -- Define enddate (SCD2 Window Func)
+    FROM cmp
+    JOIN wh.Ind ind ON cmp.IndID = ind.in_id -- Shortened join table
+) T -- Derived table
+WHERE T.effectivedate < T.enddate; -- Filter on derived table
+
+    // Example Output JSON:
+{ "script_summary": "The SQL query populates the wh.DimComp table by extracting and transforming company data from wh_stg.FW. It cleans the data, retrieves the industry name from wh.Ind, calculates effective and end dates (likely for SCD2), and filters the results before inserting them."
+  "target_table": "wh.DimComp",
+  "sources_summary": [
+    {"type": "TABLE", "name": "wh_stg.FW", "alias_or_cte": "cmp"},
+    {"type": "TABLE", "name": "wh.Ind", "alias_or_cte": "ind"}
+  ],
+  "lineage": {
+    "sk_compid": {
+      "sources": [
+        {"source_identifier": "wh_stg.FW.value", "path": ["cmp.RecDate", "T.effectivedate"], "role": "Date part source"},
+        {"source_identifier": "wh_stg.FW.value", "path": ["cmp.CIK", "T.compid"], "role": "ID part source"}
+      ],
+      "transformation_type": "EXPRESSION_CONCAT",
+      "transformation_logic": "CAST(strftime(T.effectivedate, '%Y%m%d') || T.compid AS BIGINT)"
+    },
+    "compid": {
+      "sources": [{"source_identifier": "wh_stg.FW.value", "path": ["cmp.CIK"]}],
+      "transformation_type": "CAST",
+      "transformation_logic": "CAST(cmp.CIK AS BIGINT)"
+    },
+    "status": {
+      "sources": [{"source_identifier": "wh_stg.FW.value", "path": ["cmp.Status"]}],
+      "transformation_type": "CASE_MAPPING",
+      "transformation_logic": "CASE cmp.Status WHEN 'ACTV' THEN 'Active' ELSE 'Inactive' END"
+    },
+    "name": {
+      "sources": [{"source_identifier": "wh_stg.FW.value", "path": ["cmp.CompName"]}],
+      "transformation_type": "RENAME",
+      "transformation_logic": "cmp.CompName AS name"
+    },
+    "industry": {
+      "sources": [
+         {"source_identifier": "wh.Ind.in_name",
+          "join_info": {
+            "type": "INNER JOIN",
+            "left_source": {"identifier": "wh_stg.FW.value", "path": ["cmp.IndID"]},
+            "right_source": {"identifier": "wh.Ind.in_id"}
+          }
+         }
+      ],
+      "transformation_type": "JOIN_LOOKUP",
+      "transformation_logic": "ind.in_name via JOIN ON cmp.IndID = ind.in_id"
+    },
+    "effectivedate": {
+       "sources": [{"source_identifier": "wh_stg.FW.value", "path": ["cmp.RecDate"]}],
+       "transformation_type": "RENAME",
+       "transformation_logic": "cmp.RecDate AS effectivedate"
+    },
+    "enddate": {
+      "sources": [
+        {"source_identifier": "wh_stg.FW.value", "path": ["cmp.RecDate"], "role": "Input for LEAD"},
+        {"source_identifier": "wh_stg.FW.value", "path": ["cmp.CIK"], "role": "Partition key for LEAD"}
+      ],
+      "transformation_type": "WINDOW_FUNCTION",
+      "transformation_logic": "COALESCE(LEAD(cmp.RecDate) OVER (PARTITION BY cmp.CIK ORDER BY cmp.RecDate), '9999-12-31'::DATE)",
+      "notes": "SCD2 end date calculation"
+    }
+  }
+}
+
+[YOUR SQL QUERY HERE]

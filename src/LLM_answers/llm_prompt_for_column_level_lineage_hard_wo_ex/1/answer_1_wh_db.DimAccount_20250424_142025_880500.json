@@ -1,0 +1,176 @@
+{
+    "target_table": "wh_db.DimAccount",
+    "lineage": {
+        "CAST(strftime(a.effectivedate, '%Y%m%d') || a.accountid AS BIGINT)": {
+            "path": [
+                "account_cust_updates",
+                "account_final",
+                "account"
+            ],
+            "sources": [
+                {
+                    "table": "wh_db_stage.CustomerMgmt",
+                    "column": "update_ts",
+                    "role": "Join Key, Partition Key, Ordering Key"
+                }
+            ],
+            "transformation": "CAST(strftime(a.effectivedate, '%Y%m%d') || a.accountid AS BIGINT)",
+            "transformation_type": "EXPRESSION_CONCAT, CAST"
+        },
+        "a.accountid": {
+            "path": [
+                "account_cust_updates",
+                "account_final",
+                "account"
+            ],
+            "sources": [
+                {
+                    "table": "wh_db_stage.CustomerMgmt",
+                    "column": "accountid",
+                    "role": "Join Key, Partition Key"
+                }
+            ],
+            "transformation": "accountid",
+            "transformation_type": "RENAME"
+        },
+        "b.sk_brokerid": {
+            "path": [
+                "wh_db.DimBroker"
+            ],
+            "sources": [
+                {
+                    "table": "wh_db.DimBroker",
+                    "column": "sk_brokerid",
+                    "role": "Join Key"
+                }
+            ],
+            "transformation": "sk_brokerid",
+            "transformation_type": "RENAME"
+        },
+        "a.sk_customerid": {
+            "path": [
+                "account_cust_updates"
+            ],
+            "sources": [
+                {
+                    "table": "wh_db.DimCustomer",
+                    "column": "sk_customerid",
+                    "role": "Join Key"
+                }
+            ],
+            "transformation": "sk_customerid",
+            "transformation_type": "RENAME"
+        },
+        "a.accountdesc": {
+            "path": [
+                "account_cust_updates",
+                "account_final",
+                "account"
+            ],
+            "sources": [
+                {
+                    "table": "wh_db_stage.CustomerMgmt",
+                    "column": "accountdesc",
+                    "role": "Source Column"
+                }
+            ],
+            "transformation": "COALESCE(accountdesc, last_value(accountdesc) OVER w)",
+            "transformation_type": "COALESCE, WINDOW_FUNCTION"
+        },
+        "a.TaxStatus": {
+            "path": [
+                "account_cust_updates",
+                "account_final",
+                "account"
+            ],
+            "sources": [
+                {
+                    "table": "wh_db_stage.CustomerMgmt",
+                    "column": "taxstatus",
+                    "role": "Source Column"
+                }
+            ],
+            "transformation": "COALESCE(taxstatus, last_value(taxstatus) OVER w)",
+            "transformation_type": "COALESCE, WINDOW_FUNCTION"
+        },
+        "a.status": {
+            "path": [
+                "account_cust_updates",
+                "account_final",
+                "account"
+            ],
+            "sources": [
+                {
+                    "table": "wh_db_stage.CustomerMgmt",
+                    "column": "status",
+                    "role": "Source Column"
+                }
+            ],
+            "transformation": "COALESCE(status, last_value(status) OVER w)",
+            "transformation_type": "COALESCE, WINDOW_FUNCTION"
+        },
+        "a.iscurrent": {
+            "path": [
+                "account_cust_updates",
+                "account_final"
+            ],
+            "sources": [
+                {
+                    "table": "wh_db_stage.CustomerMgmt",
+                    "column": "update_ts",
+                    "role": "Source Column"
+                }
+            ],
+            "transformation": "CASE WHEN a.enddate = '9999-12-31'::DATE THEN true ELSE false END",
+            "transformation_type": "CASE_MAPPING"
+        },
+        "a.batchid": {
+            "path": [
+                "account_cust_updates",
+                "account_final",
+                "account"
+            ],
+            "sources": [
+                {
+                    "table": "wh_db_stage.CustomerMgmt",
+                    "column": null,
+                    "role": "Constant"
+                }
+            ],
+            "transformation": "1",
+            "transformation_type": "CONSTANT"
+        },
+        "a.effectivedate": {
+            "path": [
+                "account_cust_updates",
+                "account_final",
+                "account"
+            ],
+            "sources": [
+                {
+                    "table": "wh_db_stage.CustomerMgmt",
+                    "column": "update_ts",
+                    "role": "Source Column"
+                }
+            ],
+            "transformation": "if(a.effectivedate < c.effectivedate, c.effectivedate, a.effectivedate)",
+            "transformation_type": "CASE_MAPPING"
+        },
+        "a.enddate": {
+            "path": [
+                "account_cust_updates",
+                "account_final",
+                "account"
+            ],
+            "sources": [
+                {
+                    "table": "wh_db_stage.CustomerMgmt",
+                    "column": "update_ts",
+                    "role": "Source Column"
+                }
+            ],
+            "transformation": "if(a.enddate > c.enddate, c.enddate, a.enddate)",
+            "transformation_type": "CASE_MAPPING"
+        }
+    }
+}

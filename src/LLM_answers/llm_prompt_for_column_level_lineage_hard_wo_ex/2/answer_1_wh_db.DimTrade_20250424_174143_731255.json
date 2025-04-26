@@ -1,0 +1,402 @@
+{
+    "target_table": "wh_db.DimTrade",
+    "sources_summary": {
+        "wh_db_stage.tradetxt": [
+            "tradeid",
+            "t_tt_id",
+            "cashflag",
+            "quantity",
+            "bidprice",
+            "executedby",
+            "tradeprice",
+            "fee",
+            "commission",
+            "tax",
+            "t_s_symb",
+            "t_ca_id",
+            "status"
+        ],
+        "wh_db_stage.tradehistory": [
+            "tradeid",
+            "status",
+            "TH_DTS"
+        ],
+        "wh_db.StatusType": [
+            "st_name",
+            "st_id"
+        ],
+        "wh_db.DimSecurity": [
+            "sk_securityid",
+            "sk_companyid",
+            "symbol",
+            "effectivedate",
+            "enddate"
+        ],
+        "wh_db.DimAccount": [
+            "sk_brokerid",
+            "accountid",
+            "sk_customerid",
+            "sk_accountid",
+            "effectivedate",
+            "enddate"
+        ]
+    },
+    "lineage": {
+        "tradeid": {
+            "path": [
+                "tradehistorical",
+                "trade"
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "tradeid",
+            "source_columns": [
+                {
+                    "table": "wh_db_stage.tradetxt",
+                    "column": "tradeid"
+                }
+            ]
+        },
+        "sk_brokerid": {
+            "path": [],
+            "transformation_type": "RENAME",
+            "transformation_logic": "da.sk_brokerid",
+            "source_columns": [
+                {
+                    "table": "wh_db.DimAccount",
+                    "column": "sk_brokerid"
+                }
+            ]
+        },
+        "sk_createdateid": {
+            "path": [
+                "tradehistorical",
+                "trade"
+            ],
+            "transformation_type": "EXPRESSION_CONCAT",
+            "transformation_logic": "CAST(strftime(trade.SK_CreateDateID, '%Y%m%d') || da.accountid || da.sk_brokerid AS BIGINT)",
+            "source_columns": [
+                {
+                    "table": "wh_db_stage.tradehistory",
+                    "column": "TH_DTS",
+                    "role": "input"
+                },
+                {
+                    "table": "wh_db_stage.tradetxt",
+                    "column": "t_tt_id",
+                    "role": "condition"
+                },
+                {
+                    "table": "wh_db_stage.tradehistory",
+                    "column": "status",
+                    "role": "condition"
+                },
+                {
+                    "table": "wh_db.DimAccount",
+                    "column": "accountid",
+                    "role": "input"
+                },
+                {
+                    "table": "wh_db.DimAccount",
+                    "column": "sk_brokerid",
+                    "role": "input"
+                }
+            ]
+        },
+        "sk_createtimeid": {
+            "path": [
+                "tradehistorical",
+                "trade"
+            ],
+            "transformation_type": "EXPRESSION_CONCAT",
+            "transformation_logic": "CAST(strftime(trade.SK_CreateTimeID, '%Y%m%d') || da.accountid || da.sk_brokerid AS BIGINT)",
+            "source_columns": [
+                {
+                    "table": "wh_db_stage.tradehistory",
+                    "column": "TH_DTS",
+                    "role": "input"
+                },
+                {
+                    "table": "wh_db_stage.tradetxt",
+                    "column": "t_tt_id",
+                    "role": "condition"
+                },
+                {
+                    "table": "wh_db_stage.tradehistory",
+                    "column": "status",
+                    "role": "condition"
+                },
+                {
+                    "table": "wh_db.DimAccount",
+                    "column": "accountid",
+                    "role": "input"
+                },
+                {
+                    "table": "wh_db.DimAccount",
+                    "column": "sk_brokerid",
+                    "role": "input"
+                }
+            ]
+        },
+        "sk_closedateid": {
+            "path": [
+                "tradehistorical",
+                "trade"
+            ],
+            "transformation_type": "EXPRESSION_CONCAT",
+            "transformation_logic": "CAST(strftime(trade.SK_CloseDateID, '%Y%m%d') || da.accountid || da.sk_brokerid AS BIGINT)",
+            "source_columns": [
+                {
+                    "table": "wh_db_stage.tradehistory",
+                    "column": "TH_DTS",
+                    "role": "input"
+                },
+                {
+                    "table": "wh_db_stage.tradetxt",
+                    "column": "t_tt_id",
+                    "role": "condition"
+                },
+                {
+                    "table": "wh_db_stage.tradehistory",
+                    "column": "status",
+                    "role": "condition"
+                },
+                {
+                    "table": "wh_db.DimAccount",
+                    "column": "accountid",
+                    "role": "input"
+                },
+                {
+                    "table": "wh_db.DimAccount",
+                    "column": "sk_brokerid",
+                    "role": "input"
+                }
+            ]
+        },
+        "sk_closetimeid": {
+            "path": [
+                "tradehistorical",
+                "trade"
+            ],
+            "transformation_type": "EXPRESSION_CONCAT",
+            "transformation_logic": "CAST(strftime(trade.SK_CloseTimeID, '%Y%m%d') || da.accountid || da.sk_brokerid AS BIGINT)",
+            "source_columns": [
+                {
+                    "table": "wh_db_stage.tradehistory",
+                    "column": "TH_DTS",
+                    "role": "input"
+                },
+                {
+                    "table": "wh_db_stage.tradetxt",
+                    "column": "t_tt_id",
+                    "role": "condition"
+                },
+                {
+                    "table": "wh_db_stage.tradehistory",
+                    "column": "status",
+                    "role": "condition"
+                },
+                {
+                    "table": "wh_db.DimAccount",
+                    "column": "accountid",
+                    "role": "input"
+                },
+                {
+                    "table": "wh_db.DimAccount",
+                    "column": "sk_brokerid",
+                    "role": "input"
+                }
+            ]
+        },
+        "st_name": {
+            "path": [
+                "tradehistorical",
+                "trade"
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "st_name",
+            "source_columns": [
+                {
+                    "table": "wh_db.StatusType",
+                    "column": "st_name"
+                }
+            ]
+        },
+        "type": {
+            "path": [
+                "tradehistorical",
+                "trade"
+            ],
+            "transformation_type": "CASE_MAPPING",
+            "transformation_logic": "CASE t_tt_id WHEN 'TMB' THEN 'Market Buy' WHEN 'TMS' THEN 'Market Sell' WHEN 'TSL' THEN 'Stop Loss' WHEN 'TLS' THEN 'Limit Sell' WHEN 'TLB' THEN 'Limit Buy' ELSE NULL END",
+            "source_columns": [
+                {
+                    "table": "wh_db_stage.tradetxt",
+                    "column": "t_tt_id",
+                    "role": "condition"
+                }
+            ]
+        },
+        "cashflag": {
+            "path": [
+                "tradehistorical",
+                "trade"
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "cashflag",
+            "source_columns": [
+                {
+                    "table": "wh_db_stage.tradetxt",
+                    "column": "cashflag"
+                }
+            ]
+        },
+        "sk_securityid": {
+            "path": [],
+            "transformation_type": "RENAME",
+            "transformation_logic": "ds.sk_securityid",
+            "source_columns": [
+                {
+                    "table": "wh_db.DimSecurity",
+                    "column": "sk_securityid"
+                }
+            ]
+        },
+        "sk_companyid": {
+            "path": [],
+            "transformation_type": "RENAME",
+            "transformation_logic": "ds.sk_companyid",
+            "source_columns": [
+                {
+                    "table": "wh_db.DimSecurity",
+                    "column": "sk_companyid"
+                }
+            ]
+        },
+        "quantity": {
+            "path": [
+                "tradehistorical",
+                "trade"
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "quantity",
+            "source_columns": [
+                {
+                    "table": "wh_db_stage.tradetxt",
+                    "column": "quantity"
+                }
+            ]
+        },
+        "bidprice": {
+            "path": [
+                "tradehistorical",
+                "trade"
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "bidprice",
+            "source_columns": [
+                {
+                    "table": "wh_db_stage.tradetxt",
+                    "column": "bidprice"
+                }
+            ]
+        },
+        "sk_customerid": {
+            "path": [],
+            "transformation_type": "RENAME",
+            "transformation_logic": "da.sk_customerid",
+            "source_columns": [
+                {
+                    "table": "wh_db.DimAccount",
+                    "column": "sk_customerid"
+                }
+            ]
+        },
+        "sk_accountid": {
+            "path": [],
+            "transformation_type": "RENAME",
+            "transformation_logic": "da.sk_accountid",
+            "source_columns": [
+                {
+                    "table": "wh_db.DimAccount",
+                    "column": "sk_accountid"
+                }
+            ]
+        },
+        "executedby": {
+            "path": [
+                "tradehistorical",
+                "trade"
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "executedby",
+            "source_columns": [
+                {
+                    "table": "wh_db_stage.tradetxt",
+                    "column": "executedby"
+                }
+            ]
+        },
+        "tradeprice": {
+            "path": [
+                "tradehistorical",
+                "trade"
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "tradeprice",
+            "source_columns": [
+                {
+                    "table": "wh_db_stage.tradetxt",
+                    "column": "tradeprice"
+                }
+            ]
+        },
+        "fee": {
+            "path": [
+                "tradehistorical",
+                "trade"
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "fee",
+            "source_columns": [
+                {
+                    "table": "wh_db_stage.tradetxt",
+                    "column": "fee"
+                }
+            ]
+        },
+        "commission": {
+            "path": [
+                "tradehistorical",
+                "trade"
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "commission",
+            "source_columns": [
+                {
+                    "table": "wh_db_stage.tradetxt",
+                    "column": "commission"
+                }
+            ]
+        },
+        "tax": {
+            "path": [
+                "tradehistorical",
+                "trade"
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "tax",
+            "source_columns": [
+                {
+                    "table": "wh_db_stage.tradetxt",
+                    "column": "tax"
+                }
+            ]
+        },
+        "batchid": {
+            "path": [],
+            "transformation_type": "CONSTANT",
+            "transformation_logic": "1",
+            "source_columns": []
+        }
+    }
+}

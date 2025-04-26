@@ -1,0 +1,201 @@
+{
+    "target_table": "wh_db.Prospect",
+    "lineage": {
+        "agencyid": {
+            "source_table": "wh_db_stage.ProspectIncremental",
+            "source_column": "agencyid",
+            "path": [],
+            "transformation": "p.agencyid",
+            "transformation_type": "RENAME"
+        },
+        "sk_recorddateid": {
+            "source_table": "wh_db.BatchDate",
+            "source_column": "batchdate",
+            "path": [
+                "recdate"
+            ],
+            "transformation": "CAST(STRFTIME(recdate.batchdate, '%Y%m%d') AS BIGINT)",
+            "transformation_type": "CAST"
+        },
+        "sk_updatedateid": {
+            "source_table": "wh_db.BatchDate",
+            "source_column": "batchdate",
+            "path": [
+                "origdate"
+            ],
+            "transformation": "CAST(STRFTIME(origdate.batchdate, '%Y%m%d') AS BIGINT)",
+            "transformation_type": "CAST"
+        },
+        "batchid": {
+            "source_table": "wh_db_stage.ProspectIncremental",
+            "source_column": "batchid",
+            "path": [],
+            "transformation": "p.batchid",
+            "transformation_type": "RENAME"
+        },
+        "iscustomer": {
+            "source_table": "wh_db.DimCustomer",
+            "source_column": "LastName",
+            "path": [
+                "cust",
+                "c"
+            ],
+            "transformation": "CASE WHEN c.LastName IS NOT NULL THEN TRUE ELSE FALSE END",
+            "transformation_type": "CASE_MAPPING"
+        },
+        "lastname": {
+            "source_table": "wh_db_stage.ProspectIncremental",
+            "source_column": "lastname",
+            "path": [],
+            "transformation": "p.lastname",
+            "transformation_type": "RENAME"
+        },
+        "firstname": {
+            "source_table": "wh_db_stage.ProspectIncremental",
+            "source_column": "firstname",
+            "path": [],
+            "transformation": "p.firstname",
+            "transformation_type": "RENAME"
+        },
+        "middleinitial": {
+            "source_table": "wh_db_stage.ProspectIncremental",
+            "source_column": "middleinitial",
+            "path": [],
+            "transformation": "p.middleinitial",
+            "transformation_type": "RENAME"
+        },
+        "gender": {
+            "source_table": "wh_db_stage.ProspectIncremental",
+            "source_column": "gender",
+            "path": [],
+            "transformation": "p.gender",
+            "transformation_type": "RENAME"
+        },
+        "addressline1": {
+            "source_table": "wh_db_stage.ProspectIncremental",
+            "source_column": "addressline1",
+            "path": [],
+            "transformation": "p.addressline1",
+            "transformation_type": "RENAME"
+        },
+        "addressline2": {
+            "source_table": "wh_db_stage.ProspectIncremental",
+            "source_column": "addressline2",
+            "path": [],
+            "transformation": "p.addressline2",
+            "transformation_type": "RENAME"
+        },
+        "postalcode": {
+            "source_table": "wh_db_stage.ProspectIncremental",
+            "source_column": "postalcode",
+            "path": [],
+            "transformation": "p.postalcode",
+            "transformation_type": "RENAME"
+        },
+        "city": {
+            "source_table": "wh_db_stage.ProspectIncremental",
+            "source_column": "city",
+            "path": [],
+            "transformation": "city",
+            "transformation_type": "RENAME"
+        },
+        "state": {
+            "source_table": "wh_db_stage.ProspectIncremental",
+            "source_column": "state",
+            "path": [],
+            "transformation": "state",
+            "transformation_type": "RENAME"
+        },
+        "country": {
+            "source_table": "wh_db_stage.ProspectIncremental",
+            "source_column": "country",
+            "path": [],
+            "transformation": "country",
+            "transformation_type": "RENAME"
+        },
+        "phone": {
+            "source_table": "wh_db_stage.ProspectIncremental",
+            "source_column": "phone",
+            "path": [],
+            "transformation": "phone",
+            "transformation_type": "RENAME"
+        },
+        "income": {
+            "source_table": "wh_db_stage.ProspectIncremental",
+            "source_column": "income",
+            "path": [],
+            "transformation": "income",
+            "transformation_type": "RENAME"
+        },
+        "numbercars": {
+            "source_table": "wh_db_stage.ProspectIncremental",
+            "source_column": "numbercars",
+            "path": [],
+            "transformation": "numbercars",
+            "transformation_type": "RENAME"
+        },
+        "numberchildren": {
+            "source_table": "wh_db_stage.ProspectIncremental",
+            "source_column": "numberchildren",
+            "path": [],
+            "transformation": "numberchildren",
+            "transformation_type": "RENAME"
+        },
+        "maritalstatus": {
+            "source_table": "wh_db_stage.ProspectIncremental",
+            "source_column": "maritalstatus",
+            "path": [],
+            "transformation": "maritalstatus",
+            "transformation_type": "RENAME"
+        },
+        "age": {
+            "source_table": "wh_db_stage.ProspectIncremental",
+            "source_column": "age",
+            "path": [],
+            "transformation": "age",
+            "transformation_type": "RENAME"
+        },
+        "creditrating": {
+            "source_table": "wh_db_stage.ProspectIncremental",
+            "source_column": "creditrating",
+            "path": [],
+            "transformation": "creditrating",
+            "transformation_type": "RENAME"
+        },
+        "ownorrentflag": {
+            "source_table": "wh_db_stage.ProspectIncremental",
+            "source_column": "ownorrentflag",
+            "path": [],
+            "transformation": "ownorrentflag",
+            "transformation_type": "RENAME"
+        },
+        "employer": {
+            "source_table": "wh_db_stage.ProspectIncremental",
+            "source_column": "employer",
+            "path": [],
+            "transformation": "employer",
+            "transformation_type": "RENAME"
+        },
+        "numbercreditcards": {
+            "source_table": "wh_db_stage.ProspectIncremental",
+            "source_column": "numbercreditcards",
+            "path": [],
+            "transformation": "numbercreditcards",
+            "transformation_type": "RENAME"
+        },
+        "networth": {
+            "source_table": "wh_db_stage.ProspectIncremental",
+            "source_column": "networth",
+            "path": [],
+            "transformation": "networth",
+            "transformation_type": "RENAME"
+        },
+        "marketingnameplate": {
+            "source_table": "wh_db_stage.ProspectIncremental",
+            "source_column": "marketingnameplate",
+            "path": [],
+            "transformation": "marketingnameplate",
+            "transformation_type": "RENAME"
+        }
+    }
+}

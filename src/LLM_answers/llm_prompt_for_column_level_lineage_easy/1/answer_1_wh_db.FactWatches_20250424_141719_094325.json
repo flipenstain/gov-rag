@@ -1,0 +1,57 @@
+{
+    "sk_customerid": {
+        "inputs": [
+            {
+                "column": "wh_db.DimCustomer.customerid",
+                "type": "DIRECT",
+                "subtype": "Join",
+                "description": "Join condition: wh.customerid = c.customerid",
+                "masking": false
+            }
+        ]
+    },
+    "sk_securityid": {
+        "inputs": [
+            {
+                "column": "wh_db.DimSecurity.sk_securityid",
+                "type": "DIRECT",
+                "subtype": "Join",
+                "description": "Join condition: s.symbol = wh.symbol",
+                "masking": false
+            }
+        ]
+    },
+    "sk_dateid_dateplaced": {
+        "inputs": [
+            {
+                "column": "watches.dateplaced",
+                "type": "DIRECT",
+                "subtype": "Transformation",
+                "description": "CAST(strftime(dateplaced, '%Y%m%d') AS BIGINT)",
+                "masking": false
+            }
+        ]
+    },
+    "sk_dateid_dateremoved": {
+        "inputs": [
+            {
+                "column": "watches.dateremoved",
+                "type": "DIRECT",
+                "subtype": "Transformation",
+                "description": "CAST(strftime(dateremoved, '%Y%m%d') AS BIGINT)",
+                "masking": false
+            }
+        ]
+    },
+    "batchid": {
+        "inputs": [
+            {
+                "column": "watches.batchid",
+                "type": "DIRECT",
+                "subtype": "Identity",
+                "description": "Direct copy from watches table",
+                "masking": false
+            }
+        ]
+    }
+}

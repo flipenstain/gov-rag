@@ -1,0 +1,17 @@
+{
+    "target_table": "wh_db.TaxRate",
+    "lineage": {
+        "tax_rate": {
+            "path": [
+                "wh_db.TaxRate"
+            ],
+            "source": {
+                "table": "src/data/Batch1\\TaxRate.txt",
+                "column": "tax_rate"
+            },
+            "transformation": null,
+            "transformation_type": null,
+            "role": null
+        }
+    }
+}

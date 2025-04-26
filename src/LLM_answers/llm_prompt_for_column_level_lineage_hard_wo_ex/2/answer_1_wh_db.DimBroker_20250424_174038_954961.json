@@ -1,0 +1,176 @@
+{
+    "target_table": "wh_db.DimBroker",
+    "sources_summary": {
+        "temp_broker": [
+            "employeeid",
+            "managerid",
+            "employeefirstname",
+            "employeelastname",
+            "employeemi",
+            "employeebranch",
+            "employeeoffice",
+            "employeephone"
+        ],
+        "wh_db.DimDate": [
+            "datevalue"
+        ]
+    },
+    "lineage": {
+        "sk_brokerid": {
+            "sources": [
+                {
+                    "table": "temp_broker",
+                    "column": "employeeid",
+                    "path": [],
+                    "transformation_logic": "employeeid",
+                    "transformation_type": "RENAME",
+                    "role": null
+                }
+            ]
+        },
+        "brokerid": {
+            "sources": [
+                {
+                    "table": "temp_broker",
+                    "column": "employeeid",
+                    "path": [],
+                    "transformation_logic": "employeeid",
+                    "transformation_type": "RENAME",
+                    "role": null
+                }
+            ]
+        },
+        "managerid": {
+            "sources": [
+                {
+                    "table": "temp_broker",
+                    "column": "managerid",
+                    "path": [],
+                    "transformation_logic": "managerid",
+                    "transformation_type": "RENAME",
+                    "role": null
+                }
+            ]
+        },
+        "firstname": {
+            "sources": [
+                {
+                    "table": "temp_broker",
+                    "column": "employeefirstname",
+                    "path": [],
+                    "transformation_logic": "employeefirstname",
+                    "transformation_type": "RENAME",
+                    "role": null
+                }
+            ]
+        },
+        "lastname": {
+            "sources": [
+                {
+                    "table": "temp_broker",
+                    "column": "employeelastname",
+                    "path": [],
+                    "transformation_logic": "employeelastname",
+                    "transformation_type": "RENAME",
+                    "role": null
+                }
+            ]
+        },
+        "middleinitial": {
+            "sources": [
+                {
+                    "table": "temp_broker",
+                    "column": "employeemi",
+                    "path": [],
+                    "transformation_logic": "employeemi",
+                    "transformation_type": "RENAME",
+                    "role": null
+                }
+            ]
+        },
+        "branch": {
+            "sources": [
+                {
+                    "table": "temp_broker",
+                    "column": "employeebranch",
+                    "path": [],
+                    "transformation_logic": "employeebranch",
+                    "transformation_type": "RENAME",
+                    "role": null
+                }
+            ]
+        },
+        "office": {
+            "sources": [
+                {
+                    "table": "temp_broker",
+                    "column": "employeeoffice",
+                    "path": [],
+                    "transformation_logic": "employeeoffice",
+                    "transformation_type": "RENAME",
+                    "role": null
+                }
+            ]
+        },
+        "phone": {
+            "sources": [
+                {
+                    "table": "temp_broker",
+                    "column": "employeephone",
+                    "path": [],
+                    "transformation_logic": "employeephone",
+                    "transformation_type": "RENAME",
+                    "role": null
+                }
+            ]
+        },
+        "iscurrent": {
+            "sources": [
+                {
+                    "table": null,
+                    "column": null,
+                    "path": [],
+                    "transformation_logic": "true",
+                    "transformation_type": "CONSTANT",
+                    "role": null
+                }
+            ]
+        },
+        "batchid": {
+            "sources": [
+                {
+                    "table": null,
+                    "column": null,
+                    "path": [],
+                    "transformation_logic": "1",
+                    "transformation_type": "CONSTANT",
+                    "role": null
+                }
+            ]
+        },
+        "effectivedate": {
+            "sources": [
+                {
+                    "table": "wh_db.DimDate",
+                    "column": "datevalue",
+                    "path": [],
+                    "transformation_logic": "min(datevalue::DATE)",
+                    "transformation_type": "CAST",
+                    "role": null
+                }
+            ]
+        },
+        "enddate": {
+            "sources": [
+                {
+                    "table": null,
+                    "column": null,
+                    "path": [],
+                    "transformation_logic": "'9999-12-31'::DATE",
+                    "transformation_type": "CAST",
+                    "role": null
+                }
+            ]
+        }
+    }
+}

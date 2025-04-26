@@ -1,0 +1,45 @@
+{
+    "target_table": "wh_db_stage.tradehistory",
+    "sources_summary": [
+        {
+            "type": "FUNCTION",
+            "name": "read_csv_auto",
+            "alias_or_cte": null
+        }
+    ],
+    "lineage": {
+        "tradeid": {
+            "sources": [
+                {
+                    "source_identifier": "read_csv_auto.tradeid",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "tradeid"
+        },
+        "th_dts": {
+            "sources": [
+                {
+                    "source_identifier": "read_csv_auto.th_dts",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "th_dts"
+        },
+        "status": {
+            "sources": [
+                {
+                    "source_identifier": "read_csv_auto.status",
+                    "path": [],
+                    "role": "direct input"
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "status"
+        }
+    }
+}

@@ -1,0 +1,291 @@
+{
+    "target_table": "customers_final",
+    "lineage": {
+        "customerid": {
+            "path": [
+                "customers"
+            ],
+            "source": {
+                "table": "customers",
+                "column": "customerid"
+            },
+            "transformation": "customerid",
+            "transformation_type": "RENAME"
+        },
+        "taxid": {
+            "path": [
+                "customers"
+            ],
+            "source": {
+                "table": "customers",
+                "column": "taxid"
+            },
+            "transformation": "COALESCE(taxid, last_value(taxid ORDER BY update_ts DESC) OVER w)",
+            "transformation_type": "WINDOW_FUNCTION"
+        },
+        "status": {
+            "path": [
+                "customers"
+            ],
+            "source": {
+                "table": "customers",
+                "column": "status"
+            },
+            "transformation": "status",
+            "transformation_type": "RENAME"
+        },
+        "lastname": {
+            "path": [
+                "customers"
+            ],
+            "source": {
+                "table": "customers",
+                "column": "lastname"
+            },
+            "transformation": "COALESCE(lastname, last_value(lastname ORDER BY update_ts DESC) OVER w)",
+            "transformation_type": "WINDOW_FUNCTION"
+        },
+        "firstname": {
+            "path": [
+                "customers"
+            ],
+            "source": {
+                "table": "customers",
+                "column": "firstname"
+            },
+            "transformation": "COALESCE(firstname, last_value(firstname ORDER BY update_ts DESC) OVER w)",
+            "transformation_type": "WINDOW_FUNCTION"
+        },
+        "middleinitial": {
+            "path": [
+                "customers"
+            ],
+            "source": {
+                "table": "customers",
+                "column": "middleinitial"
+            },
+            "transformation": "COALESCE(middleinitial, last_value(middleinitial ORDER BY update_ts DESC) OVER w)",
+            "transformation_type": "WINDOW_FUNCTION"
+        },
+        "gender": {
+            "path": [
+                "customers"
+            ],
+            "source": {
+                "table": "customers",
+                "column": "gender"
+            },
+            "transformation": "COALESCE(gender, last_value(gender ORDER BY update_ts DESC) OVER w)",
+            "transformation_type": "WINDOW_FUNCTION"
+        },
+        "tier": {
+            "path": [
+                "customers"
+            ],
+            "source": {
+                "table": "customers",
+                "column": "tier"
+            },
+            "transformation": "COALESCE(tier, last_value(tier ORDER BY update_ts DESC) OVER w)",
+            "transformation_type": "WINDOW_FUNCTION"
+        },
+        "dob": {
+            "path": [
+                "customers"
+            ],
+            "source": {
+                "table": "customers",
+                "column": "dob"
+            },
+            "transformation": "COALESCE(dob, last_value(dob ORDER BY update_ts DESC) OVER w)",
+            "transformation_type": "WINDOW_FUNCTION"
+        },
+        "addressline1": {
+            "path": [
+                "customers"
+            ],
+            "source": {
+                "table": "customers",
+                "column": "addressline1"
+            },
+            "transformation": "COALESCE(addressline1, last_value(addressline1 ORDER BY update_ts DESC) OVER w)",
+            "transformation_type": "WINDOW_FUNCTION"
+        },
+        "addressline2": {
+            "path": [
+                "customers"
+            ],
+            "source": {
+                "table": "customers",
+                "column": "addressline2"
+            },
+            "transformation": "COALESCE(addressline2, last_value(addressline2 ORDER BY update_ts DESC) OVER w)",
+            "transformation_type": "WINDOW_FUNCTION"
+        },
+        "postalcode": {
+            "path": [
+                "customers"
+            ],
+            "source": {
+                "table": "customers",
+                "column": "postalcode"
+            },
+            "transformation": "COALESCE(postalcode, last_value(postalcode ORDER BY update_ts DESC) OVER w)",
+            "transformation_type": "WINDOW_FUNCTION"
+        },
+        "CITY": {
+            "path": [
+                "customers"
+            ],
+            "source": {
+                "table": "customers",
+                "column": "CITY"
+            },
+            "transformation": "COALESCE(CITY, last_value(CITY ORDER BY update_ts DESC) OVER w)",
+            "transformation_type": "WINDOW_FUNCTION"
+        },
+        "stateprov": {
+            "path": [
+                "customers"
+            ],
+            "source": {
+                "table": "customers",
+                "column": "stateprov"
+            },
+            "transformation": "COALESCE(stateprov, last_value(stateprov ORDER BY update_ts DESC) OVER w)",
+            "transformation_type": "WINDOW_FUNCTION"
+        },
+        "country": {
+            "path": [
+                "customers"
+            ],
+            "source": {
+                "table": "customers",
+                "column": "country"
+            },
+            "transformation": "COALESCE(country, last_value(country ORDER BY update_ts DESC) OVER w)",
+            "transformation_type": "WINDOW_FUNCTION"
+        },
+        "phone1": {
+            "path": [
+                "customers"
+            ],
+            "source": {
+                "table": "customers",
+                "column": "phone1"
+            },
+            "transformation": "COALESCE(phone1, last_value(phone1 ORDER BY update_ts DESC) OVER w)",
+            "transformation_type": "WINDOW_FUNCTION"
+        },
+        "phone2": {
+            "path": [
+                "customers"
+            ],
+            "source": {
+                "table": "customers",
+                "column": "phone2"
+            },
+            "transformation": "COALESCE(phone2, last_value(phone2 ORDER BY update_ts DESC) OVER w)",
+            "transformation_type": "WINDOW_FUNCTION"
+        },
+        "phone3": {
+            "path": [
+                "customers"
+            ],
+            "source": {
+                "table": "customers",
+                "column": "phone3"
+            },
+            "transformation": "COALESCE(phone3, last_value(phone3 ORDER BY update_ts DESC) OVER w)",
+            "transformation_type": "WINDOW_FUNCTION"
+        },
+        "email1": {
+            "path": [
+                "customers"
+            ],
+            "source": {
+                "table": "customers",
+                "column": "email1"
+            },
+            "transformation": "COALESCE(email1, last_value(email1 ORDER BY update_ts DESC) OVER w)",
+            "transformation_type": "WINDOW_FUNCTION"
+        },
+        "email2": {
+            "path": [
+                "customers"
+            ],
+            "source": {
+                "table": "customers",
+                "column": "email2"
+            },
+            "transformation": "COALESCE(email2, last_value(email2 ORDER BY update_ts DESC) OVER w)",
+            "transformation_type": "WINDOW_FUNCTION"
+        },
+        "LCL_TX_ID": {
+            "path": [
+                "customers"
+            ],
+            "source": {
+                "table": "customers",
+                "column": "LCL_TX_ID"
+            },
+            "transformation": "COALESCE(LCL_TX_ID, last_value(LCL_TX_ID ORDER BY update_ts DESC) OVER w)",
+            "transformation_type": "WINDOW_FUNCTION"
+        },
+        "NAT_TX_ID": {
+            "path": [
+                "customers"
+            ],
+            "source": {
+                "table": "customers",
+                "column": "NAT_TX_ID"
+            },
+            "transformation": "COALESCE(NAT_TX_ID, last_value(NAT_TX_ID ORDER BY update_ts DESC) OVER w)",
+            "transformation_type": "WINDOW_FUNCTION"
+        },
+        "batchid": {
+            "path": [
+                "customers"
+            ],
+            "source": {
+                "table": "customers",
+                "column": "batchid"
+            },
+            "transformation": "batchid",
+            "transformation_type": "RENAME"
+        },
+        "iscurrent": {
+            "path": [
+                "customers"
+            ],
+            "source": {
+                "table": "customers",
+                "column": "update_ts"
+            },
+            "transformation": "CASE WHEN NULLIF(lead(update_ts) OVER w, NULL) IS NULL THEN 'Y' ELSE 'N' END",
+            "transformation_type": "CASE_MAPPING"
+        },
+        "effectivedate": {
+            "path": [
+                "customers"
+            ],
+            "source": {
+                "table": "customers",
+                "column": "update_ts"
+            },
+            "transformation": "update_ts::DATE",
+            "transformation_type": "CAST"
+        },
+        "enddate": {
+            "path": [
+                "customers"
+            ],
+            "source": {
+                "table": "customers",
+                "column": "update_ts"
+            },
+            "transformation": "COALESCE(lead(update_ts::DATE) OVER w, '9999-12-31'::DATE)",
+            "transformation_type": "WINDOW_FUNCTION"
+        }
+    }
+}

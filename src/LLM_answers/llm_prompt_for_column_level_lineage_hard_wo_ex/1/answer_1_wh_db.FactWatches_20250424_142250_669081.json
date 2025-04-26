@@ -1,0 +1,63 @@
+{
+    "target_table": "wh_db.FactWatches",
+    "lineage": {
+        "sk_customerid": {
+            "source_table": "wh_db.DimCustomer",
+            "source_column": "sk_customerid",
+            "path": [
+                "watches",
+                "wh_db.DimCustomer c"
+            ],
+            "transformation": "JOIN_LOOKUP",
+            "transformation_type": "JOIN_LOOKUP",
+            "role": "join key"
+        },
+        "sk_securityid": {
+            "source_table": "wh_db.DimSecurity",
+            "source_column": "sk_securityid",
+            "path": [
+                "watches",
+                "wh_db.DimSecurity s"
+            ],
+            "transformation": "JOIN_LOOKUP",
+            "transformation_type": "JOIN_LOOKUP",
+            "role": "join key"
+        },
+        "sk_dateid_dateplaced": {
+            "source_table": "read_csv('src/data/Batch1\\WatchHistory.txt')",
+            "source_column": "w_dts",
+            "path": [
+                "watchhistory",
+                "watches",
+                "wh"
+            ],
+            "transformation": "CAST(strftime(MIN(w_dts)::DATE, '%Y%m%d') AS BIGINT)",
+            "transformation_type": "CAST",
+            "role": "aggregation input"
+        },
+        "sk_dateid_dateremoved": {
+            "source_table": "read_csv('src/data/Batch1\\WatchHistory.txt')",
+            "source_column": "w_dts",
+            "path": [
+                "watchhistory",
+                "watches",
+                "wh"
+            ],
+            "transformation": "CAST(strftime(CASE WHEN w_action = 'CNCL' THEN w_dts ELSE NULL END::DATE, '%Y%m%d') AS BIGINT)",
+            "transformation_type": "CAST",
+            "role": "aggregation input"
+        },
+        "batchid": {
+            "source_table": "read_csv('src/data/Batch1\\WatchHistory.txt')",
+            "source_column": null,
+            "path": [
+                "watchhistory",
+                "watches",
+                "wh"
+            ],
+            "transformation": "MIN(batchid)",
+            "transformation_type": "AGGREGATION",
+            "role": "aggregation input"
+        }
+    }
+}

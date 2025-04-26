@@ -1,5 +1,8 @@
 TO DO - Note:
-**DI MESSAGES in historical load?**
+**DI MESSAGES in historical load?** -- See võiks olla nö DQ framework | Kui aega jääb siis ka audit protsess?
+**Andmete jooksutamiseks Funktsioon koos decoraatoriga** - Et tekitada "pipe lineid", ja nende dependencyd.
+**SQL Scripti sisu graafandmebaasi** - hetkel prospect puudu
+**Võimalusel säti prompti, et võtta sisse ka FILTERING RULES**
 
 
 

@@ -1,0 +1,324 @@
+{
+    "target_table": "wh_db.DimCompany",
+    "lineage": {
+        "sk_companyid": {
+            "path": [
+                "cmp",
+                "subquery"
+            ],
+            "source": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value",
+                    "role": "input for CIK extraction and casting"
+                }
+            ],
+            "transformation": "CAST(strftime(effectivedate, '%Y%m%d') || companyid AS BIGINT)",
+            "transformation_type": "EXPRESSION_CONCAT",
+            "description": "Concatenates formatted effectivedate with companyid and casts to BIGINT"
+        },
+        "companyid": {
+            "path": [
+                "cmp",
+                "subquery"
+            ],
+            "source": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value",
+                    "role": "input for CIK extraction and casting"
+                }
+            ],
+            "transformation": "CAST(cik AS BIGINT)",
+            "transformation_type": "CAST",
+            "description": "Casts CIK to BIGINT"
+        },
+        "status": {
+            "path": [
+                "cmp",
+                "subquery"
+            ],
+            "source": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value",
+                    "role": "input for Status extraction and mapping"
+                }
+            ],
+            "transformation": "CASE cmp.status WHEN 'ACTV' THEN 'Active' WHEN 'CMPT' THEN 'Completed' WHEN 'CNCL' THEN 'Canceled' WHEN 'PNDG' THEN 'Pending' WHEN 'SBMT' THEN 'Submitted' WHEN 'INAC' THEN 'Inactive' ELSE NULL END",
+            "transformation_type": "CASE_MAPPING",
+            "description": "Maps Status codes to descriptive names"
+        },
+        "name": {
+            "path": [
+                "cmp",
+                "subquery"
+            ],
+            "source": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value",
+                    "role": "input for CompanyName extraction"
+                }
+            ],
+            "transformation": "CompanyName",
+            "transformation_type": "RENAME",
+            "description": "Renames CompanyName to name"
+        },
+        "industry": {
+            "path": [
+                "cmp",
+                "subquery"
+            ],
+            "source": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value",
+                    "role": "input for IndustryID lookup"
+                },
+                {
+                    "table": "wh_db.industry",
+                    "column": "in_name",
+                    "role": "industry name"
+                }
+            ],
+            "transformation": "ind.in_name",
+            "transformation_type": "JOIN_LOOKUP",
+            "description": "Joins with wh_db.industry on cmp.industryid = ind.in_id"
+        },
+        "sprating": {
+            "path": [
+                "cmp",
+                "subquery"
+            ],
+            "source": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value",
+                    "role": "input for SPrating extraction and filtering"
+                }
+            ],
+            "transformation": "CASE WHEN SPrating IN ('AAA', 'AA', 'AA+', 'AA-', 'A', 'A+', 'A-', 'BBB', 'BBB+', 'BBB-', 'BB', 'BB+', 'BB-', 'B', 'B+', 'B-', 'CCC', 'CCC+', 'CCC-', 'CC', 'C', 'D') THEN SPrating ELSE NULL::VARCHAR END",
+            "transformation_type": "CASE_MAPPING",
+            "description": "Filters and keeps only valid SPrating values"
+        },
+        "islowgrade": {
+            "path": [
+                "cmp",
+                "subquery"
+            ],
+            "source": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value",
+                    "role": "input for SPrating based classification"
+                }
+            ],
+            "transformation": "CASE WHEN SPrating IN ('AAA', 'AA', 'A', 'AA+', 'A+', 'AA-', 'A-', 'BBB', 'BBB+', 'BBB-') THEN FALSE WHEN SPrating IN ('BB', 'B', 'CCC', 'CC', 'C', 'D', 'BB+', 'B+', 'CCC+', 'BB-', 'B-', 'CCC-') THEN TRUE ELSE NULL::BOOLEAN END",
+            "transformation_type": "CASE_MAPPING",
+            "description": "Classifies companies as low-grade based on SPrating"
+        },
+        "ceo": {
+            "path": [
+                "cmp",
+                "subquery"
+            ],
+            "source": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value",
+                    "role": "input for CEOname extraction"
+                }
+            ],
+            "transformation": "CEOname",
+            "transformation_type": "RENAME",
+            "description": "Renames CEOname to ceo"
+        },
+        "addressline1": {
+            "path": [
+                "cmp",
+                "subquery"
+            ],
+            "source": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value",
+                    "role": "input for AddrLine1 extraction"
+                }
+            ],
+            "transformation": "AddrLine1",
+            "transformation_type": "RENAME",
+            "description": "Renames AddrLine1 to addressline1"
+        },
+        "addressline2": {
+            "path": [
+                "cmp",
+                "subquery"
+            ],
+            "source": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value",
+                    "role": "input for AddrLine2 extraction"
+                }
+            ],
+            "transformation": "AddrLine2",
+            "transformation_type": "RENAME",
+            "description": "Renames AddrLine2 to addressline2"
+        },
+        "postalcode": {
+            "path": [
+                "cmp",
+                "subquery"
+            ],
+            "source": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value",
+                    "role": "input for PostalCode extraction"
+                }
+            ],
+            "transformation": "PostalCode",
+            "transformation_type": "RENAME",
+            "description": "Renames PostalCode to postalcode"
+        },
+        "city": {
+            "path": [
+                "cmp",
+                "subquery"
+            ],
+            "source": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value",
+                    "role": "input for City extraction"
+                }
+            ],
+            "transformation": "City",
+            "transformation_type": "RENAME",
+            "description": "Renames City to city"
+        },
+        "stateprov": {
+            "path": [
+                "cmp",
+                "subquery"
+            ],
+            "source": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value",
+                    "role": "input for StateProvince extraction"
+                }
+            ],
+            "transformation": "StateProvince",
+            "transformation_type": "RENAME",
+            "description": "Renames StateProvince to stateprov"
+        },
+        "country": {
+            "path": [
+                "cmp",
+                "subquery"
+            ],
+            "source": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value",
+                    "role": "input for Country extraction"
+                }
+            ],
+            "transformation": "Country",
+            "transformation_type": "RENAME",
+            "description": "Renames Country to country"
+        },
+        "description": {
+            "path": [
+                "cmp",
+                "subquery"
+            ],
+            "source": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value",
+                    "role": "input for Description extraction"
+                }
+            ],
+            "transformation": "Description",
+            "transformation_type": "RENAME",
+            "description": "Renames Description to description"
+        },
+        "foundingdate": {
+            "path": [
+                "cmp",
+                "subquery"
+            ],
+            "source": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "value",
+                    "role": "input for FoundingDate extraction"
+                }
+            ],
+            "transformation": "FoundingDate",
+            "transformation_type": "RENAME",
+            "description": "Renames FoundingDate to foundingdate"
+        },
+        "iscurrent": {
+            "path": [
+                "cmp",
+                "subquery"
+            ],
+            "source": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "recdate",
+                    "role": "input for enddate calculation and comparison"
+                }
+            ],
+            "transformation": "CASE WHEN enddate = '9999-12-31'::DATE THEN TRUE ELSE FALSE END",
+            "transformation_type": "CASE_MAPPING",
+            "description": "Determines if the record is current based on enddate"
+        },
+        "batchid": {
+            "path": [
+                "cmp",
+                "subquery"
+            ],
+            "source": [],
+            "transformation": "1",
+            "transformation_type": "CONSTANT",
+            "description": "Constant value 1"
+        },
+        "effectivedate": {
+            "path": [
+                "cmp",
+                "subquery"
+            ],
+            "source": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "recdate",
+                    "role": "Effective date"
+                }
+            ],
+            "transformation": "recdate",
+            "transformation_type": "RENAME",
+            "description": "Renames recdate to effectivedate"
+        },
+        "enddate": {
+            "path": [
+                "cmp",
+                "subquery"
+            ],
+            "source": [
+                {
+                    "table": "wh_db_stage.FinWire",
+                    "column": "recdate",
+                    "role": "input for LEAD window function"
+                }
+            ],
+            "transformation": "COALESCE(LEAD(try_cast(recdate AS DATE)) OVER (PARTITION BY cik ORDER BY recdate), try_cast('9999-12-31' AS DATE))",
+            "transformation_type": "WINDOW_FUNCTION",
+            "description": "Uses LEAD window function to determine end date, defaulting to '9999-12-31' if it's the last record for a given CIK"
+        }
+    }
+}

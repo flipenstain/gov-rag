@@ -1,0 +1,195 @@
+{
+    "sk_securityid": {
+        "inputs": [
+            {
+                "column": null,
+                "type": "DIRECT",
+                "subtype": "Transformation",
+                "description": "ROW_NUMBER() OVER ()",
+                "masking": false
+            }
+        ],
+        "transformation": "ROW_NUMBER() OVER ()"
+    },
+    "Symbol": {
+        "inputs": [
+            {
+                "column": "wh_db_stage.FinWire.value",
+                "type": "DIRECT",
+                "subtype": "Transformation",
+                "description": "TRIM(SUBSTR(value, 1, 15))",
+                "masking": false
+            }
+        ],
+        "transformation": "TRIM(SUBSTR(value, 1, 15))"
+    },
+    "issue": {
+        "inputs": [
+            {
+                "column": "wh_db_stage.FinWire.value",
+                "type": "DIRECT",
+                "subtype": "Transformation",
+                "description": "TRIM(SUBSTR(value, 16, 6))",
+                "masking": false
+            }
+        ],
+        "transformation": "TRIM(SUBSTR(value, 16, 6))"
+    },
+    "status": {
+        "inputs": [
+            {
+                "column": "wh_db_stage.FinWire.value",
+                "type": "DIRECT",
+                "subtype": "Transformation",
+                "description": "TRIM(SUBSTR(value, 22, 4)) used in CASE statement",
+                "masking": false
+            }
+        ],
+        "transformation": "CASE WHEN status = 'ACTV' THEN 'Active' WHEN status = 'CMPT' THEN 'Completed' WHEN status = 'CNCL' THEN 'Canceled' WHEN status = 'PNDG' THEN 'Pending' WHEN status = 'SBMT' THEN 'Submitted' WHEN status = 'INAC' THEN 'Inactive' ELSE NULL END"
+    },
+    "Name": {
+        "inputs": [
+            {
+                "column": "wh_db_stage.FinWire.value",
+                "type": "DIRECT",
+                "subtype": "Transformation",
+                "description": "TRIM(SUBSTR(value, 26, 70))",
+                "masking": false
+            }
+        ],
+        "transformation": "TRIM(SUBSTR(value, 26, 70))"
+    },
+    "exchangeid": {
+        "inputs": [
+            {
+                "column": "wh_db_stage.FinWire.value",
+                "type": "DIRECT",
+                "subtype": "Transformation",
+                "description": "TRIM(SUBSTR(value, 96, 6))",
+                "masking": false
+            }
+        ],
+        "transformation": "TRIM(SUBSTR(value, 96, 6))"
+    },
+    "sk_companyid": {
+        "inputs": [
+            {
+                "column": "wh_db.DimCompany.sk_companyid",
+                "type": "DIRECT",
+                "subtype": "Join",
+                "description": "Join condition: SEC.conameorcik = dc.conameorcik",
+                "masking": false
+            }
+        ],
+        "transformation": null
+    },
+    "sharesoutstanding": {
+        "inputs": [
+            {
+                "column": "wh_db_stage.FinWire.value",
+                "type": "DIRECT",
+                "subtype": "Transformation",
+                "description": "TRY_CAST(SUBSTR(value, 102, 13) AS BIGINT)",
+                "masking": false
+            }
+        ],
+        "transformation": "TRY_CAST(SUBSTR(value, 102, 13) AS BIGINT)"
+    },
+    "firsttrade": {
+        "inputs": [
+            {
+                "column": "wh_db_stage.FinWire.value",
+                "type": "DIRECT",
+                "subtype": "Transformation",
+                "description": "TRY_CAST(STRPTIME(SUBSTR(value, 115, 8), '%Y%m%d') AS DATE)",
+                "masking": false
+            }
+        ],
+        "transformation": "TRY_CAST(STRPTIME(SUBSTR(value, 115, 8), '%Y%m%d') AS DATE)"
+    },
+    "firsttradeonexchange": {
+        "inputs": [
+            {
+                "column": "wh_db_stage.FinWire.value",
+                "type": "DIRECT",
+                "subtype": "Transformation",
+                "description": "TRY_CAST(STRPTIME(SUBSTR(value, 123, 8), '%Y%m%d') AS DATE)",
+                "masking": false
+            }
+        ],
+        "transformation": "TRY_CAST(STRPTIME(SUBSTR(value, 123, 8), '%Y%m%d') AS DATE)"
+    },
+    "Dividend": {
+        "inputs": [
+            {
+                "column": "wh_db_stage.FinWire.value",
+                "type": "DIRECT",
+                "subtype": "Transformation",
+                "description": "TRY_CAST(SUBSTR(value, 131, 12) AS DOUBLE)",
+                "masking": false
+            }
+        ],
+        "transformation": "TRY_CAST(SUBSTR(value, 131, 12) AS DOUBLE)"
+    },
+    "iscurrent": {
+        "inputs": [
+            {
+                "column": "SEC_final.enddate",
+                "type": "DIRECT",
+                "subtype": "Transformation",
+                "description": "CASE WHEN enddate = '9999-12-31'::DATE THEN TRUE ELSE FALSE END",
+                "masking": false
+            }
+        ],
+        "transformation": "CASE WHEN enddate = '9999-12-31'::DATE THEN TRUE ELSE FALSE END"
+    },
+    "batchid": {
+        "inputs": [
+            {
+                "column": null,
+                "type": "DIRECT",
+                "subtype": "Identity",
+                "description": null,
+                "masking": false
+            }
+        ]
+    },
+    "effectivedate": {
+        "inputs": [
+            {
+                "column": "SEC_prep.effectivedate",
+                "type": "DIRECT",
+                "subtype": "Conditional",
+                "description": "CASE WHEN SEC.effectivedate < dc.EffectiveDate THEN dc.EffectiveDate ELSE SEC.effectivedate END",
+                "masking": false
+            },
+            {
+                "column": "dc.EffectiveDate",
+                "type": "DIRECT",
+                "subtype": "Conditional",
+                "description": "CASE WHEN SEC.effectivedate < dc.EffectiveDate THEN dc.EffectiveDate ELSE SEC.effectivedate END",
+                "masking": false
+            }
+        ],
+        "transformation": "CASE WHEN SEC.effectivedate < dc.EffectiveDate THEN dc.EffectiveDate ELSE SEC.effectivedate END"
+    },
+    "enddate": {
+        "inputs": [
+            {
+                "column": "SEC_prep.enddate",
+                "type": "DIRECT",
+                "subtype": "Conditional",
+                "description": "CASE WHEN SEC.enddate > dc.EndDate THEN dc.EndDate ELSE SEC.enddate END",
+                "masking": false
+            },
+            {
+                "column": "dc.EndDate",
+                "type": "DIRECT",
+                "subtype": "Conditional",
+                "description": "CASE WHEN SEC.enddate > dc.EndDate THEN dc.EndDate ELSE SEC.enddate END",
+                "masking": false
+            }
+        ],
+        "transformation": "CASE WHEN SEC.enddate > dc.EndDate THEN dc.EndDate ELSE SEC.enddate END"
+    }
+}

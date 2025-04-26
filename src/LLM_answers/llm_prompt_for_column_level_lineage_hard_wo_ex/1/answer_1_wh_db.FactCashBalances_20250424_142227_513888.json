@@ -1,0 +1,97 @@
+{
+    "target_table": "wh_db.FactCashBalances",
+    "lineage": {
+        "sk_customerid": {
+            "path": [
+                "wh_db.DimAccount",
+                "a"
+            ],
+            "source": "wh_db.DimAccount.sk_customerid",
+            "transformation": "a.sk_customerid",
+            "transformation_type": "RENAME"
+        },
+        "sk_accountid": {
+            "path": [
+                "wh_db.DimAccount",
+                "a"
+            ],
+            "source": "wh_db.DimAccount.sk_accountid",
+            "transformation": "a.sk_accountid",
+            "transformation_type": "RENAME"
+        },
+        "sk_dateid": {
+            "path": [
+                "historical",
+                "c"
+            ],
+            "source": "read_csv('src/data/Batch1\\CashTransaction.txt', HEADER=FALSE, columns={'accountid': 'BIGINT', 'ct_dts': 'TIMESTAMP', 'ct_amt': 'DOUBLE', 'ct_name': 'VARCHAR'}).ct_dts",
+            "transformation": "CAST(STRFTIME(datevalue, '%Y%m%d') AS BIGINT)",
+            "transformation_type": "CAST",
+            "intermediate_transformations": [
+                {
+                    "step": 1,
+                    "transformation": "ct_dts::DATE AS datevalue",
+                    "transformation_type": "CAST",
+                    "path": [
+                        "historical"
+                    ]
+                },
+                {
+                    "step": 2,
+                    "transformation": "STRFTIME(datevalue, '%Y%m%d')",
+                    "transformation_type": "SUBSTRING"
+                }
+            ]
+        },
+        "cash": {
+            "path": [
+                "historical",
+                "c"
+            ],
+            "source": "read_csv('src/data/Batch1\\CashTransaction.txt', HEADER=FALSE, columns={'accountid': 'BIGINT', 'ct_dts': 'TIMESTAMP', 'ct_amt': 'DOUBLE', 'ct_name': 'VARCHAR'}).ct_amt",
+            "transformation": "SUM(account_daily_total) OVER (PARTITION BY c.accountid ORDER BY datevalue)",
+            "transformation_type": "WINDOW_FUNCTION",
+            "intermediate_transformations": [
+                {
+                    "step": 1,
+                    "transformation": "SUM(ct_amt) AS account_daily_total",
+                    "transformation_type": "AGGREGATION",
+                    "path": [
+                        "historical"
+                    ]
+                }
+            ],
+            "partition_by": "c.accountid",
+            "order_by": "datevalue"
+        },
+        "batchid": {
+            "path": [
+                "historical",
+                "c"
+            ],
+            "source": "Constant value 1",
+            "transformation": "c.batchid",
+            "transformation_type": "CONSTANT"
+        }
+    },
+    "sources_summary": [
+        {
+            "table": "read_csv('src/data/Batch1\\CashTransaction.txt', HEADER=FALSE, columns={'accountid': 'BIGINT', 'ct_dts': 'TIMESTAMP', 'ct_amt': 'DOUBLE', 'ct_name': 'VARCHAR'})",
+            "columns": [
+                "accountid",
+                "ct_dts",
+                "ct_amt"
+            ]
+        },
+        {
+            "table": "wh_db.DimAccount",
+            "columns": [
+                "sk_customerid",
+                "sk_accountid",
+                "accountid",
+                "effectivedate",
+                "enddate"
+            ]
+        }
+    ]
+}

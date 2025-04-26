@@ -1,0 +1,423 @@
+{
+    "template_name": "llm_prompt_for_column_level_lineage_hard_wo_ex",
+    "execution_number": 1,
+    "run_timestamp": "2025-04-24T14:26:24.272280",
+    "individual_prompts_metadata": [
+        {
+            "prompt_details": {
+                "sql_file_name": "1_temp_broker",
+                "timestamp": "20250424_142015_574268",
+                "prompt_text_hash": -3879260339527995124
+            },
+            "usage": {
+                "query_tokens_used": 481,
+                "answer_tokens_used": 784
+            },
+            "model_used": "models/gemini-1.5-flash",
+            "response_summary": {
+                "answer_saved": true,
+                "answer_file": "answer_1_temp_broker_20250424_142015_574268.json"
+            }
+        },
+        {
+            "prompt_details": {
+                "sql_file_name": "1_wh_db.DimAccount",
+                "timestamp": "20250424_142025_880500",
+                "prompt_text_hash": 3337532061178194693
+            },
+            "usage": {
+                "query_tokens_used": 1128,
+                "answer_tokens_used": 1409
+            },
+            "model_used": "models/gemini-1.5-flash",
+            "response_summary": {
+                "answer_saved": true,
+                "answer_file": "answer_1_wh_db.DimAccount_20250424_142025_880500.json"
+            }
+        },
+        {
+            "prompt_details": {
+                "sql_file_name": "1_wh_db.DimBroker",
+                "timestamp": "20250424_142039_973730",
+                "prompt_text_hash": 382930470149291621
+            },
+            "usage": {
+                "query_tokens_used": 484,
+                "answer_tokens_used": 1133
+            },
+            "model_used": "models/gemini-1.5-flash",
+            "response_summary": {
+                "answer_saved": true,
+                "answer_file": "answer_1_wh_db.DimBroker_20250424_142039_973730.json"
+            }
+        },
+        {
+            "prompt_details": {
+                "sql_file_name": "1_wh_db.DimCompany",
+                "timestamp": "20250424_142052_380787",
+                "prompt_text_hash": -4406311172554972789
+            },
+            "usage": {
+                "query_tokens_used": 1330,
+                "answer_tokens_used": 2691
+            },
+            "model_used": "models/gemini-1.5-flash",
+            "response_summary": {
+                "answer_saved": true,
+                "answer_file": "answer_1_wh_db.DimCompany_20250424_142052_380787.json"
+            }
+        },
+        {
+            "prompt_details": {
+                "sql_file_name": "1_wh_db.DimCustomer",
+                "timestamp": "20250424_142114_067886",
+                "prompt_text_hash": -2547394946997094000
+            },
+            "usage": {
+                "query_tokens_used": 493,
+                "answer_tokens_used": 2039
+            },
+            "model_used": "models/gemini-1.5-flash",
+            "response_summary": {
+                "answer_saved": true,
+                "answer_file": "answer_1_wh_db.DimCustomer_20250424_142114_067886.json"
+            }
+        },
+        {
+            "prompt_details": {
+                "sql_file_name": "1_wh_db.DimDate",
+                "timestamp": "20250424_142131_963649",
+                "prompt_text_hash": -9098472948464331425
+            },
+            "usage": {
+                "query_tokens_used": 354,
+                "answer_tokens_used": 537
+            },
+            "model_used": "models/gemini-1.5-flash",
+            "response_summary": {
+                "answer_saved": true,
+                "answer_file": "answer_1_wh_db.DimDate_20250424_142131_963649.json"
+            }
+        },
+        {
+            "prompt_details": {
+                "sql_file_name": "1_wh_db.DimSecurity",
+                "timestamp": "20250424_142140_775821",
+                "prompt_text_hash": 8854804096089827457
+            },
+            "usage": {
+                "query_tokens_used": 1285,
+                "answer_tokens_used": 1535
+            },
+            "model_used": "models/gemini-1.5-flash",
+            "response_summary": {
+                "answer_saved": true,
+                "answer_file": "answer_1_wh_db.DimSecurity_20250424_142140_775821.json"
+            }
+        },
+        {
+            "prompt_details": {
+                "sql_file_name": "1_wh_db.DimTime",
+                "timestamp": "20250424_142155_681721",
+                "prompt_text_hash": -5467644653521667459
+            },
+            "usage": {
+                "query_tokens_used": 354,
+                "answer_tokens_used": 756
+            },
+            "model_used": "models/gemini-1.5-flash",
+            "response_summary": {
+                "answer_saved": true,
+                "answer_file": "answer_1_wh_db.DimTime_20250424_142155_681721.json"
+            }
+        },
+        {
+            "prompt_details": {
+                "sql_file_name": "1_wh_db.DimTrade",
+                "timestamp": "20250424_142205_719851",
+                "prompt_text_hash": -3682789282518145634
+            },
+            "usage": {
+                "query_tokens_used": 1340,
+                "answer_tokens_used": 2601
+            },
+            "model_used": "models/gemini-1.5-flash",
+            "response_summary": {
+                "answer_saved": true,
+                "answer_file": "answer_1_wh_db.DimTrade_20250424_142205_719851.json"
+            }
+        },
+        {
+            "prompt_details": {
+                "sql_file_name": "1_wh_db.FactCashBalances",
+                "timestamp": "20250424_142227_513888",
+                "prompt_text_hash": 7753648234855189032
+            },
+            "usage": {
+                "query_tokens_used": 595,
+                "answer_tokens_used": 824
+            },
+            "model_used": "models/gemini-1.5-flash",
+            "response_summary": {
+                "answer_saved": true,
+                "answer_file": "answer_1_wh_db.FactCashBalances_20250424_142227_513888.json"
+            }
+        },
+        {
+            "prompt_details": {
+                "sql_file_name": "1_wh_db.FactHoldings",
+                "timestamp": "20250424_142237_994130",
+                "prompt_text_hash": 7876446484553715178
+            },
+            "usage": {
+                "query_tokens_used": 565,
+                "answer_tokens_used": 1187
+            },
+            "model_used": "models/gemini-1.5-flash",
+            "response_summary": {
+                "answer_saved": true,
+                "answer_file": "answer_1_wh_db.FactHoldings_20250424_142237_994130.json"
+            }
+        },
+        {
+            "prompt_details": {
+                "sql_file_name": "1_wh_db.FactWatches",
+                "timestamp": "20250424_142250_669081",
+                "prompt_text_hash": -3615353446357008583
+            },
+            "usage": {
+                "query_tokens_used": 724,
+                "answer_tokens_used": 592
+            },
+            "model_used": "models/gemini-1.5-flash",
+            "response_summary": {
+                "answer_saved": true,
+                "answer_file": "answer_1_wh_db.FactWatches_20250424_142250_669081.json"
+            }
+        },
+        {
+            "prompt_details": {
+                "sql_file_name": "1_wh_db.Financial",
+                "timestamp": "20250424_142259_762756",
+                "prompt_text_hash": 8646666868441478972
+            },
+            "usage": {
+                "query_tokens_used": 1175,
+                "answer_tokens_used": 1409
+            },
+            "model_used": "models/gemini-1.5-flash",
+            "response_summary": {
+                "answer_saved": true,
+                "answer_file": "answer_1_wh_db.Financial_20250424_142259_762756.json"
+            }
+        },
+        {
+            "prompt_details": {
+                "sql_file_name": "1_wh_db.Prospect",
+                "timestamp": "20250424_142313_730585",
+                "prompt_text_hash": -3327697924802434408
+            },
+            "usage": {
+                "query_tokens_used": 776,
+                "answer_tokens_used": 1827
+            },
+            "model_used": "models/gemini-1.5-flash",
+            "response_summary": {
+                "answer_saved": true,
+                "answer_file": "answer_1_wh_db.Prospect_20250424_142313_730585.json"
+            }
+        },
+        {
+            "prompt_details": {
+                "sql_file_name": "1_wh_db.StatusType",
+                "timestamp": "20250424_142330_411868",
+                "prompt_text_hash": 1402908835929349094
+            },
+            "usage": {
+                "query_tokens_used": 355,
+                "answer_tokens_used": 658
+            },
+            "model_used": "models/gemini-1.5-flash",
+            "response_summary": {
+                "answer_saved": true,
+                "answer_file": "answer_1_wh_db.StatusType_20250424_142330_411868.json"
+            }
+        },
+        {
+            "prompt_details": {
+                "sql_file_name": "1_wh_db.TaxRate",
+                "timestamp": "20250424_142339_951819",
+                "prompt_text_hash": 578679640931407954
+            },
+            "usage": {
+                "query_tokens_used": 355,
+                "answer_tokens_used": 124
+            },
+            "model_used": "models/gemini-1.5-flash",
+            "response_summary": {
+                "answer_saved": true,
+                "answer_file": "answer_1_wh_db.TaxRate_20250424_142339_951819.json"
+            }
+        },
+        {
+            "prompt_details": {
+                "sql_file_name": "1_wh_db.TradeType",
+                "timestamp": "20250424_142346_263223",
+                "prompt_text_hash": 7855123352068888418
+            },
+            "usage": {
+                "query_tokens_used": 355,
+                "answer_tokens_used": 383
+            },
+            "model_used": "models/gemini-1.5-flash",
+            "response_summary": {
+                "answer_saved": false,
+                "answer_file": null
+            }
+        },
+        {
+            "prompt_details": {
+                "sql_file_name": "1_wh_db_stage.CustomerMgmt",
+                "timestamp": "20250424_142354_215955",
+                "prompt_text_hash": 382930470149291621
+            },
+            "usage": {
+                "query_tokens_used": 484,
+                "answer_tokens_used": 1133
+            },
+            "model_used": "models/gemini-1.5-flash",
+            "response_summary": {
+                "answer_saved": true,
+                "answer_file": "answer_1_wh_db_stage.CustomerMgmt_20250424_142354_215955.json"
+            }
+        },
+        {
+            "prompt_details": {
+                "sql_file_name": "1_wh_db_stage.FinWire",
+                "timestamp": "20250424_142406_625592",
+                "prompt_text_hash": 5893028023740904739
+            },
+            "usage": {
+                "query_tokens_used": 526,
+                "answer_tokens_used": 591
+            },
+            "model_used": "models/gemini-1.5-flash",
+            "response_summary": {
+                "answer_saved": true,
+                "answer_file": "answer_1_wh_db_stage.FinWire_20250424_142406_625592.json"
+            }
+        },
+        {
+            "prompt_details": {
+                "sql_file_name": "1_wh_db_stage.ProspectIncremental",
+                "timestamp": "20250424_142415_719618",
+                "prompt_text_hash": 3919639740136334774
+            },
+            "usage": {
+                "query_tokens_used": 574,
+                "answer_tokens_used": 2295
+            },
+            "model_used": "models/gemini-1.5-flash",
+            "response_summary": {
+                "answer_saved": true,
+                "answer_file": "answer_1_wh_db_stage.ProspectIncremental_20250424_142415_719618.json"
+            }
+        },
+        {
+            "prompt_details": {
+                "sql_file_name": "1_wh_db_stage.tradehistory",
+                "timestamp": "20250424_142434_922900",
+                "prompt_text_hash": -3766542434863564527
+            },
+            "usage": {
+                "query_tokens_used": 529,
+                "answer_tokens_used": 3346
+            },
+            "model_used": "models/gemini-1.5-flash",
+            "response_summary": {
+                "answer_saved": true,
+                "answer_file": "answer_1_wh_db_stage.tradehistory_20250424_142434_922900.json"
+            }
+        },
+        {
+            "prompt_details": {
+                "sql_file_name": "2_wh_db.DimCustomer",
+                "timestamp": "20250424_142501_187150",
+                "prompt_text_hash": 3864773988695976491
+            },
+            "usage": {
+                "query_tokens_used": 1050,
+                "answer_tokens_used": 2336
+            },
+            "model_used": "models/gemini-1.5-flash",
+            "response_summary": {
+                "answer_saved": true,
+                "answer_file": "answer_2_wh_db.DimCustomer_20250424_142501_187150.json"
+            }
+        },
+        {
+            "prompt_details": {
+                "sql_file_name": "2_wh_db_stage.ProspectIncremental",
+                "timestamp": "20250424_142521_136316",
+                "prompt_text_hash": -1599571083907894720
+            },
+            "usage": {
+                "query_tokens_used": 931,
+                "answer_tokens_used": 1312
+            },
+            "model_used": "models/gemini-1.5-flash",
+            "response_summary": {
+                "answer_saved": true,
+                "answer_file": "answer_2_wh_db_stage.ProspectIncremental_20250424_142521_136316.json"
+            }
+        },
+        {
+            "prompt_details": {
+                "sql_file_name": "2_wh_db_stage.tradehistory",
+                "timestamp": "20250424_142534_686228",
+                "prompt_text_hash": -7106607300521238320
+            },
+            "usage": {
+                "query_tokens_used": 427,
+                "answer_tokens_used": 317
+            },
+            "model_used": "models/gemini-1.5-flash",
+            "response_summary": {
+                "answer_saved": true,
+                "answer_file": "answer_2_wh_db_stage.tradehistory_20250424_142534_686228.json"
+            }
+        },
+        {
+            "prompt_details": {
+                "sql_file_name": "3_wh_db.DimCustomer",
+                "timestamp": "20250424_142542_192009",
+                "prompt_text_hash": -3940764277093051125
+            },
+            "usage": {
+                "query_tokens_used": 1271,
+                "answer_tokens_used": 3226
+            },
+            "model_used": "models/gemini-1.5-flash",
+            "response_summary": {
+                "answer_saved": true,
+                "answer_file": "answer_3_wh_db.DimCustomer_20250424_142542_192009.json"
+            }
+        },
+        {
+            "prompt_details": {
+                "sql_file_name": "3_wh_db_stage.ProspectIncremental",
+                "timestamp": "20250424_142607_337942",
+                "prompt_text_hash": -2283258450755586512
+            },
+            "usage": {
+                "query_tokens_used": 798,
+                "answer_tokens_used": 1875
+            },
+            "model_used": "models/gemini-1.5-flash",
+            "response_summary": {
+                "answer_saved": true,
+                "answer_file": "answer_3_wh_db_stage.ProspectIncremental_20250424_142607_337942.json"
+            }
+        }
+    ]
+}

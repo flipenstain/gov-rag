@@ -1,0 +1,59 @@
+{
+    "*": {
+        "input": "temp_propect.*"
+    },
+    "marketingnameplate": {
+        "inputs": [
+            {
+                "column": "temp_propect.networth",
+                "type": "DIRECT",
+                "subtype": "Conditional",
+                "description": "networth used in CASE WHEN statement",
+                "masking": false
+            },
+            {
+                "column": "temp_propect.income",
+                "type": "DIRECT",
+                "subtype": "Conditional",
+                "description": "income used in CASE WHEN statement",
+                "masking": false
+            },
+            {
+                "column": "temp_propect.numberchildren",
+                "type": "DIRECT",
+                "subtype": "Conditional",
+                "description": "numberchildren used in CASE WHEN statement",
+                "masking": false
+            },
+            {
+                "column": "temp_propect.numbercreditcards",
+                "type": "DIRECT",
+                "subtype": "Conditional",
+                "description": "numbercreditcards used in CASE WHEN statement",
+                "masking": false
+            },
+            {
+                "column": "temp_propect.age",
+                "type": "DIRECT",
+                "subtype": "Conditional",
+                "description": "age used in CASE WHEN statement",
+                "masking": false
+            },
+            {
+                "column": "temp_propect.creditrating",
+                "type": "DIRECT",
+                "subtype": "Conditional",
+                "description": "creditrating used in CASE WHEN statement",
+                "masking": false
+            },
+            {
+                "column": "temp_propect.numbercars",
+                "type": "DIRECT",
+                "subtype": "Conditional",
+                "description": "numbercars used in CASE WHEN statement",
+                "masking": false
+            }
+        ],
+        "transformation": "CASE WHEN ... THEN ... ELSE ... END"
+    }
+}

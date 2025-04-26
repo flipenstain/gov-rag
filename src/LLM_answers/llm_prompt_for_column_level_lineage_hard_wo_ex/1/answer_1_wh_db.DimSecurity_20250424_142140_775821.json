@@ -1,0 +1,193 @@
+{
+    "target_table": "wh_db.DimSecurity",
+    "lineage": {
+        "sk_securityid": {
+            "path": [
+                "SEC_final"
+            ],
+            "source": null,
+            "transformation": "ROW_NUMBER() OVER ()",
+            "transformation_type": "ROW_NUMBER",
+            "role": null
+        },
+        "Symbol": {
+            "path": [
+                "SEC_prep",
+                "SEC"
+            ],
+            "source": {
+                "table": "wh_db_stage.FinWire",
+                "column": "value"
+            },
+            "transformation": "TRIM(SUBSTR(value, 1, 15))",
+            "transformation_type": "SUBSTRING",
+            "role": null
+        },
+        "issue": {
+            "path": [
+                "SEC_prep",
+                "SEC"
+            ],
+            "source": {
+                "table": "wh_db_stage.FinWire",
+                "column": "value"
+            },
+            "transformation": "TRIM(SUBSTR(value, 16, 6))",
+            "transformation_type": "SUBSTRING",
+            "role": null
+        },
+        "status": {
+            "path": [
+                "SEC_prep",
+                "SEC"
+            ],
+            "source": {
+                "table": "wh_db_stage.FinWire",
+                "column": "value"
+            },
+            "transformation": "TRIM(SUBSTR(value, 22, 4))",
+            "transformation_type": "CASE_MAPPING",
+            "role": null
+        },
+        "Name": {
+            "path": [
+                "SEC_prep",
+                "SEC"
+            ],
+            "source": {
+                "table": "wh_db_stage.FinWire",
+                "column": "value"
+            },
+            "transformation": "TRIM(SUBSTR(value, 26, 70))",
+            "transformation_type": "SUBSTRING",
+            "role": null
+        },
+        "exchangeid": {
+            "path": [
+                "SEC_prep",
+                "SEC"
+            ],
+            "source": {
+                "table": "wh_db_stage.FinWire",
+                "column": "value"
+            },
+            "transformation": "TRIM(SUBSTR(value, 96, 6))",
+            "transformation_type": "SUBSTRING",
+            "role": null
+        },
+        "sk_companyid": {
+            "path": [
+                "SEC_final",
+                "dc"
+            ],
+            "source": {
+                "table": "wh_db.DimCompany",
+                "column": "sk_companyid"
+            },
+            "transformation": null,
+            "transformation_type": "JOIN_LOOKUP",
+            "role": "join key"
+        },
+        "sharesoutstanding": {
+            "path": [
+                "SEC_prep",
+                "SEC"
+            ],
+            "source": {
+                "table": "wh_db_stage.FinWire",
+                "column": "value"
+            },
+            "transformation": "TRY_CAST(SUBSTR(value, 102, 13) AS BIGINT)",
+            "transformation_type": "CAST",
+            "role": null
+        },
+        "firsttrade": {
+            "path": [
+                "SEC_prep",
+                "SEC"
+            ],
+            "source": {
+                "table": "wh_db_stage.FinWire",
+                "column": "value"
+            },
+            "transformation": "TRY_CAST(STRPTIME(SUBSTR(value, 115, 8), '%Y%m%d') AS DATE)",
+            "transformation_type": "CAST",
+            "role": null
+        },
+        "firsttradeonexchange": {
+            "path": [
+                "SEC_prep",
+                "SEC"
+            ],
+            "source": {
+                "table": "wh_db_stage.FinWire",
+                "column": "value"
+            },
+            "transformation": "TRY_CAST(STRPTIME(SUBSTR(value, 123, 8), '%Y%m%d') AS DATE)",
+            "transformation_type": "CAST",
+            "role": null
+        },
+        "Dividend": {
+            "path": [
+                "SEC_prep",
+                "SEC"
+            ],
+            "source": {
+                "table": "wh_db_stage.FinWire",
+                "column": "value"
+            },
+            "transformation": "TRY_CAST(SUBSTR(value, 131, 12) AS DOUBLE)",
+            "transformation_type": "CAST",
+            "role": null
+        },
+        "effectivedate": {
+            "path": [
+                "SEC_final",
+                "SEC_prep",
+                "SEC"
+            ],
+            "source": {
+                "table": "wh_db_stage.FinWire",
+                "column": "recdate"
+            },
+            "transformation": "CASE WHEN SEC.effectivedate < dc.EffectiveDate THEN dc.EffectiveDate ELSE SEC.effectivedate END",
+            "transformation_type": "EXPRESSION",
+            "role": null
+        },
+        "enddate": {
+            "path": [
+                "SEC_final",
+                "SEC_prep",
+                "SEC"
+            ],
+            "source": {
+                "table": "wh_db_stage.FinWire",
+                "column": "recdate"
+            },
+            "transformation": "CASE WHEN SEC.enddate > dc.EndDate THEN dc.EndDate ELSE SEC.enddate END",
+            "transformation_type": "EXPRESSION",
+            "role": null
+        },
+        "iscurrent": {
+            "path": [
+                "SEC_final"
+            ],
+            "source": {
+                "table": "SEC_prep",
+                "column": "enddate"
+            },
+            "transformation": "CASE WHEN enddate = '9999-12-31'::DATE THEN TRUE ELSE FALSE END",
+            "transformation_type": "CASE_MAPPING",
+            "role": null
+        },
+        "batchid": {
+            "path": [
+                "SEC_final"
+            ],
+            "source": null,
+            "transformation": "1",
+            "transformation_type": "CONSTANT",
+            "role": null
+        }
+    }
+}

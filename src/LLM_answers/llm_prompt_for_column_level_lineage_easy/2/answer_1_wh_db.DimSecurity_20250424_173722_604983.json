@@ -1,0 +1,65 @@
+{
+    "sk_securityid": {
+        "inputs": [
+            {
+                "column": "SEC_final.effectivedate",
+                "type": "INDIRECT",
+                "subtype": "Order",
+                "description": "Used for row numbering",
+                "masking": false
+            }
+        ],
+        "transformation": "ROW_NUMBER() OVER ()"
+    },
+    "Symbol": {
+        "input": "SEC_final.Symbol"
+    },
+    "issue": {
+        "input": "SEC_final.issue"
+    },
+    "status": {
+        "input": "SEC_final.status"
+    },
+    "Name": {
+        "input": "SEC_final.Name"
+    },
+    "exchangeid": {
+        "input": "SEC_final.exchangeid"
+    },
+    "sk_companyid": {
+        "input": "SEC_final.sk_companyid"
+    },
+    "sharesoutstanding": {
+        "input": "SEC_final.sharesoutstanding"
+    },
+    "firsttrade": {
+        "input": "SEC_final.firsttrade"
+    },
+    "firsttradeonexchange": {
+        "input": "SEC_final.firsttradeonexchange"
+    },
+    "Dividend": {
+        "input": "SEC_final.Dividend"
+    },
+    "iscurrent": {
+        "inputs": [
+            {
+                "column": "SEC_final.enddate",
+                "type": "DIRECT",
+                "subtype": "Conditional",
+                "description": "enddate = '9999-12-31'::DATE",
+                "masking": false
+            }
+        ],
+        "transformation": "CASE WHEN enddate = '9999-12-31'::DATE THEN TRUE ELSE FALSE END"
+    },
+    "batchid": {
+        "transformation": "1"
+    },
+    "effectivedate": {
+        "input": "SEC_final.effectivedate"
+    },
+    "enddate": {
+        "input": "SEC_final.enddate"
+    }
+}

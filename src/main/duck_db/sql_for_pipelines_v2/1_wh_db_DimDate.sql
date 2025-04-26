@@ -1,0 +1,1 @@
+COPY wh_db.DimDate FROM 'C:/lopu-kg-test/project/src/data/Batch1/Date.txt' (DELIMITER '|');

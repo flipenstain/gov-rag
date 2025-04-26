@@ -1,0 +1,44 @@
+{
+    "tradeid": {
+        "input": "read_csv('src/data/Batch1\\Trade.txt', HEADER=FALSE, filename=false, all_varchar=true, delim='|',strict_mode=false , columns = {\"tradeid\": \"BIGINT\", \"t_dts\": \"TIMESTAMP\", \"status\": \"STRING\", \"t_tt_id\": \"STRING\", \"cashflag\": \"TINYINT\", \"t_s_symb\": \"STRING\", \"quantity\": \"INT\", \"bidprice\": \"DOUBLE\", \"t_ca_id\": \"BIGINT\", \"executedby\": \"STRING\", \"tradeprice\": \"DOUBLE\", \"fee\": \"DOUBLE\", \"commission\": \"DOUBLE\", \"tax\": \"DOUBLE\"}.tradeid"
+    },
+    "t_dts": {
+        "input": "read_csv('src/data/Batch1\\Trade.txt', HEADER=FALSE, filename=false, all_varchar=true, delim='|',strict_mode=false , columns = {\"tradeid\": \"BIGINT\", \"t_dts\": \"TIMESTAMP\", \"status\": \"STRING\", \"t_tt_id\": \"STRING\", \"cashflag\": \"TINYINT\", \"t_s_symb\": \"STRING\", \"quantity\": \"INT\", \"bidprice\": \"DOUBLE\", \"t_ca_id\": \"BIGINT\", \"executedby\": \"STRING\", \"tradeprice\": \"DOUBLE\", \"fee\": \"DOUBLE\", \"commission\": \"DOUBLE\", \"tax\": \"DOUBLE\"}.t_dts"
+    },
+    "status": {
+        "input": "read_csv('src/data/Batch1\\Trade.txt', HEADER=FALSE, filename=false, all_varchar=true, delim='|',strict_mode=false , columns = {\"tradeid\": \"BIGINT\", \"t_dts\": \"TIMESTAMP\", \"status\": \"STRING\", \"t_tt_id\": \"STRING\", \"cashflag\": \"TINYINT\", \"t_s_symb\": \"STRING\", \"quantity\": \"INT\", \"bidprice\": \"DOUBLE\", \"t_ca_id\": \"BIGINT\", \"executedby\": \"STRING\", \"tradeprice\": \"DOUBLE\", \"fee\": \"DOUBLE\", \"commission\": \"DOUBLE\", \"tax\": \"DOUBLE\"}.status"
+    },
+    "t_tt_id": {
+        "input": "read_csv('src/data/Batch1\\Trade.txt', HEADER=FALSE, filename=false, all_varchar=true, delim='|',strict_mode=false , columns = {\"tradeid\": \"BIGINT\", \"t_dts\": \"TIMESTAMP\", \"status\": \"STRING\", \"t_tt_id\": \"STRING\", \"cashflag\": \"TINYINT\", \"t_s_symb\": \"STRING\", \"quantity\": \"INT\", \"bidprice\": \"DOUBLE\", \"t_ca_id\": \"BIGINT\", \"executedby\": \"STRING\", \"tradeprice\": \"DOUBLE\", \"fee\": \"DOUBLE\", \"commission\": \"DOUBLE\", \"tax\": \"DOUBLE\"}.t_tt_id"
+    },
+    "cashflag": {
+        "input": "read_csv('src/data/Batch1\\Trade.txt', HEADER=FALSE, filename=false, all_varchar=true, delim='|',strict_mode=false , columns = {\"tradeid\": \"BIGINT\", \"t_dts\": \"TIMESTAMP\", \"status\": \"STRING\", \"t_tt_id\": \"STRING\", \"cashflag\": \"TINYINT\", \"t_s_symb\": \"STRING\", \"quantity\": \"INT\", \"bidprice\": \"DOUBLE\", \"t_ca_id\": \"BIGINT\", \"executedby\": \"STRING\", \"tradeprice\": \"DOUBLE\", \"fee\": \"DOUBLE\", \"commission\": \"DOUBLE\", \"tax\": \"DOUBLE\"}.cashflag"
+    },
+    "t_s_symb": {
+        "input": "read_csv('src/data/Batch1\\Trade.txt', HEADER=FALSE, filename=false, all_varchar=true, delim='|',strict_mode=false , columns = {\"tradeid\": \"BIGINT\", \"t_dts\": \"TIMESTAMP\", \"status\": \"STRING\", \"t_tt_id\": \"STRING\", \"cashflag\": \"TINYINT\", \"t_s_symb\": \"STRING\", \"quantity\": \"INT\", \"bidprice\": \"DOUBLE\", \"t_ca_id\": \"BIGINT\", \"executedby\": \"STRING\", \"tradeprice\": \"DOUBLE\", \"fee\": \"DOUBLE\", \"commission\": \"DOUBLE\", \"tax\": \"DOUBLE\"}.t_s_symb"
+    },
+    "quantity": {
+        "input": "read_csv('src/data/Batch1\\Trade.txt', HEADER=FALSE, filename=false, all_varchar=true, delim='|',strict_mode=false , columns = {\"tradeid\": \"BIGINT\", \"t_dts\": \"TIMESTAMP\", \"status\": \"STRING\", \"t_tt_id\": \"STRING\", \"cashflag\": \"TINYINT\", \"t_s_symb\": \"STRING\", \"quantity\": \"INT\", \"bidprice\": \"DOUBLE\", \"t_ca_id\": \"BIGINT\", \"executedby\": \"STRING\", \"tradeprice\": \"DOUBLE\", \"fee\": \"DOUBLE\", \"commission\": \"DOUBLE\", \"tax\": \"DOUBLE\"}.quantity"
+    },
+    "bidprice": {
+        "input": "read_csv('src/data/Batch1\\Trade.txt', HEADER=FALSE, filename=false, all_varchar=true, delim='|',strict_mode=false , columns = {\"tradeid\": \"BIGINT\", \"t_dts\": \"TIMESTAMP\", \"status\": \"STRING\", \"t_tt_id\": \"STRING\", \"cashflag\": \"TINYINT\", \"t_s_symb\": \"STRING\", \"quantity\": \"INT\", \"bidprice\": \"DOUBLE\", \"t_ca_id\": \"BIGINT\", \"executedby\": \"STRING\", \"tradeprice\": \"DOUBLE\", \"fee\": \"DOUBLE\", \"commission\": \"DOUBLE\", \"tax\": \"DOUBLE\"}.bidprice"
+    },
+    "t_ca_id": {
+        "input": "read_csv('src/data/Batch1\\Trade.txt', HEADER=FALSE, filename=false, all_varchar=true, delim='|',strict_mode=false , columns = {\"tradeid\": \"BIGINT\", \"t_dts\": \"TIMESTAMP\", \"status\": \"STRING\", \"t_tt_id\": \"STRING\", \"cashflag\": \"TINYINT\", \"t_s_symb\": \"STRING\", \"quantity\": \"INT\", \"bidprice\": \"DOUBLE\", \"t_ca_id\": \"BIGINT\", \"executedby\": \"STRING\", \"tradeprice\": \"DOUBLE\", \"fee\": \"DOUBLE\", \"commission\": \"DOUBLE\", \"tax\": \"DOUBLE\"}.t_ca_id"
+    },
+    "executedby": {
+        "input": "read_csv('src/data/Batch1\\Trade.txt', HEADER=FALSE, filename=false, all_varchar=true, delim='|',strict_mode=false , columns = {\"tradeid\": \"BIGINT\", \"t_dts\": \"TIMESTAMP\", \"status\": \"STRING\", \"t_tt_id\": \"STRING\", \"cashflag\": \"TINYINT\", \"t_s_symb\": \"STRING\", \"quantity\": \"INT\", \"bidprice\": \"DOUBLE\", \"t_ca_id\": \"BIGINT\", \"executedby\": \"STRING\", \"tradeprice\": \"DOUBLE\", \"fee\": \"DOUBLE\", \"commission\": \"DOUBLE\", \"tax\": \"DOUBLE\"}.executedby"
+    },
+    "tradeprice": {
+        "input": "read_csv('src/data/Batch1\\Trade.txt', HEADER=FALSE, filename=false, all_varchar=true, delim='|',strict_mode=false , columns = {\"tradeid\": \"BIGINT\", \"t_dts\": \"TIMESTAMP\", \"status\": \"STRING\", \"t_tt_id\": \"STRING\", \"cashflag\": \"TINYINT\", \"t_s_symb\": \"STRING\", \"quantity\": \"INT\", \"bidprice\": \"DOUBLE\", \"t_ca_id\": \"BIGINT\", \"executedby\": \"STRING\", \"tradeprice\": \"DOUBLE\", \"fee\": \"DOUBLE\", \"commission\": \"DOUBLE\", \"tax\": \"DOUBLE\"}.tradeprice"
+    },
+    "fee": {
+        "input": "read_csv('src/data/Batch1\\Trade.txt', HEADER=FALSE, filename=false, all_varchar=true, delim='|',strict_mode=false , columns = {\"tradeid\": \"BIGINT\", \"t_dts\": \"TIMESTAMP\", \"status\": \"STRING\", \"t_tt_id\": \"STRING\", \"cashflag\": \"TINYINT\", \"t_s_symb\": \"STRING\", \"quantity\": \"INT\", \"bidprice\": \"DOUBLE\", \"t_ca_id\": \"BIGINT\", \"executedby\": \"STRING\", \"tradeprice\": \"DOUBLE\", \"fee\": \"DOUBLE\", \"commission\": \"DOUBLE\", \"tax\": \"DOUBLE\"}.fee"
+    },
+    "commission": {
+        "input": "read_csv('src/data/Batch1\\Trade.txt', HEADER=FALSE, filename=false, all_varchar=true, delim='|',strict_mode=false , columns = {\"tradeid\": \"BIGINT\", \"t_dts\": \"TIMESTAMP\", \"status\": \"STRING\", \"t_tt_id\": \"STRING\", \"cashflag\": \"TINYINT\", \"t_s_symb\": \"STRING\", \"quantity\": \"INT\", \"bidprice\": \"DOUBLE\", \"t_ca_id\": \"BIGINT\", \"executedby\": \"STRING\", \"tradeprice\": \"DOUBLE\", \"fee\": \"DOUBLE\", \"commission\": \"DOUBLE\", \"tax\": \"DOUBLE\"}.commission"
+    },
+    "tax": {
+        "input": "read_csv('src/data/Batch1\\Trade.txt', HEADER=FALSE, filename=false, all_varchar=true, delim='|',strict_mode=false , columns = {\"tradeid\": \"BIGINT\", \"t_dts\": \"TIMESTAMP\", \"status\": \"STRING\", \"t_tt_id\": \"STRING\", \"cashflag\": \"TINYINT\", \"t_s_symb\": \"STRING\", \"quantity\": \"INT\", \"bidprice\": \"DOUBLE\", \"t_ca_id\": \"BIGINT\", \"executedby\": \"STRING\", \"tradeprice\": \"DOUBLE\", \"fee\": \"DOUBLE\", \"commission\": \"DOUBLE\", \"tax\": \"DOUBLE\"}.tax"
+    }
+}

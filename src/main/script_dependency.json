@@ -1,0 +1,41 @@
+{
+
+    "1_wh_db.DimDate.sql": [],
+    "1_wh_db.DimTime.sql": [],
+    "1_wh_db.StatusType.sql": [],
+    "1_wh_db.TaxRate.sql": [],
+    "1_wh_db.TradeType.sql": [],
+    "1_temp_broker.sql": [],
+    "1_wh_db_stage.CustomerMgmt.sql": [],
+    "1_wh_db_stage.FinWire.sql": [],
+    
+
+    "1_wh_db.DimCompany.sql": ["1_wh_db.DimDate.sql", "1_wh_db_stage.FinWire.sql"],
+    "2_wh_db.DimCompany.sql": ["1_wh_db.DimCompany.sql"],
+    
+
+    "1_wh_db_stage.ProspectIncremental.sql": ["1_wh_db_stage.CustomerMgmt.sql"],
+    "2_wh_db_stage.ProspectIncremental.sql": ["1_wh_db_stage.ProspectIncremental.sql"],
+    "3_wh_db_stage.ProspectIncremental.sql": ["2_wh_db_stage.ProspectIncremental.sql"],
+    
+
+    "1_wh_db.DimCustomer.sql": ["1_wh_db_stage.CustomerMgmt.sql"],
+    "2_wh_db.DimCustomer.sql": ["1_wh_db.DimCustomer.sql"],
+    "3_wh_db.DimCustomer.sql": ["2_wh_db.DimCustomer.sql"],
+    
+
+    "1_wh_db.DimSecurity.sql": ["1_wh_db.DimCompany.sql", "1_wh_db.DimCustomer.sql"],
+    "1_wh_db.DimAccount.sql": ["1_wh_db.DimCustomer.sql"],
+    
+
+    "1_wh_db_stage.tradehistory.sql": ["1_wh_db.DimSecurity.sql", "1_wh_db.DimAccount.sql"],
+    "2_wh_db_stage.tradehistory.sql": ["1_wh_db_stage.tradehistory.sql"],
+    
+
+    "1_wh_db.DimTrade.sql": ["1_wh_db_stage.tradehistory.sql"],
+    "1_wh_db.FactCashBalances.sql": ["1_wh_db.DimAccount.sql"],
+    "1_wh_db.FactHoldings.sql": ["1_wh_db.DimTrade.sql"],
+    "1_wh_db.FactWatches.sql": ["1_wh_db.DimCustomer.sql"],
+    "1_wh_db.Financial.sql": ["1_wh_db.DimCompany.sql"],
+    "1_wh_db.Prospect.sql": ["3_wh_db_stage.ProspectIncremental.sql"]
+}

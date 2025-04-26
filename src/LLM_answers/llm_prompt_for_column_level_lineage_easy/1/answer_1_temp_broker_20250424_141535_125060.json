@@ -1,0 +1,29 @@
+{
+    "employeeid": {
+        "input": "read_csv('src/data/Batch1\\HR.csv').employeeid"
+    },
+    "managerid": {
+        "input": "read_csv('src/data/Batch1\\HR.csv').managerid"
+    },
+    "employeefirstname": {
+        "input": "read_csv('src/data/Batch1\\HR.csv').employeefirstname"
+    },
+    "employeelastname": {
+        "input": "read_csv('src/data/Batch1\\HR.csv').employeelastname"
+    },
+    "employeemi": {
+        "input": "read_csv('src/data/Batch1\\HR.csv').employeemi"
+    },
+    "employeejobcode": {
+        "input": "read_csv('src/data/Batch1\\HR.csv').employeejobcode"
+    },
+    "employeebranch": {
+        "input": "read_csv('src/data/Batch1\\HR.csv').employeebranch"
+    },
+    "employeeoffice": {
+        "input": "read_csv('src/data/Batch1\\HR.csv').employeeoffice"
+    },
+    "employeephone": {
+        "input": "read_csv('src/data/Batch1\\HR.csv').employeephone"
+    }
+}

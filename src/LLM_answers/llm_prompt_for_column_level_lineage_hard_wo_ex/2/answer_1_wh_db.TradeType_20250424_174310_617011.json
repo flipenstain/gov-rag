@@ -1,0 +1,5 @@
+{
+    "target_table": "wh_db.TradeType",
+    "sources_summary": [],
+    "lineage": {}
+}

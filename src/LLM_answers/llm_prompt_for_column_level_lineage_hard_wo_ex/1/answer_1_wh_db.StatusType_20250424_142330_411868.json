@@ -1,0 +1,103 @@
+{
+    "target_table": "wh_db.StatusType",
+    "lineage": {
+        "StatusTypeId": {
+            "path": [
+                "StatusType.txt"
+            ],
+            "source_columns": [
+                {
+                    "table": "StatusType.txt",
+                    "column": "StatusTypeId",
+                    "role": "Source Column"
+                }
+            ],
+            "transformation": null,
+            "transformation_type": "COPY"
+        },
+        "StatusTypeName": {
+            "path": [
+                "StatusType.txt"
+            ],
+            "source_columns": [
+                {
+                    "table": "StatusType.txt",
+                    "column": "StatusTypeName",
+                    "role": "Source Column"
+                }
+            ],
+            "transformation": null,
+            "transformation_type": "COPY"
+        },
+        "IsActive": {
+            "path": [
+                "StatusType.txt"
+            ],
+            "source_columns": [
+                {
+                    "table": "StatusType.txt",
+                    "column": "IsActive",
+                    "role": "Source Column"
+                }
+            ],
+            "transformation": null,
+            "transformation_type": "COPY"
+        },
+        "CreatedOn": {
+            "path": [
+                "StatusType.txt"
+            ],
+            "source_columns": [
+                {
+                    "table": "StatusType.txt",
+                    "column": "CreatedOn",
+                    "role": "Source Column"
+                }
+            ],
+            "transformation": null,
+            "transformation_type": "COPY"
+        },
+        "CreatedBy": {
+            "path": [
+                "StatusType.txt"
+            ],
+            "source_columns": [
+                {
+                    "table": "StatusType.txt",
+                    "column": "CreatedBy",
+                    "role": "Source Column"
+                }
+            ],
+            "transformation": null,
+            "transformation_type": "COPY"
+        },
+        "UpdatedOn": {
+            "path": [
+                "StatusType.txt"
+            ],
+            "source_columns": [
+                {
+                    "table": "StatusType.txt",
+                    "column": "UpdatedOn",
+                    "role": "Source Column"
+                }
+            ],
+            "transformation": null,
+            "transformation_type": "COPY"
+        },
+        "UpdatedBy": {
+            "path": [
+                "StatusType.txt"
+            ],
+            "source_columns": [
+                {
+                    "table": "StatusType.txt",
+                    "column": "UpdatedBy",
+                    "role": "Source Column"
+                }
+            ],
+            "transformation": null,
+            "transformation_type": "COPY"
+        }
+    }
+}

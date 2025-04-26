@@ -7,6 +7,7 @@ from typing import Optional, List, Tuple
 import os
 import re
 import logging # Added for better output
+from memgraph_utils import read_all_sql_files, update_script_properties, dependencies
 
 # --- Configuration ---
 MEMGRAPH_HOST = "memgraph-mage"  # Or your Memgraph host IP/DNS name
@@ -35,6 +36,7 @@ except Exception as e:
     logging.error(f"Failed to connect to Memgraph: {e}")
     memgraph = None # Set to None to prevent further operations
 
+# --- Reading in sql pipeline to process mapping ---
 json_file = "/app/src/main/pipeline_mapping.json"
 with open(json_file, "r", encoding="utf-8") as f:
                 PIPELINE_SCRIPT_MAP_DATA = json.load(f)
@@ -47,7 +49,6 @@ SCRIPT_TO_PIPELINE_MAP = {
 }
 logging.info("Created script-to-pipeline lookup map.")
 
-import re
 
 def extract_clean_name(input_str):
     # Remove prefix 'answer_'
@@ -55,9 +56,6 @@ def extract_clean_name(input_str):
 
     # Remove trailing timestamp: `_YYYYMMDD_HHMMSS`
     name = re.sub(r'_\d{8}_\d{6}$', '', name)
-
-    # Replace `_stage.` with `.stage.` (to fix schema naming)
-    name = name.replace('_stage.', '.stage.')
 
     return name
 
@@ -159,6 +157,7 @@ def load_lineage_to_memgraph(db, data, script_name, pipeline_name):
         return # Stop processing this lineage entry if pipeline/script fails
 
     # --- End: Add Pipeline and Script MERGE ---
+
 
     target_full_table_name = data.get('target_table')
     if not target_full_table_name:
@@ -599,6 +598,15 @@ def main():
             except Exception as e:
                 logging.error(f"Error closing DuckDB connection: {e}")
         # GQLAlchemy connection doesn't usually need explicit close unless using specific drivers/pooling
+
+
+    # set sql and paths
+
+    sql_files_dict = read_all_sql_files("/app/src/main/sql_for_pipelines")
+    update_script_properties(memgraph, sql_files_dict)
+    dependencies(memgraph)
+
+
 
 
 if __name__ == "__main__":

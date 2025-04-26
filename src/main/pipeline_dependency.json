@@ -1,0 +1,9 @@
+{
+    "sourcing": [],
+    "company_load": ["sourcing"],
+    "procpect_load": ["sourcing"],
+    "customer_load": ["sourcing"],
+    "sec_acc_load": ["company_load"],
+    "trade_history_load": ["sec_acc_load"],
+    "finance_load": ["trade_history_load", "company_load"]
+}

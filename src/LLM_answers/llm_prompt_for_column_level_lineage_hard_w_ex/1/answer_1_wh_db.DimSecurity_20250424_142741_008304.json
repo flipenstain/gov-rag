@@ -1,0 +1,231 @@
+{
+    "target_table": "wh_db.DimSecurity",
+    "sources_summary": [
+        {
+            "type": "TABLE",
+            "name": "wh_db_stage.FinWire",
+            "alias_or_cte": "SEC"
+        },
+        {
+            "type": "TABLE",
+            "name": "wh_db.DimCompany",
+            "alias_or_cte": "dc"
+        }
+    ],
+    "lineage": {
+        "sk_securityid": {
+            "sources": [],
+            "transformation_type": "ROW_NUMBER",
+            "transformation_logic": "ROW_NUMBER() OVER ()"
+        },
+        "Symbol": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.FinWire.value",
+                    "path": [
+                        "SEC.Symbol"
+                    ]
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "SEC.Symbol"
+        },
+        "issue": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.FinWire.value",
+                    "path": [
+                        "SEC.issue"
+                    ]
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "SEC.issue"
+        },
+        "status": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.FinWire.value",
+                    "path": [
+                        "SEC.Status"
+                    ]
+                }
+            ],
+            "transformation_type": "CASE_MAPPING",
+            "transformation_logic": "CASE WHEN status = 'ACTV' THEN 'Active' WHEN status = 'CMPT' THEN 'Completed' WHEN status = 'CNCL' THEN 'Canceled' WHEN status = 'PNDG' THEN 'Pending' WHEN status = 'SBMT' THEN 'Submitted' WHEN status = 'INAC' THEN 'Inactive' ELSE NULL END"
+        },
+        "Name": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.FinWire.value",
+                    "path": [
+                        "SEC.Name"
+                    ]
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "SEC.Name"
+        },
+        "exchangeid": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.FinWire.value",
+                    "path": [
+                        "SEC.exchangeid"
+                    ]
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "SEC.exchangeid"
+        },
+        "sk_companyid": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db.DimCompany.sk_companyid",
+                    "join_info": {
+                        "type": "INNER JOIN",
+                        "left_source": {
+                            "identifier": "wh_db_stage.FinWire.value",
+                            "path": [
+                                "SEC.conameorcik"
+                            ]
+                        },
+                        "right_source": {
+                            "identifier": "wh_db.DimCompany.conameorcik"
+                        }
+                    }
+                }
+            ],
+            "transformation_type": "JOIN_LOOKUP",
+            "transformation_logic": "dc.sk_companyid via JOIN ON SEC.conameorcik = dc.conameorcik AND SEC.effectivedate < dc.EndDate AND SEC.enddate > dc.EffectiveDate"
+        },
+        "sharesoutstanding": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.FinWire.value",
+                    "path": [
+                        "SEC.sharesoutstanding"
+                    ]
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "SEC.sharesoutstanding"
+        },
+        "firsttrade": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.FinWire.value",
+                    "path": [
+                        "SEC.firsttrade"
+                    ]
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "SEC.firsttrade"
+        },
+        "firsttradeonexchange": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.FinWire.value",
+                    "path": [
+                        "SEC.firsttradeonexchange"
+                    ]
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "SEC.firsttradeonexchange"
+        },
+        "Dividend": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.FinWire.value",
+                    "path": [
+                        "SEC.Dividend"
+                    ]
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "SEC.Dividend"
+        },
+        "effectivedate": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.FinWire.value",
+                    "path": [
+                        "SEC.effectivedate"
+                    ]
+                },
+                {
+                    "source_identifier": "wh_db.DimCompany.EffectiveDate",
+                    "join_info": {
+                        "type": "INNER JOIN",
+                        "left_source": {
+                            "identifier": "wh_db_stage.FinWire.value",
+                            "path": [
+                                "SEC.effectivedate"
+                            ]
+                        },
+                        "right_source": {
+                            "identifier": "wh_db.DimCompany.EffectiveDate"
+                        }
+                    }
+                }
+            ],
+            "transformation_type": "CASE",
+            "transformation_logic": "CASE WHEN SEC.effectivedate < dc.EffectiveDate THEN dc.EffectiveDate ELSE SEC.effectivedate END"
+        },
+        "enddate": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.FinWire.value",
+                    "path": [
+                        "SEC.effectivedate"
+                    ],
+                    "role": "Input for LEAD"
+                },
+                {
+                    "source_identifier": "wh_db_stage.FinWire.value",
+                    "path": [
+                        "SEC.Symbol"
+                    ],
+                    "role": "Partition key for LEAD"
+                },
+                {
+                    "source_identifier": "wh_db.DimCompany.EndDate",
+                    "join_info": {
+                        "type": "INNER JOIN",
+                        "left_source": {
+                            "identifier": "wh_db_stage.FinWire.value",
+                            "path": [
+                                "SEC.enddate"
+                            ]
+                        },
+                        "right_source": {
+                            "identifier": "wh_db.DimCompany.EndDate"
+                        }
+                    }
+                }
+            ],
+            "transformation_type": "CASE",
+            "transformation_logic": "CASE WHEN SEC.enddate > dc.EndDate THEN dc.EndDate ELSE SEC.enddate END",
+            "notes": "SCD2 end date calculation"
+        },
+        "iscurrent": {
+            "sources": [
+                {
+                    "source_identifier": "wh_db_stage.FinWire.value",
+                    "path": [
+                        "SEC.enddate"
+                    ]
+                }
+            ],
+            "transformation_type": "CASE",
+            "transformation_logic": "CASE WHEN enddate = '9999-12-31'::DATE THEN TRUE ELSE FALSE END"
+        },
+        "batchid": {
+            "sources": [],
+            "transformation_type": "CONSTANT",
+            "transformation_logic": "1"
+        }
+    }
+}

@@ -32,29 +32,6 @@ def process_llm_response(response_text, template_name, sql_file_name):
     # Save individual answer JSON
     with open(json_filename, "w", encoding="utf-8") as json_file:
         json.dump(json_data, json_file, indent=4)
-"""
-    # Log all Q&A pairs in a central file
-    log_filename = f"C:\lopu-kg-test\project\src\LLM_answers/{template_name}/{template_name}_qa_log.json"
-
-    # Load existing log file or create a new list
-    if os.path.exists(log_filename):
-        with open(log_filename, "r", encoding="utf-8") as log_file:
-            try:
-                qa_log = json.load(log_file)
-            except json.JSONDecodeError:
-                qa_log = []
-    else:
-        qa_log = []
-
-    # Append new question-answer pair to the log
-    qa_log.append(json_data)
-
-    # Save updated log file
-    with open(log_filename, "w", encoding="utf-8") as log_file:
-        json.dump(qa_log, log_file, indent=4)
-
-    print(f"Saved answer as {json_filename} and updated {log_filename}.")
-"""
 
 
 def create_prompt_from_files(template_path: str, sql_path: str) -> str:
@@ -174,10 +151,10 @@ def generate_and_log_json_response(prompt_for_api, template_path, sql_full_path)
 
 sql_path = "C:\lopu-kg-test\project\src\main\sql_for_pipelines\\"
 template_path = "C:\lopu-kg-test\project\src\\templates\\"
+
 for template in os.listdir(template_path):
     template_file = os.path.join(template_path, template)
-    if template.endswith("_easy"): # temp
-            continue 
+
     for filename in os.listdir(sql_path):
             time.sleep(5)
             if filename.endswith(".sql"):

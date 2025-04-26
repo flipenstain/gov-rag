@@ -1,0 +1,129 @@
+{
+    "target_table": "wh.DimComp",
+    "sources_summary": [
+        {
+            "type": "TABLE",
+            "name": "wh_stg.FW",
+            "alias_or_cte": "cmp"
+        },
+        {
+            "type": "TABLE",
+            "name": "wh.Ind",
+            "alias_or_cte": "ind"
+        }
+    ],
+    "lineage": {
+        "sk_compid": {
+            "sources": [
+                {
+                    "source_identifier": "wh_stg.FW.value",
+                    "path": [
+                        "cmp.RecDate",
+                        "T.effectivedate"
+                    ],
+                    "role": "Date part source"
+                },
+                {
+                    "source_identifier": "wh_stg.FW.value",
+                    "path": [
+                        "cmp.CIK",
+                        "T.compid"
+                    ],
+                    "role": "ID part source"
+                }
+            ],
+            "transformation_type": "EXPRESSION_CONCAT",
+            "transformation_logic": "CAST(strftime(T.effectivedate, '%Y%m%d') || T.compid AS BIGINT)"
+        },
+        "compid": {
+            "sources": [
+                {
+                    "source_identifier": "wh_stg.FW.value",
+                    "path": [
+                        "cmp.CIK"
+                    ]
+                }
+            ],
+            "transformation_type": "CAST",
+            "transformation_logic": "CAST(cmp.CIK AS BIGINT)"
+        },
+        "status": {
+            "sources": [
+                {
+                    "source_identifier": "wh_stg.FW.value",
+                    "path": [
+                        "cmp.Status"
+                    ]
+                }
+            ],
+            "transformation_type": "CASE_MAPPING",
+            "transformation_logic": "CASE cmp.Status WHEN 'ACTV' THEN 'Active' ELSE 'Inactive' END"
+        },
+        "name": {
+            "sources": [
+                {
+                    "source_identifier": "wh_stg.FW.value",
+                    "path": [
+                        "cmp.CompName"
+                    ]
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "cmp.CompName AS name"
+        },
+        "industry": {
+            "sources": [
+                {
+                    "source_identifier": "wh.Ind.in_name",
+                    "join_info": {
+                        "type": "INNER JOIN",
+                        "left_source": {
+                            "identifier": "wh_stg.FW.value",
+                            "path": [
+                                "cmp.IndID"
+                            ]
+                        },
+                        "right_source": {
+                            "identifier": "wh.Ind.in_id"
+                        }
+                    }
+                }
+            ],
+            "transformation_type": "JOIN_LOOKUP",
+            "transformation_logic": "ind.in_name via JOIN ON cmp.IndID = ind.in_id"
+        },
+        "effectivedate": {
+            "sources": [
+                {
+                    "source_identifier": "wh_stg.FW.value",
+                    "path": [
+                        "cmp.RecDate"
+                    ]
+                }
+            ],
+            "transformation_type": "RENAME",
+            "transformation_logic": "cmp.RecDate AS effectivedate"
+        },
+        "enddate": {
+            "sources": [
+                {
+                    "source_identifier": "wh_stg.FW.value",
+                    "path": [
+                        "cmp.RecDate"
+                    ],
+                    "role": "Input for LEAD"
+                },
+                {
+                    "source_identifier": "wh_stg.FW.value",
+                    "path": [
+                        "cmp.CIK"
+                    ],
+                    "role": "Partition key for LEAD"
+                }
+            ],
+            "transformation_type": "WINDOW_FUNCTION",
+            "transformation_logic": "COALESCE(LEAD(cmp.RecDate) OVER (PARTITION BY cmp.CIK ORDER BY cmp.RecDate), '9999-12-31'::DATE)",
+            "notes": "SCD2 end date calculation"
+        }
+    }
+}

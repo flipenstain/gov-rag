@@ -1,0 +1,49 @@
+{
+    "sk_customerid": {
+        "input": "wh_db.DimAccount.sk_customerid"
+    },
+    "sk_accountid": {
+        "input": "wh_db.DimAccount.accountid"
+    },
+    "sk_dateid": {
+        "inputs": [
+            {
+                "column": "historical.datevalue",
+                "type": "DIRECT",
+                "subtype": "Transformation",
+                "description": "datevalue used in STRFTIME and CAST",
+                "masking": false
+            }
+        ],
+        "transformation": "CAST(STRFTIME(datevalue, '%Y%m%d') AS BIGINT)"
+    },
+    "cash": {
+        "inputs": [
+            {
+                "column": "historical.account_daily_total",
+                "type": "DIRECT",
+                "subtype": "Aggregation",
+                "description": "account_daily_total used in SUM OVER",
+                "masking": false
+            },
+            {
+                "column": "historical.datevalue",
+                "type": "INDIRECT",
+                "subtype": "Order",
+                "description": "datevalue used in ORDER BY clause of window function",
+                "masking": false
+            },
+            {
+                "column": "historical.accountid",
+                "type": "INDIRECT",
+                "subtype": "GroupBy",
+                "description": "accountid used in PARTITION BY clause of window function",
+                "masking": false
+            }
+        ],
+        "transformation": "SUM(account_daily_total) OVER (PARTITION BY c.accountid ORDER BY datevalue)"
+    },
+    "batchid": {
+        "input": "historical.batchid"
+    }
+}

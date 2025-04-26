@@ -1,0 +1,157 @@
+{
+    "target_table": "wh_db.FactHoldings",
+    "lineage": {
+        "tradeid": {
+            "path": [
+                "Holdings",
+                "h"
+            ],
+            "source": {
+                "table": "read_csv('src/data/Batch1\\HoldingHistory.txt')",
+                "column": "hh_h_t_id"
+            },
+            "transformation": "hh_h_t_id",
+            "transformation_type": "RENAME"
+        },
+        "currenttradeid": {
+            "path": [
+                "Holdings",
+                "h"
+            ],
+            "source": {
+                "table": "read_csv('src/data/Batch1\\HoldingHistory.txt')",
+                "column": "hh_t_id"
+            },
+            "transformation": "hh_t_id",
+            "transformation_type": "RENAME"
+        },
+        "sk_customerid": {
+            "path": [
+                "dt"
+            ],
+            "source": {
+                "table": "wh_db.DimTrade",
+                "column": "sk_customerid"
+            },
+            "transformation": "sk_customerid",
+            "transformation_type": "JOIN_LOOKUP",
+            "role": "join_result"
+        },
+        "sk_accountid": {
+            "path": [
+                "dt"
+            ],
+            "source": {
+                "table": "wh_db.DimTrade",
+                "column": "sk_accountid"
+            },
+            "transformation": "sk_accountid",
+            "transformation_type": "JOIN_LOOKUP",
+            "role": "join_result"
+        },
+        "sk_securityid": {
+            "path": [
+                "dt"
+            ],
+            "source": {
+                "table": "wh_db.DimTrade",
+                "column": "sk_securityid"
+            },
+            "transformation": "sk_securityid",
+            "transformation_type": "JOIN_LOOKUP",
+            "role": "join_result"
+        },
+        "sk_companyid": {
+            "path": [
+                "dt"
+            ],
+            "source": {
+                "table": "wh_db.DimTrade",
+                "column": "sk_companyid"
+            },
+            "transformation": "sk_companyid",
+            "transformation_type": "JOIN_LOOKUP",
+            "role": "join_result"
+        },
+        "sk_dateid": {
+            "path": [
+                "dt"
+            ],
+            "source": {
+                "table": "wh_db.DimTrade",
+                "column": "sk_closedateid"
+            },
+            "transformation": "sk_closedateid",
+            "transformation_type": "RENAME"
+        },
+        "sk_timeid": {
+            "path": [
+                "dt"
+            ],
+            "source": {
+                "table": "wh_db.DimTrade",
+                "column": "sk_closetimeid"
+            },
+            "transformation": "sk_closetimeid",
+            "transformation_type": "RENAME"
+        },
+        "currentprice": {
+            "path": [
+                "dt"
+            ],
+            "source": {
+                "table": "wh_db.DimTrade",
+                "column": "tradeprice"
+            },
+            "transformation": "tradeprice",
+            "transformation_type": "RENAME"
+        },
+        "currentholding": {
+            "path": [
+                "Holdings",
+                "h"
+            ],
+            "source": {
+                "table": "read_csv('src/data/Batch1\\HoldingHistory.txt')",
+                "column": "hh_after_qty"
+            },
+            "transformation": "hh_after_qty",
+            "transformation_type": "RENAME"
+        },
+        "batchid": {
+            "path": [
+                "Holdings",
+                "h"
+            ],
+            "source": {
+                "table": null,
+                "column": null
+            },
+            "transformation": "1",
+            "transformation_type": "CONSTANT"
+        }
+    },
+    "sources_summary": [
+        {
+            "table": "read_csv('src/data/Batch1\\HoldingHistory.txt')",
+            "columns": [
+                "hh_h_t_id",
+                "hh_t_id",
+                "hh_before_qty",
+                "hh_after_qty"
+            ]
+        },
+        {
+            "table": "wh_db.DimTrade",
+            "columns": [
+                "sk_customerid",
+                "sk_accountid",
+                "sk_securityid",
+                "sk_companyid",
+                "sk_closedateid",
+                "sk_closetimeid",
+                "tradeprice"
+            ]
+        }
+    ]
+}
