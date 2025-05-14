@@ -23,5 +23,7 @@ src/data/Batch1/CashTransaction.txt
 src/data/Batch1/DailyMarket.txt
 src/data/
 
+.venv-py310
+
 src/divider/Tools/*
 src/main/duck_db
