@@ -124,22 +124,23 @@ def normalize_table_name(name: str) -> str:
 # --- Modified Main Loading Logic ---
 def load_lineage_to_memgraph(db, data, script_name, pipeline_name):
     """
-    Loads the lineage JSON data into Memgraph, including Pipeline and Script context.
+    Loads the lineage JSON data into Memgraph, including Pipeline, Script,
+    table-level script IO, and column-level lineage.
     """
     if not all([script_name, pipeline_name]):
         logging.error(f"Script name ('{script_name}') or Pipeline name ('{pipeline_name}') is missing. Skipping lineage loading for this data.")
         return
 
-    # --- Start: Add Pipeline and Script MERGE ---
+    # --- 1. Ensure Pipeline and Script Nodes/Relationship ---
     try:
-        # 1. Ensure Pipeline node exists
+        # Merge Pipeline
         db.execute(
             "MERGE (p:Pipeline {name: $pipeline_name})",
             {"pipeline_name": pipeline_name}
         )
         logging.debug(f"Merged Pipeline: {pipeline_name}")
 
-        # 2. Ensure Script node exists and link to Pipeline
+        # Merge Script and link to Pipeline
         db.execute(
             """
             MATCH (p:Pipeline {name: $pipeline_name})
@@ -153,78 +154,171 @@ def load_lineage_to_memgraph(db, data, script_name, pipeline_name):
 
     except Exception as e:
         logging.error(f"Failed to merge Pipeline/Script nodes for {pipeline_name}/{script_name}: {e}")
-        # Decide if you want to stop processing this file or continue
         return # Stop processing this lineage entry if pipeline/script fails
 
-    # --- End: Add Pipeline and Script MERGE ---
-
-
+    # --- 2. Process Target Table and Script Output Relationship ---
     target_full_table_name = data.get('target_table')
     if not target_full_table_name:
-        logging.warning(f"Missing 'target_table' in lineage data for script {script_name}. Skipping.")
+        logging.warning(f"Missing 'target_table' in lineage data for script {script_name}. Skipping subsequent processing.")
         return
 
-    target_full_table_name = normalize_table_name(target_full_table_name)
-    if '.' not in target_full_table_name:
-         logging.warning(f"Could not properly parse schema/table from target '{target_full_table_name}' for script {script_name}. Skipping.")
-         return
-    target_schema_name, target_table_name = target_full_table_name.split('.', 1) # Split only on first dot
+    try:
+        target_full_table_name = normalize_table_name(target_full_table_name)
+        if '.' not in target_full_table_name:
+             logging.warning(f"Could not properly parse schema/table from target '{target_full_table_name}' for script {script_name}. Skipping subsequent processing.")
+             return
+        target_schema_name, target_table_name = target_full_table_name.split('.', 1)
 
-    # Use MERGE for idempotency (create if not exists)
-    # Create/Merge Target Schema, Table
-    db.execute(
-        """
-        MERGE (s:Schema {name: $schema_name})
-        MERGE (t:Table {full_name: $table_full_name})
-        ON CREATE SET t.name = $table_name
-        MERGE (t)-[:BELONGS_TO]->(s)
-        """,
-        {
-            "schema_name": target_schema_name,
-            "table_full_name": target_full_table_name,
-            "table_name": target_table_name,
-        }
-    )
-    logging.debug(f"Merged target schema '{target_schema_name}' and table '{target_full_table_name}'")
+        # Merge Target Schema and Table
+        db.execute(
+            """
+            MERGE (s:Schema {name: $schema_name})
+            MERGE (t:Table {full_name: $table_full_name})
+            ON CREATE SET t.name = $table_name
+            MERGE (t)-[:BELONGS_TO]->(s)
+            """,
+            {
+                "schema_name": target_schema_name,
+                "table_full_name": target_full_table_name,
+                "table_name": target_table_name,
+            }
+        )
+        logging.debug(f"Merged target schema '{target_schema_name}' and table '{target_full_table_name}'")
 
-    # Process each target column's lineage
+        # *** NEW: Link Script to its Output Table ***
+        db.execute(
+            """
+            MATCH (s:Script {name: $script_name})
+            MATCH (t:Table {full_name: $table_full_name})
+            MERGE (s)-[r:PRODUCES_OUTPUT_TABLE]->(t)
+            """,
+            {
+                "script_name": script_name,
+                "table_full_name": target_full_table_name,
+            }
+        )
+        logging.debug(f"Merged relationship: Script '{script_name}' -[:PRODUCES_OUTPUT_TABLE]-> Table '{target_full_table_name}'")
+
+    except Exception as e:
+        logging.error(f"Failed to process target table '{target_full_table_name}' or script output link for script {script_name}: {e}")
+        # Decide if you need to return here or can continue with sources/columns
+        return # Stop if target table processing fails
+
+    # --- 3. Process Source Tables and Script Input Relationships ---
+    sources_summary = data.get('sources_summary', [])
+    if not sources_summary:
+         logging.info(f"No 'sources_summary' provided for script {script_name}.")
+         # We might still have column lineage, so don't return yet
+
+    processed_source_tables = set() # Avoid duplicate relationship merges if a table is used multiple times
+    for source_item in sources_summary:
+        source_type = source_item.get("type")
+        source_name = source_item.get("name") # This should be the full table name ideally
+        source_alias = source_item.get("alias_or_cte") # Can be stored on relationship
+
+        if not source_name or source_type != "TABLE":
+            logging.warning(f"Skipping source summary item for script {script_name}: Invalid type ('{source_type}') or missing name ('{source_name}')")
+            continue
+
+        try:
+            src_full_table_name = normalize_table_name(source_name)
+            if src_full_table_name in processed_source_tables:
+                continue # Already created the input relationship for this table
+
+            if '.' not in src_full_table_name:
+                logging.warning(f"Could not properly parse schema/table from source summary name '{source_name}' for script {script_name}. Skipping script input link.")
+                continue
+            src_schema_name, src_table_name = src_full_table_name.split('.', 1)
+
+            # Merge Source Schema and Table (idempotent)
+            db.execute(
+                """
+                MERGE (s_src:Schema {name: $src_schema_name})
+                MERGE (t_src:Table {full_name: $src_table_full_name})
+                ON CREATE SET t_src.name = $src_table_name
+                MERGE (t_src)-[:BELONGS_TO]->(s_src)
+                """,
+                {
+                    "src_schema_name": src_schema_name,
+                    "src_table_full_name": src_full_table_name,
+                    "src_table_name": src_table_name,
+                }
+            )
+            # No need to log merge here again if done during column processing, but useful for debugging this section
+            # logging.debug(f" Ensured source schema/table exists: '{src_full_table_name}'")
+
+            # *** NEW: Link Script to its Input Table ***
+            rel_props = {}
+            if source_alias:
+                rel_props['alias_or_cte'] = source_alias
+            # Add other relevant props from sources_summary if needed
+
+            db.execute(
+                """
+                MATCH (s:Script {name: $script_name})
+                MATCH (t_src:Table {full_name: $src_table_full_name})
+                MERGE (s)-[r:USES_INPUT_TABLE]->(t_src)
+                ON CREATE SET r = $props
+                ON MATCH SET r += $props // Update props if needed
+                """,
+                {
+                    "script_name": script_name,
+                    "src_table_full_name": src_full_table_name,
+                    "props": rel_props
+                }
+            )
+            logging.debug(f"Merged relationship: Script '{script_name}' -[:USES_INPUT_TABLE]-> Table '{src_full_table_name}' (Alias: {source_alias})")
+            processed_source_tables.add(src_full_table_name)
+
+        except Exception as e:
+            logging.error(f"Failed to process source summary item '{source_name}' or script input link for script {script_name}: {e}")
+            # Continue to next source item
+
+
+    # --- 4. Process Column-Level Lineage ---
     lineage_details = data.get('lineage', {})
     if not lineage_details:
-         logging.warning(f"No 'lineage' details found for target table '{target_full_table_name}' in script {script_name}.")
-         return
+        logging.warning(f"No column-level 'lineage' details found for target table '{target_full_table_name}' in script {script_name}.")
+        # If no column details, we've already added script/table info, so we can potentially return
+        return
 
     for target_col_name, lineage_info in lineage_details.items():
         target_col_full_name = f"{target_full_table_name}.{target_col_name}"
 
         # Create/Merge Target Column and link to its table
-        db.execute(
-            """
-            MATCH (t:Table {full_name: $table_full_name})
-            MERGE (c:Column {full_name: $col_full_name})
-            ON CREATE SET c.name = $col_name
-            MERGE (c)-[:BELONGS_TO]->(t)
-            """,
-            {
-                "table_full_name": target_full_table_name,
-                "col_full_name": target_col_full_name,
-                "col_name": target_col_name,
-            }
-        )
-        logging.debug(f"  Merged target column '{target_col_full_name}'")
+        try:
+            db.execute(
+                """
+                MATCH (t:Table {full_name: $table_full_name})
+                MERGE (c:Column {full_name: $col_full_name})
+                ON CREATE SET c.name = $col_name
+                MERGE (c)-[:BELONGS_TO]->(t)
+                """,
+                {
+                    "table_full_name": target_full_table_name,
+                    "col_full_name": target_col_full_name,
+                    "col_name": target_col_name,
+                }
+            )
+            logging.debug(f"  Merged target column '{target_col_full_name}'")
+        except Exception as e:
+            logging.error(f"  Failed to merge target column '{target_col_full_name}': {e}")
+            continue # Skip processing sources for this failed target column
 
         # Process sources for this target column
         for source_info in lineage_info.get('sources', []):
             try:
                 source_identifier = source_info.get('source_identifier')
                 if not source_identifier:
-                    logging.warning("  Skipping source: missing 'source_identifier'")
+                    logging.warning("   Skipping source: missing 'source_identifier'")
                     continue
 
-                src_schema_name, src_table_name, src_col_name = parse_identifier(source_identifier)
+                # Assume parse_identifier gives schema, table, column
+                src_schema_name, src_table_name, src_col_name = parse_identifier(normalize_table_name(source_identifier))
                 src_full_table_name = f"{src_schema_name}.{src_table_name}"
                 src_col_full_name = f"{src_full_table_name}.{src_col_name}"
 
-                # Create/Merge Source Schema, Table, Column and relationships
+                # Create/Merge Source Schema, Table, Column and relationships (idempotent)
                 db.execute(
                     """
                     MERGE (s_src:Schema {name: $src_schema_name})
@@ -245,7 +339,7 @@ def load_lineage_to_memgraph(db, data, script_name, pipeline_name):
                 )
                 logging.debug(f"    Merged source column '{src_col_full_name}'")
 
-                # Create the DERIVES relationship with properties
+                # Create the DERIVES_FROM relationship with properties
                 rel_props = {
                     "transformation_type": lineage_info.get("transformation_type"),
                     "transformation_logic": lineage_info.get("transformation_logic"),
@@ -259,9 +353,9 @@ def load_lineage_to_memgraph(db, data, script_name, pipeline_name):
 
                 db.execute(
                     """
-                    MATCH (c_src:Column {full_name: $src_col_full_name})
-                    MATCH (c_tgt:Column {full_name: $tgt_col_full_name})
-                    MERGE (c_src)-[r:DERIVES]->(c_tgt)
+                    MATCH (c_tgt:Column {full_name: $src_col_full_name})
+                    MATCH (c_src:Column {full_name: $tgt_col_full_name})
+                    MERGE (c_tgt)-[r:DERIVES_FROM]->(c_src)
                     ON CREATE SET r = $props
                     ON MATCH SET r += $props // Update properties if relationship already exists
                     """,
@@ -271,17 +365,17 @@ def load_lineage_to_memgraph(db, data, script_name, pipeline_name):
                         "props": rel_props,
                     }
                 )
-                logging.debug(f"      Merged DERIVES relationship from '{src_col_full_name}' to '{target_col_full_name}'")
+                logging.debug(f"      Merged DERIVES_FROM relationship from '{target_col_full_name}' to '{src_col_full_name}'")
 
-                # --- Start: Add Script -> Column Links ---
+                # Link script to its column inputs/outputs for this specific derivation
+                # This remains useful for fine-grained analysis
                 db.execute(
                     """
                     MATCH (s:Script {name: $script_name})
                     MATCH (c_src:Column {full_name: $src_col_full_name})
                     MATCH (c_tgt:Column {full_name: $tgt_col_full_name})
-                    // Link script to its inputs/outputs for this specific derivation
-                    MERGE (s)-[:READS_FROM]->(c_src)
-                    MERGE (s)-[:GENERATES]->(c_tgt)
+                    MERGE (s)-[:INPUT]->(c_src)  // Fine-grained input column
+                    MERGE (s)-[:OUTPUT]->(c_tgt) // Fine-grained output column
                     """,
                     {
                         "script_name": script_name,
@@ -289,14 +383,12 @@ def load_lineage_to_memgraph(db, data, script_name, pipeline_name):
                         "tgt_col_full_name": target_col_full_name,
                     }
                 )
-                logging.debug(f"      Merged Script links: {script_name} READS_FROM {src_col_full_name}, GENERATES {target_col_full_name}")
-                # --- End: Add Script -> Column Links ---
+                logging.debug(f"      Merged Script column links: {script_name} INPUT {src_col_full_name}, OUTPUT {target_col_full_name}")
 
             except ValueError as e:
-                logging.warning(f"    Skipping source due to error: {e} (Source Identifier: {source_info.get('source_identifier')})")
+                logging.warning(f"    Skipping source processing due to error: {e} (Source Identifier: {source_info.get('source_identifier')})")
             except Exception as e:
                 logging.error(f"    An unexpected error occurred processing source {source_info.get('source_identifier', 'UNKNOWN')} for target {target_col_full_name}: {e}", exc_info=True)
-
 
 # --- Schema Import Functions (Keep yours, added checks for connections) ---
 def get_table_schema_duckdb(db_conn: duckdb.DuckDBPyConnection, target_full_table_name: str) -> Optional[Tuple[List[Tuple[str, str, Optional[str], Optional[str]]], Optional[str]]]:

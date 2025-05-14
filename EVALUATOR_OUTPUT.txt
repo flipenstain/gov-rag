@@ -1,0 +1,330 @@
+1_temp_broker.sql:
+{
+  "employeeid": [],
+  "managerid": [],
+  "employeefirstname": [],
+  "employeelastname": [],
+  "employeemi": [],
+  "employeejobcode": [],
+  "employeebranch": [],
+  "employeeoffice": [],
+  "employeephone": []
+}1_wh_db.DimAccount.sql:
+{
+  "CAST(strftime(a.effectivedate, '%Y%m%d') || a.accountid AS BIGINT)": [],
+  "a.batchid": [],
+  "a.effectivedate": [],
+  "a.enddate": [],
+  "b.sk_brokerid": [],
+  "a.sk_customerid": [],
+  "a.iscurrent": []
+}1_wh_db.DimCompany.sql:
+{
+  "sk_companyid": [],
+  "companyid": [],
+  "status": [],
+  "name": [],
+  "industry": [],
+  "sprating": [],
+  "islowgrade": [],
+  "ceo": [],
+  "addressline1": [],
+  "addressline2": [],
+  "postalcode": [],
+  "city": [],
+  "stateprov": [],
+  "country": [],
+  "description": [],
+  "foundingdate": [],
+  "iscurrent": [],
+  "batchid": ["batchid is hardcoded as 1 in SQL but not explicitly documented in the extracted data model."],
+  "effectivedate": [],
+  "enddate": []
+}1_wh_db.DimCustomer.sql:
+{
+  "customerid": [],
+  "taxid": [],
+  "status": [],
+  "lastname": [],
+  "firstname": [],
+  "middleinitial": [],
+  "gender": [],
+  "tier": [],
+  "dob": [],
+  "addressline1": [],
+  "addressline2": [],
+  "postalcode": [],
+  "city": [],
+  "stateprov": [],
+  "country": [],
+  "phone1": [],
+  "phone2": [],
+  "phone3": [],
+  "email1": [],
+  "email2": [],
+  "lcl_tx_id": [],
+  "nat_tx_id": [],
+  "batchid": ["Hardcoded value '1' assigned"],
+  "update_ts": []
+}1_wh_db.DimDate.sql:
+{
+  "sk_dateid": [],
+  "datevalue": [],
+  "datedesc": [],
+  "calendaryearid": [],
+  "calendaryeardesc": [],
+  "calendarqtrid": [],
+  "calendarqtrdesc": [],
+  "calendarmonthid": [],
+  "calendarmonthdesc": [],
+  "calendarweekid": [],
+  "calendarweekdesc": [],
+  "dayofweeknum": [],
+  "dayofweekdesc": [],
+  "fiscalyearid": [],
+  "fiscalyeardesc": [],
+  "fiscalqtrid": [],
+  "fiscalqtrdesc": [],
+  "holidayflag": []
+}1_wh_db.DimSecurity.sql:
+{
+  "Symbol": [],
+  "issue": [],
+  "status": [
+    "Transformation logic in SQL includes a CASE mapping from trimmed substring to descriptive status values (e.g., 'ACTV' -> 'Active'), but extracted model shows only raw substring extraction without CASE mapping."
+  ],
+  "Name": [],
+  "exchangeid": [],
+  "sharesoutstanding": [],
+  "firsttrade": [],
+  "firsttradeonexchange": [],
+  "Dividend": [],
+  "sk_companyid": [],
+  "effectivedate": [
+    "Extracted model lists effectivedate as directly from recdate, but SQL applies conditional logic to choose the later date between SEC.effectivedate and dc.EffectiveDate."
+  ],
+  "enddate": [
+    "Extracted model shows enddate derived from LEAD window function with fallback date, but SQL further adjusts enddate by bounding it with dc.EndDate in final SELECT."
+  ],
+  "iscurrent": [],
+  "batchid": []
+}1_wh_db.DimTime.sql:
+{
+  "sk_timeid": [],
+  "timevalue": [],
+  "hourid": [],
+  "hourdesc": [],
+  "minuteid": [],
+  "minutedesc": [],
+  "secondid": [],
+  "seconddesc": [],
+  "markethoursflag": [],
+  "officehoursflag": []
+}1_wh_db.DimTrade.sql:
+{
+  "sk_createdateid": [],
+  "sk_createtimeid": [],
+  "sk_closedateid": [],
+  "sk_closetimeid": [],
+  "type": [],
+  "sk_securityid": [],
+  "sk_companyid": []
+}1_wh_db.FactCashBalances.sql:
+{
+  "sk_customerid": [],
+  "sk_accountid": [],
+  "sk_dateid": [],
+  "cash": []
+}1_wh_db.FactHoldings.sql:
+{
+  "tradeid": [],
+  "currenttradeid": [],
+  "sk_customerid": [],
+  "sk_accountid": [],
+  "sk_securityid": [],
+  "sk_companyid": [],
+  "sk_dateid": [],
+  "sk_timeid": [],
+  "currentprice": [],
+  "currentholding": [],
+  "batchid": []
+}1_wh_db.FactWatches.sql:
+{
+  "sk_customerid": [],
+  "sk_securityid": [],
+  "sk_dateid_dateplaced": [],
+  "sk_dateid_dateremoved": []
+}1_wh_db.Financial.sql:
+{
+  "sk_companyid": [],
+  "fi_year": [],
+  "fi_qtr": [],
+  "fi_qtr_start_date": [],
+  "fi_revenue": [],
+  "fi_net_earn": [],
+  "fi_basic_eps": [],
+  "fi_dilut_eps": [],
+  "fi_margin": [],
+  "fi_inventory": [],
+  "fi_assets": [],
+  "fi_liability": [],
+  "fi_out_basic": [],
+  "fi_out_dilut": []
+}1_wh_db.Prospect.sql:
+{
+  "sk_recorddateid": [],
+  "sk_updatedateid": [],
+  "iscustomer": []
+}1_wh_db.StatusType.sql:
+{
+  "st_id": [],
+  "st_name": []
+}1_wh_db.TaxRate.sql:
+{
+  "tx_id": [],
+  "tx_name": [],
+  "tx_rate": []
+}1_wh_db.TradeType.sql:
+{
+  "tt_id": [],
+  "tt_name": [],
+  "tt_is_sell": [],
+  "tt_is_mrkt": []
+}1_wh_db_stage.CustomerMgmt.sql:
+{
+  "customerid": [],
+  "accountid": [],
+  "brokerid": [],
+  "taxid": [],
+  "accountdesc": [],
+  "taxstatus": [],
+  "status": [],
+  "lastname": [],
+  "firstname": [],
+  "middleinitial": [],
+  "gender": [],
+  "tier": [],
+  "dob": [],
+  "addressline1": [],
+  "addressline2": [],
+  "postalcode": [],
+  "city": [],
+  "stateprov": [],
+  "country": [],
+  "phone1": [],
+  "phone2": [],
+  "phone3": [],
+  "email1": [],
+  "email2": [],
+  "lcl_tx_id": [],
+  "nat_tx_id": [],
+  "update_ts": [],
+  "ActionType": []
+}1_wh_db_stage.FinWire.sql:
+{
+  "rectype": [],
+  "recdate": [],
+  "value": []
+}1_wh_db_stage.ProspectIncremental.sql:
+{
+  "agencyid": [],
+  "lastname": [],
+  "firstname": [],
+  "middleinitial": [],
+  "gender": [],
+  "addressline1": [],
+  "addressline2": [],
+  "postalcode": [],
+  "city": [],
+  "state": [],
+  "country": [],
+  "phone": [],
+  "income": [],
+  "numbercars": [],
+  "numberchildren": [],
+  "maritalstatus": [],
+  "age": [],
+  "creditrating": [],
+  "ownorrentflag": [],
+  "employer": [],
+  "numbercreditcards": [],
+  "networth": []
+}1_wh_db_stage.tradehistory.sql:
+{
+  "tradeid": [],
+  "t_dts": [],
+  "status": [],
+  "t_tt_id": [],
+  "cashflag": [],
+  "t_s_symb": [],
+  "quantity": [],
+  "bidprice": [],
+  "t_ca_id": [],
+  "executedby": [],
+  "tradeprice": [],
+  "fee": [],
+  "commission": [],
+  "tax": []
+}2_wh_db.DimCustomer.sql:
+{
+  "customerid": [],
+  "taxid": [],
+  "status": [],
+  "lastname": [],
+  "firstname": [],
+  "middleinitial": [],
+  "gender": [],
+  "tier": [],
+  "dob": [],
+  "addressline1": [],
+  "addressline2": [],
+  "postalcode": [],
+  "CITY": [],
+  "stateprov": [],
+  "country": [],
+  "phone1": [],
+  "phone2": [],
+  "phone3": [],
+  "email1": [],
+  "email2": [],
+  "LCL_TX_ID": [],
+  "NAT_TX_ID": [],
+  "batchid": [],
+  "iscurrent": [],
+  "effectivedate": [],
+  "enddate": []
+}2_wh_db_stage.ProspectIncremental.sql:
+{
+  "marketingnameplate": []
+}2_wh_db_stage.tradehistory.sql:
+{
+  "tradeid": ["Data type in SQL is BIGINT, consistent with expected numeric ID."],
+  "th_dts": ["Column name in SQL is 'th_dts' but in data model it is 'th_dts' - consistent naming."],
+  "status": ["Data type in SQL is STRING, consistent with expected status field."],
+  "overall": ["Column 'th_dts' in SQL matches 'th_dts' in data model, no mismatch in naming or type.",
+              "All columns are loaded directly from file with COPY logic, consistent with transformation type FILE_LOAD."]
+}3_wh_db.DimCustomer.sql:
+{
+  "sk_customerid": [],
+  "gender": [],
+  "nationaltaxratedesc": [],
+  "localtaxratedesc": [],
+  "nationaltaxrate": [],
+  "localtaxrate": [],
+  "agencyid": [],
+  "creditrating": [],
+  "networth": [],
+  "marketingnameplate": []
+}3_wh_db_stage.ProspectIncremental.sql:
+{
+  "recordbatchid": [
+    "In INSERT clause but assigned from excluded.batchid in ON CONFLICT update; source column in SELECT is tp.batchid, but in update it uses excluded.batchid which may cause inconsistency.",
+    "In SELECT clause, recordbatchid is not selected explicitly; instead, tp.batchid is selected twice (once for recordbatchid and once for batchid), indicating possible misalignment or missing source column for recordbatchid."
+  ],
+  "batchid": [
+    "Selected twice in SELECT clause (tp.batchid as recordbatchid and tp.batchid as batchid), which may indicate redundancy or incorrect mapping."
+  ],
+  "temp_propect_marketingnameplate": [
+    "Table name appears misspelled ('propect' instead of 'prospect'), which may cause runtime errors or data inconsistencies."
+  ]
+}

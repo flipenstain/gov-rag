@@ -50,14 +50,31 @@ SCRIPT_TO_PIPELINE_MAP = {
 logging.info("Created script-to-pipeline lookup map.")
 
 
-def extract_clean_name(input_str):
-    # Remove prefix 'answer_'
-    name = re.sub(r'^answer_', '', input_str)
+def parse_file_path(file_path):
+    """
+    Parses a raw file path into schema name (from dir), table name (filename),
+    and full name (schema.table).
+    Handles both / and \ separators.
+    """
+    if not file_path:
+        return None, None, None
 
-    # Remove trailing timestamp: `_YYYYMMDD_HHMMSS`
-    name = re.sub(r'_\d{8}_\d{6}$', '', name)
+    norm_path = file_path.replace("\\", "/")
+    table_name = os.path.basename(norm_path)
+    dir_path = os.path.dirname(norm_path)
 
-    return name
+    # Create schema name from directory structure
+    if dir_path:
+        schema_name = dir_path.replace("/", ".")
+    else:
+        # Handle files in the root or without explicit directory
+        schema_name = "file_root" # Or choose another default schema name
+
+    # Create full name
+    full_name = f"{schema_name}.{table_name}"
+
+    return schema_name, table_name, full_name
+
 
 # --- Utility Functions (Keep yours, slightly adjusted logging/checks) ---
 
@@ -78,47 +95,93 @@ def update_function_name(data):
             logging.debug(f"Updated CSV source name to: {new_name}")
     return data
 
-def parse_identifier(identifier):
-    """Parses 'schema.table.column' into (schema, table, column)."""
+def parse_identifier(identifier, file_source_details=None):
+    """
+    Parses 'schema.table.column' into (schema, table, column).
+    Handles file placeholders if file_source_details is provided.
+    """
     parts = identifier.split('.')
+
+    # --- Start: Handle File Placeholders ---
+    # Check if it looks like a file placeholder and we have pre-processed file info
+    if identifier.startswith("file.") and len(parts) == 2 and file_source_details:
+         placeholder_col_name = parts[1] # e.g., "placeholder_source_for_col1"
+         logging.debug(f"Interpreting file placeholder '{identifier}' using pre-processed info.")
+         # Return the schema/table from the actual file path,
+         # and use the placeholder part as a *conceptual* column name for the file source
+         return (
+             file_source_details['schema'],
+             file_source_details['table'],
+             placeholder_col_name # Or a generic name like 'file_content'
+         )
+    # --- End: Handle File Placeholders ---
+
     if len(parts) == 3:
         return parts[0], parts[1], parts[2]
     elif len(parts) == 2:
+        # Keep the original warning for non-file cases
         logging.warning(f"Identifier '{identifier}' only has 2 parts. Assuming 'main' schema.")
         return "main", parts[0], parts[1]
     else:
-        # Handle potential malformed CSV paths from update_function_name
+         # --- Keep CSV handling if needed ---
         if identifier.startswith('"') and identifier.endswith('.csv"'):
              clean_id = identifier.strip('"')
              parts = clean_id.split('.')
              if len(parts) >= 2:
-                 # Assume last part is 'csv', second to last is 'table', rest is schema
                  table_name = parts[-2]
-                 schema_name = ".".join(parts[:-2]) if len(parts) > 2 else "csv_files" # Default schema for csv
-                 column_name = "file_content" # Assign a generic column name for CSV source
+                 schema_name = ".".join(parts[:-2]) if len(parts) > 2 else "csv_files"
+                 column_name = "file_content"
                  logging.debug(f"Interpreted CSV path '{identifier}' as: {schema_name}.{table_name}.{column_name}")
                  return schema_name, table_name, column_name
+
         logging.error(f"Invalid identifier format: {identifier}")
         raise ValueError(f"Invalid identifier format: {identifier}")
 
 
 def normalize_table_name(name: str) -> str:
-    """Ensure the table name contains a dot. If not, prepend 'main.'"""
+    """
+    Ensures the table name is in schema.table format.
+    - Handles quoted file paths (e.g., '"path/to/file.txt"') by parsing them
+      into schema.table format (e.g., 'path.to.file').
+    - If name contains '.' and is not a quoted file, assumes it's already schema.table.
+    - If name doesn't contain '.' and is not a quoted file, prepends 'main.'.
+    """
     if not name:
+        logging.debug("normalize_table_name received empty or None input, returning empty string.")
         return ""
-    # Handle quoted CSV paths from update_function_name
-    if name.startswith('"') and name.endswith('.csv"'):
-        clean_name = name.strip('"')
-        parts = clean_name.split('.')
-        if len(parts) >= 2:
-             # Assume last part is 'csv', second to last is 'table', rest is schema
-             table_name = parts[-2]
-             schema_name = ".".join(parts[:-2]) if len(parts) > 2 else "csv_files" # Default schema
-             return f"{schema_name}.{table_name}"
-        else:
-             logging.warning(f"Could not normalize potentially malformed CSV name: {name}")
-             return clean_name # Return cleaned name as best effort
-    return name if "." in name else f"main.{name}"
+
+    # Check for quoted file paths first
+    quoted_file_match = re.match(r'^"(.+)\.(csv|txt|dat)"$', name, re.IGNORECASE)
+
+    if quoted_file_match:
+        try: # Add try-except for robustness during parsing
+            full_path_part = quoted_file_match.group(1)
+            normalized_path = full_path_part.replace("\\", "/")
+            parts = normalized_path.split('/')
+            table_name = parts[-1].replace(".", "_") # Also sanitize dots in filename part
+
+            schema_parts = parts[:-1]
+            if schema_parts:
+                schema_name = ".".join(part.replace(".", "_") for part in schema_parts)
+            else:
+                schema_name = "file_sources" # Default schema
+
+            normalized = f"{schema_name}.{table_name}"
+            logging.debug(f"Normalized quoted file path '{name}' to: '{normalized}'")
+            return normalized
+        except Exception as e:
+            logging.error(f"Error parsing quoted file path '{name}': {e}. Returning original name.")
+            # Fallback to returning the original name if parsing fails unexpectedly
+            return name # Or return "" or raise an error? Returning name might be safer.
+
+    if "." in name:
+        # Assume it's already in schema.table format (e.g., "wh_db.DimTime")
+        logging.debug(f"Input '{name}' has a dot and is not a quoted file, returning as is.")
+        return name
+    else:
+        # Simple name without dots, assume it's a table in the 'main' schema
+        logging.debug(f"Input '{name}' has no dot, prepending 'main.'.")
+        return f"main.{name}"
 
 
 # --- Modified Main Loading Logic ---
@@ -158,11 +221,65 @@ def load_lineage_to_memgraph(db, data, script_name, pipeline_name):
 
     # --- End: Add Pipeline and Script MERGE ---
 
+    # --- Start: Pre-process File Sources ---
+    processed_file_source_details = None # Store details if a FILE source is found
+    try:
+        for source_summary in data.get("sources_summary", []):
+            if source_summary.get("type") == "FILE":
+                raw_file_path = source_summary.get("name")
+                if not raw_file_path:
+                    logging.warning("Found FILE source in summary but 'name' (path) is missing. Skipping.")
+                    continue
 
-    target_full_table_name = data.get('target_table')
-    if not target_full_table_name:
+                f_schema, f_table, f_full_name = parse_file_path(raw_file_path)
+
+                if not all([f_schema, f_table, f_full_name]):
+                     logging.warning(f"Could not parse file path '{raw_file_path}' correctly. Skipping.")
+                     continue
+
+                # Store details for lookup during lineage processing
+                processed_file_source_details = {
+                    "schema": f_schema,
+                    "table": f_table,
+                    "full_name": f_full_name
+                }
+                logging.info(f"Found FILE source: Path='{raw_file_path}', Parsed Full Name='{f_full_name}'")
+
+                # Create/Merge Schema and Table nodes for the file source
+                db.execute(
+                    """
+                    MERGE (s:Schema {name: $schema_name})
+                    MERGE (t:Table {full_name: $table_full_name})
+                    ON CREATE SET t.name = $table_name, t.type = 'FILE' // Add type property
+                    ON MATCH SET t.type = 'FILE' // Ensure type is set even if node exists
+                    MERGE (t)-[:IN_SCHEMA]->(s)
+                    """,
+                    {
+                        "schema_name": f_schema,
+                        "table_full_name": f_full_name,
+                        "table_name": f_table,
+                    }
+                )
+                logging.debug(f"  Merged FILE source schema '{f_schema}' and table '{f_full_name}'")
+                # Assuming only one file source per JSON for now based on input
+                # If multiple are possible, this needs a more robust mapping
+                break # Stop after processing the first FILE source found
+
+    except Exception as e:
+        logging.error(f"Error pre-processing sources_summary for files: {e}")
+        # Decide if you want to continue without file source info or stop
+        # return # Or just log and continue
+
+    target_full_table_name_raw = data.get('target_table')
+    if not target_full_table_name_raw:
         logging.warning(f"Missing 'target_table' in lineage data for script {script_name}. Skipping.")
         return
+
+    target_full_table_name = normalize_table_name(target_full_table_name_raw)
+
+    if target_full_table_name is None:
+        logging.error(f"Normalization of target table '{target_full_table_name_raw}' resulted in None. Skipping processing for script {script_name}.")
+        return 
 
     target_full_table_name = normalize_table_name(target_full_table_name)
     if '.' not in target_full_table_name:
@@ -177,7 +294,7 @@ def load_lineage_to_memgraph(db, data, script_name, pipeline_name):
         MERGE (s:Schema {name: $schema_name})
         MERGE (t:Table {full_name: $table_full_name})
         ON CREATE SET t.name = $table_name
-        MERGE (t)-[:BELONGS_TO]->(s)
+        MERGE (t)-[:IN_SCHEMA]->(s)
         """,
         {
             "schema_name": target_schema_name,
@@ -202,7 +319,7 @@ def load_lineage_to_memgraph(db, data, script_name, pipeline_name):
             MATCH (t:Table {full_name: $table_full_name})
             MERGE (c:Column {full_name: $col_full_name})
             ON CREATE SET c.name = $col_name
-            MERGE (c)-[:BELONGS_TO]->(t)
+            MERGE (c)-[:IN_TABLE]->(t)
             """,
             {
                 "table_full_name": target_full_table_name,
@@ -220,50 +337,65 @@ def load_lineage_to_memgraph(db, data, script_name, pipeline_name):
                     logging.warning("  Skipping source: missing 'source_identifier'")
                     continue
 
-                src_schema_name, src_table_name, src_col_name = parse_identifier(source_identifier)
-                src_full_table_name = f"{src_schema_name}.{src_table_name}"
+                src_schema_name, src_table_name, src_col_name = parse_identifier(
+                    source_identifier,
+                    processed_file_source_details # Pass the dict here
+                )
+
+                if processed_file_source_details and src_table_name == processed_file_source_details['table'] and src_schema_name == processed_file_source_details['schema']:
+                    src_full_table_name = processed_file_source_details['full_name']
+                else:
+                     # Handle regular schema.table sources
+                    src_full_table_name = f"{src_schema_name}.{src_table_name}" if src_schema_name else src_table_name
+
                 src_col_full_name = f"{src_full_table_name}.{src_col_name}"
 
                 # Create/Merge Source Schema, Table, Column and relationships
                 db.execute(
                     """
                     MERGE (s_src:Schema {name: $src_schema_name})
-                    MERGE (t_src:Table {full_name: $src_table_full_name})
-                    ON CREATE SET t_src.name = $src_table_name
-                    MERGE (t_src)-[:BELONGS_TO]->(s_src)
+                    MERGE (t_src:Table {full_name: $src_full_table_name})
+                    // Set name/type only on create, avoid overwriting potentially better info (like FILE type)
+                    ON CREATE SET t_src.name = $src_table_name, t_src.type = 'TABLE'
+                    MERGE (t_src)-[:IN_SCHEMA]->(s_src)
                     MERGE (c_src:Column {full_name: $src_col_full_name})
                     ON CREATE SET c_src.name = $src_col_name
-                    MERGE (c_src)-[:BELONGS_TO]->(t_src)
+                    MERGE (c_src)-[:IN_TABLE]->(t_src)
                     """,
                     {
                         "src_schema_name": src_schema_name,
-                        "src_table_full_name": src_full_table_name,
+                        "src_full_table_name": src_full_table_name,
                         "src_table_name": src_table_name,
                         "src_col_full_name": src_col_full_name,
                         "src_col_name": src_col_name,
                     }
                 )
-                logging.debug(f"    Merged source column '{src_col_full_name}'")
+                logging.debug(f"    Merged source column '{src_col_full_name}' and linked entities")
 
-                # Create the DERIVES relationship with properties
+                # Create the DERIVED_FROM relationship with properties (Using your previous fix)
                 rel_props = {
-                    "transformation_type": lineage_info.get("transformation_type"),
-                    "transformation_logic": lineage_info.get("transformation_logic"),
-                    "path": str(source_info.get("path")), # Store list as string or use Memgraph Maps
+                    # Get transformation details from the specific source_info
+                    "transformation_type": source_info.get("transformation_type", lineage_info.get("transformation_type")), # Fallback needed? Check JSON structure consistency
+                    "transformation_logic": source_info.get("transformation_logic", lineage_info.get("transformation_logic")), # Fallback needed?
+                    "path": str(source_info.get("path")),
                     "role": source_info.get("role"),
-                    # Store complex join_info as JSON string
                     "join_info": json.dumps(source_info.get("join_info")) if source_info.get("join_info") else None,
-                    "notes": lineage_info.get("notes"),
+                    "notes": source_info.get("notes", lineage_info.get("notes")), # Fallback needed?
                 }
-                rel_props = {k: v for k, v in rel_props.items() if v is not None} # Remove None values
+                 # Add specific details for FILE copy operations if available
+                if source_identifier.startswith("file.") and "COPY from file" in str(rel_props.get("transformation_logic")):
+                     rel_props["transformation_type"] = "FILE_LOAD" # Be more specific
+                     # transformation_logic could remain "COPY from file" or be enhanced
+
+                rel_props = {k: v for k, v in rel_props.items() if v is not None}
 
                 db.execute(
                     """
                     MATCH (c_src:Column {full_name: $src_col_full_name})
                     MATCH (c_tgt:Column {full_name: $tgt_col_full_name})
-                    MERGE (c_src)-[r:DERIVES]->(c_tgt)
+                    MERGE (c_tgt)-[r:DERIVED_FROM]->(c_src)
                     ON CREATE SET r = $props
-                    ON MATCH SET r += $props // Update properties if relationship already exists
+                    ON MATCH SET r += $props
                     """,
                     {
                         "src_col_full_name": src_col_full_name,
@@ -271,7 +403,7 @@ def load_lineage_to_memgraph(db, data, script_name, pipeline_name):
                         "props": rel_props,
                     }
                 )
-                logging.debug(f"      Merged DERIVES relationship from '{src_col_full_name}' to '{target_col_full_name}'")
+                logging.debug(f"      Merged DERIVED_FROM relationship from '{src_col_full_name}' to '{target_col_full_name}'")
 
                 # --- Start: Add Script -> Column Links ---
                 db.execute(
@@ -388,7 +520,7 @@ def import_schema_to_memgraph(
         MERGE (s:Schema {name: $schema_name})
         MERGE (t:Table {full_name: $table_full_name})
         ON CREATE SET t.name = $table_name
-        MERGE (t)-[:BELONGS_TO]->(s)
+        MERGE (t)-[:IN_SCHEMA]->(s)
         """
         # Add comment if available (table_comment is often None from DuckDB)
         if table_comment:
@@ -429,7 +561,7 @@ def import_schema_to_memgraph(
                 col_params["col_comment"] = col_comment
 
             # Add merge for relationship
-            merge_col_query += " MERGE (c)-[:BELONGS_TO]->(t)"
+            merge_col_query += " MERGE (c)-[:IN_TABLE]->(t)"
 
             memgraph_conn.execute(merge_col_query, col_params)
             logging.debug(f"  Merged Column '{col_full_name}' with properties.")
@@ -495,7 +627,7 @@ def main():
         # Allow proceeding without schema import if desired
 
     # --- Define JSON source directory ---
-    json_dir = "/app/src/LLM_answers/llm_prompt_for_column_level_lineage_hard_w_ex/"
+    json_dir = "/app/agentic/Agent_LLM_JSONs"
     #json_dir = "/app/src/LLM_answers/llm_prompt_for_column_level_lineage_hard_w_ex/2"
 
     try:
@@ -507,7 +639,7 @@ def main():
 
             # **Determine Script and Pipeline Name**
             # Assumption: script name is the JSON filename without .json
-            potential_script_name = extract_clean_name(json_filepath.stem) # Gets filename without extension
+            potential_script_name = json_filepath.stem
             script_name = None
             pipeline_name = None
 

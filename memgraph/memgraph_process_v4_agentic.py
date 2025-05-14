@@ -177,7 +177,7 @@ def load_lineage_to_memgraph(db, data, script_name, pipeline_name):
         MERGE (s:Schema {name: $schema_name})
         MERGE (t:Table {full_name: $table_full_name})
         ON CREATE SET t.name = $table_name
-        MERGE (t)-[:BELONGS_TO]->(s)
+        MERGE (t)-[:IN_SCHEMA]->(s)
         """,
         {
             "schema_name": target_schema_name,
@@ -202,7 +202,7 @@ def load_lineage_to_memgraph(db, data, script_name, pipeline_name):
             MATCH (t:Table {full_name: $table_full_name})
             MERGE (c:Column {full_name: $col_full_name})
             ON CREATE SET c.name = $col_name
-            MERGE (c)-[:BELONGS_TO]->(t)
+            MERGE (c)-[:IN_TABLE]->(t)
             """,
             {
                 "table_full_name": target_full_table_name,
@@ -230,10 +230,10 @@ def load_lineage_to_memgraph(db, data, script_name, pipeline_name):
                     MERGE (s_src:Schema {name: $src_schema_name})
                     MERGE (t_src:Table {full_name: $src_table_full_name})
                     ON CREATE SET t_src.name = $src_table_name
-                    MERGE (t_src)-[:BELONGS_TO]->(s_src)
+                    MERGE (t_src)-[:IN_SCHEMA]->(s_src)
                     MERGE (c_src:Column {full_name: $src_col_full_name})
                     ON CREATE SET c_src.name = $src_col_name
-                    MERGE (c_src)-[:BELONGS_TO]->(t_src)
+                    MERGE (c_src)-[:IN_TABLE]->(t_src)
                     """,
                     {
                         "src_schema_name": src_schema_name,
@@ -245,15 +245,15 @@ def load_lineage_to_memgraph(db, data, script_name, pipeline_name):
                 )
                 logging.debug(f"    Merged source column '{src_col_full_name}'")
 
-                # Create the DERIVES relationship with properties
+                # Create the DERIVED_FROM relationship with properties
                 rel_props = {
-                    "transformation_type": lineage_info.get("transformation_type"),
-                    "transformation_logic": lineage_info.get("transformation_logic"),
+                    "transformation_type": source_info.get("transformation_type"),
+                    "transformation_logic": source_info.get("transformation_logic"),
                     "path": str(source_info.get("path")), # Store list as string or use Memgraph Maps
                     "role": source_info.get("role"),
                     # Store complex join_info as JSON string
                     "join_info": json.dumps(source_info.get("join_info")) if source_info.get("join_info") else None,
-                    "notes": lineage_info.get("notes"),
+                    "notes": source_info.get("notes"),
                 }
                 rel_props = {k: v for k, v in rel_props.items() if v is not None} # Remove None values
 
@@ -261,7 +261,7 @@ def load_lineage_to_memgraph(db, data, script_name, pipeline_name):
                     """
                     MATCH (c_src:Column {full_name: $src_col_full_name})
                     MATCH (c_tgt:Column {full_name: $tgt_col_full_name})
-                    MERGE (c_src)-[r:DERIVES]->(c_tgt)
+                    MERGE (c_tgt)-[r:DERIVED_FROM]->(c_src)
                     ON CREATE SET r = $props
                     ON MATCH SET r += $props // Update properties if relationship already exists
                     """,
@@ -271,7 +271,7 @@ def load_lineage_to_memgraph(db, data, script_name, pipeline_name):
                         "props": rel_props,
                     }
                 )
-                logging.debug(f"      Merged DERIVES relationship from '{src_col_full_name}' to '{target_col_full_name}'")
+                logging.debug(f"      Merged DERIVED_FROM relationship from '{src_col_full_name}' to '{target_col_full_name}'")
 
                 # --- Start: Add Script -> Column Links ---
                 db.execute(
@@ -388,7 +388,7 @@ def import_schema_to_memgraph(
         MERGE (s:Schema {name: $schema_name})
         MERGE (t:Table {full_name: $table_full_name})
         ON CREATE SET t.name = $table_name
-        MERGE (t)-[:BELONGS_TO]->(s)
+        MERGE (t)-[:IN_SCHEMA]->(s)
         """
         # Add comment if available (table_comment is often None from DuckDB)
         if table_comment:
@@ -429,7 +429,7 @@ def import_schema_to_memgraph(
                 col_params["col_comment"] = col_comment
 
             # Add merge for relationship
-            merge_col_query += " MERGE (c)-[:BELONGS_TO]->(t)"
+            merge_col_query += " MERGE (c)-[:IN_TABLE]->(t)"
 
             memgraph_conn.execute(merge_col_query, col_params)
             logging.debug(f"  Merged Column '{col_full_name}' with properties.")
@@ -495,7 +495,7 @@ def main():
         # Allow proceeding without schema import if desired
 
     # --- Define JSON source directory ---
-    json_dir = "/app/src/LLM_answers/llm_prompt_for_column_level_lineage_hard_w_ex/"
+    json_dir = "/app/agentic/Agent_LLM_JSONs"
     #json_dir = "/app/src/LLM_answers/llm_prompt_for_column_level_lineage_hard_w_ex/2"
 
     try:
@@ -507,7 +507,7 @@ def main():
 
             # **Determine Script and Pipeline Name**
             # Assumption: script name is the JSON filename without .json
-            potential_script_name = extract_clean_name(json_filepath.stem) # Gets filename without extension
+            potential_script_name = json_filepath.stem
             script_name = None
             pipeline_name = None
 

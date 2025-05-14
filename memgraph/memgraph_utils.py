@@ -51,18 +51,18 @@ def dependencies(db):
                     PIPELINE_DEPENDENCY = json.load(f)
 
     json_file_script_dep = "/app/src/main/script_dependency.json"
-    with open(json_file_pipe_dep, "r", encoding="utf-8") as f:
+    with open(json_file_script_dep, "r", encoding="utf-8") as f:
                     SCRIPT_DEPENDENCY = json.load(f)
 
     pipe_deps_dict = {
     pipeline: dependant
-    for pipeline, dependant in SCRIPT_DEPENDENCY.items()
+    for pipeline, dependant in PIPELINE_DEPENDENCY.items()
     for dependant in dependant
     }
 
     script_depts_dict = {
     script: dependant
-    for script, dependant in PIPELINE_DEPENDENCY.items()
+    for script, dependant in SCRIPT_DEPENDENCY.items()
     for dependant in dependant
     }
 
@@ -93,6 +93,7 @@ def dependencies(db):
                 """,
                 {"script": script, "dependant": dependant} 
             )
+            logging.info(f"Created dependency '{script}' > '{dependant}'")
         except Exception as e:
             logging.error(f"Failed create dependency '{script}' > '{dependant}': {e}")    
 
@@ -149,7 +150,7 @@ def update_script_properties(db, script_details):
                     "content": details['content'] # Renamed parameter to avoid conflict
                 }
             )
-
+            logging.info(f"Script node path, content updated: {script_name}")
             # Assuming execute returns results allowing extraction,
             # Check if the node was found and updated. Adjust based on your db driver.
             # Example: if using neo4j driver, result might be a Result object.
@@ -170,3 +171,4 @@ def update_script_properties(db, script_details):
             logging.error(f"Failed to update Script node '{script_name}': {e}")
 
     logging.info(f"Script property update complete. Updated: {updated_count}, Not Found: {not_found_count}")
+

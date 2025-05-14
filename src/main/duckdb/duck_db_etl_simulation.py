@@ -269,7 +269,7 @@ def load_initial_data(con: duckdb.DuckDBPyConnection, src_folder: Path, output_f
             'employeebranch': 'STRING',
             'employeeoffice': 'STRING',
             'employeephone': 'STRING'
-        }}, header=False, auto_detect=false) -- Set auto_detect=false when specifying columns
+        }}, header=False)
         WHERE employeejobcode = '314';
         """
         execute_and_save_sql(con, stage_hr_sql, "temp_broker_creation", output_folder)
@@ -506,7 +506,7 @@ def create_temp_customer_table(con: duckdb.DuckDBPyConnection, output_folder: Pa
     from the persistent 'wh_db_stage.CustomerMgmt' table.
     """
     customers =  """ 
-CREATE OR REPLACE TEMP TABLE customers AS
+CREATE OR REPLACE TABLE customers AS
   SELECT
     customerid,
     taxid,

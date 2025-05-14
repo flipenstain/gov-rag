@@ -21,6 +21,7 @@ src/data/Batch1/WatchHistory.txt
 src/data/Batch1/Trade.txt
 src/data/Batch1/CashTransaction.txt
 src/data/Batch1/DailyMarket.txt
-
+src/data/
 
 src/divider/Tools/*
+src/main/duck_db

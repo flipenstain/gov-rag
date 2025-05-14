@@ -1,6 +1,13 @@
 import xml.etree.ElementTree as ET
 import pandas as pd
 import os
+import duckdb
+src_folder = 'src/data/Batch1'
+
+path_to_xml = "C:\lopu-kg-test\project\src\data\Batch1\CustomerMgmt.xml"
+db_path = 'initial_db.duckdb'
+
+con = duckdb.connect(database=db_path)
 
 def xml_to_dataframe(xml_file_path):
     """
@@ -153,3 +160,5 @@ def main(con):
     xml_dataframe = rename_columns(xml_dataframe)
 
     con.sql(stage_CustomerMgmt)
+
+main(con)
