@@ -1,0 +1,51 @@
+{
+  "target_table": "wh_db_stage.FinWire",
+  "sources_summary": [
+    {
+      "type": "FILE",
+      "name": "src/data/Batch1\\FINWIRE1967Q2",
+      "alias_or_cte": "read_csv_auto('src/data/Batch1\\FINWIRE1967Q2', HEADER=FALSE, filename=false, all_varchar=true)"
+    }
+  ],
+  "lineage": {
+    "rectype": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col0",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "CASE WHEN SUBSTR(column0, 16, 3) = 'FIN' THEN CASE WHEN TRY_CAST(TRIM(SUBSTR(column0, 187, 60)) AS BIGINT) IS NOT NULL THEN 'FIN_COMPANYID' ELSE 'FIN_NAME' END ELSE SUBSTR(column0, 16, 3) END"
+        }
+      ],
+      "transformation_type": "CASE_MAPPING",
+      "transformation_logic": "CASE WHEN SUBSTR(column0, 16, 3) = 'FIN' THEN CASE WHEN TRY_CAST(TRIM(SUBSTR(column0, 187, 60)) AS BIGINT) IS NOT NULL THEN 'FIN_COMPANYID' ELSE 'FIN_NAME' END ELSE SUBSTR(column0, 16, 3) END",
+      "notes": null
+    },
+    "recdate": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col0",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "STRPTIME(SUBSTR(column0, 1, 8), '%Y%m%d')"
+        }
+      ],
+      "transformation_type": "CAST",
+      "transformation_logic": "STRPTIME(SUBSTR(column0, 1, 8), '%Y%m%d')",
+      "notes": null
+    },
+    "value": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col0",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "SUBSTR(column0, 19)"
+        }
+      ],
+      "transformation_type": "SUBSTRING",
+      "transformation_logic": "SUBSTR(column0, 19)",
+      "notes": null
+    }
+  }
+}

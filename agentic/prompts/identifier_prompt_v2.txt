@@ -1,0 +1,38 @@
+Analyze the following SQL script to determine its primary command type and identify if resolving full column-level lineage requires external context (database schema lookup). If context is needed, specify the reason (e.g., 'SELECT *', 'Implicit INSERT columns', 'COPY target') and list the fully qualified table names requiring schema lookup.
+
+SQL Script:
+```sql
+{sql_content}
+```
+
+**Instructions:**
+
+1.  **Identify Primary Command Type:** Determine the main SQL command (e.g., SELECT, COPY, INSERT, CREATE_TABLE_AS, UPDATE, MERGE, OTHER).
+2.  **Check for Missing Context:** Determine if schema lookup is needed. Examples:
+    * `SELECT * FROM schema.table1 JOIN schema.table2 ...` -> Needs context for `schema.table1`, `schema.table2`. Reason: 'SELECT *'.
+    * `INSERT INTO schema.target_table VALUES (...)` -> Needs context for `schema.target_table`. Reason: 'Implicit INSERT columns'.
+    * `COPY schema.target_table FROM ...` -> Needs context for `schema.target_table`. Reason: 'COPY target'.
+    * `CREATE TABLE schema.new_table AS SELECT col1, col2 FROM schema.source_table` -> Context likely not needed unless the SELECT part uses '*'.
+3.  **List Tables:** If context is needed, list all unique, fully qualified table names requiring schema lookup. Extract the names accurately (e.g., `schema.table_name`).
+
+**Output Format:**
+Respond ONLY with a JSON object in the following format:
+
+If context **is needed**:
+```json
+{{
+  "statement_type": "DETECTED_TYPE",
+  "context_needed": true,
+  "reason": "Reason for needing context (e.g., SELECT *, COPY target)",
+  "tables_requiring_context": ["schema.table1", "schema.table2", ...]
+}}
+```
+
+If context **is NOT needed**:
+```json
+{{
+  "statement_type": "DETECTED_TYPE",
+  "context_needed": false
+}}
+```
+Do not include any other text or explanations.

@@ -1,0 +1,132 @@
+{
+  "target_table": "wh_db.DimTime",
+  "sources_summary": [
+    {
+      "type": "FILE",
+      "name": "src/data/Batch1\\Time.txt",
+      "alias_or_cte": null
+    }
+  ],
+  "lineage": {
+    "sk_timeid": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col1",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "timevalue": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col2",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "hourid": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col3",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "hourdesc": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col4",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "minuteid": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col5",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "minutedesc": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col6",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "secondid": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col7",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "seconddesc": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col8",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "markethoursflag": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col9",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "officehoursflag": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col10",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    }
+  }
+}

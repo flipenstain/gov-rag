@@ -1,0 +1,646 @@
+{
+  "target_table": "wh_db.DimTrade",
+  "sources_summary": [
+    {
+      "type": "TABLE",
+      "name": "wh_db_stage.tradetxt",
+      "alias_or_cte": "a"
+    },
+    {
+      "type": "TABLE",
+      "name": "wh_db_stage.tradehistory",
+      "alias_or_cte": "b"
+    },
+    {
+      "type": "TABLE",
+      "name": "wh_db.StatusType",
+      "alias_or_cte": "c"
+    },
+    {
+      "type": "TABLE",
+      "name": "wh_db.DimSecurity",
+      "alias_or_cte": "ds"
+    },
+    {
+      "type": "TABLE",
+      "name": "wh_db.DimAccount",
+      "alias_or_cte": "da"
+    }
+  ],
+  "lineage": {
+    "tradeid": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.tradetxt.tradeid",
+          "path": [
+            "tradehistorical.tradeid",
+            "trade.tradeid"
+          ],
+          "role": "direct input",
+          "join_info": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "sk_brokerid": {
+      "sources": [
+        {
+          "source_identifier": "wh_db.DimAccount.sk_brokerid",
+          "path": [
+            "da.sk_brokerid"
+          ],
+          "role": "direct input",
+          "join_info": {
+            "type": "INNER JOIN",
+            "left_source": {
+              "identifier": "tradehistorical.t_ca_id",
+              "path": [
+                "a.t_ca_id",
+                "tradehistorical.t_ca_id"
+              ]
+            },
+            "right_source": {
+              "identifier": "wh_db.DimAccount.accountid",
+              "path": [
+                "da.accountid"
+              ]
+            }
+          }
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "sk_createdateid": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.tradehistory.TH_DTS",
+          "path": [
+            "tradehistorical.SK_CreateDateID",
+            "trade.SK_CreateDateID"
+          ],
+          "role": "direct input",
+          "join_info": {
+            "type": "INNER JOIN",
+            "left_source": {
+              "identifier": "wh_db_stage.tradetxt.tradeid",
+              "path": [
+                "a.tradeid",
+                "tradehistorical.tradeid"
+              ]
+            },
+            "right_source": {
+              "identifier": "wh_db_stage.tradehistory.tradeid",
+              "path": [
+                "b.tradeid"
+              ]
+            }
+          }
+        },
+        {
+          "source_identifier": "wh_db_stage.tradetxt.t_tt_id",
+          "path": [
+            "tradehistorical.SK_CreateDateID",
+            "trade.SK_CreateDateID"
+          ],
+          "role": "used in condition",
+          "join_info": null
+        },
+        {
+          "source_identifier": "wh_db_stage.tradehistory.status",
+          "path": [
+            "tradehistorical.SK_CreateDateID",
+            "trade.SK_CreateDateID"
+          ],
+          "role": "used in condition",
+          "join_info": {
+            "type": "INNER JOIN",
+            "left_source": {
+              "identifier": "wh_db_stage.tradetxt.tradeid",
+              "path": [
+                "a.tradeid",
+                "tradehistorical.tradeid"
+              ]
+            },
+            "right_source": {
+              "identifier": "wh_db_stage.tradehistory.tradeid",
+              "path": [
+                "b.tradeid"
+              ]
+            }
+          }
+        }
+      ],
+      "transformation_type": "CASE_MAPPING",
+      "transformation_logic": "CASE WHEN b.status = 'SBMT' AND a.t_tt_id IN ( 'TMB', 'TMS' ) OR b.status = 'PNDG' THEN b.TH_DTS WHEN b.status IN ( 'CMPT', 'CNCL' ) THEN NULL END",
+      "notes": null
+    },
+    "sk_createtimeid": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.tradehistory.TH_DTS",
+          "path": [
+            "tradehistorical.SK_CreateTimeID",
+            "trade.SK_CreateTimeID"
+          ],
+          "role": "direct input",
+          "join_info": {
+            "type": "INNER JOIN",
+            "left_source": {
+              "identifier": "wh_db_stage.tradetxt.tradeid",
+              "path": [
+                "a.tradeid",
+                "tradehistorical.tradeid"
+              ]
+            },
+            "right_source": {
+              "identifier": "wh_db_stage.tradehistory.tradeid",
+              "path": [
+                "b.tradeid"
+              ]
+            }
+          }
+        },
+        {
+          "source_identifier": "wh_db_stage.tradetxt.t_tt_id",
+          "path": [
+            "tradehistorical.SK_CreateTimeID",
+            "trade.SK_CreateTimeID"
+          ],
+          "role": "used in condition",
+          "join_info": null
+        },
+        {
+          "source_identifier": "wh_db_stage.tradehistory.status",
+          "path": [
+            "tradehistorical.SK_CreateTimeID",
+            "trade.SK_CreateTimeID"
+          ],
+          "role": "used in condition",
+          "join_info": {
+            "type": "INNER JOIN",
+            "left_source": {
+              "identifier": "wh_db_stage.tradetxt.tradeid",
+              "path": [
+                "a.tradeid",
+                "tradehistorical.tradeid"
+              ]
+            },
+            "right_source": {
+              "identifier": "wh_db_stage.tradehistory.tradeid",
+              "path": [
+                "b.tradeid"
+              ]
+            }
+          }
+        }
+      ],
+      "transformation_type": "CASE_MAPPING",
+      "transformation_logic": "CASE WHEN b.status = 'SBMT' AND a.t_tt_id IN ( 'TMB', 'TMS' ) OR b.status = 'PNDG' THEN b.TH_DTS WHEN b.status IN ( 'CMPT', 'CNCL' ) THEN NULL END",
+      "notes": null
+    },
+    "sk_closedateid": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.tradehistory.TH_DTS",
+          "path": [
+            "tradehistorical.SK_CloseDateID",
+            "trade.SK_CloseDateID"
+          ],
+          "role": "direct input",
+          "join_info": {
+            "type": "INNER JOIN",
+            "left_source": {
+              "identifier": "wh_db_stage.tradetxt.tradeid",
+              "path": [
+                "a.tradeid",
+                "tradehistorical.tradeid"
+              ]
+            },
+            "right_source": {
+              "identifier": "wh_db_stage.tradehistory.tradeid",
+              "path": [
+                "b.tradeid"
+              ]
+            }
+          }
+        },
+        {
+          "source_identifier": "wh_db_stage.tradetxt.t_tt_id",
+          "path": [
+            "tradehistorical.SK_CloseDateID",
+            "trade.SK_CloseDateID"
+          ],
+          "role": "used in condition",
+          "join_info": null
+        },
+        {
+          "source_identifier": "wh_db_stage.tradehistory.status",
+          "path": [
+            "tradehistorical.SK_CloseDateID",
+            "trade.SK_CloseDateID"
+          ],
+          "role": "used in condition",
+          "join_info": {
+            "type": "INNER JOIN",
+            "left_source": {
+              "identifier": "wh_db_stage.tradetxt.tradeid",
+              "path": [
+                "a.tradeid",
+                "tradehistorical.tradeid"
+              ]
+            },
+            "right_source": {
+              "identifier": "wh_db_stage.tradehistory.tradeid",
+              "path": [
+                "b.tradeid"
+              ]
+            }
+          }
+        }
+      ],
+      "transformation_type": "CASE_MAPPING",
+      "transformation_logic": "CASE WHEN b.status = 'SBMT' AND a.t_tt_id IN ( 'TMB', 'TMS' ) OR b.status = 'PNDG' THEN NULL WHEN b.status IN ( 'CMPT', 'CNCL' ) THEN b.TH_DTS END",
+      "notes": null
+    },
+    "sk_closetimeid": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.tradehistory.TH_DTS",
+          "path": [
+            "tradehistorical.SK_CloseTimeID",
+            "trade.SK_CloseTimeID"
+          ],
+          "role": "direct input",
+          "join_info": {
+            "type": "INNER JOIN",
+            "left_source": {
+              "identifier": "wh_db_stage.tradetxt.tradeid",
+              "path": [
+                "a.tradeid",
+                "tradehistorical.tradeid"
+              ]
+            },
+            "right_source": {
+              "identifier": "wh_db_stage.tradehistory.tradeid",
+              "path": [
+                "b.tradeid"
+              ]
+            }
+          }
+        },
+        {
+          "source_identifier": "wh_db_stage.tradetxt.t_tt_id",
+          "path": [
+            "tradehistorical.SK_CloseTimeID",
+            "trade.SK_CloseTimeID"
+          ],
+          "role": "used in condition",
+          "join_info": null
+        },
+        {
+          "source_identifier": "wh_db_stage.tradehistory.status",
+          "path": [
+            "tradehistorical.SK_CloseTimeID",
+            "trade.SK_CloseTimeID"
+          ],
+          "role": "used in condition",
+          "join_info": {
+            "type": "INNER JOIN",
+            "left_source": {
+              "identifier": "wh_db_stage.tradetxt.tradeid",
+              "path": [
+                "a.tradeid",
+                "tradehistorical.tradeid"
+              ]
+            },
+            "right_source": {
+              "identifier": "wh_db_stage.tradehistory.tradeid",
+              "path": [
+                "b.tradeid"
+              ]
+            }
+          }
+        }
+      ],
+      "transformation_type": "CASE_MAPPING",
+      "transformation_logic": "CASE WHEN b.status = 'SBMT' AND a.t_tt_id IN ( 'TMB', 'TMS' ) OR b.status = 'PNDG' THEN NULL WHEN b.status IN ( 'CMPT', 'CNCL' ) THEN b.TH_DTS END",
+      "notes": null
+    },
+    "st_name": {
+      "sources": [
+        {
+          "source_identifier": "wh_db.StatusType.st_name",
+          "path": [
+            "tradehistorical.st_name",
+            "trade.st_name"
+          ],
+          "role": "direct input",
+          "join_info": {
+            "type": "INNER JOIN",
+            "left_source": {
+              "identifier": "wh_db_stage.tradetxt.status",
+              "path": [
+                "a.status",
+                "tradehistorical.status"
+              ]
+            },
+            "right_source": {
+              "identifier": "wh_db.StatusType.st_id",
+              "path": [
+                "c.st_id"
+              ]
+            }
+          }
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "type": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.tradetxt.t_tt_id",
+          "path": [
+            "tradehistorical.type",
+            "trade.type"
+          ],
+          "role": "direct input",
+          "join_info": null
+        }
+      ],
+      "transformation_type": "CASE_MAPPING",
+      "transformation_logic": "CASE t_tt_id WHEN 'TMB' THEN 'Market Buy' WHEN 'TMS' THEN 'Market Sell' WHEN 'TSL' THEN 'Stop Loss' WHEN 'TLS' THEN 'Limit Sell' WHEN 'TLB' THEN 'Limit Buy' ELSE NULL END",
+      "notes": null
+    },
+    "cashflag": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.tradetxt.cashflag",
+          "path": [
+            "tradehistorical.cashflag",
+            "trade.cashflag"
+          ],
+          "role": "direct input",
+          "join_info": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "sk_securityid": {
+      "sources": [
+        {
+          "source_identifier": "wh_db.DimSecurity.sk_securityid",
+          "path": [
+            "ds.sk_securityid"
+          ],
+          "role": "direct input",
+          "join_info": {
+            "type": "INNER JOIN",
+            "left_source": {
+              "identifier": "tradehistorical.t_s_symb",
+              "path": [
+                "a.t_s_symb",
+                "tradehistorical.t_s_symb",
+                "trade.t_s_symb"
+              ]
+            },
+            "right_source": {
+              "identifier": "wh_db.DimSecurity.symbol",
+              "path": [
+                "ds.symbol"
+              ]
+            }
+          }
+        }
+      ],
+      "transformation_type": "JOIN_LOOKUP",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "sk_companyid": {
+      "sources": [
+        {
+          "source_identifier": "wh_db.DimSecurity.sk_companyid",
+          "path": [
+            "ds.sk_companyid"
+          ],
+          "role": "direct input",
+          "join_info": {
+            "type": "INNER JOIN",
+            "left_source": {
+              "identifier": "tradehistorical.t_s_symb",
+              "path": [
+                "a.t_s_symb",
+                "tradehistorical.t_s_symb",
+                "trade.t_s_symb"
+              ]
+            },
+            "right_source": {
+              "identifier": "wh_db.DimSecurity.symbol",
+              "path": [
+                "ds.symbol"
+              ]
+            }
+          }
+        }
+      ],
+      "transformation_type": "JOIN_LOOKUP",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "quantity": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.tradetxt.quantity",
+          "path": [
+            "tradehistorical.quantity",
+            "trade.quantity"
+          ],
+          "role": "direct input",
+          "join_info": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "bidprice": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.tradetxt.bidprice",
+          "path": [
+            "tradehistorical.bidprice",
+            "trade.bidprice"
+          ],
+          "role": "direct input",
+          "join_info": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "sk_customerid": {
+      "sources": [
+        {
+          "source_identifier": "wh_db.DimAccount.sk_customerid",
+          "path": [
+            "da.sk_customerid"
+          ],
+          "role": "direct input",
+          "join_info": {
+            "type": "INNER JOIN",
+            "left_source": {
+              "identifier": "tradehistorical.t_ca_id",
+              "path": [
+                "a.t_ca_id",
+                "tradehistorical.t_ca_id"
+              ]
+            },
+            "right_source": {
+              "identifier": "wh_db.DimAccount.accountid",
+              "path": [
+                "da.accountid"
+              ]
+            }
+          }
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "sk_accountid": {
+      "sources": [
+        {
+          "source_identifier": "wh_db.DimAccount.sk_accountid",
+          "path": [
+            "da.sk_accountid"
+          ],
+          "role": "direct input",
+          "join_info": {
+            "type": "INNER JOIN",
+            "left_source": {
+              "identifier": "tradehistorical.t_ca_id",
+              "path": [
+                "a.t_ca_id",
+                "tradehistorical.t_ca_id"
+              ]
+            },
+            "right_source": {
+              "identifier": "wh_db.DimAccount.accountid",
+              "path": [
+                "da.accountid"
+              ]
+            }
+          }
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "executedby": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.tradetxt.executedby",
+          "path": [
+            "tradehistorical.executedby",
+            "trade.executedby"
+          ],
+          "role": "direct input",
+          "join_info": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "tradeprice": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.tradetxt.tradeprice",
+          "path": [
+            "tradehistorical.tradeprice",
+            "trade.tradeprice"
+          ],
+          "role": "direct input",
+          "join_info": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "fee": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.tradetxt.fee",
+          "path": [
+            "tradehistorical.fee",
+            "trade.fee"
+          ],
+          "role": "direct input",
+          "join_info": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "commission": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.tradetxt.commission",
+          "path": [
+            "tradehistorical.commission",
+            "trade.commission"
+          ],
+          "role": "direct input",
+          "join_info": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "tax": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.tradetxt.tax",
+          "path": [
+            "tradehistorical.tax",
+            "trade.tax"
+          ],
+          "role": "direct input",
+          "join_info": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "batchid": {
+      "sources": [
+        {
+          "source_identifier": "1",
+          "path": [
+            "trade.batchid"
+          ],
+          "role": "constant",
+          "join_info": null
+        }
+      ],
+      "transformation_type": "CONSTANT",
+      "transformation_logic": "1",
+      "notes": null
+    }
+  }
+}

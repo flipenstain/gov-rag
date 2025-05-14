@@ -1,0 +1,361 @@
+{
+  "target_table": "wh_db.DimCompany",
+  "sources_summary": [
+    {
+      "type": "TABLE",
+      "name": "wh_db_stage.FinWire",
+      "alias_or_cte": "cmp"
+    },
+    {
+      "type": "TABLE",
+      "name": "wh_db.industry",
+      "alias_or_cte": "ind"
+    }
+  ],
+  "lineage": {
+    "sk_companyid": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.value",
+          "path": [
+            "cmp.recdate",
+            "T.effectivedate",
+            "T.sk_companyid"
+          ],
+          "role": "direct input",
+          "transformation_logic": "CAST(strftime(effectivedate, '%Y%m%d') || companyid AS BIGINT)"
+        },
+        {
+          "source_identifier": "wh_db_stage.FinWire.value",
+          "path": [
+            "cmp.CIK",
+            "T.companyid",
+            "T.sk_companyid"
+          ],
+          "role": "direct input",
+          "transformation_logic": "CAST(strftime(effectivedate, '%Y%m%d') || companyid AS BIGINT)"
+        }
+      ],
+      "transformation_type": "EXPRESSION_CONCAT",
+      "transformation_logic": "CAST(strftime(effectivedate, '%Y%m%d') || companyid AS BIGINT)",
+      "notes": null
+    },
+    "companyid": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.value",
+          "path": [
+            "cmp.CIK",
+            "T.companyid"
+          ],
+          "role": "direct input",
+          "transformation_logic": "CAST(cik AS BIGINT)"
+        }
+      ],
+      "transformation_type": "CAST",
+      "transformation_logic": "CAST(cik AS BIGINT)",
+      "notes": null
+    },
+    "status": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.value",
+          "path": [
+            "cmp.Status",
+            "T.status"
+          ],
+          "role": "direct input",
+          "transformation_logic": "CASE cmp.status WHEN 'ACTV' THEN 'Active' WHEN 'CMPT' THEN 'Completed' WHEN 'CNCL' THEN 'Canceled' WHEN 'PNDG' THEN 'Pending' WHEN 'SBMT' THEN 'Submitted' WHEN 'INAC' THEN 'Inactive' ELSE NULL END"
+        }
+      ],
+      "transformation_type": "CASE_MAPPING",
+      "transformation_logic": "CASE cmp.status WHEN 'ACTV' THEN 'Active' WHEN 'CMPT' THEN 'Completed' WHEN 'CNCL' THEN 'Canceled' WHEN 'PNDG' THEN 'Pending' WHEN 'SBMT' THEN 'Submitted' WHEN 'INAC' THEN 'Inactive' ELSE NULL END",
+      "notes": null
+    },
+    "name": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.value",
+          "path": [
+            "cmp.CompanyName",
+            "T.name"
+          ],
+          "role": "direct input",
+          "transformation_logic": "CompanyName"
+        }
+      ],
+      "transformation_type": "RENAME",
+      "transformation_logic": "CompanyName",
+      "notes": null
+    },
+    "industry": {
+      "sources": [
+        {
+          "source_identifier": "wh_db.industry.in_name",
+          "path": [
+            "T.industry"
+          ],
+          "role": "join key",
+          "join_info": {
+            "type": "INNER JOIN",
+            "left_source": {
+              "identifier": "cmp.industryid",
+              "path": [
+                "cmp.industryid"
+              ]
+            },
+            "right_source": {
+              "identifier": "wh_db.industry.in_id",
+              "path": [
+                "wh_db.industry.in_id"
+              ]
+            }
+          }
+        }
+      ],
+      "transformation_type": "JOIN_LOOKUP",
+      "transformation_logic": "ind.in_name",
+      "notes": null
+    },
+    "sprating": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.value",
+          "path": [
+            "cmp.SPrating",
+            "T.sprating"
+          ],
+          "role": "direct input",
+          "transformation_logic": "CASE WHEN SPrating IN ('AAA', 'AA', 'AA+', 'AA-', 'A', 'A+', 'A-', 'BBB', 'BBB+', 'BBB-', 'BB', 'BB+', 'BB-', 'B', 'B+', 'B-', 'CCC', 'CCC+', 'CCC-', 'CC', 'C', 'D') THEN SPrating ELSE NULL::VARCHAR END"
+        }
+      ],
+      "transformation_type": "CASE_MAPPING",
+      "transformation_logic": "CASE WHEN SPrating IN ('AAA', 'AA', 'AA+', 'AA-', 'A', 'A+', 'A-', 'BBB', 'BBB+', 'BBB-', 'BB', 'BB+', 'BB-', 'B', 'B+', 'B-', 'CCC', 'CCC+', 'CCC-', 'CC', 'C', 'D') THEN SPrating ELSE NULL::VARCHAR END",
+      "notes": null
+    },
+    "islowgrade": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.value",
+          "path": [
+            "cmp.SPrating",
+            "T.islowgrade"
+          ],
+          "role": "direct input",
+          "transformation_logic": "CASE WHEN SPrating IN ('AAA', 'AA', 'A', 'AA+', 'A+', 'AA-', 'A-', 'BBB', 'BBB+', 'BBB-') THEN FALSE WHEN SPrating IN ('BB', 'B', 'CCC', 'CC', 'C', 'D', 'BB+', 'B+', 'CCC+', 'BB-', 'B-', 'CCC-') THEN TRUE ELSE NULL::BOOLEAN END"
+        }
+      ],
+      "transformation_type": "CASE_MAPPING",
+      "transformation_logic": "CASE WHEN SPrating IN ('AAA', 'AA', 'A', 'AA+', 'A+', 'AA-', 'A-', 'BBB', 'BBB+', 'BBB-') THEN FALSE WHEN SPrating IN ('BB', 'B', 'CCC', 'CC', 'C', 'D', 'BB+', 'B+', 'CCC+', 'BB-', 'B-', 'CCC-') THEN TRUE ELSE NULL::BOOLEAN END",
+      "notes": null
+    },
+    "ceo": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.value",
+          "path": [
+            "cmp.CEOname",
+            "T.ceo"
+          ],
+          "role": "direct input",
+          "transformation_logic": "CEOname"
+        }
+      ],
+      "transformation_type": "RENAME",
+      "transformation_logic": "CEOname",
+      "notes": null
+    },
+    "addressline1": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.value",
+          "path": [
+            "cmp.AddrLine1",
+            "T.addressline1"
+          ],
+          "role": "direct input",
+          "transformation_logic": "AddrLine1"
+        }
+      ],
+      "transformation_type": "RENAME",
+      "transformation_logic": "AddrLine1",
+      "notes": null
+    },
+    "addressline2": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.value",
+          "path": [
+            "cmp.AddrLine2",
+            "T.addressline2"
+          ],
+          "role": "direct input",
+          "transformation_logic": "AddrLine2"
+        }
+      ],
+      "transformation_type": "RENAME",
+      "transformation_logic": "AddrLine2",
+      "notes": null
+    },
+    "postalcode": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.value",
+          "path": [
+            "cmp.PostalCode",
+            "T.postalcode"
+          ],
+          "role": "direct input",
+          "transformation_logic": "PostalCode"
+        }
+      ],
+      "transformation_type": "RENAME",
+      "transformation_logic": "PostalCode",
+      "notes": null
+    },
+    "city": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.value",
+          "path": [
+            "cmp.City",
+            "T.city"
+          ],
+          "role": "direct input",
+          "transformation_logic": "City"
+        }
+      ],
+      "transformation_type": "RENAME",
+      "transformation_logic": "City",
+      "notes": null
+    },
+    "stateprov": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.value",
+          "path": [
+            "cmp.StateProvince",
+            "T.stateprov"
+          ],
+          "role": "direct input",
+          "transformation_logic": "StateProvince"
+        }
+      ],
+      "transformation_type": "RENAME",
+      "transformation_logic": "StateProvince",
+      "notes": null
+    },
+    "country": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.value",
+          "path": [
+            "cmp.Country",
+            "T.country"
+          ],
+          "role": "direct input",
+          "transformation_logic": "Country"
+        }
+      ],
+      "transformation_type": "RENAME",
+      "transformation_logic": "Country",
+      "notes": null
+    },
+    "description": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.value",
+          "path": [
+            "cmp.Description",
+            "T.description"
+          ],
+          "role": "direct input",
+          "transformation_logic": "Description"
+        }
+      ],
+      "transformation_type": "RENAME",
+      "transformation_logic": "Description",
+      "notes": null
+    },
+    "foundingdate": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.value",
+          "path": [
+            "cmp.FoundingDate",
+            "T.foundingdate"
+          ],
+          "role": "direct input",
+          "transformation_logic": "FoundingDate"
+        }
+      ],
+      "transformation_type": "RENAME",
+      "transformation_logic": "FoundingDate",
+      "notes": null
+    },
+    "iscurrent": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.recdate",
+          "path": [
+            "cmp.recdate",
+            "T.enddate",
+            "T.iscurrent"
+          ],
+          "role": "direct input",
+          "transformation_logic": "CASE WHEN enddate = '9999-12-31'::DATE THEN TRUE ELSE FALSE END"
+        }
+      ],
+      "transformation_type": "CASE_MAPPING",
+      "transformation_logic": "CASE WHEN enddate = '9999-12-31'::DATE THEN TRUE ELSE FALSE END",
+      "notes": null
+    },
+    "batchid": {
+      "sources": [
+        {
+          "source_identifier": null,
+          "path": [
+            "T.batchid"
+          ],
+          "role": "constant",
+          "transformation_logic": "1"
+        }
+      ],
+      "transformation_type": "CONSTANT",
+      "transformation_logic": "1",
+      "notes": null
+    },
+    "effectivedate": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.recdate",
+          "path": [
+            "cmp.recdate",
+            "T.effectivedate"
+          ],
+          "role": "direct input",
+          "transformation_logic": "recdate"
+        }
+      ],
+      "transformation_type": "RENAME",
+      "transformation_logic": "recdate",
+      "notes": null
+    },
+    "enddate": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.recdate",
+          "path": [
+            "cmp.recdate",
+            "T.enddate"
+          ],
+          "role": "partition key",
+          "transformation_logic": "COALESCE(LEAD(try_cast(recdate AS DATE)) OVER (PARTITION BY cik ORDER BY recdate), try_cast('9999-12-31' AS DATE))"
+        }
+      ],
+      "transformation_type": "WINDOW_FUNCTION",
+      "transformation_logic": "COALESCE(LEAD(try_cast(recdate AS DATE)) OVER (PARTITION BY cik ORDER BY recdate), try_cast('9999-12-31' AS DATE))",
+      "notes": null
+    }
+  }
+}

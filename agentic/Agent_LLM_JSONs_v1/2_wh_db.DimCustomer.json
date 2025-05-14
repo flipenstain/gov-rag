@@ -1,0 +1,376 @@
+{
+  "target_table": "customers_final",
+  "sources_summary": [
+    {
+      "type": "TABLE",
+      "name": "customers",
+      "alias_or_cte": null
+    }
+  ],
+  "lineage": {
+    "customerid": {
+      "sources": [
+        {
+          "source_identifier": "customers.customerid",
+          "path": [
+            "customerid"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "taxid": {
+      "sources": [
+        {
+          "source_identifier": "customers.taxid",
+          "path": [
+            "taxid"
+          ],
+          "role": "direct input",
+          "transformation_logic": "COALESCE(taxid, last_value(taxid ORDER BY update_ts DESC) OVER w)"
+        }
+      ],
+      "transformation_type": "WINDOW_FUNCTION",
+      "transformation_logic": "COALESCE(taxid, last_value(taxid ORDER BY update_ts DESC) OVER w)"
+    },
+    "status": {
+      "sources": [
+        {
+          "source_identifier": "customers.status",
+          "path": [
+            "status"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "lastname": {
+      "sources": [
+        {
+          "source_identifier": "customers.lastname",
+          "path": [
+            "lastname"
+          ],
+          "role": "direct input",
+          "transformation_logic": "COALESCE(lastname, last_value(lastname ORDER BY update_ts DESC) OVER w)"
+        }
+      ],
+      "transformation_type": "WINDOW_FUNCTION",
+      "transformation_logic": "COALESCE(lastname, last_value(lastname ORDER BY update_ts DESC) OVER w)"
+    },
+    "firstname": {
+      "sources": [
+        {
+          "source_identifier": "customers.firstname",
+          "path": [
+            "firstname"
+          ],
+          "role": "direct input",
+          "transformation_logic": "COALESCE(firstname, last_value(firstname ORDER BY update_ts DESC) OVER w)"
+        }
+      ],
+      "transformation_type": "WINDOW_FUNCTION",
+      "transformation_logic": "COALESCE(firstname, last_value(firstname ORDER BY update_ts DESC) OVER w)"
+    },
+    "middleinitial": {
+      "sources": [
+        {
+          "source_identifier": "customers.middleinitial",
+          "path": [
+            "middleinitial"
+          ],
+          "role": "direct input",
+          "transformation_logic": "COALESCE(middleinitial, last_value(middleinitial ORDER BY update_ts DESC) OVER w)"
+        }
+      ],
+      "transformation_type": "WINDOW_FUNCTION",
+      "transformation_logic": "COALESCE(middleinitial, last_value(middleinitial ORDER BY update_ts DESC) OVER w)"
+    },
+    "gender": {
+      "sources": [
+        {
+          "source_identifier": "customers.gender",
+          "path": [
+            "gender"
+          ],
+          "role": "direct input",
+          "transformation_logic": "COALESCE(gender, last_value(gender ORDER BY update_ts DESC) OVER w)"
+        }
+      ],
+      "transformation_type": "WINDOW_FUNCTION",
+      "transformation_logic": "COALESCE(gender, last_value(gender ORDER BY update_ts DESC) OVER w)"
+    },
+    "tier": {
+      "sources": [
+        {
+          "source_identifier": "customers.tier",
+          "path": [
+            "tier"
+          ],
+          "role": "direct input",
+          "transformation_logic": "COALESCE(tier, last_value(tier ORDER BY update_ts DESC) OVER w)"
+        }
+      ],
+      "transformation_type": "WINDOW_FUNCTION",
+      "transformation_logic": "COALESCE(tier, last_value(tier ORDER BY update_ts DESC) OVER w)"
+    },
+    "dob": {
+      "sources": [
+        {
+          "source_identifier": "customers.dob",
+          "path": [
+            "dob"
+          ],
+          "role": "direct input",
+          "transformation_logic": "COALESCE(dob, last_value(dob ORDER BY update_ts DESC) OVER w)"
+        }
+      ],
+      "transformation_type": "WINDOW_FUNCTION",
+      "transformation_logic": "COALESCE(dob, last_value(dob ORDER BY update_ts DESC) OVER w)"
+    },
+    "addressline1": {
+      "sources": [
+        {
+          "source_identifier": "customers.addressline1",
+          "path": [
+            "addressline1"
+          ],
+          "role": "direct input",
+          "transformation_logic": "COALESCE(addressline1, last_value(addressline1 ORDER BY update_ts DESC) OVER w)"
+        }
+      ],
+      "transformation_type": "WINDOW_FUNCTION",
+      "transformation_logic": "COALESCE(addressline1, last_value(addressline1 ORDER BY update_ts DESC) OVER w)"
+    },
+    "addressline2": {
+      "sources": [
+        {
+          "source_identifier": "customers.addressline2",
+          "path": [
+            "addressline2"
+          ],
+          "role": "direct input",
+          "transformation_logic": "COALESCE(addressline2, last_value(addressline2 ORDER BY update_ts DESC) OVER w)"
+        }
+      ],
+      "transformation_type": "WINDOW_FUNCTION",
+      "transformation_logic": "COALESCE(addressline2, last_value(addressline2 ORDER BY update_ts DESC) OVER w)"
+    },
+    "postalcode": {
+      "sources": [
+        {
+          "source_identifier": "customers.postalcode",
+          "path": [
+            "postalcode"
+          ],
+          "role": "direct input",
+          "transformation_logic": "COALESCE(postalcode, last_value(postalcode ORDER BY update_ts DESC) OVER w)"
+        }
+      ],
+      "transformation_type": "WINDOW_FUNCTION",
+      "transformation_logic": "COALESCE(postalcode, last_value(postalcode ORDER BY update_ts DESC) OVER w)"
+    },
+    "CITY": {
+      "sources": [
+        {
+          "source_identifier": "customers.city",
+          "path": [
+            "CITY"
+          ],
+          "role": "direct input",
+          "transformation_logic": "COALESCE(CITY, last_value(CITY ORDER BY update_ts DESC) OVER w)"
+        }
+      ],
+      "transformation_type": "WINDOW_FUNCTION",
+      "transformation_logic": "COALESCE(CITY, last_value(CITY ORDER BY update_ts DESC) OVER w)"
+    },
+    "stateprov": {
+      "sources": [
+        {
+          "source_identifier": "customers.stateprov",
+          "path": [
+            "stateprov"
+          ],
+          "role": "direct input",
+          "transformation_logic": "COALESCE(stateprov, last_value(stateprov ORDER BY update_ts DESC) OVER w)"
+        }
+      ],
+      "transformation_type": "WINDOW_FUNCTION",
+      "transformation_logic": "COALESCE(stateprov, last_value(stateprov ORDER BY update_ts DESC) OVER w)"
+    },
+    "country": {
+      "sources": [
+        {
+          "source_identifier": "customers.country",
+          "path": [
+            "country"
+          ],
+          "role": "direct input",
+          "transformation_logic": "COALESCE(country, last_value(country ORDER BY update_ts DESC) OVER w)"
+        }
+      ],
+      "transformation_type": "WINDOW_FUNCTION",
+      "transformation_logic": "COALESCE(country, last_value(country ORDER BY update_ts DESC) OVER w)"
+    },
+    "phone1": {
+      "sources": [
+        {
+          "source_identifier": "customers.phone1",
+          "path": [
+            "phone1"
+          ],
+          "role": "direct input",
+          "transformation_logic": "COALESCE(phone1, last_value(phone1 ORDER BY update_ts DESC) OVER w)"
+        }
+      ],
+      "transformation_type": "WINDOW_FUNCTION",
+      "transformation_logic": "COALESCE(phone1, last_value(phone1 ORDER BY update_ts DESC) OVER w)"
+    },
+    "phone2": {
+      "sources": [
+        {
+          "source_identifier": "customers.phone2",
+          "path": [
+            "phone2"
+          ],
+          "role": "direct input",
+          "transformation_logic": "COALESCE(phone2, last_value(phone2 ORDER BY update_ts DESC) OVER w)"
+        }
+      ],
+      "transformation_type": "WINDOW_FUNCTION",
+      "transformation_logic": "COALESCE(phone2, last_value(phone2 ORDER BY update_ts DESC) OVER w)"
+    },
+    "phone3": {
+      "sources": [
+        {
+          "source_identifier": "customers.phone3",
+          "path": [
+            "phone3"
+          ],
+          "role": "direct input",
+          "transformation_logic": "COALESCE(phone3, last_value(phone3 ORDER BY update_ts DESC) OVER w)"
+        }
+      ],
+      "transformation_type": "WINDOW_FUNCTION",
+      "transformation_logic": "COALESCE(phone3, last_value(phone3 ORDER BY update_ts DESC) OVER w)"
+    },
+    "email1": {
+      "sources": [
+        {
+          "source_identifier": "customers.email1",
+          "path": [
+            "email1"
+          ],
+          "role": "direct input",
+          "transformation_logic": "COALESCE(email1, last_value(email1 ORDER BY update_ts DESC) OVER w)"
+        }
+      ],
+      "transformation_type": "WINDOW_FUNCTION",
+      "transformation_logic": "COALESCE(email1, last_value(email1 ORDER BY update_ts DESC) OVER w)"
+    },
+    "email2": {
+      "sources": [
+        {
+          "source_identifier": "customers.email2",
+          "path": [
+            "email2"
+          ],
+          "role": "direct input",
+          "transformation_logic": "COALESCE(email2, last_value(email2 ORDER BY update_ts DESC) OVER w)"
+        }
+      ],
+      "transformation_type": "WINDOW_FUNCTION",
+      "transformation_logic": "COALESCE(email2, last_value(email2 ORDER BY update_ts DESC) OVER w)"
+    },
+    "LCL_TX_ID": {
+      "sources": [
+        {
+          "source_identifier": "customers.lcl_tx_id",
+          "path": [
+            "LCL_TX_ID"
+          ],
+          "role": "direct input",
+          "transformation_logic": "COALESCE(LCL_TX_ID, last_value(LCL_TX_ID ORDER BY update_ts DESC) OVER w)"
+        }
+      ],
+      "transformation_type": "WINDOW_FUNCTION",
+      "transformation_logic": "COALESCE(LCL_TX_ID, last_value(LCL_TX_ID ORDER BY update_ts DESC) OVER w)"
+    },
+    "NAT_TX_ID": {
+      "sources": [
+        {
+          "source_identifier": "customers.nat_tx_id",
+          "path": [
+            "NAT_TX_ID"
+          ],
+          "role": "direct input",
+          "transformation_logic": "COALESCE(NAT_TX_ID, last_value(NAT_TX_ID ORDER BY update_ts DESC) OVER w)"
+        }
+      ],
+      "transformation_type": "WINDOW_FUNCTION",
+      "transformation_logic": "COALESCE(NAT_TX_ID, last_value(NAT_TX_ID ORDER BY update_ts DESC) OVER w)"
+    },
+    "batchid": {
+      "sources": [
+        {
+          "source_identifier": "customers.batchid",
+          "path": [
+            "batchid"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "iscurrent": {
+      "sources": [
+        {
+          "source_identifier": "customers.update_ts",
+          "path": [
+            "update_ts"
+          ],
+          "role": "partition key",
+          "transformation_logic": "CASE WHEN NULLIF(lead(update_ts) OVER w, NULL) IS NULL THEN 'Y' ELSE 'N' END"
+        }
+      ],
+      "transformation_type": "WINDOW_FUNCTION",
+      "transformation_logic": "CASE WHEN NULLIF(lead(update_ts) OVER w, NULL) IS NULL THEN 'Y' ELSE 'N' END"
+    },
+    "effectivedate": {
+      "sources": [
+        {
+          "source_identifier": "customers.update_ts",
+          "path": [
+            "update_ts"
+          ],
+          "role": "direct input",
+          "transformation_logic": "update_ts::DATE"
+        }
+      ],
+      "transformation_type": "CAST",
+      "transformation_logic": "update_ts::DATE"
+    },
+    "enddate": {
+      "sources": [
+        {
+          "source_identifier": "customers.update_ts",
+          "path": [
+            "update_ts"
+          ],
+          "role": "direct input",
+          "transformation_logic": "COALESCE(lead(update_ts::DATE) OVER w, '9999-12-31'::DATE)"
+        }
+      ],
+      "transformation_type": "WINDOW_FUNCTION",
+      "transformation_logic": "COALESCE(lead(update_ts::DATE) OVER w, '9999-12-31'::DATE)"
+    }
+  }
+}

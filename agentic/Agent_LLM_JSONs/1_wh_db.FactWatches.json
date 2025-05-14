@@ -1,0 +1,133 @@
+{
+  "target_table": "wh_db.FactWatches",
+  "sources_summary": [
+    {
+      "type": "FILE",
+      "name": "src/data/Batch1\\WatchHistory.txt",
+      "alias_or_cte": "read_csv('src/data/Batch1\\WatchHistory.txt', HEADER=FALSE, columns={'w_c_id': 'BIGINT', 'w_s_symb': 'VARCHAR', 'w_dts': 'TIMESTAMP', 'w_action': 'VARCHAR'})"
+    },
+    {
+      "type": "TABLE",
+      "name": "wh_db.DimSecurity",
+      "alias_or_cte": "wh_db.DimSecurity"
+    },
+    {
+      "type": "TABLE",
+      "name": "wh_db.DimCustomer",
+      "alias_or_cte": "wh_db.DimCustomer"
+    }
+  ],
+  "lineage": {
+    "sk_customerid": {
+      "sources": [
+        {
+          "source_identifier": "wh_db.DimCustomer.sk_customerid",
+          "path": [
+            "wh_db.DimCustomer.sk_customerid"
+          ],
+          "role": "join key",
+          "join_info": {
+            "type": "INNER JOIN",
+            "left_source": {
+              "identifier": "watches.customerid",
+              "path": [
+                "watchhistory.w_c_id",
+                "watches.customerid"
+              ]
+            },
+            "right_source": {
+              "identifier": "wh_db.DimCustomer.customerid",
+              "path": [
+                "wh_db.DimCustomer.customerid"
+              ]
+            }
+          }
+        }
+      ],
+      "transformation_type": "JOIN_LOOKUP",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "sk_securityid": {
+      "sources": [
+        {
+          "source_identifier": "wh_db.DimSecurity.sk_securityid",
+          "path": [
+            "wh_db.DimSecurity.sk_securityid"
+          ],
+          "role": "join key",
+          "join_info": {
+            "type": "INNER JOIN",
+            "left_source": {
+              "identifier": "watches.symbol",
+              "path": [
+                "watchhistory.w_s_symb",
+                "watches.symbol"
+              ]
+            },
+            "right_source": {
+              "identifier": "wh_db.DimSecurity.symbol",
+              "path": [
+                "wh_db.DimSecurity.symbol"
+              ]
+            }
+          }
+        }
+      ],
+      "transformation_type": "JOIN_LOOKUP",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "sk_dateid_dateplaced": {
+      "sources": [
+        {
+          "source_identifier": "watchhistory.w_dts",
+          "path": [
+            "watchhistory.w_dts",
+            "watches.dateplaced",
+            "watches.dateplaced"
+          ],
+          "role": "direct input",
+          "join_info": null
+        }
+      ],
+      "transformation_type": "CAST",
+      "transformation_logic": "CAST(strftime(dateplaced, '%Y%m%d') AS BIGINT)",
+      "notes": null
+    },
+    "sk_dateid_dateremoved": {
+      "sources": [
+        {
+          "source_identifier": "watchhistory.w_dts",
+          "path": [
+            "watchhistory.w_dts",
+            "watches.dateremoved",
+            "watches.dateremoved"
+          ],
+          "role": "direct input",
+          "join_info": null
+        }
+      ],
+      "transformation_type": "CAST",
+      "transformation_logic": "CAST(strftime(dateremoved, '%Y%m%d') AS BIGINT)",
+      "notes": null
+    },
+    "batchid": {
+      "sources": [
+        {
+          "source_identifier": "watchhistory.batchid",
+          "path": [
+            "watchhistory.batchid",
+            "watches.batchid",
+            "watches.batchid"
+          ],
+          "role": "direct input",
+          "join_info": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null,
+      "notes": null
+    }
+  }
+}

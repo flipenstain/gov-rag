@@ -1,0 +1,588 @@
+{
+  "target_table": "wh_db.DimCustomer",
+  "sources_summary": [
+    {
+      "type": "TABLE",
+      "name": "wh_db.DimCustomer",
+      "alias_or_cte": "MaxSK"
+    },
+    {
+      "type": "TABLE",
+      "name": "customers_final",
+      "alias_or_cte": "CustomerData"
+    },
+    {
+      "type": "TABLE",
+      "name": "wh_db.TaxRate",
+      "alias_or_cte": "CustomerData"
+    },
+    {
+      "type": "TABLE",
+      "name": "wh_db.TaxRate",
+      "alias_or_cte": "CustomerData"
+    },
+    {
+      "type": "TABLE",
+      "name": "wh_db_stage.ProspectIncremental",
+      "alias_or_cte": "CustomerData"
+    }
+  ],
+  "lineage": {
+    "sk_customerid": {
+      "sources": [
+        {
+          "source_identifier": "wh_db.DimCustomer.sk_customerid",
+          "path": [
+            "MaxSK.max_sk_customerid"
+          ],
+          "role": "aggregation input"
+        },
+        {
+          "source_identifier": null,
+          "path": [],
+          "role": "constant",
+          "transformation_logic": "1"
+        }
+      ],
+      "transformation_type": "WINDOW_FUNCTION",
+      "transformation_logic": "ROW_NUMBER() OVER () + (SELECT max_sk_customerid FROM MaxSK) + 1",
+      "notes": null
+    },
+    "customerid": {
+      "sources": [
+        {
+          "source_identifier": "customers_final.customerid",
+          "path": [
+            "CustomerData.customerid"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "taxid": {
+      "sources": [
+        {
+          "source_identifier": "customers_final.taxid",
+          "path": [
+            "CustomerData.taxid"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "status": {
+      "sources": [
+        {
+          "source_identifier": "customers_final.status",
+          "path": [
+            "CustomerData.status"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "lastname": {
+      "sources": [
+        {
+          "source_identifier": "customers_final.lastname",
+          "path": [
+            "CustomerData.lastname"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "firstname": {
+      "sources": [
+        {
+          "source_identifier": "customers_final.firstname",
+          "path": [
+            "CustomerData.firstname"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "middleinitial": {
+      "sources": [
+        {
+          "source_identifier": "customers_final.middleinitial",
+          "path": [
+            "CustomerData.middleinitial"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "gender": {
+      "sources": [
+        {
+          "source_identifier": "customers_final.gender",
+          "path": [
+            "CustomerData.gender"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "CASE_MAPPING",
+      "transformation_logic": "IF(c.gender IN ('M', 'F'), c.gender, 'U')",
+      "notes": null
+    },
+    "tier": {
+      "sources": [
+        {
+          "source_identifier": "customers_final.tier",
+          "path": [
+            "CustomerData.tier"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "dob": {
+      "sources": [
+        {
+          "source_identifier": "customers_final.dob",
+          "path": [
+            "CustomerData.dob"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "addressline1": {
+      "sources": [
+        {
+          "source_identifier": "customers_final.addressline1",
+          "path": [
+            "CustomerData.addressline1"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "addressline2": {
+      "sources": [
+        {
+          "source_identifier": "customers_final.addressline2",
+          "path": [
+            "CustomerData.addressline2"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "postalcode": {
+      "sources": [
+        {
+          "source_identifier": "customers_final.postalcode",
+          "path": [
+            "CustomerData.postalcode"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "city": {
+      "sources": [
+        {
+          "source_identifier": "customers_final.CITY",
+          "path": [
+            "CustomerData.city"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "stateprov": {
+      "sources": [
+        {
+          "source_identifier": "customers_final.stateprov",
+          "path": [
+            "CustomerData.stateprov"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "country": {
+      "sources": [
+        {
+          "source_identifier": "customers_final.country",
+          "path": [
+            "CustomerData.country"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "phone1": {
+      "sources": [
+        {
+          "source_identifier": "customers_final.phone1",
+          "path": [
+            "CustomerData.phone1"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "phone2": {
+      "sources": [
+        {
+          "source_identifier": "customers_final.phone2",
+          "path": [
+            "CustomerData.phone2"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "phone3": {
+      "sources": [
+        {
+          "source_identifier": "customers_final.phone3",
+          "path": [
+            "CustomerData.phone3"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "email1": {
+      "sources": [
+        {
+          "source_identifier": "customers_final.email1",
+          "path": [
+            "CustomerData.email1"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "email2": {
+      "sources": [
+        {
+          "source_identifier": "customers_final.email2",
+          "path": [
+            "CustomerData.email2"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "nationaltaxratedesc": {
+      "sources": [
+        {
+          "source_identifier": "wh_db.TaxRate.TX_NAME",
+          "path": [
+            "CustomerData.nationaltaxratedesc"
+          ],
+          "role": "join key",
+          "join_info": {
+            "type": "INNER JOIN",
+            "left_source": {
+              "identifier": "customers_final.nat_tx_id",
+              "path": []
+            },
+            "right_source": {
+              "identifier": "wh_db.TaxRate.TX_ID",
+              "path": []
+            }
+          }
+        }
+      ],
+      "transformation_type": "JOIN_LOOKUP",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "nationaltaxrate": {
+      "sources": [
+        {
+          "source_identifier": "wh_db.TaxRate.TX_RATE",
+          "path": [
+            "CustomerData.nationaltaxrate"
+          ],
+          "role": "join key",
+          "join_info": {
+            "type": "INNER JOIN",
+            "left_source": {
+              "identifier": "customers_final.nat_tx_id",
+              "path": []
+            },
+            "right_source": {
+              "identifier": "wh_db.TaxRate.TX_ID",
+              "path": []
+            }
+          }
+        }
+      ],
+      "transformation_type": "JOIN_LOOKUP",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "localtaxratedesc": {
+      "sources": [
+        {
+          "source_identifier": "wh_db.TaxRate.TX_NAME",
+          "path": [
+            "CustomerData.localtaxratedesc"
+          ],
+          "role": "join key",
+          "join_info": {
+            "type": "INNER JOIN",
+            "left_source": {
+              "identifier": "customers_final.lcl_tx_id",
+              "path": []
+            },
+            "right_source": {
+              "identifier": "wh_db.TaxRate.TX_ID",
+              "path": []
+            }
+          }
+        }
+      ],
+      "transformation_type": "JOIN_LOOKUP",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "localtaxrate": {
+      "sources": [
+        {
+          "source_identifier": "wh_db.TaxRate.TX_RATE",
+          "path": [
+            "CustomerData.localtaxrate"
+          ],
+          "role": "join key",
+          "join_info": {
+            "type": "INNER JOIN",
+            "left_source": {
+              "identifier": "customers_final.lcl_tx_id",
+              "path": []
+            },
+            "right_source": {
+              "identifier": "wh_db.TaxRate.TX_ID",
+              "path": []
+            }
+          }
+        }
+      ],
+      "transformation_type": "JOIN_LOOKUP",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "agencyid": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.ProspectIncremental.agencyid",
+          "path": [
+            "CustomerData.agencyid"
+          ],
+          "role": "join key",
+          "join_info": {
+            "type": "LEFT JOIN",
+            "left_source": {
+              "identifier": "wh_db_stage.ProspectIncremental.lastname",
+              "path": []
+            },
+            "right_source": {
+              "identifier": "customers_final.lastname",
+              "path": []
+            }
+          }
+        }
+      ],
+      "transformation_type": "JOIN_LOOKUP",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "creditrating": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.ProspectIncremental.creditrating",
+          "path": [
+            "CustomerData.creditrating"
+          ],
+          "role": "join key",
+          "join_info": {
+            "type": "LEFT JOIN",
+            "left_source": {
+              "identifier": "wh_db_stage.ProspectIncremental.lastname",
+              "path": []
+            },
+            "right_source": {
+              "identifier": "customers_final.lastname",
+              "path": []
+            }
+          }
+        }
+      ],
+      "transformation_type": "JOIN_LOOKUP",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "networth": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.ProspectIncremental.networth",
+          "path": [
+            "CustomerData.networth"
+          ],
+          "role": "join key",
+          "join_info": {
+            "type": "LEFT JOIN",
+            "left_source": {
+              "identifier": "wh_db_stage.ProspectIncremental.lastname",
+              "path": []
+            },
+            "right_source": {
+              "identifier": "customers_final.lastname",
+              "path": []
+            }
+          }
+        }
+      ],
+      "transformation_type": "JOIN_LOOKUP",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "marketingnameplate": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.ProspectIncremental.marketingnameplate",
+          "path": [
+            "CustomerData.marketingnameplate"
+          ],
+          "role": "join key",
+          "join_info": {
+            "type": "LEFT JOIN",
+            "left_source": {
+              "identifier": "wh_db_stage.ProspectIncremental.lastname",
+              "path": []
+            },
+            "right_source": {
+              "identifier": "customers_final.lastname",
+              "path": []
+            }
+          }
+        }
+      ],
+      "transformation_type": "JOIN_LOOKUP",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "iscurrent": {
+      "sources": [
+        {
+          "source_identifier": "customers_final.iscurrent",
+          "path": [
+            "CustomerData.iscurrent"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "batchid": {
+      "sources": [
+        {
+          "source_identifier": "customers_final.batchid",
+          "path": [
+            "CustomerData.batchid"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "effectivedate": {
+      "sources": [
+        {
+          "source_identifier": "customers_final.effectivedate",
+          "path": [
+            "CustomerData.effectivedate"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null,
+      "notes": null
+    },
+    "enddate": {
+      "sources": [
+        {
+          "source_identifier": "customers_final.enddate",
+          "path": [
+            "CustomerData.enddate"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null,
+      "notes": null
+    }
+  }
+}

@@ -1,0 +1,346 @@
+{
+  "target_table": "customers",
+  "sources_summary": [
+    {
+      "type": "TABLE",
+      "name": "wh_db_stage.CustomerMgmt",
+      "alias_or_cte": "c"
+    }
+  ],
+  "lineage": {
+    "customerid": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.CustomerMgmt.customerid",
+          "path": [
+            "c.customerid"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "taxid": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.CustomerMgmt.taxid",
+          "path": [
+            "c.taxid"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "status": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.CustomerMgmt.status",
+          "path": [
+            "c.status"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "lastname": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.CustomerMgmt.lastname",
+          "path": [
+            "c.lastname"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "firstname": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.CustomerMgmt.firstname",
+          "path": [
+            "c.firstname"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "middleinitial": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.CustomerMgmt.middleinitial",
+          "path": [
+            "c.middleinitial"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "gender": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.CustomerMgmt.gender",
+          "path": [
+            "c.gender"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "tier": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.CustomerMgmt.tier",
+          "path": [
+            "c.tier"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "dob": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.CustomerMgmt.dob",
+          "path": [
+            "c.dob"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "addressline1": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.CustomerMgmt.addressline1",
+          "path": [
+            "c.addressline1"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "addressline2": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.CustomerMgmt.addressline2",
+          "path": [
+            "c.addressline2"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "postalcode": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.CustomerMgmt.postalcode",
+          "path": [
+            "c.postalcode"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "city": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.CustomerMgmt.city",
+          "path": [
+            "c.city"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "stateprov": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.CustomerMgmt.stateprov",
+          "path": [
+            "c.stateprov"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "country": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.CustomerMgmt.country",
+          "path": [
+            "c.country"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "phone1": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.CustomerMgmt.phone1",
+          "path": [
+            "c.phone1"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "phone2": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.CustomerMgmt.phone2",
+          "path": [
+            "c.phone2"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "phone3": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.CustomerMgmt.phone3",
+          "path": [
+            "c.phone3"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "email1": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.CustomerMgmt.email1",
+          "path": [
+            "c.email1"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "email2": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.CustomerMgmt.email2",
+          "path": [
+            "c.email2"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "lcl_tx_id": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.CustomerMgmt.lcl_tx_id",
+          "path": [
+            "c.lcl_tx_id"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "nat_tx_id": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.CustomerMgmt.nat_tx_id",
+          "path": [
+            "c.nat_tx_id"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "batchid": {
+      "sources": [
+        {
+          "source_identifier": null,
+          "path": [],
+          "role": "constant",
+          "transformation_logic": "1"
+        }
+      ],
+      "transformation_type": "CONSTANT",
+      "transformation_logic": "1"
+    },
+    "update_ts": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.CustomerMgmt.update_ts",
+          "path": [
+            "c.update_ts"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    }
+  }
+}

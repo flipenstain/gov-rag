@@ -1,0 +1,28 @@
+Analyze the following SQL script to determine its primary command type and whether resolving full column-level lineage would require external context (like looking up table schemas in a database).
+
+SQL Script:
+```sql
+{sql_content}
+```
+
+Consider these factors for `requires_context`:
+- Does it use `SELECT *`? (Requires context)
+- Is it an `INSERT` statement without an explicit column list? (Requires context)
+- Is it a `COPY FROM` statement? (Requires context to know target columns)
+- Is it a `CREATE TABLE AS SELECT ...`? (May require context depending on the SELECT part)
+- Does it use explicit column names everywhere? (Likely does not require context)
+
+Identify the primary command type from this list (or determine if it's 'OTHER'):
+- SELECT
+- COPY
+- INSERT
+- CREATE_TABLE_AS
+- UPDATE
+- MERGE
+- OTHER
+
+Respond ONLY with a JSON object in the following format:
+{{
+  "statement_type": "TYPE_FROM_LIST",
+  "requires_context": true_or_false
+}}

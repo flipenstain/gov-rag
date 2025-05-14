@@ -1,0 +1,60 @@
+{
+  "target_table": "wh_db.TradeType",
+  "sources_summary": [
+    {
+      "type": "FILE",
+      "name": "src/data/Batch1\\TradeType.txt",
+      "alias_or_cte": null
+    }
+  ],
+  "lineage": {
+    "tt_id": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col1",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "tt_name": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col2",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "tt_is_sell": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col3",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "tt_is_mrkt": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col4",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    }
+  }
+}

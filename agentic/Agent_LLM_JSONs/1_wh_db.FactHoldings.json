@@ -1,0 +1,269 @@
+{
+  "target_table": "wh_db.FactHoldings",
+  "sources_summary": [
+    {
+      "type": "FILE",
+      "name": "src/data/Batch1\\HoldingHistory.txt",
+      "alias_or_cte": "read_csv(...)"
+    },
+    {
+      "type": "TABLE",
+      "name": "wh_db.DimTrade",
+      "alias_or_cte": "wh_db.DimTrade"
+    }
+  ],
+  "lineage": {
+    "tradeid": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_colX",
+          "path": [
+            "Holdings.hh_h_t_id"
+          ],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "RENAME",
+      "transformation_logic": "hh_h_t_id AS tradeid"
+    },
+    "currenttradeid": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_colX",
+          "path": [
+            "Holdings.hh_t_id"
+          ],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "RENAME",
+      "transformation_logic": "hh_t_id AS currenttradeid"
+    },
+    "sk_customerid": {
+      "sources": [
+        {
+          "source_identifier": "wh_db.DimTrade.sk_customerid",
+          "path": [
+            "dt.sk_customerid"
+          ],
+          "role": "join key",
+          "join_info": {
+            "type": "INNER JOIN",
+            "left_source": {
+              "identifier": "Holdings.hh_t_id",
+              "path": [
+                "Holdings.hh_t_id"
+              ]
+            },
+            "right_source": {
+              "identifier": "wh_db.DimTrade.tradeid",
+              "path": [
+                "wh_db.DimTrade.tradeid"
+              ]
+            }
+          }
+        }
+      ],
+      "transformation_type": "JOIN_LOOKUP",
+      "transformation_logic": "JOIN wh_db.DimTrade dt ON tradeid = hh_t_id"
+    },
+    "sk_accountid": {
+      "sources": [
+        {
+          "source_identifier": "wh_db.DimTrade.sk_accountid",
+          "path": [
+            "dt.sk_accountid"
+          ],
+          "role": "join key",
+          "join_info": {
+            "type": "INNER JOIN",
+            "left_source": {
+              "identifier": "Holdings.hh_t_id",
+              "path": [
+                "Holdings.hh_t_id"
+              ]
+            },
+            "right_source": {
+              "identifier": "wh_db.DimTrade.tradeid",
+              "path": [
+                "wh_db.DimTrade.tradeid"
+              ]
+            }
+          }
+        }
+      ],
+      "transformation_type": "JOIN_LOOKUP",
+      "transformation_logic": "JOIN wh_db.DimTrade dt ON tradeid = hh_t_id"
+    },
+    "sk_securityid": {
+      "sources": [
+        {
+          "source_identifier": "wh_db.DimTrade.sk_securityid",
+          "path": [
+            "dt.sk_securityid"
+          ],
+          "role": "join key",
+          "join_info": {
+            "type": "INNER JOIN",
+            "left_source": {
+              "identifier": "Holdings.hh_t_id",
+              "path": [
+                "Holdings.hh_t_id"
+              ]
+            },
+            "right_source": {
+              "identifier": "wh_db.DimTrade.tradeid",
+              "path": [
+                "wh_db.DimTrade.tradeid"
+              ]
+            }
+          }
+        }
+      ],
+      "transformation_type": "JOIN_LOOKUP",
+      "transformation_logic": "JOIN wh_db.DimTrade dt ON tradeid = hh_t_id"
+    },
+    "sk_companyid": {
+      "sources": [
+        {
+          "source_identifier": "wh_db.DimTrade.sk_companyid",
+          "path": [
+            "dt.sk_companyid"
+          ],
+          "role": "join key",
+          "join_info": {
+            "type": "INNER JOIN",
+            "left_source": {
+              "identifier": "Holdings.hh_t_id",
+              "path": [
+                "Holdings.hh_t_id"
+              ]
+            },
+            "right_source": {
+              "identifier": "wh_db.DimTrade.tradeid",
+              "path": [
+                "wh_db.DimTrade.tradeid"
+              ]
+            }
+          }
+        }
+      ],
+      "transformation_type": "JOIN_LOOKUP",
+      "transformation_logic": "JOIN wh_db.DimTrade dt ON tradeid = hh_t_id"
+    },
+    "sk_dateid": {
+      "sources": [
+        {
+          "source_identifier": "wh_db.DimTrade.sk_closedateid",
+          "path": [
+            "dt.sk_closedateid"
+          ],
+          "role": "join key",
+          "join_info": {
+            "type": "INNER JOIN",
+            "left_source": {
+              "identifier": "Holdings.hh_t_id",
+              "path": [
+                "Holdings.hh_t_id"
+              ]
+            },
+            "right_source": {
+              "identifier": "wh_db.DimTrade.tradeid",
+              "path": [
+                "wh_db.DimTrade.tradeid"
+              ]
+            }
+          }
+        }
+      ],
+      "transformation_type": "RENAME",
+      "transformation_logic": "sk_closedateid AS sk_dateid"
+    },
+    "sk_timeid": {
+      "sources": [
+        {
+          "source_identifier": "wh_db.DimTrade.sk_closetimeid",
+          "path": [
+            "dt.sk_closetimeid"
+          ],
+          "role": "join key",
+          "join_info": {
+            "type": "INNER JOIN",
+            "left_source": {
+              "identifier": "Holdings.hh_t_id",
+              "path": [
+                "Holdings.hh_t_id"
+              ]
+            },
+            "right_source": {
+              "identifier": "wh_db.DimTrade.tradeid",
+              "path": [
+                "wh_db.DimTrade.tradeid"
+              ]
+            }
+          }
+        }
+      ],
+      "transformation_type": "RENAME",
+      "transformation_logic": "sk_closetimeid AS sk_timeid"
+    },
+    "currentprice": {
+      "sources": [
+        {
+          "source_identifier": "wh_db.DimTrade.tradeprice",
+          "path": [
+            "dt.tradeprice"
+          ],
+          "role": "join key",
+          "join_info": {
+            "type": "INNER JOIN",
+            "left_source": {
+              "identifier": "Holdings.hh_t_id",
+              "path": [
+                "Holdings.hh_t_id"
+              ]
+            },
+            "right_source": {
+              "identifier": "wh_db.DimTrade.tradeid",
+              "path": [
+                "wh_db.DimTrade.tradeid"
+              ]
+            }
+          }
+        }
+      ],
+      "transformation_type": "RENAME",
+      "transformation_logic": "tradeprice AS currentprice"
+    },
+    "currentholding": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_colX",
+          "path": [
+            "Holdings.hh_after_qty"
+          ],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "RENAME",
+      "transformation_logic": "hh_after_qty AS currentholding"
+    },
+    "batchid": {
+      "sources": [
+        {
+          "source_identifier": "Holdings.batchid",
+          "path": [
+            "h.batchid"
+          ],
+          "role": "direct input",
+          "transformation_logic": "1 AS batchid"
+        }
+      ],
+      "transformation_type": "CONSTANT",
+      "transformation_logic": "1 AS batchid"
+    }
+  }
+}

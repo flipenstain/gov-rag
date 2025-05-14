@@ -1,0 +1,138 @@
+{
+  "target_table": "temp_broker",
+  "sources_summary": [
+    {
+      "type": "FILE",
+      "name": "src/data/Batch1\\HR.csv",
+      "alias_or_cte": null
+    }
+  ],
+  "lineage": {
+    "employeeid": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col0",
+          "path": [
+            "temp_broker.employeeid"
+          ],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "managerid": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col1",
+          "path": [
+            "temp_broker.managerid"
+          ],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "employeefirstname": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col2",
+          "path": [
+            "temp_broker.employeefirstname"
+          ],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "employeelastname": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col3",
+          "path": [
+            "temp_broker.employeelastname"
+          ],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "employeemi": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col4",
+          "path": [
+            "temp_broker.employeemi"
+          ],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "employeejobcode": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col5",
+          "path": [
+            "temp_broker.employeejobcode"
+          ],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "employeebranch": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col6",
+          "path": [
+            "temp_broker.employeebranch"
+          ],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "employeeoffice": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col7",
+          "path": [
+            "temp_broker.employeeoffice"
+          ],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "employeephone": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col8",
+          "path": [
+            "temp_broker.employeephone"
+          ],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    }
+  }
+}

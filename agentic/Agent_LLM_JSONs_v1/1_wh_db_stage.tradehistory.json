@@ -1,0 +1,180 @@
+{
+  "target_table": "wh_db_stage.tradetxt",
+  "sources_summary": [
+    {
+      "type": "FILE",
+      "name": "src/data/Batch1\\Trade.txt",
+      "alias_or_cte": "read_csv('src/data/Batch1\\Trade.txt', HEADER=FALSE, filename=false, all_varchar=true, delim='|',strict_mode=false , columns = {\"tradeid\": \"BIGINT\", \"t_dts\": \"TIMESTAMP\", \"status\": \"STRING\", \"t_tt_id\": \"STRING\", \"cashflag\": \"TINYINT\", \"t_s_symb\": \"STRING\", \"quantity\": \"INT\", \"bidprice\": \"DOUBLE\", \"t_ca_id\": \"BIGINT\", \"executedby\": \"STRING\", \"tradeprice\": \"DOUBLE\", \"fee\": \"DOUBLE\", \"commission\": \"DOUBLE\", \"tax\": \"DOUBLE\"})"
+    }
+  ],
+  "lineage": {
+    "tradeid": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col0",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "t_dts": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col1",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "status": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col2",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "t_tt_id": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col3",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "cashflag": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col4",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "t_s_symb": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col5",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "quantity": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col6",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "bidprice": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col7",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "t_ca_id": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col8",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "executedby": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col9",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "tradeprice": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col10",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "fee": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col11",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "commission": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col12",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "tax": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col13",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    }
+  }
+}

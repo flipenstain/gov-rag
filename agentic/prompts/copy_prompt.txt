@@ -1,0 +1,56 @@
+Analyze the following SQL `COPY FROM` statement. Your goal is to produce a JSON output summarizing the operation, including the specific target columns obtained by using a tool.
+
+SQL Statement:
+```sql
+{sql_content}
+```
+
+**Instructions:**
+
+1.  **Verify Statement:** Confirm the statement starts with `COPY` (case-insensitive). If not, respond with an error JSON: `{{"error": "Not a COPY statement"}}`.
+
+2.  **Extract Information:**
+    * Extract the target table name (e.g., `schema.table`).
+    * Extract the source file path (e.g., `'src/data/Batch1\\Aeg.txt'`). Get just the filename (e.g., `Aeg.txt`).
+    * Extract any options specified in parentheses (e.g., `DELIMITER '|'`).
+
+3.  **Use Tool for Target Columns:**
+    * You MUST use the `get_table_columns` tool to retrieve the actual column names for the extracted target table name.
+    * Respond ONLY with the function call request for `get_table_columns`.
+
+4.  **Generate Final JSON (After Tool Use):**
+    * Once you receive the list of columns from the tool, generate the final JSON object.
+    * Use the retrieved columns as keys in the `lineage` object.
+    * Generate a JSON object ONLY with the following structure:
+        ```json
+        {{
+          "target_table": "extracted_target_table",
+          "sources_summary": [
+            {{"type": "FILE", "name": "extracted_filename", "alias_or_cte": "extracted_options_string"}}
+          ],
+          "lineage": {{
+            "retrieved_column_1": {{
+              "sources": [
+                {{"source_identifier": "file.column_1", "path": []}}
+              ],
+              "transformation_type": "DIRECT INPUT",
+              "transformation_logic": "COPY from file"
+            }},
+            "retrieved_column_2": {{
+              "sources": [
+                {{"source_identifier": "file.column_2", "path": []}}
+              ],
+              "transformation_type": "DIRECT INPUT",
+              "transformation_logic": "COPY from file"
+            }},
+            ... // Repeat for each column returned by the tool
+          }}
+        }}
+        ```
+        * Replace `extracted_target_table`, `extracted_filename`, and `extracted_options_string` with the values you found earlier.
+        * Replace `retrieved_column_1`, `retrieved_column_2`, etc., with the actual column names returned by the `get_table_columns` tool.
+        * Use placeholder source identifiers like `file.placeholder_source_column_for_col1` for each target column.
+
+**Output Format:**
+* If you need to call the `get_table_columns` function, respond ONLY with the function call request.
+* After the function call is successfully completed and you have the columns, respond ONLY with the final JSON object described in step 4. Do not include any other text, explanations, or markdown formatting around the JSON.

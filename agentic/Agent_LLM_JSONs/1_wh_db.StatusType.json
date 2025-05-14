@@ -1,0 +1,38 @@
+{
+  "target_table": "wh_db.StatusType",
+  "sources_summary": [
+    {
+      "type": "FILE",
+      "name": "src/data/Batch1\\StatusType.txt",
+      "alias_or_cte": null
+    }
+  ],
+  "lineage": {
+    "st_id": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col1",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file",
+      "notes": null
+    },
+    "st_name": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col2",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file",
+      "notes": null
+    }
+  }
+}

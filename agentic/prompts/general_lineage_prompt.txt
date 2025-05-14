@@ -1,0 +1,119 @@
+You are provided with an SQL script and potentially some pre-fetched context (e.g., table schemas). Your task is to generate detailed column-level lineage for the provided SQL query, tracing data flow from source to target.
+
+SQL Script:
+```sql
+{sql_content}
+```
+
+Pre-fetched Context (if available, otherwise empty):
+```json
+{context_json}
+```
+
+**Task:** Generate detailed column-level lineage for the provided SQL query.
+**Output Format:** JSON, strictly adhering to the structure shown in the Example Output JSON below.
+
+**Instructions:**
+1.  Identify the target table (if applicable, e.g., for `INSERT`, `CREATE TABLE AS`) and all source tables/CTEs involved in the final data output or modification step. Populate the `target_table` and `sources_summary` fields.
+2.  For **each** column in the final `INSERT` target list or the outermost `SELECT` list:
+    * Trace its lineage back to the **ultimate source table(s) and column(s)**. If the source is a file (e.g., from `COPY`), use a placeholder like `file.placeholder_source_for_colX`.
+    * Document the **transformation path** (aliases, CTE names involved). Use the `path` field within the `sources` list.
+    * Identify the specific **transformation logic** (SQL expression, or description like 'COPY from file'). Use `transformation_logic`.
+    * Categorize the primary **transformation type** (e.g., `DIRECT INPUT`, `CAST`, `CASE_MAPPING`, `JOIN_LOOKUP`, `WINDOW_FUNCTION`, `RENAME`, `CONSTANT`, `EXPRESSION_CONCAT`, `SUBSTRING`, `AGGREGATION`). Use `transformation_type`. If it's a direct copy from a file, use `DIRECT INPUT`.
+    * Detail the **role** of each source column in the transformation (e.g., `direct input`, `join key`, `partition key`, `used in condition`, `aggregation input`). Use the `role` field within `sources`. Include `join_info` within the source entry if the column comes directly via a join.
+3.  Accurately represent lineage involving various SQL constructs, including but not limited to:
+    * `COPY FROM` statements (treat file as source, use provided context for target columns).
+    * CTEs (`WITH` clauses).
+    * Multiple Joins (including join type and keys in `join_info`).
+    * `CASE WHEN` statements.
+    * Window Functions (`LEAD`, `LAG`, `ROW_NUMBER`, etc.).
+    * String manipulations (`SUBSTR`, `TRIM`, concatenation `||`).
+    * Type Casting (`CAST`, `TRY_CAST`, date/time functions).
+    * Constants and Direct Renames/Aliases.
+    * SCD2 logic (effective/end dates, current flags).
+    * Filtering (`WHERE` clauses affecting source data within CTEs or subqueries).
+    * Aggregations (`GROUP BY`, `SUM`, `COUNT`, etc.).
+    * `INSERT` statements (including those without explicit column lists, using context if provided).
+    * `CREATE TABLE AS SELECT` statements.
+4.  Use the `context_json` provided to resolve column names when needed (e.g., for `SELECT *`, implicit `INSERT` columns, `COPY` target columns). If context for a required table/column is missing, make a reasonable assumption or indicate the missing information in a `notes` field for that column's lineage.
+5.  Structure the output JSON as described below. The `lineage` field should be a dictionary where keys are the final target column names.
+
+**Example Input SQL (Illustrative - your input might be different):**
+```sql
+-- Example Input SQL: Demonstrates INSERT, CTE, JOIN, CASE, Window Func, CAST, SUBSTR
+INSERT INTO wh.DimComp -- Shortened target
+WITH cmp AS (
+  SELECT
+    TRIM(SUBSTR(value, 1, 10)) AS CompName, -- String op
+    TRIM(SUBSTR(value, 11, 5)) AS CIK,     -- String op -> CAST source
+    TRIM(SUBSTR(value, 16, 4)) AS Status,    -- CASE source
+    TRIM(SUBSTR(value, 20, 2)) AS IndID,     -- JOIN key
+    TRY_CAST(SUBSTR(value, 22, 8) AS DATE) AS RecDate -- CAST & Window func source
+  FROM wh_stg.FW -- Shortened source
+  WHERE rectype = 'CMP'
+)
+SELECT
+  -- sk_compid derived from RecDate (-> effectivedate) & CIK (-> compid)
+  CAST(strftime(T.effectivedate, '%Y%m%d') || T.compid AS BIGINT) AS sk_compid,
+  T.compid,
+  T.status,
+  T.name,
+  T.industry,
+  T.effectivedate,
+  T.enddate
+FROM (
+    SELECT
+        CAST(cmp.CIK AS BIGINT) AS compid, -- Define compid
+        CASE cmp.Status WHEN 'ACTV' THEN 'Active' ELSE 'Inactive' END AS status, -- Define status
+        cmp.CompName AS name, -- Define name
+        ind.in_name AS industry, -- Define industry
+        cmp.RecDate AS effectivedate, -- Define effectivedate
+        COALESCE(
+            LEAD(cmp.RecDate) OVER (PARTITION BY cmp.CIK ORDER BY cmp.RecDate),
+            '9999-12-31'::DATE
+        ) AS enddate -- Define enddate (SCD2 Window Func)
+    FROM cmp
+    JOIN wh.Ind ind ON cmp.IndID = ind.in_id -- Shortened join table
+) T -- Derived table
+WHERE T.effectivedate < T.enddate; -- Filter on derived table
+```
+
+**Example Output JSON Structure:**
+```json
+{
+  "target_table": "schema.TargetTable", // Or null if just a SELECT query
+  "sources_summary": [
+    {"type": "TABLE", "name": "schema.SourceTable1", "alias_or_cte": "alias1"},
+    {"type": "TABLE", "name": "schema.SourceTable2", "alias_or_cte": "cte_name"},
+    {"type": "FILE", "name": "source_file.txt", "alias_or_cte": "options string"} // Example for COPY
+    // ... other sources
+  ],
+  "lineage": {
+    "target_column_name_1": {
+      "sources": [
+        {
+          "source_identifier": "schema.UltimateSourceTable.SourceColumn", // e.g., wh_stg.FW.value or file.placeholder
+          "path": ["cte_alias.IntermediateColumn", "final_alias.Column"], // List of transformations/aliases
+          "role": "Description of role (e.g., direct input, join key)",
+          "join_info": { // Optional: Include if source is direct result of a join
+             "type": "INNER JOIN", // or LEFT, RIGHT, FULL
+             "left_source": {"identifier": "table.column", "path": [...]},
+             "right_source": {"identifier": "table.column", "path": [...]}
+           }
+        }
+        // ... potentially more sources if column is derived from multiple inputs
+      ],
+      "transformation_type": "TYPE_OF_TRANSFORMATION", // e.g., CAST, CASE_MAPPING, JOIN_LOOKUP, RENAME, DIRECT INPUT
+      "transformation_logic": "SQL expression or description", // e.g., CAST(source AS INT), CASE WHEN ..., 'COPY from file'
+      "notes": "Optional notes about ambiguity, assumptions, etc." // Optional field
+    },
+    "target_column_name_2": {
+       // ... structure repeats for each target column ...
+    }
+    // ... other target columns
+  }
+}
+
+```
+
+**Final Output:** Respond ONLY with the generated JSON object based on the provided SQL Script and Context. Do not include explanations or markdown formatting.

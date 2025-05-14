@@ -1,0 +1,228 @@
+{
+  "target_table": "wh_db.DimDate",
+  "sources_summary": [
+    {
+      "type": "FILE",
+      "name": "src/data/Batch1\\Date.txt",
+      "alias_or_cte": null
+    }
+  ],
+  "lineage": {
+    "sk_dateid": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col1",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "datevalue": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col2",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "datedesc": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col3",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "calendaryearid": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col4",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "calendaryeardesc": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col5",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "calendarqtrid": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col6",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "calendarqtrdesc": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col7",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "calendarmonthid": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col8",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "calendarmonthdesc": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col9",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "calendarweekid": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col10",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "calendarweekdesc": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col11",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "dayofweeknum": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col12",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "dayofweekdesc": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col13",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "fiscalyearid": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col14",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "fiscalyeardesc": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col15",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "fiscalqtrid": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col16",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "fiscalqtrdesc": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col17",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "holidayflag": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col18",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    }
+  }
+}

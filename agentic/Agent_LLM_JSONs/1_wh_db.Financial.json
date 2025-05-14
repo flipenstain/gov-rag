@@ -1,0 +1,228 @@
+{
+  "target_table": "wh_db.Financial",
+  "sources_summary": [
+    {
+      "type": "TABLE",
+      "name": "wh_db_stage.FinWire",
+      "alias_or_cte": "FinWire"
+    },
+    {
+      "type": "TABLE",
+      "name": "wh_db.DimCompany",
+      "alias_or_cte": "DimCompany"
+    }
+  ],
+  "lineage": {
+    "sk_companyid": {
+      "sources": [
+        {
+          "source_identifier": "wh_db.DimCompany.sk_companyid",
+          "path": [
+            "dc.sk_companyid"
+          ],
+          "role": "direct input",
+          "join_info": {
+            "type": "INNER JOIN",
+            "left_source": {
+              "identifier": "finwire_parsed.recdate",
+              "path": [
+                "finwire_parsed.recdate"
+              ]
+            },
+            "right_source": {
+              "identifier": "wh_db.DimCompany.effectivedate",
+              "path": [
+                "dc.effectivedate"
+              ]
+            }
+          }
+        }
+      ],
+      "transformation_type": "JOIN_LOOKUP",
+      "transformation_logic": "JOIN wh_db.DimCompany AS dc ON fp.recdate >= dc.effectivedate AND fp.recdate < dc.enddate AND ((fp.company_id_text IS NOT NULL AND fp.company_id_text = dc.companyid::TEXT) OR (fp.company_name IS NOT NULL AND fp.company_name = dc.name))",
+      "notes": null
+    },
+    "fi_year": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.value",
+          "path": [
+            "finwire_parsed.value"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "CAST",
+      "transformation_logic": "CAST(SUBSTRING(value FROM 1 FOR 4) AS INTEGER)",
+      "notes": null
+    },
+    "fi_qtr": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.value",
+          "path": [
+            "finwire_parsed.value"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "CAST",
+      "transformation_logic": "CAST(SUBSTRING(value FROM 5 FOR 1) AS INTEGER)",
+      "notes": null
+    },
+    "fi_qtr_start_date": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.value",
+          "path": [
+            "finwire_parsed.value"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "CAST",
+      "transformation_logic": "strptime(SUBSTRING(value FROM 6 FOR 8), '%Y%m%d')::DATE",
+      "notes": null
+    },
+    "fi_revenue": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.value",
+          "path": [
+            "finwire_parsed.value"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "CAST",
+      "transformation_logic": "CAST(SUBSTRING(value FROM 22 FOR 17) AS DOUBLE)",
+      "notes": null
+    },
+    "fi_net_earn": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.value",
+          "path": [
+            "finwire_parsed.value"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "CAST",
+      "transformation_logic": "CAST(SUBSTRING(value FROM 39 FOR 17) AS DOUBLE)",
+      "notes": null
+    },
+    "fi_basic_eps": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.value",
+          "path": [
+            "finwire_parsed.value"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "CAST",
+      "transformation_logic": "CAST(SUBSTRING(value FROM 56 FOR 12) AS DOUBLE)",
+      "notes": null
+    },
+    "fi_dilut_eps": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.value",
+          "path": [
+            "finwire_parsed.value"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "CAST",
+      "transformation_logic": "CAST(SUBSTRING(value FROM 68 FOR 12) AS DOUBLE)",
+      "notes": null
+    },
+    "fi_margin": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.value",
+          "path": [
+            "finwire_parsed.value"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "CAST",
+      "transformation_logic": "CAST(SUBSTRING(value FROM 80 FOR 12) AS DOUBLE)",
+      "notes": null
+    },
+    "fi_inventory": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.value",
+          "path": [
+            "finwire_parsed.value"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "CAST",
+      "transformation_logic": "CAST(SUBSTRING(value FROM 92 FOR 17) AS DOUBLE)",
+      "notes": null
+    },
+    "fi_assets": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.value",
+          "path": [
+            "finwire_parsed.value"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "CAST",
+      "transformation_logic": "CAST(SUBSTRING(value FROM 109 FOR 17) AS DOUBLE)",
+      "notes": null
+    },
+    "fi_liability": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.value",
+          "path": [
+            "finwire_parsed.value"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "CAST",
+      "transformation_logic": "CAST(SUBSTRING(value FROM 126 FOR 17) AS DOUBLE)",
+      "notes": null
+    },
+    "fi_out_basic": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.value",
+          "path": [
+            "finwire_parsed.value"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "CAST",
+      "transformation_logic": "CAST(SUBSTRING(value FROM 143 FOR 13) AS BIGINT)",
+      "notes": null
+    },
+    "fi_out_dilut": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.value",
+          "path": [
+            "finwire_parsed.value"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "CAST",
+      "transformation_logic": "CAST(SUBSTRING(value FROM 156 FOR 13) AS BIGINT)",
+      "notes": null
+    }
+  }
+}

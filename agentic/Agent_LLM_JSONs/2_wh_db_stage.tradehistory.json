@@ -1,0 +1,45 @@
+{
+  "target_table": "wh_db_stage.tradehistory",
+  "sources_summary": [
+    {
+      "type": "FILE",
+      "name": "src/data/Batch1\\TradeHistory.txt",
+      "alias_or_cte": "read_csv_auto('src/data/Batch1\\TradeHistory.txt', HEADER=FALSE, filename=false, all_varchar=true, columns = {\"tradeid\": \"BIGINT\", \"th_dts\": \"TIMESTAMP\", \"status\": \"STRING\"})"
+    }
+  ],
+  "lineage": {
+    "tradeid": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col1",
+          "path": [],
+          "role": "direct input",
+          "transformation_type": "DIRECT INPUT",
+          "transformation_logic": "COPY from file"
+        }
+      ]
+    },
+    "th_dts": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col2",
+          "path": [],
+          "role": "direct input",
+          "transformation_type": "DIRECT INPUT",
+          "transformation_logic": "COPY from file"
+        }
+      ]
+    },
+    "status": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col3",
+          "path": [],
+          "role": "direct input",
+          "transformation_type": "DIRECT INPUT",
+          "transformation_logic": "COPY from file"
+        }
+      ]
+    }
+  }
+}

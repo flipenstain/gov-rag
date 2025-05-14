@@ -1,0 +1,378 @@
+{
+  "target_table": "temp_propect_marketingnameplate",
+  "sources_summary": [
+    {
+      "type": "TABLE",
+      "name": "temp_propect",
+      "alias_or_cte": null
+    }
+  ],
+  "lineage": {
+    "agencyid": {
+      "sources": [
+        {
+          "source_identifier": "temp_propect.agencyid",
+          "path": [
+            "temp_propect.agencyid"
+          ],
+          "role": "direct input",
+          "transformation_type": "DIRECT INPUT",
+          "transformation_logic": null
+        }
+      ]
+    },
+    "lastname": {
+      "sources": [
+        {
+          "source_identifier": "temp_propect.lastname",
+          "path": [
+            "temp_propect.lastname"
+          ],
+          "role": "direct input",
+          "transformation_type": "DIRECT INPUT",
+          "transformation_logic": null
+        }
+      ]
+    },
+    "firstname": {
+      "sources": [
+        {
+          "source_identifier": "temp_propect.firstname",
+          "path": [
+            "temp_propect.firstname"
+          ],
+          "role": "direct input",
+          "transformation_type": "DIRECT INPUT",
+          "transformation_logic": null
+        }
+      ]
+    },
+    "middleinitial": {
+      "sources": [
+        {
+          "source_identifier": "temp_propect.middleinitial",
+          "path": [
+            "temp_propect.middleinitial"
+          ],
+          "role": "direct input",
+          "transformation_type": "DIRECT INPUT",
+          "transformation_logic": null
+        }
+      ]
+    },
+    "gender": {
+      "sources": [
+        {
+          "source_identifier": "temp_propect.gender",
+          "path": [
+            "temp_propect.gender"
+          ],
+          "role": "direct input",
+          "transformation_type": "DIRECT INPUT",
+          "transformation_logic": null
+        }
+      ]
+    },
+    "addressline1": {
+      "sources": [
+        {
+          "source_identifier": "temp_propect.addressline1",
+          "path": [
+            "temp_propect.addressline1"
+          ],
+          "role": "direct input",
+          "transformation_type": "DIRECT INPUT",
+          "transformation_logic": null
+        }
+      ]
+    },
+    "addressline2": {
+      "sources": [
+        {
+          "source_identifier": "temp_propect.addressline2",
+          "path": [
+            "temp_propect.addressline2"
+          ],
+          "role": "direct input",
+          "transformation_type": "DIRECT INPUT",
+          "transformation_logic": null
+        }
+      ]
+    },
+    "postalcode": {
+      "sources": [
+        {
+          "source_identifier": "temp_propect.postalcode",
+          "path": [
+            "temp_propect.postalcode"
+          ],
+          "role": "direct input",
+          "transformation_type": "DIRECT INPUT",
+          "transformation_logic": null
+        }
+      ]
+    },
+    "city": {
+      "sources": [
+        {
+          "source_identifier": "temp_propect.city",
+          "path": [
+            "temp_propect.city"
+          ],
+          "role": "direct input",
+          "transformation_type": "DIRECT INPUT",
+          "transformation_logic": null
+        }
+      ]
+    },
+    "state": {
+      "sources": [
+        {
+          "source_identifier": "temp_propect.state",
+          "path": [
+            "temp_propect.state"
+          ],
+          "role": "direct input",
+          "transformation_type": "DIRECT INPUT",
+          "transformation_logic": null
+        }
+      ]
+    },
+    "country": {
+      "sources": [
+        {
+          "source_identifier": "temp_propect.country",
+          "path": [
+            "temp_propect.country"
+          ],
+          "role": "direct input",
+          "transformation_type": "DIRECT INPUT",
+          "transformation_logic": null
+        }
+      ]
+    },
+    "phone": {
+      "sources": [
+        {
+          "source_identifier": "temp_propect.phone",
+          "path": [
+            "temp_propect.phone"
+          ],
+          "role": "direct input",
+          "transformation_type": "DIRECT INPUT",
+          "transformation_logic": null
+        }
+      ]
+    },
+    "income": {
+      "sources": [
+        {
+          "source_identifier": "temp_propect.income",
+          "path": [
+            "temp_propect.income"
+          ],
+          "role": "direct input",
+          "transformation_type": "DIRECT INPUT",
+          "transformation_logic": null
+        }
+      ]
+    },
+    "numbercars": {
+      "sources": [
+        {
+          "source_identifier": "temp_propect.numbercars",
+          "path": [
+            "temp_propect.numbercars"
+          ],
+          "role": "direct input",
+          "transformation_type": "DIRECT INPUT",
+          "transformation_logic": null
+        }
+      ]
+    },
+    "numberchildren": {
+      "sources": [
+        {
+          "source_identifier": "temp_propect.numberchildren",
+          "path": [
+            "temp_propect.numberchildren"
+          ],
+          "role": "direct input",
+          "transformation_type": "DIRECT INPUT",
+          "transformation_logic": null
+        }
+      ]
+    },
+    "maritalstatus": {
+      "sources": [
+        {
+          "source_identifier": "temp_propect.maritalstatus",
+          "path": [
+            "temp_propect.maritalstatus"
+          ],
+          "role": "direct input",
+          "transformation_type": "DIRECT INPUT",
+          "transformation_logic": null
+        }
+      ]
+    },
+    "age": {
+      "sources": [
+        {
+          "source_identifier": "temp_propect.age",
+          "path": [
+            "temp_propect.age"
+          ],
+          "role": "direct input",
+          "transformation_type": "DIRECT INPUT",
+          "transformation_logic": null
+        }
+      ]
+    },
+    "creditrating": {
+      "sources": [
+        {
+          "source_identifier": "temp_propect.creditrating",
+          "path": [
+            "temp_propect.creditrating"
+          ],
+          "role": "direct input",
+          "transformation_type": "DIRECT INPUT",
+          "transformation_logic": null
+        }
+      ]
+    },
+    "ownorrentflag": {
+      "sources": [
+        {
+          "source_identifier": "temp_propect.ownorrentflag",
+          "path": [
+            "temp_propect.ownorrentflag"
+          ],
+          "role": "direct input",
+          "transformation_type": "DIRECT INPUT",
+          "transformation_logic": null
+        }
+      ]
+    },
+    "employer": {
+      "sources": [
+        {
+          "source_identifier": "temp_propect.employer",
+          "path": [
+            "temp_propect.employer"
+          ],
+          "role": "direct input",
+          "transformation_type": "DIRECT INPUT",
+          "transformation_logic": null
+        }
+      ]
+    },
+    "numbercreditcards": {
+      "sources": [
+        {
+          "source_identifier": "temp_propect.numbercreditcards",
+          "path": [
+            "temp_propect.numbercreditcards"
+          ],
+          "role": "direct input",
+          "transformation_type": "DIRECT INPUT",
+          "transformation_logic": null
+        }
+      ]
+    },
+    "networth": {
+      "sources": [
+        {
+          "source_identifier": "temp_propect.networth",
+          "path": [
+            "temp_propect.networth"
+          ],
+          "role": "direct input",
+          "transformation_type": "DIRECT INPUT",
+          "transformation_logic": null
+        }
+      ]
+    },
+    "batchid": {
+      "sources": [
+        {
+          "source_identifier": "temp_propect.batchid",
+          "path": [
+            "temp_propect.batchid"
+          ],
+          "role": "direct input",
+          "transformation_type": "DIRECT INPUT",
+          "transformation_logic": null
+        }
+      ]
+    },
+    "marketingnameplate": {
+      "sources": [
+        {
+          "source_identifier": "temp_propect.networth",
+          "path": [
+            "marketingnameplate"
+          ],
+          "role": "used in condition",
+          "transformation_type": "EXPRESSION_CONCAT",
+          "transformation_logic": "CASE WHEN LENGTH(CONCAT(...)) > 0 THEN LEFT(CONCAT(...),LENGTH(CONCAT(...))-1) ELSE NULL END"
+        },
+        {
+          "source_identifier": "temp_propect.income",
+          "path": [
+            "marketingnameplate"
+          ],
+          "role": "used in condition",
+          "transformation_type": "EXPRESSION_CONCAT",
+          "transformation_logic": "CASE WHEN LENGTH(CONCAT(...)) > 0 THEN LEFT(CONCAT(...),LENGTH(CONCAT(...))-1) ELSE NULL END"
+        },
+        {
+          "source_identifier": "temp_propect.numberchildren",
+          "path": [
+            "marketingnameplate"
+          ],
+          "role": "used in condition",
+          "transformation_type": "EXPRESSION_CONCAT",
+          "transformation_logic": "CASE WHEN LENGTH(CONCAT(...)) > 0 THEN LEFT(CONCAT(...),LENGTH(CONCAT(...))-1) ELSE NULL END"
+        },
+        {
+          "source_identifier": "temp_propect.numbercreditcards",
+          "path": [
+            "marketingnameplate"
+          ],
+          "role": "used in condition",
+          "transformation_type": "EXPRESSION_CONCAT",
+          "transformation_logic": "CASE WHEN LENGTH(CONCAT(...)) > 0 THEN LEFT(CONCAT(...),LENGTH(CONCAT(...))-1) ELSE NULL END"
+        },
+        {
+          "source_identifier": "temp_propect.age",
+          "path": [
+            "marketingnameplate"
+          ],
+          "role": "used in condition",
+          "transformation_type": "EXPRESSION_CONCAT",
+          "transformation_logic": "CASE WHEN LENGTH(CONCAT(...)) > 0 THEN LEFT(CONCAT(...),LENGTH(CONCAT(...))-1) ELSE NULL END"
+        },
+        {
+          "source_identifier": "temp_propect.creditrating",
+          "path": [
+            "marketingnameplate"
+          ],
+          "role": "used in condition",
+          "transformation_type": "EXPRESSION_CONCAT",
+          "transformation_logic": "CASE WHEN LENGTH(CONCAT(...)) > 0 THEN LEFT(CONCAT(...),LENGTH(CONCAT(...))-1) ELSE NULL END"
+        },
+        {
+          "source_identifier": "temp_propect.numbercars",
+          "path": [
+            "marketingnameplate"
+          ],
+          "role": "used in condition",
+          "transformation_type": "EXPRESSION_CONCAT",
+          "transformation_logic": "CASE WHEN LENGTH(CONCAT(...)) > 0 THEN LEFT(CONCAT(...),LENGTH(CONCAT(...))-1) ELSE NULL END"
+        }
+      ]
+    }
+  }
+}

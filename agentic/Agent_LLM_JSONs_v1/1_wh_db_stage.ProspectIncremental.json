@@ -1,0 +1,288 @@
+{
+  "target_table": "temp_propect",
+  "sources_summary": [
+    {
+      "type": "FILE",
+      "name": "src/data/Batch1\\Prospect.csv",
+      "alias_or_cte": null
+    }
+  ],
+  "lineage": {
+    "agencyid": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col1",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "lastname": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col2",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "firstname": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col3",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "middleinitial": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col4",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "gender": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col5",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "addressline1": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col6",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "addressline2": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col7",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "postalcode": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col8",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "city": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col9",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "state": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col10",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "country": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col11",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "phone": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col12",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "income": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col13",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "numbercars": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col14",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "numberchildren": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col15",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "maritalstatus": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col16",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "age": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col17",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "creditrating": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col18",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "ownorrentflag": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col19",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "employer": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col20",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "numbercreditcards": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col21",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "networth": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_col22",
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "COPY from file"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "COPY from file"
+    },
+    "batchid": {
+      "sources": [
+        {
+          "source_identifier": "constant_value_1",
+          "path": [],
+          "role": "constant",
+          "transformation_logic": "1 AS batchid"
+        }
+      ],
+      "transformation_type": "CONSTANT",
+      "transformation_logic": "1 AS batchid"
+    }
+  }
+}

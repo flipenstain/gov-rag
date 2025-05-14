@@ -1,0 +1,408 @@
+{
+  "target_table": "wh_db.Prospect",
+  "sources_summary": [
+    {
+      "type": "TABLE",
+      "name": "wh_db_stage.ProspectIncremental",
+      "alias_or_cte": "p"
+    },
+    {
+      "type": "TABLE",
+      "name": "wh_db.BatchDate",
+      "alias_or_cte": "recdate"
+    },
+    {
+      "type": "TABLE",
+      "name": "wh_db.BatchDate",
+      "alias_or_cte": "origdate"
+    },
+    {
+      "type": "TABLE",
+      "name": "wh_db.DimCustomer",
+      "alias_or_cte": "cust"
+    }
+  ],
+  "lineage": {
+    "agencyid": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.ProspectIncremental.agencyid",
+          "path": [
+            "p.agencyid"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "sk_recorddateid": {
+      "sources": [
+        {
+          "source_identifier": "wh_db.BatchDate.batchdate",
+          "path": [
+            "recdate.batchdate",
+            "sk_recorddateid"
+          ],
+          "role": "direct input",
+          "transformation_logic": "CAST(STRFTIME(recdate.batchdate, '%Y%m%d') AS BIGINT)"
+        }
+      ],
+      "transformation_type": "CAST",
+      "transformation_logic": "CAST(STRFTIME(recdate.batchdate, '%Y%m%d') AS BIGINT)"
+    },
+    "sk_updatedateid": {
+      "sources": [
+        {
+          "source_identifier": "wh_db.BatchDate.batchdate",
+          "path": [
+            "origdate.batchdate",
+            "sk_updatedateid"
+          ],
+          "role": "direct input",
+          "transformation_logic": "CAST(STRFTIME(origdate.batchdate, '%Y%m%d') AS BIGINT)"
+        }
+      ],
+      "transformation_type": "CAST",
+      "transformation_logic": "CAST(STRFTIME(origdate.batchdate, '%Y%m%d') AS BIGINT)"
+    },
+    "batchid": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.ProspectIncremental.batchid",
+          "path": [
+            "p.batchid"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "iscustomer": {
+      "sources": [
+        {
+          "source_identifier": "wh_db.DimCustomer.lastname",
+          "path": [
+            "c.LastName",
+            "iscustomer"
+          ],
+          "role": "used in condition",
+          "transformation_logic": "CASE WHEN c.LastName IS NOT NULL THEN TRUE ELSE FALSE END"
+        }
+      ],
+      "transformation_type": "CASE_MAPPING",
+      "transformation_logic": "CASE WHEN c.LastName IS NOT NULL THEN TRUE ELSE FALSE END"
+    },
+    "lastname": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.ProspectIncremental.lastname",
+          "path": [
+            "p.lastname"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "firstname": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.ProspectIncremental.firstname",
+          "path": [
+            "p.firstname"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "middleinitial": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.ProspectIncremental.middleinitial",
+          "path": [
+            "p.middleinitial"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "gender": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.ProspectIncremental.gender",
+          "path": [
+            "p.gender"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "addressline1": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.ProspectIncremental.addressline1",
+          "path": [
+            "p.addressline1"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "addressline2": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.ProspectIncremental.addressline2",
+          "path": [
+            "p.addressline2"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "postalcode": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.ProspectIncremental.postalcode",
+          "path": [
+            "p.postalcode"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "city": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.ProspectIncremental.city",
+          "path": [
+            "p.city"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "state": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.ProspectIncremental.state",
+          "path": [
+            "p.state"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "country": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.ProspectIncremental.country",
+          "path": [
+            "p.country"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "phone": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.ProspectIncremental.phone",
+          "path": [
+            "p.phone"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "income": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.ProspectIncremental.income",
+          "path": [
+            "p.income"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "numbercars": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.ProspectIncremental.numbercars",
+          "path": [
+            "p.numbercars"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "numberchildren": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.ProspectIncremental.numberchildren",
+          "path": [
+            "p.numberchildren"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "maritalstatus": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.ProspectIncremental.maritalstatus",
+          "path": [
+            "p.maritalstatus"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "age": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.ProspectIncremental.age",
+          "path": [
+            "p.age"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "creditrating": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.ProspectIncremental.creditrating",
+          "path": [
+            "p.creditrating"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "ownorrentflag": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.ProspectIncremental.ownorrentflag",
+          "path": [
+            "p.ownorrentflag"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "employer": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.ProspectIncremental.employer",
+          "path": [
+            "p.employer"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "numbercreditcards": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.ProspectIncremental.numbercreditcards",
+          "path": [
+            "p.numbercreditcards"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "networth": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.ProspectIncremental.networth",
+          "path": [
+            "p.networth"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    },
+    "marketingnameplate": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.ProspectIncremental.marketingnameplate",
+          "path": [
+            "p.marketingnameplate"
+          ],
+          "role": "direct input",
+          "transformation_logic": null
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    }
+  }
+}

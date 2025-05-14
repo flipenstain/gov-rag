@@ -1,0 +1,122 @@
+{
+  "target_table": "wh_db.FactCashBalances",
+  "sources_summary": [
+    {
+      "type": "FILE",
+      "name": "src/data/Batch1\\CashTransaction.txt",
+      "alias_or_cte": "read_csv('src/data/Batch1\\CashTransaction.txt', HEADER=FALSE, columns={'accountid': 'BIGINT', 'ct_dts': 'TIMESTAMP', 'ct_amt': 'DOUBLE', 'ct_name': 'VARCHAR'})"
+    },
+    {
+      "type": "TABLE",
+      "name": "wh_db.DimAccount",
+      "alias_or_cte": "wh_db.DimAccount"
+    }
+  ],
+  "lineage": {
+    "sk_customerid": {
+      "sources": [
+        {
+          "source_identifier": "wh_db.DimAccount.sk_customerid",
+          "path": [
+            "a.sk_customerid"
+          ],
+          "role": "direct input",
+          "join_info": {
+            "type": "INNER JOIN",
+            "left_source": {
+              "identifier": "historical.accountid",
+              "path": [
+                "c.accountid"
+              ]
+            },
+            "right_source": {
+              "identifier": "wh_db.DimAccount.accountid",
+              "path": [
+                "a.accountid"
+              ]
+            }
+          }
+        }
+      ],
+      "transformation_type": "JOIN_LOOKUP",
+      "transformation_logic": "JOIN wh_db.DimAccount a ON c.accountid = a.accountid AND c.datevalue >= a.effectivedate AND c.datevalue < a.enddate",
+      "notes": null
+    },
+    "sk_accountid": {
+      "sources": [
+        {
+          "source_identifier": "wh_db.DimAccount.sk_accountid",
+          "path": [
+            "a.sk_accountid"
+          ],
+          "role": "direct input",
+          "join_info": {
+            "type": "INNER JOIN",
+            "left_source": {
+              "identifier": "historical.accountid",
+              "path": [
+                "c.accountid"
+              ]
+            },
+            "right_source": {
+              "identifier": "wh_db.DimAccount.accountid",
+              "path": [
+                "a.accountid"
+              ]
+            }
+          }
+        }
+      ],
+      "transformation_type": "JOIN_LOOKUP",
+      "transformation_logic": "JOIN wh_db.DimAccount a ON c.accountid = a.accountid AND c.datevalue >= a.effectivedate AND c.datevalue < a.enddate",
+      "notes": null
+    },
+    "sk_dateid": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_colX",
+          "path": [
+            "historical.datevalue",
+            "c.datevalue",
+            "sk_dateid"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "CAST",
+      "transformation_logic": "CAST(STRFTIME(datevalue, '%Y%m%d') AS BIGINT)",
+      "notes": null
+    },
+    "cash": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_colX",
+          "path": [
+            "historical.account_daily_total",
+            "c.account_daily_total",
+            "cash"
+          ],
+          "role": "aggregation input, window function input"
+        }
+      ],
+      "transformation_type": "WINDOW_FUNCTION",
+      "transformation_logic": "SUM(account_daily_total) OVER (PARTITION BY c.accountid ORDER BY datevalue)",
+      "notes": null
+    },
+    "batchid": {
+      "sources": [
+        {
+          "source_identifier": "file.placeholder_source_for_colX",
+          "path": [
+            "historical.batchid",
+            "c.batchid"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null,
+      "notes": null
+    }
+  }
+}

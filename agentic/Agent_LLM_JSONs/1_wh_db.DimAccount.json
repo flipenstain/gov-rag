@@ -1,0 +1,257 @@
+{
+  "target_table": "wh_db.DimAccount",
+  "sources_summary": [
+    {
+      "type": "TABLE",
+      "name": "wh_db_stage.CustomerMgmt",
+      "alias_or_cte": "account"
+    },
+    {
+      "type": "TABLE",
+      "name": "wh_db.DimCustomer",
+      "alias_or_cte": "c"
+    },
+    {
+      "type": "TABLE",
+      "name": "wh_db.DimBroker",
+      "alias_or_cte": "b"
+    }
+  ],
+  "lineage": {
+    "CAST(strftime(a.effectivedate, '%Y%m%d') || a.accountid AS BIGINT)": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.CustomerMgmt.accountid",
+          "path": [
+            "account.accountid",
+            "account_final.accountid",
+            "account_cust_updates.accountid",
+            "a.accountid"
+          ],
+          "role": "direct input",
+          "transformation_logic": "CAST(strftime(a.effectivedate, '%Y%m%d') || a.accountid AS BIGINT)"
+        },
+        {
+          "source_identifier": "wh_db_stage.CustomerMgmt.update_ts",
+          "path": [
+            "account.update_ts",
+            "account_final.update_ts",
+            "account_final.effectivedate",
+            "account_cust_updates.effectivedate",
+            "a.effectivedate"
+          ],
+          "role": "direct input",
+          "transformation_logic": "CAST(strftime(a.effectivedate, '%Y%m%d') || a.accountid AS BIGINT)"
+        }
+      ],
+      "transformation_type": "EXPRESSION_CONCAT",
+      "transformation_logic": "CAST(strftime(a.effectivedate, '%Y%m%d') || a.accountid AS BIGINT)"
+    },
+    "a.accountid": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.CustomerMgmt.accountid",
+          "path": [
+            "account.accountid",
+            "account_final.accountid",
+            "account_cust_updates.accountid",
+            "a.accountid"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "a.accountid"
+    },
+    "b.sk_brokerid": {
+      "sources": [
+        {
+          "source_identifier": "wh_db.DimBroker.sk_brokerid",
+          "path": [
+            "b.sk_brokerid"
+          ],
+          "role": "join key",
+          "join_info": {
+            "type": "INNER JOIN",
+            "left_source": {
+              "identifier": "account_cust_updates.brokerid",
+              "path": [
+                "account_final.brokerid",
+                "a.brokerid"
+              ]
+            },
+            "right_source": {
+              "identifier": "wh_db.DimBroker.brokerid",
+              "path": [
+                "b.brokerid"
+              ]
+            }
+          }
+        }
+      ],
+      "transformation_type": "JOIN_LOOKUP",
+      "transformation_logic": "JOIN wh_db.DimBroker b ON a.brokerid = b.brokerid"
+    },
+    "a.sk_customerid": {
+      "sources": [
+        {
+          "source_identifier": "wh_db.DimCustomer.sk_customerid",
+          "path": [
+            "c.sk_customerid",
+            "a.sk_customerid"
+          ],
+          "role": "join key",
+          "join_info": {
+            "type": "FULL OUTER JOIN",
+            "left_source": {
+              "identifier": "account_cust_updates.customerid",
+              "path": [
+                "account_final.customerid",
+                "a.customerid"
+              ]
+            },
+            "right_source": {
+              "identifier": "wh_db.DimCustomer.customerid",
+              "path": [
+                "c.customerid"
+              ]
+            }
+          }
+        }
+      ],
+      "transformation_type": "JOIN_LOOKUP",
+      "transformation_logic": "FULL OUTER JOIN wh_db.DimCustomer c ON a.customerid = c.customerid AND c.enddate > a.effectivedate AND c.effectivedate < a.enddate"
+    },
+    "a.accountdesc": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.CustomerMgmt.accountdesc",
+          "path": [
+            "account.accountdesc",
+            "account_final.accountdesc",
+            "account_cust_updates.accountdesc",
+            "a.accountdesc"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "a.accountdesc"
+    },
+    "a.TaxStatus": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.CustomerMgmt.taxstatus",
+          "path": [
+            "account.taxstatus",
+            "account_final.taxstatus",
+            "account_cust_updates.taxstatus",
+            "a.TaxStatus"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "a.TaxStatus"
+    },
+    "a.status": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.CustomerMgmt.status",
+          "path": [
+            "account.status",
+            "account_final.status",
+            "account_cust_updates.status",
+            "a.status"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "a.status"
+    },
+    "CASE WHEN a.enddate = '9999-12-31'::DATE THEN true ELSE false END": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.CustomerMgmt.update_ts",
+          "path": [
+            "account.update_ts",
+            "account_final.update_ts",
+            "account_final.enddate",
+            "account_cust_updates.enddate",
+            "a.enddate"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "CASE_MAPPING",
+      "transformation_logic": "CASE WHEN a.enddate = '9999-12-31'::DATE THEN true ELSE false END"
+    },
+    "a.batchid": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.CustomerMgmt.update_ts",
+          "path": [
+            "account.update_ts",
+            "account_final.update_ts",
+            "account_cust_updates.update_ts",
+            "a.update_ts"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": "a.batchid"
+    },
+    "a.effectivedate": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.CustomerMgmt.update_ts",
+          "path": [
+            "account.update_ts",
+            "account_final.update_ts",
+            "account_final.effectivedate",
+            "account_cust_updates.effectivedate",
+            "a.effectivedate"
+          ],
+          "role": "direct input"
+        },
+        {
+          "source_identifier": "wh_db.DimCustomer.effectivedate",
+          "path": [
+            "c.effectivedate",
+            "a.effectivedate"
+          ],
+          "role": "join key"
+        }
+      ],
+      "transformation_type": "EXPRESSION",
+      "transformation_logic": "if(a.effectivedate < c.effectivedate, c.effectivedate, a.effectivedate)"
+    },
+    "a.enddate": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.CustomerMgmt.update_ts",
+          "path": [
+            "account.update_ts",
+            "account_final.update_ts",
+            "account_final.enddate",
+            "account_cust_updates.enddate",
+            "a.enddate"
+          ],
+          "role": "direct input"
+        },
+        {
+          "source_identifier": "wh_db.DimCustomer.enddate",
+          "path": [
+            "c.enddate",
+            "a.enddate"
+          ],
+          "role": "join key"
+        }
+      ],
+      "transformation_type": "EXPRESSION",
+      "transformation_logic": "if(a.enddate > c.enddate, c.enddate, a.enddate)"
+    }
+  }
+}

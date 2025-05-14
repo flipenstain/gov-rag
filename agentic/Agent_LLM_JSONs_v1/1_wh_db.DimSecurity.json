@@ -1,0 +1,286 @@
+{
+  "target_table": "wh_db.DimSecurity",
+  "sources_summary": [
+    {
+      "type": "TABLE",
+      "name": "wh_db_stage.FinWire",
+      "alias_or_cte": "SEC"
+    },
+    {
+      "type": "TABLE",
+      "name": "wh_db.DimCompany",
+      "alias_or_cte": "dc"
+    }
+  ],
+  "lineage": {
+    "sk_securityid": {
+      "sources": [
+        {
+          "source_identifier": null,
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "ROW_NUMBER() OVER ()"
+        }
+      ],
+      "transformation_type": "WINDOW_FUNCTION",
+      "transformation_logic": "ROW_NUMBER() OVER ()",
+      "notes": null
+    },
+    "Symbol": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.value",
+          "path": [
+            "SEC.value",
+            "SEC.Symbol"
+          ],
+          "role": "direct input",
+          "transformation_logic": "TRIM(SUBSTR(value, 1, 15))"
+        }
+      ],
+      "transformation_type": "SUBSTRING",
+      "transformation_logic": "TRIM(SUBSTR(value, 1, 15))",
+      "notes": null
+    },
+    "issue": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.value",
+          "path": [
+            "SEC.value",
+            "SEC.issue"
+          ],
+          "role": "direct input",
+          "transformation_logic": "TRIM(SUBSTR(value, 16, 6))"
+        }
+      ],
+      "transformation_type": "SUBSTRING",
+      "transformation_logic": "TRIM(SUBSTR(value, 16, 6))",
+      "notes": null
+    },
+    "status": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.value",
+          "path": [
+            "SEC.value",
+            "SEC.Status",
+            "SEC_prep.status"
+          ],
+          "role": "direct input",
+          "transformation_logic": "TRIM(SUBSTR(value, 22, 4))"
+        }
+      ],
+      "transformation_type": "CASE_MAPPING",
+      "transformation_logic": "CASE WHEN status = 'ACTV' THEN 'Active' WHEN status = 'CMPT' THEN 'Completed' WHEN status = 'CNCL' THEN 'Canceled' WHEN status = 'PNDG' THEN 'Pending' WHEN status = 'SBMT' THEN 'Submitted' WHEN status = 'INAC' THEN 'Inactive' ELSE NULL END",
+      "notes": null
+    },
+    "Name": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.value",
+          "path": [
+            "SEC.value",
+            "SEC.Name"
+          ],
+          "role": "direct input",
+          "transformation_logic": "TRIM(SUBSTR(value, 26, 70))"
+        }
+      ],
+      "transformation_type": "SUBSTRING",
+      "transformation_logic": "TRIM(SUBSTR(value, 26, 70))",
+      "notes": null
+    },
+    "exchangeid": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.value",
+          "path": [
+            "SEC.value",
+            "SEC.exchangeid"
+          ],
+          "role": "direct input",
+          "transformation_logic": "TRIM(SUBSTR(value, 96, 6))"
+        }
+      ],
+      "transformation_type": "SUBSTRING",
+      "transformation_logic": "TRIM(SUBSTR(value, 96, 6))",
+      "notes": null
+    },
+    "sk_companyid": {
+      "sources": [
+        {
+          "source_identifier": "wh_db.DimCompany.sk_companyid",
+          "path": [
+            "dc.sk_companyid",
+            "SEC_final.sk_companyid"
+          ],
+          "role": "join key",
+          "join_info": {
+            "type": "INNER JOIN",
+            "left_source": {
+              "identifier": "SEC_prep.conameorcik",
+              "path": [
+                "SEC.value",
+                "SEC.conameorcik",
+                "SEC_prep.conameorcik"
+              ]
+            },
+            "right_source": {
+              "identifier": "dc.conameorcik",
+              "path": [
+                "dc.conameorcik"
+              ]
+            }
+          }
+        }
+      ],
+      "transformation_type": "JOIN_LOOKUP",
+      "transformation_logic": "JOIN dc ON SEC.conameorcik = dc.conameorcik AND SEC.effectivedate < dc.EndDate AND SEC.enddate > dc.EffectiveDate",
+      "notes": null
+    },
+    "sharesoutstanding": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.value",
+          "path": [
+            "SEC.value",
+            "SEC.sharesoutstanding"
+          ],
+          "role": "direct input",
+          "transformation_logic": "TRY_CAST(SUBSTR(value, 102, 13) AS BIGINT)"
+        }
+      ],
+      "transformation_type": "CAST",
+      "transformation_logic": "TRY_CAST(SUBSTR(value, 102, 13) AS BIGINT)",
+      "notes": null
+    },
+    "firsttrade": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.value",
+          "path": [
+            "SEC.value",
+            "SEC.firsttrade"
+          ],
+          "role": "direct input",
+          "transformation_logic": "TRY_CAST(STRPTIME(SUBSTR(value, 115, 8), '%Y%m%d') AS DATE)"
+        }
+      ],
+      "transformation_type": "CAST",
+      "transformation_logic": "TRY_CAST(STRPTIME(SUBSTR(value, 115, 8), '%Y%m%d') AS DATE)",
+      "notes": null
+    },
+    "firsttradeonexchange": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.value",
+          "path": [
+            "SEC.value",
+            "SEC.firsttradeonexchange"
+          ],
+          "role": "direct input",
+          "transformation_logic": "TRY_CAST(STRPTIME(SUBSTR(value, 123, 8), '%Y%m%d') AS DATE)"
+        }
+      ],
+      "transformation_type": "CAST",
+      "transformation_logic": "TRY_CAST(STRPTIME(SUBSTR(value, 123, 8), '%Y%m%d') AS DATE)",
+      "notes": null
+    },
+    "Dividend": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.value",
+          "path": [
+            "SEC.value",
+            "SEC.Dividend"
+          ],
+          "role": "direct input",
+          "transformation_logic": "TRY_CAST(SUBSTR(value, 131, 12) AS DOUBLE)"
+        }
+      ],
+      "transformation_type": "CAST",
+      "transformation_logic": "TRY_CAST(SUBSTR(value, 131, 12) AS DOUBLE)",
+      "notes": null
+    },
+    "effectivedate": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.recdate",
+          "path": [
+            "SEC.recdate",
+            "SEC.effectivedate",
+            "SEC_prep.effectivedate",
+            "SEC_final.effectivedate"
+          ],
+          "role": "direct input"
+        },
+        {
+          "source_identifier": "wh_db.DimCompany.EffectiveDate",
+          "path": [
+            "dc.EffectiveDate",
+            "SEC_final.effectivedate"
+          ],
+          "role": "join key"
+        }
+      ],
+      "transformation_type": "EXPRESSION",
+      "transformation_logic": "CASE WHEN SEC.effectivedate < dc.EffectiveDate THEN dc.EffectiveDate ELSE SEC.effectivedate END",
+      "notes": null
+    },
+    "enddate": {
+      "sources": [
+        {
+          "source_identifier": "wh_db_stage.FinWire.recdate",
+          "path": [
+            "SEC.recdate",
+            "SEC.effectivedate",
+            "SEC_prep.effectivedate",
+            "SEC_prep.enddate",
+            "SEC_final.enddate"
+          ],
+          "role": "direct input"
+        },
+        {
+          "source_identifier": "wh_db.DimCompany.EndDate",
+          "path": [
+            "dc.EndDate",
+            "SEC_final.enddate"
+          ],
+          "role": "join key"
+        }
+      ],
+      "transformation_type": "EXPRESSION",
+      "transformation_logic": "COALESCE(LEAD(effectivedate) OVER (PARTITION BY Symbol ORDER BY effectivedate), ('9999-12-31')::DATE)",
+      "notes": null
+    },
+    "iscurrent": {
+      "sources": [
+        {
+          "source_identifier": null,
+          "path": [
+            "SEC_final.enddate"
+          ],
+          "role": "direct input",
+          "transformation_logic": "CASE WHEN enddate = '9999-12-31'::DATE THEN TRUE ELSE FALSE END"
+        }
+      ],
+      "transformation_type": "CASE",
+      "transformation_logic": "CASE WHEN enddate = '9999-12-31'::DATE THEN TRUE ELSE FALSE END",
+      "notes": null
+    },
+    "batchid": {
+      "sources": [
+        {
+          "source_identifier": null,
+          "path": [],
+          "role": "direct input",
+          "transformation_logic": "1"
+        }
+      ],
+      "transformation_type": "CONSTANT",
+      "transformation_logic": "1",
+      "notes": null
+    }
+  }
+}

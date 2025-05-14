@@ -1,0 +1,463 @@
+{
+  "target_table": "wh_db_stage.CustomerMgmt",
+  "sources_summary": [
+    {
+      "type": "TABLE",
+      "name": "xml_dataframe",
+      "alias_or_cte": null
+    }
+  ],
+  "lineage": {
+    "customerid": {
+      "sources": [
+        {
+          "source_identifier": "xml_dataframe.C_ID",
+          "path": [
+            "customerid"
+          ],
+          "role": "direct input",
+          "transformation_logic": "try_cast(C_ID as BIGINT)"
+        }
+      ],
+      "transformation_type": "CAST",
+      "transformation_logic": "try_cast(C_ID as BIGINT)"
+    },
+    "accountid": {
+      "sources": [
+        {
+          "source_identifier": "xml_dataframe.CA_ID",
+          "path": [
+            "accountid"
+          ],
+          "role": "direct input",
+          "transformation_logic": "try_cast(CA_ID as BIGINT)"
+        }
+      ],
+      "transformation_type": "CAST",
+      "transformation_logic": "try_cast(CA_ID as BIGINT)"
+    },
+    "brokerid": {
+      "sources": [
+        {
+          "source_identifier": "xml_dataframe.CA_B_ID",
+          "path": [
+            "brokerid"
+          ],
+          "role": "direct input",
+          "transformation_logic": "try_cast(CA_B_ID as BIGINT)"
+        }
+      ],
+      "transformation_type": "CAST",
+      "transformation_logic": "try_cast(CA_B_ID as BIGINT)"
+    },
+    "taxid": {
+      "sources": [
+        {
+          "source_identifier": "xml_dataframe.C_TAX_ID",
+          "path": [
+            "taxid"
+          ],
+          "role": "direct input",
+          "transformation_logic": "nullif(C_TAX_ID, '')"
+        }
+      ],
+      "transformation_type": "EXPRESSION",
+      "transformation_logic": "nullif(C_TAX_ID, '')"
+    },
+    "accountdesc": {
+      "sources": [
+        {
+          "source_identifier": "xml_dataframe.CA_NAME",
+          "path": [
+            "accountdesc"
+          ],
+          "role": "direct input",
+          "transformation_logic": "nullif(CA_NAME, '')"
+        }
+      ],
+      "transformation_type": "EXPRESSION",
+      "transformation_logic": "nullif(CA_NAME, '')"
+    },
+    "taxstatus": {
+      "sources": [
+        {
+          "source_identifier": "xml_dataframe.CA_TAX_ST",
+          "path": [
+            "taxstatus"
+          ],
+          "role": "direct input",
+          "transformation_logic": "try_cast(CA_TAX_ST as TINYINT)"
+        }
+      ],
+      "transformation_type": "CAST",
+      "transformation_logic": "try_cast(CA_TAX_ST as TINYINT)"
+    },
+    "status": {
+      "sources": [
+        {
+          "source_identifier": "xml_dataframe.ActionType",
+          "path": [
+            "status"
+          ],
+          "role": "direct input",
+          "transformation_logic": "CASE WHEN ActionType IN ('NEW', 'ADDACCT', 'UPDACCT', 'UPDCUST') THEN 'Active' WHEN ActionType IN ('CLOSEACCT', 'INACT') THEN 'Inactive' ELSE NULL END"
+        }
+      ],
+      "transformation_type": "CASE_MAPPING",
+      "transformation_logic": "CASE WHEN ActionType IN ('NEW', 'ADDACCT', 'UPDACCT', 'UPDCUST') THEN 'Active' WHEN ActionType IN ('CLOSEACCT', 'INACT') THEN 'Inactive' ELSE NULL END"
+    },
+    "lastname": {
+      "sources": [
+        {
+          "source_identifier": "xml_dataframe.C_L_NAME",
+          "path": [
+            "lastname"
+          ],
+          "role": "direct input",
+          "transformation_logic": "nullif(C_L_NAME, '')"
+        }
+      ],
+      "transformation_type": "EXPRESSION",
+      "transformation_logic": "nullif(C_L_NAME, '')"
+    },
+    "firstname": {
+      "sources": [
+        {
+          "source_identifier": "xml_dataframe.C_F_NAME",
+          "path": [
+            "firstname"
+          ],
+          "role": "direct input",
+          "transformation_logic": "nullif(C_F_NAME, '')"
+        }
+      ],
+      "transformation_type": "EXPRESSION",
+      "transformation_logic": "nullif(C_F_NAME, '')"
+    },
+    "middleinitial": {
+      "sources": [
+        {
+          "source_identifier": "xml_dataframe.C_M_NAME",
+          "path": [
+            "middleinitial"
+          ],
+          "role": "direct input",
+          "transformation_logic": "nullif(C_M_NAME, '')"
+        }
+      ],
+      "transformation_type": "EXPRESSION",
+      "transformation_logic": "nullif(C_M_NAME, '')"
+    },
+    "gender": {
+      "sources": [
+        {
+          "source_identifier": "xml_dataframe.C_GNDR",
+          "path": [
+            "gender"
+          ],
+          "role": "direct input",
+          "transformation_logic": "nullif(upper(C_GNDR), '')"
+        }
+      ],
+      "transformation_type": "EXPRESSION",
+      "transformation_logic": "nullif(upper(C_GNDR), '')"
+    },
+    "tier": {
+      "sources": [
+        {
+          "source_identifier": "xml_dataframe.C_TIER",
+          "path": [
+            "tier"
+          ],
+          "role": "direct input",
+          "transformation_logic": "try_cast(C_TIER as TINYINT)"
+        }
+      ],
+      "transformation_type": "CAST",
+      "transformation_logic": "try_cast(C_TIER as TINYINT)"
+    },
+    "dob": {
+      "sources": [
+        {
+          "source_identifier": "xml_dataframe.C_DOB",
+          "path": [
+            "dob"
+          ],
+          "role": "direct input",
+          "transformation_logic": "try_cast(C_DOB as DATE)"
+        }
+      ],
+      "transformation_type": "CAST",
+      "transformation_logic": "try_cast(C_DOB as DATE)"
+    },
+    "addressline1": {
+      "sources": [
+        {
+          "source_identifier": "xml_dataframe.C_ADLINE1",
+          "path": [
+            "addressline1"
+          ],
+          "role": "direct input",
+          "transformation_logic": "nullif(C_ADLINE1, '')"
+        }
+      ],
+      "transformation_type": "EXPRESSION",
+      "transformation_logic": "nullif(C_ADLINE1, '')"
+    },
+    "addressline2": {
+      "sources": [
+        {
+          "source_identifier": "xml_dataframe.C_ADLINE2",
+          "path": [
+            "addressline2"
+          ],
+          "role": "direct input",
+          "transformation_logic": "nullif(C_ADLINE2, '')"
+        }
+      ],
+      "transformation_type": "EXPRESSION",
+      "transformation_logic": "nullif(C_ADLINE2, '')"
+    },
+    "postalcode": {
+      "sources": [
+        {
+          "source_identifier": "xml_dataframe.C_ZIPCODE",
+          "path": [
+            "postalcode"
+          ],
+          "role": "direct input",
+          "transformation_logic": "nullif(C_ZIPCODE, '')"
+        }
+      ],
+      "transformation_type": "EXPRESSION",
+      "transformation_logic": "nullif(C_ZIPCODE, '')"
+    },
+    "city": {
+      "sources": [
+        {
+          "source_identifier": "xml_dataframe.C_CITY",
+          "path": [
+            "city"
+          ],
+          "role": "direct input",
+          "transformation_logic": "nullif(C_CITY, '')"
+        }
+      ],
+      "transformation_type": "EXPRESSION",
+      "transformation_logic": "nullif(C_CITY, '')"
+    },
+    "stateprov": {
+      "sources": [
+        {
+          "source_identifier": "xml_dataframe.C_STATE_PROV",
+          "path": [
+            "stateprov"
+          ],
+          "role": "direct input",
+          "transformation_logic": "nullif(C_STATE_PROV, '')"
+        }
+      ],
+      "transformation_type": "EXPRESSION",
+      "transformation_logic": "nullif(C_STATE_PROV, '')"
+    },
+    "country": {
+      "sources": [
+        {
+          "source_identifier": "xml_dataframe.C_CTRY",
+          "path": [
+            "country"
+          ],
+          "role": "direct input",
+          "transformation_logic": "nullif(C_CTRY, '')"
+        }
+      ],
+      "transformation_type": "EXPRESSION",
+      "transformation_logic": "nullif(C_CTRY, '')"
+    },
+    "phone1": {
+      "sources": [
+        {
+          "source_identifier": "xml_dataframe.C_CTRY_CODE",
+          "path": [
+            "phone1"
+          ],
+          "role": "used in condition"
+        },
+        {
+          "source_identifier": "xml_dataframe.C_AREA_CODE",
+          "path": [
+            "phone1"
+          ],
+          "role": "used in condition"
+        },
+        {
+          "source_identifier": "xml_dataframe.C_LOCAL",
+          "path": [
+            "phone1"
+          ],
+          "role": "direct input"
+        },
+        {
+          "source_identifier": "xml_dataframe.C_EXT",
+          "path": [
+            "phone1"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "EXPRESSION_CONCAT",
+      "transformation_logic": "CASE WHEN nullif(C_LOCAL, '') IS NOT NULL THEN concat(CASE WHEN nullif(C_CTRY_CODE, '') IS NOT NULL THEN '+' || C_CTRY_CODE || ' ' ELSE '' END, CASE WHEN nullif(C_AREA_CODE, '') IS NOT NULL THEN '(' || C_AREA_CODE || ') ' ELSE '' END, C_LOCAL, COALESCE(C_EXT, '')) ELSE NULL END"
+    },
+    "phone2": {
+      "sources": [
+        {
+          "source_identifier": "xml_dataframe.C_CTRY_CODE_1",
+          "path": [
+            "phone2"
+          ],
+          "role": "used in condition"
+        },
+        {
+          "source_identifier": "xml_dataframe.C_AREA_CODE_1",
+          "path": [
+            "phone2"
+          ],
+          "role": "used in condition"
+        },
+        {
+          "source_identifier": "xml_dataframe.C_LOCAL_1",
+          "path": [
+            "phone2"
+          ],
+          "role": "direct input"
+        },
+        {
+          "source_identifier": "xml_dataframe.C_EXT_1",
+          "path": [
+            "phone2"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "EXPRESSION_CONCAT",
+      "transformation_logic": "CASE WHEN nullif(C_LOCAL_1, '') IS NOT NULL THEN concat(CASE WHEN nullif(C_CTRY_CODE_1, '') IS NOT NULL THEN '+' || C_CTRY_CODE_1 || ' ' ELSE '' END, CASE WHEN nullif(C_AREA_CODE_1, '') IS NOT NULL THEN '(' || C_AREA_CODE_1 || ') ' ELSE '' END, C_LOCAL_1, COALESCE(C_EXT_1, '')) ELSE NULL END"
+    },
+    "phone3": {
+      "sources": [
+        {
+          "source_identifier": "xml_dataframe.C_CTRY_CODE_2",
+          "path": [
+            "phone3"
+          ],
+          "role": "used in condition"
+        },
+        {
+          "source_identifier": "xml_dataframe.C_AREA_CODE_2",
+          "path": [
+            "phone3"
+          ],
+          "role": "used in condition"
+        },
+        {
+          "source_identifier": "xml_dataframe.C_LOCAL_2",
+          "path": [
+            "phone3"
+          ],
+          "role": "direct input"
+        },
+        {
+          "source_identifier": "xml_dataframe.C_EXT_2",
+          "path": [
+            "phone3"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "EXPRESSION_CONCAT",
+      "transformation_logic": "CASE WHEN nullif(C_LOCAL_2, '') IS NOT NULL THEN concat(CASE WHEN nullif(C_CTRY_CODE_2, '') IS NOT NULL THEN '+' || C_CTRY_CODE_2 || ' ' ELSE '' END, CASE WHEN nullif(C_AREA_CODE_2, '') IS NOT NULL THEN '(' || C_AREA_CODE_2 || ') ' ELSE '' END, C_LOCAL_2, COALESCE(C_EXT_2, '')) ELSE NULL END"
+    },
+    "email1": {
+      "sources": [
+        {
+          "source_identifier": "xml_dataframe.C_PRIM_EMAIL",
+          "path": [
+            "email1"
+          ],
+          "role": "direct input",
+          "transformation_logic": "nullif(C_PRIM_EMAIL, '')"
+        }
+      ],
+      "transformation_type": "EXPRESSION",
+      "transformation_logic": "nullif(C_PRIM_EMAIL, '')"
+    },
+    "email2": {
+      "sources": [
+        {
+          "source_identifier": "xml_dataframe.C_ALT_EMAIL",
+          "path": [
+            "email2"
+          ],
+          "role": "direct input",
+          "transformation_logic": "nullif(C_ALT_EMAIL, '')"
+        }
+      ],
+      "transformation_type": "EXPRESSION",
+      "transformation_logic": "nullif(C_ALT_EMAIL, '')"
+    },
+    "lcl_tx_id": {
+      "sources": [
+        {
+          "source_identifier": "xml_dataframe.C_LCL_TX_ID",
+          "path": [
+            "lcl_tx_id"
+          ],
+          "role": "direct input",
+          "transformation_logic": "nullif(C_LCL_TX_ID, '')"
+        }
+      ],
+      "transformation_type": "EXPRESSION",
+      "transformation_logic": "nullif(C_LCL_TX_ID, '')"
+    },
+    "nat_tx_id": {
+      "sources": [
+        {
+          "source_identifier": "xml_dataframe.C_NAT_TX_ID",
+          "path": [
+            "nat_tx_id"
+          ],
+          "role": "direct input",
+          "transformation_logic": "nullif(C_NAT_TX_ID, '')"
+        }
+      ],
+      "transformation_type": "EXPRESSION",
+      "transformation_logic": "nullif(C_NAT_TX_ID, '')"
+    },
+    "update_ts": {
+      "sources": [
+        {
+          "source_identifier": "xml_dataframe.ActionTS",
+          "path": [
+            "update_ts"
+          ],
+          "role": "direct input",
+          "transformation_logic": "try_cast(ActionTS as TIMESTAMP)"
+        }
+      ],
+      "transformation_type": "CAST",
+      "transformation_logic": "try_cast(ActionTS as TIMESTAMP)"
+    },
+    "ActionType": {
+      "sources": [
+        {
+          "source_identifier": "xml_dataframe.ActionType",
+          "path": [
+            "ActionType"
+          ],
+          "role": "direct input"
+        }
+      ],
+      "transformation_type": "DIRECT INPUT",
+      "transformation_logic": null
+    }
+  }
+}
