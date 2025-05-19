@@ -1,7 +1,0 @@
-DataSet, BatchID ,Date , Attribute , Value, DValue
-DimTradeHistory,1,,TH_Records,1634784,
-DimTradeHistory,1,,TH_TLBTrades,561421,
-DimTradeHistory,1,,TH_TLSTrades,554525,
-DimTradeHistory,1,,TH_TMBTrades,261030,
-DimTradeHistory,1,,TH_TMSTrades,257808,
-DimTradeHistory,1,,TH_CanceledLTrades,37879,

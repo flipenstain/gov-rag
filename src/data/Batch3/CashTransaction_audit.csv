@@ -1,5 +1,0 @@
-DataSet, BatchID ,Date , Attribute , Value, DValue
-DimTradeHistory,3,,CT_Records,328,
-DimTradeHistory,3,,CT_Trades,328,
-DimTradeHistory,3,,CT_AccountsCreations,0,
-DimTradeHistory,3,,CT_UpdatedAccounts,0,
