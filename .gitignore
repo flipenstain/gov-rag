@@ -22,6 +22,7 @@ src/data/Batch1/Trade.txt
 src/data/Batch1/CashTransaction.txt
 src/data/Batch1/DailyMarket.txt
 src/data/
+src/data/LLM_answers
 
 .venv-py310
 
