@@ -9,7 +9,7 @@ wheels/
 # Virtual environments
 .venv
 **/.venv/
-.buckups
+src/.buckups
 initial_db.duckdb
 initial_db.duckdb.wal
 
