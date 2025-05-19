@@ -28,3 +28,4 @@ src/data/LLM_answers
 
 src/divider/Tools/*
 src/main/duck_db
+my_table.parquet
